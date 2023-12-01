@@ -76,7 +76,7 @@ body {
 .page-footer {
     background-color: var(--black);
     color: var(--white);
-    padding: 1rem;
+    padding: 0.2rem;
 }
 
 .page-footer {
