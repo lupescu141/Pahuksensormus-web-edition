@@ -97,6 +97,8 @@ main {
     width: 100%;
     height: auto;
     overflow: hidden;
+    display: flex;
+    align-items: center;
 }
 
 .boxes {
@@ -117,7 +119,7 @@ main {
 
 .box h2,
 .box figure {
-    margin: 0;
+    margin: 1rem;
     padding: 0;
 }
 
@@ -129,7 +131,7 @@ main {
 }
 
 .box li {
-    width: calc(50% - 0.6rem);
+    width: 80%;
     text-align: center;
     border: var(--grey) solid 1px;
     border-radius: 4px;
@@ -152,46 +154,7 @@ main {
     width: 30%;
 }
 
-
-.goal {
-    background-image: url('../img/splatter.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    padding: 9rem 7rem;
-    text-align: center;
-    position: absolute;
-    bottom: 30%;
-    filter: drop-shadow(0 0 30px #333);
-    transform: rotate(340deg);
-    line-height: 1rem;
-    z-index: 999;
-}
-
-.goal h2,
-.goal p {
-    margin: 0.5rem;
-}
-
-.done {
-    background-color: var(--grey);
-}
-
-#weather {
-    border-spacing: 0;
-}
-
-#weather td {
-    padding: 0.3rem;
-}
-
-#weather td:first-child,
-#weather td:nth-child(2) {
-    border-right: var(--grey) 1px solid;
-}
-
-.lead-img {
-    width: 100%;
-    margin: 0 0 1rem 0;
+.player-details {
 }
 
 @media screen and (min-width: 769px) {
@@ -202,14 +165,12 @@ main {
     #map {
         width: 50%;
         height: initial;
-        display: flex;
-        align-items: center;
+
     }
 
 
     .boxes {
         width: 50%;
-        padding-left: 1rem;
         box-sizing: border-box;
     }
 
@@ -218,6 +179,9 @@ main {
         justify-content: space-evenly;
     }
 
-    #goals {
+    #log {
+    }
+
+    .log-container li {
     }
 }
