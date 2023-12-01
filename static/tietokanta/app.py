@@ -12,11 +12,11 @@ app = Flask(__name__)
 
 try:
     config.conn = mysql.connector.connect(
-        host=os.environ.get('HOST'),
+        host='mysql.metropolia.fi',
         port=3306,
-        database=os.environ.get('DB_NAME'),
-        user=os.environ.get('DB_USER'),
-        password=os.environ.get('DB_PASS'),
+        database='danielup',
+        user='danielup',
+        password='gidajahe',
         autocommit=True
     )
 
