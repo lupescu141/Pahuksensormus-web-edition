@@ -160,7 +160,7 @@ main {
 .player-details {
 }
 
-@media screen and (min-width: 769px) {
+@media screen and (min-width: 1000px) {
     .box {
         font-size: initial;
     }
