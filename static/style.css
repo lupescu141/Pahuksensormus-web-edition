@@ -158,6 +158,8 @@ main {
 }
 
 .player-details {
+    width: auto;
+    height: max-content;
 }
 
 @media screen and (min-width: 1000px) {
@@ -190,12 +192,13 @@ main {
     }
 
     .container {
-    width: 100%;
-    position: relative;
-    background-image: url("images/background.jpg");
-    background-position: center center;
-    background-size: cover;
-    background-repeat: no-repeat;
-    overflow: hidden;
-}
+        width: 100%;
+        position: relative;
+        background-image: url("images/background.jpg");
+        background-position: center center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        overflow: hidden;
+    }
+
 }
