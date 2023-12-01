@@ -180,9 +180,13 @@ main {
         justify-content: space-evenly;
     }
 
-    .space-further {
+    .space-further-no-padding {
         justify-content: space-between;
         padding-right: 0;
+    }
+
+    .space-further {
+        justify-content: space-between;
     }
 
     .container {
