@@ -118,7 +118,7 @@ main {
 .box {
     border-radius: 6px;
     box-shadow: rgba(0, 0, 0, 0.3) 3px 3px 10px;
-    margin-bottom: 1rem;
+    margin-bottom: 0.2rem;
 }
 
 .box h2,
@@ -160,6 +160,10 @@ main {
 .player-details {
     width: auto;
     height: max-content;
+}
+
+.player-line {
+    max-height: 30%;
 }
 
 @media screen and (min-width: 1000px) {
