@@ -135,7 +135,7 @@ main {
 }
 
 .box li {
-    width: 80%;
+    width: 100%;
     text-align: center;
     border: var(--grey) solid 1px;
     border-radius: 4px;
@@ -178,11 +178,5 @@ main {
     .player-info {
         width: 100%;
         justify-content: space-evenly;
-    }
-
-    #log {
-    }
-
-    .log-container li {
     }
 }
