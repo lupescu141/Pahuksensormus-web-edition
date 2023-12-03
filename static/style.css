@@ -43,6 +43,10 @@
     height: auto;
 }
 
+.hide {
+  display: none;
+}
+
 /* app specific */
 html,
 body {
@@ -148,6 +152,26 @@ main {
 .player-details {
     width: auto;
     height: max-content;
+}
+
+#player-modal {
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8);
+  position: absolute;
+  top: 0;
+  z-index: 9999;
+}
+
+#player-form {
+  display: flex;
+  width: 50%;
+  margin: 4rem auto;
+  flex-direction: column;
+}
+
+#player-form input {
+  padding: 1rem;
 }
 
 
