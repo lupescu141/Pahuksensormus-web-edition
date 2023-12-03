@@ -24,10 +24,10 @@ body {
 
 .vasen-puoli, .oikea-puoli {
     flex: 1;
-    height: 96%;
+    height: 100%;
     box-sizing: border-box;
-    padding-top: 23px;
-    padding-bottom: 23px;
+    padding-top: 20px;
+    padding-bottom: 21px;
 }
 
 .vasen-puoli {
