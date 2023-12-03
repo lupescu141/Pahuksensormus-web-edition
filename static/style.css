@@ -43,14 +43,6 @@
     height: auto;
 }
 
-.hide {
-    display: none;
-}
-
-.float {
-    float: left;
-}
-
 /* app specific */
 html,
 body {
@@ -107,6 +99,7 @@ main {
 
 .boxes {
     width: 100%;
+
 }
 
 .box {
@@ -148,11 +141,6 @@ main {
     height: 100%;
 }
 
-.player-info {
-    width: 100%;
-    justify-content: space-evenly;
-}
-
 .player-image {
     width: 30%;
 }
@@ -162,9 +150,7 @@ main {
     height: max-content;
 }
 
-.player-line {
-    max-height: 30%;
-}
+
 
 @media screen and (min-width: 1000px) {
     .box {
