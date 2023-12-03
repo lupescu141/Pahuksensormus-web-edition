@@ -52,9 +52,12 @@ body {
     background-color: var(--white);
     scroll-behavior: smooth;
     overflow: hidden;
+    height: 100%;
+    width: 100%;
 }
 
 .container {
+    height: 100%;
     width: 100%;
     position: relative;
     background-image: url("images/background.jpg");
