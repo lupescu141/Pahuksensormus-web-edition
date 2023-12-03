@@ -72,6 +72,16 @@ body {
     overflow: hidden;
 }
 
+.loki-teksti{
+    background: none;
+    width: 100%;
+    height: 82%;
+    padding: 1px;
+    text-align: left;
+    font-family: 'old-london';
+    font-size: 1.4rem;
+}
+
 .page-header,
 .page-footer {
     background-color: var(--black);
@@ -94,7 +104,7 @@ ul {
 }
 
 main {
-    padding: 1rem 2rem;
+    padding-top: 1rem;
 }
 
 #map {
@@ -157,6 +167,10 @@ main {
     height: max-content;
 }
 
+.loki{
+    height: 48%;
+}
+
 @media screen and (min-width: 1000px) {
     .box {
         font-size: initial;
@@ -168,7 +182,7 @@ main {
     }
 
     .boxes {
-        width: 45%;
+        width: 48%;
         box-sizing: border-box;
     }
 
