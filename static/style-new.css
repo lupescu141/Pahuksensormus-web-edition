@@ -44,11 +44,14 @@ body {
 
 .pelaaja-info {
     height: 50%;
+}
+
+.paikkatausta {
+    position: absolute;
     overflow: auto;
-    background: url("../static/images/paikat/uudentoivonkylä1.png");
-    background-position: center center;
-    background-size: cover;
-    background-repeat: no-repeat;
+    opacity: 40%;
+    height: 48%;
+    width: 48%;
 }
 
 .pelaaja-kuva {
@@ -67,6 +70,7 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    z-index: 1;
 }
 
 header {
