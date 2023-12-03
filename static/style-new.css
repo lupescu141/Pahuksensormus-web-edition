@@ -26,7 +26,8 @@ body {
     flex: 1;
     height: 96%;
     box-sizing: border-box;
-    margin-top: 1.5%;
+    padding-top: 23px;
+    padding-bottom: 23px;
 }
 
 .vasen-puoli {
@@ -59,6 +60,9 @@ body {
     width: 50%;
     height: 100%;
     background-color: rgba(50, 0, 0, 0.8);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 header {
@@ -70,6 +74,17 @@ table {
     text-align: center;
     border: black solid 1px;
     border-radius: 0.5rem;
+}
+
+.nappi {
+    display: block;
+    height: 15%;
+    width: 40%;
+    text-decoration: none;
+    border-radius: 4px;
+    text-align: center;
+    transition: all 300ms;
+    margin: 2rem;
 }
 
 .loki {
@@ -87,8 +102,15 @@ table {
 }
 
 .oikea-puoli {
+    width: 100%;
+    height: 100%;
+}
+
+.kartta {
+    width: 100%;
+    height: 100%;
     background: url("../static/images/kartta/kartta2.png");
-    background-size: contain;
+    background-size: 100% 100%;
     background-position: right;
     background-repeat: no-repeat;
     margin-left: 2%;
