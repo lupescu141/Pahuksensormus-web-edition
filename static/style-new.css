@@ -1,0 +1,95 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    overflow: hidden;
+    background-image: url("../static/images/background.jpg");
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+    width: 100%;
+}
+
+.vasen-puoli, .oikea-puoli {
+    flex: 1;
+    height: 96%;
+    box-sizing: border-box;
+    margin-top: 1.5%;
+}
+
+.vasen-puoli {
+    flex-direction: column;
+    margin-right: 2%;
+}
+
+.pelaaja-info, .loki {
+    height: 50%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+}
+
+.pelaaja-info {
+    height: 50%;
+    overflow: auto;
+}
+
+.pelaaja-kuva {
+    width: 50%;
+    height: 100%;
+    background: url("../static/images/pelaaja-luokat/taikasoturi.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center bottom;
+}
+
+.pelaaja-status {
+    width: 50%;
+    height: 100%;
+    background-color: rgba(50, 0, 0, 0.8);
+}
+
+header {
+    text-align: center;
+}
+
+table {
+    width: 100%;
+    text-align: center;
+    border: black solid 1px;
+    border-radius: 0.5rem;
+}
+
+.loki {
+    background-color: rgba(0, 0, 50, 0.8);
+    display: flex;
+    flex-direction: column;
+}
+
+.loki-teksti{
+    background: none;
+    width: 100%;
+    height: 100%;
+    text-align: left;
+    font-size: 1.4rem;
+}
+
+.oikea-puoli {
+    background: url("../static/images/kartta/kartta2.png");
+    background-size: contain;
+    background-position: right;
+    background-repeat: no-repeat;
+    margin-left: 2%;
+}
