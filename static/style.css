@@ -98,11 +98,8 @@ main {
 }
 
 #map {
-    width: 100%;
-    height: auto;
     overflow: hidden;
     display: flex;
-    align-items: center;
 }
 
 .boxes {
@@ -150,7 +147,9 @@ main {
 }
 
 .player-image {
-    width: 30%;
+    margin-right: auto;
+    width: 50%;
+    height: 50%;
 }
 
 .player-details {
@@ -164,7 +163,7 @@ main {
     }
 
     #map {
-        width: 45%;
+        width: 49%;
         height: initial;
     }
 
@@ -178,10 +177,11 @@ main {
         justify-content: space-evenly;
     }
 
-    .space-further-no-padding {
-        justify-content: space-between;
-        padding-right: 0;
-    }
+.space-further-no-padding {
+    justify-content: space-between;
+    padding-right: 0;
+    height: 97%;
+}
 
     .space-further {
         justify-content: space-between;
