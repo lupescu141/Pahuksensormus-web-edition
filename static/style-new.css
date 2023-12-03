@@ -54,7 +54,7 @@ body {
 .pelaaja-kuva {
     width: 50%;
     height: 100%;
-    background: url("../static/images/pelaaja-luokat/taikasoturi.png");
+    background: url("../static/images/pelaaja-luokat/paladin-nainen.png");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center bottom;
