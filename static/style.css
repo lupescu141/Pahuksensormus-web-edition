@@ -153,7 +153,6 @@ main {
     height: max-content;
 }
 
-
 @media screen and (min-width: 1000px) {
     .box {
         font-size: initial;
