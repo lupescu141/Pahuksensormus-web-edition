@@ -122,17 +122,17 @@ table {
 
 .tulivuori-nappi {
     position: absolute;
-    top: 56%;
-    left: 71.8%;
-    height: 7%;
-    width: 7%;
+    top: 57%;
+    left: 72.9%;
+    height: 5%;
+    width: 4.5%;
 }
 
 .tulivuori-nappi:hover{
-    top: 55.8%;
-    left: 71.5%;
-    height: 8%;
-    width: 8%;
+    top: 57%;
+    left: 72.6%;
+    height: 6%;
+    width: 5.5%;
 }
 
 .noitametsa-nappi {
@@ -167,14 +167,38 @@ table {
 
 .suurentarmonkaupunki-nappi {
     position: absolute;
-    top: 43%;
-    left: 91%;
+    top: 39%;
+    left: 87%;
+    height: 12%;
+    width: 12%;
+    rotate: -3deg;
 }
 
-.sammajarvi-nappi {
+.suurentarmonkaupunki-nappi:hover {
     position: absolute;
-    top: 32%;
+    top: 39%;
+    left: 86.5%;
+    height: 12.5%;
+    width: 12.5%;
+    rotate: -3deg;
+}
+
+.sammakkojarvi-nappi {
+    position: absolute;
+    top: 15%;
     left: 91%;
+    height: 30%;
+    width: 7%;
+    rotate: 72deg;
+}
+
+.sammakkojarvi-nappi:hover{
+    position: absolute;
+    top: 14.5%;
+    left: 90.5%;
+    height: 31%;
+    width: 7.4%;
+    rotate: 72deg;
 }
 
 .ruoholaakso-nappi {
