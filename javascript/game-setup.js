@@ -1,8 +1,71 @@
-//document.addEventListener('DOMContentLoaded', function() {
- //   var vasenSivuChildren = document.getElementById('vasen-sivu').children;
+document.addEventListener('DOMContentLoaded', function() {
+  // Etsi vasemman puolen elementti ja aseta sille display: none;
+  const vasen_puoli = document.querySelector('.vasen-puoli');
+  vasen_puoli.style.display = 'none';
 
-    // Iterate through the children and set display to 'none'
-//    for (var i = 0; i < vasenSivuChildren.length; i++) {
-//        vasenSivuChildren[i].style.display = 'none';
- //   }
-//});
+});
+
+// Tämä hoitaa uuden pelin aloittamisen
+function avaa_uusipeli_valikko() {
+  // Piilota paavalikko
+  const paavalikko = document.querySelector('.valikko');
+  paavalikko.style.display = 'none';
+
+  const uusi_peli_valikko = document.querySelector('.uusi-peli-valikko');
+  uusi_peli_valikko.style.display = 'flex';
+
+  // Etsi lomake ja lisää sille submit-kuuntelija
+  const uusi_peli_form = document.getElementById('uusi-peli-form');
+  uusi_peli_form.addEventListener('submit', function(event) {
+    event.preventDefault(); // Estä lomakkeen oletustoiminta
+
+    // Tässä vaiheessa voit käsitellä pelaajan nimen ja aloittaa pelin
+    const pelaaja_nimi_elementti = document.getElementById('pelaajan-nimi');
+    const pelaaja_nimi = pelaaja_nimi_elementti.value;
+    console.log('Aloita peli pelaajalla:', pelaaja_nimi);
+
+    // Tyhjennä pelaajan nimi
+    pelaaja_nimi_elementti.value = '';
+
+    uusi_peli_valikko.style.display = 'none';
+
+    const vasen_puoli = document.querySelector('.vasen-puoli');
+    vasen_puoli.style.display = 'flex';
+  });
+}
+
+// Tämä hoitaa ladatun pelin aloittamisen
+async function avaa_lataapeli_valikko() {
+  // Piilota paavalikko
+  const paavalikko = document.querySelector('.valikko');
+  paavalikko.style.display = 'none';
+
+  // Tuo lataapeli valikko esiin
+  const lataapeli_valikko = document.querySelector('.lataapeli-valikko');
+  lataapeli_valikko.style.display = 'flex';
+
+  // Hakee Flask tietokannasta tallennukset
+  const vastaus = await fetch('http://localhost:5000/hae_pelaaja_nimet');
+  const data = await vastaus.json();
+  console.log(data);
+
+  // Esitetään tallenukset nappeina
+  for (const pelaaja of data) {
+    const pelaaja_nappi = document.createElement('button');
+    pelaaja_nappi.textContent = pelaaja.pelaaja_nimi;
+    pelaaja_nappi.classList.add('nappi');
+    lataapeli_valikko.appendChild(pelaaja_nappi);
+
+    // Kuuntelee tallennus napin painallusta
+    pelaaja_nappi.addEventListener('click', function() {
+      console.log('Pelaaja nappia painettu:', pelaaja.pelaaja_nimi);
+
+      lataapeli_valikko.style.display = 'none';
+
+      const vasen_puoli = document.querySelector('.vasen-puoli');
+      vasen_puoli.style.display = 'flex';
+    });
+  }
+}
+
+

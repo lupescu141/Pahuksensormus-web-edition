@@ -22,6 +22,33 @@ body {
     width: 100%;
 }
 
+.valikko {
+    height: 100%;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.uusi-peli-valikko {
+    height: 100%;
+    width: 50%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+
+.lataapeli-valikko {
+    height: 100%;
+    width: 50%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+
 .vasen-puoli, .oikea-puoli {
     flex: 1;
     height: 100%;
@@ -85,6 +112,7 @@ table {
     border: black solid 1px;
     border-radius: 0.5rem;
     margin-bottom: 1rem;
+    background-color: oldlace;
 }
 
 .nappi {

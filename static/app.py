@@ -5,11 +5,14 @@ import config
 
 import flask
 from flask import Flask, request
+from flask_cors import CORS
 
 app = Flask(__name__)
 
-# Tietokantayhteys
+cors = CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
 
+# Tietokantayhteys
 try:
     conn = mysql.connector.connect(
         host='mysql.metropolia.fi',
@@ -61,22 +64,6 @@ def hae_pelaaja_nimet():
     kursori.execute(sql)
     pelaajat = kursori.fetchall()
     return pelaajat
-
-
-# Luo uuden pelaajan tietokantaan ja palauttaa pelaajan id
-@app.route('/luo_pelaaja/<nimi>', methods=['POST'])
-def luo_pelaaja(nimi):
-
-    sql = 'INSERT INTO peli (pelaaja_nimi)'
-    sql += f"VALUE ('{nimi}');"
-    kursori = conn.cursor(dictionary=True)
-    kursori.execute(sql)
-
-    sql = f'SELECT peli_id FROM peli WHERE pelaaja_nimi = "{nimi}";'
-    kursori.execute(sql)
-    pelaajan_id_sanakirja = kursori.fetchone()
-    pelaajan_id = pelaajan_id_sanakirja['peli_id']
-    return pelaajan_id
 
 
 

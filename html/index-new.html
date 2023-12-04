@@ -12,6 +12,24 @@
 <body>
 <body>
 <div class="container">
+
+    <div class="valikko">
+        <button id="uusi_peli" class="nappi" onclick="avaa_uusipeli_valikko()">Aloita uusi peli</button>
+        <button id="lataa_peli" class="nappi" onclick="avaa_lataapeli_valikko()">Lataa peli</button>
+    </div>
+
+    <div class="uusi-peli-valikko">
+        <form id="uusi-peli-form">
+            <label for="pelaajan-nimi">Nimi:</label>
+            <input type="text" id="pelaajan-nimi" name="pelaajan-nimi">
+            <button type="submit">Aloita peli</button>
+        </form>
+    </div>
+
+    <div class="lataapeli-valikko">
+
+    </div>
+
     <div class="vasen-puoli">
         <div id="pelaaja-info" class="pelaaja-info">
             <img src="../static/images/paikat/uudentoivonkylä1.png" class="paikkatausta" ">
@@ -43,14 +61,17 @@
     <div class="oikea-puoli">
         <div class="kartta">
             <button class="uudentoivonkyla-nappi">Uudentoivonkylä</button>
-            <input type="image" class="tulivuori-nappi" alt="tulivuorinappi" src="../static/images/ui/tulivuorinappi.png">
+            <input type="image" class="tulivuori-nappi" alt="tulivuorinappi"
+                   src="../static/images/ui/tulivuorinappi.png">
             <button class="hiisisuo-nappi">Hiisisuo</button>
             <button class="noitametsa-nappi">Noitametsä</button>
             <button class="varisrame-nappi">Varisrame</button>
             <button class="velhotorni-nappi">Velhotorni</button>
             <button class="peikkoluola-nappi">Peikkoluola</button>
-            <input type="image" class="suurentarmonkaupunki-nappi" alt="suurentarmonkaupunki-nappi" src="../static/images/ui/suurentarmonkaupunki-nappi.png">
-            <input type="image" class="sammakkojarvi-nappi" alt="sammakkojarvi-nappi" src="../static/images/ui/sammakkojarvi-nappi2.png">
+            <input type="image" class="suurentarmonkaupunki-nappi" alt="suurentarmonkaupunki-nappi"
+                   src="../static/images/ui/suurentarmonkaupunki-nappi.png">
+            <input type="image" class="sammakkojarvi-nappi" alt="sammakkojarvi-nappi"
+                   src="../static/images/ui/sammakkojarvi-nappi2.png">
             <button class="ruoholaakso-nappi">Ruoholaakso</button>
         </div>
 
