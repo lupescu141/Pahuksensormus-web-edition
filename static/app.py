@@ -52,17 +52,33 @@ class Vihollinen:
         self.isku = vihollinen_isku
 
 
+# Hakee pelaajien nimet tietokannasta, jotta voidaan välttää tupla nimiä
+@app.route('/hae_pelaaja_nimet')
+def hae_pelaaja_nimet():
 
-
-def hae_kaikki_kohteet():
-
-    sql = f'''SELECT airport.id, airport.fantasia_nimi, airport.latitude_deg, airport.longitude_deg 
-              FROM airport'''
+    sql = f'SELECT pelaaja_nimi FROM peli;'
     kursori = conn.cursor(dictionary=True)
     kursori.execute(sql)
-    lista = kursori.fetchall()
-    #for nimi in lista:
-        #print(nimi)
-    return lista
+    pelaajat = kursori.fetchall()
+    return pelaajat
 
-print(hae_kaikki_kohteet())
+
+# Luo uuden pelaajan tietokantaan ja palauttaa pelaajan id
+@app.route('/luo_pelaaja/<nimi>', methods=['POST'])
+def luo_pelaaja(nimi):
+
+    sql = 'INSERT INTO peli (pelaaja_nimi)'
+    sql += f"VALUE ('{nimi}');"
+    kursori = conn.cursor(dictionary=True)
+    kursori.execute(sql)
+
+    sql = f'SELECT peli_id FROM peli WHERE pelaaja_nimi = "{nimi}";'
+    kursori.execute(sql)
+    pelaajan_id_sanakirja = kursori.fetchone()
+    pelaajan_id = pelaajan_id_sanakirja['peli_id']
+    return pelaajan_id
+
+
+
+if __name__ == '__main__':
+    app.run(use_reloader=True, host='127.0.0.1', port=5000)
