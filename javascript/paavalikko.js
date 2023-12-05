@@ -117,3 +117,16 @@ async function avaa_lataapeli_valikko() {
     });
   }
 }
+
+function palaa_alkuvalikkoon() {
+  // Piilota napit
+  const lataapeli_valikko = document.querySelector('.lataapeli-valikko');
+  lataapeli_valikko.style.display = 'none';
+
+  const uusipeli_valikko = document.querySelector('.uusi-peli-valikko');
+  uusipeli_valikko.style.display = 'none';
+
+  // Näytä päävalikko
+  const paavalikko = document.querySelector('.valikko');
+  paavalikko.style.display = 'flex';
+}
