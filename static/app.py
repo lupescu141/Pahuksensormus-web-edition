@@ -80,7 +80,6 @@ def hae_pelaaja_tiedot(peli_id):
 @app.route('/luo_uusi_pelaaja/<pelaaja_nimi>')
 def luo_uusi_pelaaja(pelaaja_nimi):
     try:
-        # Käytä turvallisempaa parametriseen kyselyyn
         sql = 'INSERT INTO peli (pelaaja_nimi) VALUES (%s);'
         kursori = conn.cursor(dictionary=True)
         kursori.execute(sql, (pelaaja_nimi,))
