@@ -1,3 +1,5 @@
+let pelaaja_olio;
+
 document.addEventListener('DOMContentLoaded', function() {
   // Etsi vasemman puolen elementti ja aseta sille display: none;
   const vasen_puoli = document.querySelector('.vasen-puoli');
@@ -10,6 +12,12 @@ async function hae_nimet() {
   // Hakee Flask tietokannasta nimet
   const vastaus = await fetch('http://localhost:5000/hae_pelaaja_nimet');
   return await vastaus.json();
+}
+
+// Asettaa Pelaajan tiedot aloitusnäytölle
+function aseta_tiedot() {
+  document.getElementById('pelaaja-hp').textContent = pelaaja_olio[0].pelaaja_hp
+  document.getElementById('pelaaja-tp').textContent = pelaaja_olio[0].pelaaja_taitopiste
 }
 
 // Tämä hoitaa uuden pelin aloittamisen
@@ -27,7 +35,7 @@ async function avaa_uusipeli_valikko() {
     let varattu_nimi_caps = varattu_nimi.pelaaja_nimi.toUpperCase();
     varatut_nimet_lista.push(varattu_nimi_caps);
   }
-  console.log(varatut_nimet_lista);
+  console.log('varatut nimet: ' + varatut_nimet_lista);
 
   // Etsi lomake ja lisää sille submit-kuuntelija
   const uusi_peli_form = document.getElementById('uusi-peli-form');
@@ -69,6 +77,7 @@ async function avaa_lataapeli_valikko() {
 
   // Hakee Flask tietokannasta tallennukset
   data = await hae_nimet();
+  console.log(data)
 
   // Esitetään tallenukset nappeina
   for (const pelaaja of data) {
@@ -78,8 +87,17 @@ async function avaa_lataapeli_valikko() {
     lataapeli_valikko.appendChild(pelaaja_nappi);
 
     // Kuuntelee tallennus napin painallusta
-    pelaaja_nappi.addEventListener('click', function() {
-      console.log('Pelaaja nappia painettu:', pelaaja.pelaaja_nimi);
+    pelaaja_nappi.addEventListener('click', async function() {
+      console.log('Pelaaja nappia painettu:', pelaaja.pelaaja_nimi,
+          pelaaja.peli_id);
+
+      const vastaus = await fetch(
+          `http://localhost:5000//hae_pelaaja_tiedot/${pelaaja.peli_id}`);
+      const pelaaja_tiedot = await vastaus.json();
+      console.log(pelaaja_tiedot)
+
+      pelaaja_olio = pelaaja_tiedot
+      aseta_tiedot()
 
       lataapeli_valikko.style.display = 'none';
 
@@ -88,5 +106,8 @@ async function avaa_lataapeli_valikko() {
     });
   }
 }
+
+
+
 
 

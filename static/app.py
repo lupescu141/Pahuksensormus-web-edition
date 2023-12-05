@@ -59,11 +59,19 @@ class Vihollinen:
 @app.route('/hae_pelaaja_nimet')
 def hae_pelaaja_nimet():
 
-    sql = f'SELECT pelaaja_nimi FROM peli;'
+    sql = f'SELECT pelaaja_nimi, peli_id FROM peli;'
     kursori = conn.cursor(dictionary=True)
     kursori.execute(sql)
     pelaajat = kursori.fetchall()
     return pelaajat
+
+@app.route('/hae_pelaaja_tiedot/<peli_id>')
+def hae_pelaaja_tiedot(peli_id):
+    sql = f'SELECT * FROM peli WHERE peli_id = {peli_id};'
+    kursori = conn.cursor(dictionary=True)
+    kursori.execute(sql)
+    pelaaja_tiedot = kursori.fetchall()
+    return pelaaja_tiedot
 
 
 
