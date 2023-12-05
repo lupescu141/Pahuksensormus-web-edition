@@ -18,6 +18,7 @@ function avaa_taistelu_ikkuna() {
   taistelu_rivi.insertBefore(pelaaja_status, taistelu_rivi.firstChild);
 }
 
+
 // Kun taistelu loppuu siirretään pelaajan status takaisin
 function lopeta_taistelu() {
   document.querySelector('.vasen-puoli-taistelu').style.display = 'none';
@@ -38,6 +39,7 @@ function lopeta_taistelu() {
   pelaaja_info.appendChild(pelaaja_status);
 }
 
+
 // Avaa halutun ala-valikon
 function nayta_valikko(valikko) {
   // Piilotaa ensin kaikki napit
@@ -49,6 +51,7 @@ function nayta_valikko(valikko) {
   document.getElementById('palaa').style.display = 'block';
 }
 
+
 // Piilottaa kaikki napit taistelu valikosta
 function piilota_kaikki_napit() {
   document.querySelectorAll('.taistelu-valikko-nappi, .isku-nappi').
@@ -56,6 +59,7 @@ function piilota_kaikki_napit() {
         nappi.style.display = 'none';
       });
 }
+
 
 // Palaa ala-valikosta taistelu valikkoon
 function palaa() {

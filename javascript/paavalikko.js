@@ -1,6 +1,7 @@
 // Luodaan pelaajalle muuttuja
 let pelaaja_olio;
 
+
 // Piilottaa seikkailu näkymän heti alussa
 document.addEventListener('DOMContentLoaded', function() {
   // Etsi vasemman puolen elementti ja aseta sille display: none;
@@ -9,6 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 });
 
+
 // Hakee pelaaja_nimet ja pelaaja_id:et tietokannasta
 async function hae_nimet() {
   // Hakee Flask tietokannasta nimet
@@ -16,12 +18,14 @@ async function hae_nimet() {
   return await vastaus.json();
 }
 
+
 // Asettaa Pelaajan tiedot pelaaja-status ikkunaan
 function aseta_tiedot() {
   document.getElementById('pelaaja-nimi').textContent = pelaaja_olio[0].pelaaja_nimi
   document.getElementById('pelaaja-hp').textContent = pelaaja_olio[0].pelaaja_hp
   document.getElementById('pelaaja-tp').textContent = pelaaja_olio[0].pelaaja_taitopiste
 }
+
 
 // Tämä hoitaa uuden pelin aloittamisen
 async function avaa_uusipeli_valikko() {
@@ -67,6 +71,7 @@ async function avaa_uusipeli_valikko() {
     }
   });
 }
+
 
 // Tämä hoitaa ladatun pelin aloittamisen
 async function avaa_lataapeli_valikko() {
