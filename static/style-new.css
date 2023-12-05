@@ -204,8 +204,13 @@ table {
 
 .hiisisuo-nappi {
     position: absolute;
-    top: 95%;
-    left: 64.7%;
+    top: 91%;
+    left: 62.7%;
+    height: 9%;
+}
+
+.hiisisuo-nappi:hover{
+    opacity: 50%;
 }
 
 .velhotorni-nappi {
