@@ -1,6 +1,6 @@
 @font-face {
-  font-family: old-london;
-  src: url("../static/fontit/OldLondonAlternate.ttf");
+    font-family: old-london;
+    src: url("../static/fontit/OldLondonAlternate.ttf");
 }
 
 * {
@@ -113,12 +113,13 @@ header {
 
 table {
     margin-top: 0.5rem;
-    width: 32%;
+    width: 60%;
     text-align: center;
     border: black solid 1px;
     border-radius: 0.5rem;
     margin-bottom: 1rem;
     background-color: oldlace;
+    font-size: 2rem;
 }
 
 .nappi {
@@ -134,10 +135,9 @@ table {
     color: white; /* Varmista, että teksti on luettavissa tummemmalla taustalla */
 }
 
-.nappi:hover {
+button:hover {
     background: rgba(0, 0, 0, 0.6); /* Tummempi tausta hover-tilassa: rgba(0, 0, 0, 0.4) */
 }
-
 
 .loki {
     /*background-color: rgba(0, 0, 50, 0.8);*/
@@ -145,130 +145,13 @@ table {
     flex-direction: column;
 }
 
-.loki-teksti{
+.loki-teksti {
     background: none;
     width: 94%;
     height: 100%;
     text-align: left;
     font-size: 1.4rem;
     align-self: center;
-}
-
-.uudentoivonkyla-nappi {
-    position: absolute;
-    top: 68%;
-    left: 84%;
-    height: 12%;
-    width: 9%;
-}
-
-.uudentoivonkyla-nappi:hover{
-    opacity: 50%;
-}
-
-.tulivuori-nappi {
-    position: absolute;
-    top: 43%;
-    left: 71.9%;
-    height: 17%;
-    width: 6.5%;
-}
-
-.tulivuori-nappi:hover{
-    opacity: 50%;
-}
-
-.noitametsa-nappi {
-    position: absolute;
-    top: 71%;
-    left: 61%;
-    height: 16%;
-    width: 12%;
-}
-
-.noitametsa-nappi:hover{
-    opacity: 50%;
-}
-
-.varisrame-nappi {
-    position: absolute;
-    top: 61%;
-    left: 51.5%;
-    height: 22%;
-    width: 10%;
-}
-
-.varisrame-nappi:hover{
-    opacity: 50%;
-}
-
-.hiisisuo-nappi {
-    position: absolute;
-    top: 91%;
-    left: 62.7%;
-    height: 9%;
-}
-
-.hiisisuo-nappi:hover{
-    opacity: 50%;
-}
-
-.velhotorni-nappi {
-    position: absolute;
-    top: 75%;
-    left: 76%;
-    height: 15%;
-}
-
-.velhotorni-nappi:hover{
-    opacity: 50%;
-}
-
-.peikkoluola-nappi {
-    position: absolute;
-    top: 56%;
-    left: 91.5%;
-    height: 8%;
-}
-
-.peikkoluola-nappi:hover{
-    opacity: 50%;
-}
-
-.suurentarmonkaupunki-nappi {
-    position: absolute;
-    top: 37%;
-    left: 87%;
-    height: 12%;
-    width: 11%;
-    z-index: 2;
-}
-
-.suurentarmonkaupunki-nappi:hover {
- opacity: 50%;
-}
-
-.sammakkojarvi-nappi {
-    position: absolute;
-    top: 24%;
-    left: 82.5%;
-    height: 24%;
-    width: 18%;
-    z-index: 1;
-}
-
-.sammakkojarvi-nappi:hover{
-opacity: 50%;
-}
-
-.ruoholaakso-nappi {
-    position: absolute;
-    top: 15%;
-    left: 81%;
-    height: 13%;
-}
-.ruoholaakso-nappi:hover{
-    opacity: 50%;
 }
 
 .oikea-puoli {
@@ -284,4 +167,209 @@ opacity: 50%;
     background-position: right;
     background-repeat: no-repeat;
     margin-left: 2%;
+}
+
+.uudentoivonkyla-nappi {
+    position: absolute;
+    top: 68%;
+    left: 84%;
+    height: 12%;
+    width: 9%;
+}
+
+
+.tulivuori-nappi {
+    position: absolute;
+    top: 43%;
+    left: 71.9%;
+    height: 17%;
+    width: 6.5%;
+}
+
+
+.noitametsa-nappi {
+    position: absolute;
+    top: 71%;
+    left: 61%;
+    height: 16%;
+    width: 12%;
+}
+
+
+.varisrame-nappi {
+    position: absolute;
+    top: 61%;
+    left: 51.5%;
+    height: 22%;
+    width: 10%;
+}
+
+.hiisisuo-nappi {
+    position: absolute;
+    top: 91%;
+    left: 62.7%;
+    height: 9%;
+}
+
+.velhotorni-nappi {
+    position: absolute;
+    top: 75%;
+    left: 76%;
+    height: 15%;
+}
+
+
+.peikkoluola-nappi {
+    position: absolute;
+    top: 56%;
+    left: 91.5%;
+    height: 8%;
+}
+
+.suurentarmonkaupunki-nappi {
+    position: absolute;
+    top: 37%;
+    left: 87%;
+    height: 12%;
+    width: 11%;
+    z-index: 2;
+}
+
+.sammakkojarvi-nappi {
+    position: absolute;
+    top: 24%;
+    left: 82.5%;
+    height: 24%;
+    width: 18%;
+    z-index: 1;
+}
+
+.ruoholaakso-nappi {
+    position: absolute;
+    top: 15%;
+    left: 81%;
+    height: 13%;
+}
+
+.kartta-nappi:hover {
+    opacity: 50%;
+}
+
+/* Täällä muotoilut taistelu näkymään */
+
+.vasen-puoli-taistelu, .oikea-puoli-taistelu {
+    flex: 1;
+    height: 100%;
+    box-sizing: border-box;
+    padding-top: 20px;
+    padding-bottom: 21px;
+}
+
+.vasen-puoli-taistelu {
+    height: 100%;
+    width: 100%;
+    display: none;
+    flex-direction: column;
+}
+
+.vihollinen-kuva {
+    width: 50%;
+    height: 100%;
+    background: url("../static/images/viholliset/peikko-sammakkolampi.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center bottom;
+}
+
+.taistelu-rivi {
+    display: flex;
+    flex-direction: row;
+    background: url("../static/images/ui/border.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    width: 80%;
+    height: 50%;
+    margin-left: 10%;
+}
+
+.pelaaja-status-taistelu {
+    width: 33%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 8%;
+}
+
+.valikko-taistelu {
+    width: 33%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20%;
+}
+
+.taistelu-valikko-nappi {
+    margin-bottom: 1rem;
+    display: block;
+    height: 10%;
+    width: 80%;
+    text-decoration: none;
+    border-radius: 4px;
+    text-align: center;
+    transition: all 300ms;
+    background: rgba(0, 0, 0, 0.4); /* Tummempi tausta: rgba(0, 0, 0, 0.2) */
+    color: white; /* Varmista, että teksti on luettavissa tummemmalla taustalla */
+}
+
+.isku-nappi {
+    margin-bottom: 1rem;
+    display: none;
+    height: 10%;
+    width: 80%;
+    text-decoration: none;
+    border-radius: 4px;
+    text-align: center;
+    transition: all 300ms;
+    background: rgba(0, 0, 0, 0.4); /* Tummempi tausta: rgba(0, 0, 0, 0.2) */
+    color: white; /* Varmista, että teksti on luettavissa tummemmalla taustalla */
+}
+
+.vihollinen-status-taistelu {
+    width: 33%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 8%;
+}
+
+.oikea-puoli-taistelu {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.taistelu_loki {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.taistelu_loki h2 {
+    font-size: 3rem;
+}
+
+.taistelu-loki-teksti {
+    background: none;
+    width: 80%;
+    height: 100%;
+    text-align: left;
+    font-size: 1.4rem;
+    align-self: center;
 }
