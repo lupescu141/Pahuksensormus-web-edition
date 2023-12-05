@@ -246,11 +246,10 @@ button:hover {
 
 .ruoholaakso-nappi {
     position: absolute;
-    top: 15%;
-    left: 81%;
-    height: 13%;
+    top: 9%;
+    left: 72%;
+    height: 16%;
 }
-
 .kartta-nappi:hover {
     opacity: 50%;
 }
