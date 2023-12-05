@@ -97,14 +97,14 @@ body {
 }
 
 .pelaaja-status {
-    width: 50%;
+    width: 40%;
     height: 100%;
     /* background-color: rgba(50, 0, 0, 0.8); */
     display: flex;
     flex-direction: column;
     align-items: center;
     z-index: 1;
-    margin-top: 2rem;
+    margin-top: 8%;
 }
 
 header {
@@ -336,7 +336,7 @@ button:hover {
 }
 
 .vihollinen-status-taistelu {
-    width: 33%;
+    width: 40%;
     height: 100%;
     display: flex;
     flex-direction: column;
