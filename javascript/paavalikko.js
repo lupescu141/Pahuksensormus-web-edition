@@ -18,11 +18,9 @@ async function hae_nimet() {
 
 // Asettaa Pelaajan tiedot pelaaja-status ikkunaan
 function aseta_tiedot() {
-  document.getElementById(
-      'pelaaja-nimi').textContent = pelaaja_olio[0].pelaaja_nimi;
+  document.getElementById('pelaaja-nimi').textContent = pelaaja_olio[0].pelaaja_nimi;
   document.getElementById('pelaaja-hp').textContent = pelaaja_olio[0].pelaaja_hp;
-  document.getElementById(
-      'pelaaja-tp').textContent = pelaaja_olio[0].pelaaja_taitopiste;
+  document.getElementById('pelaaja-tp').textContent = pelaaja_olio[0].pelaaja_taitopiste;
 }
 
 // Tämä hoitaa uuden pelin aloittamisen
@@ -119,8 +117,3 @@ async function avaa_lataapeli_valikko() {
     });
   }
 }
-
-
-
-
-
