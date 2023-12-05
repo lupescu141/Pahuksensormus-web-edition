@@ -55,16 +55,18 @@ class Vihollinen:
         self.isku = vihollinen_isku
 
 
-# Hakee pelaajien nimet tietokannasta, jotta voidaan välttää tupla nimiä
+# Hakee pelaaja_nimet ja pelaaja_id:et tietokannasta, jotta voidaan välttää tupla nimiä
+# ja saadaan valittua oikea tallennus hae_pelaaja_tiedot funktiolla
 @app.route('/hae_pelaaja_nimet')
 def hae_pelaaja_nimet():
-
     sql = f'SELECT pelaaja_nimi, peli_id FROM peli;'
     kursori = conn.cursor(dictionary=True)
     kursori.execute(sql)
     pelaajat = kursori.fetchall()
     return pelaajat
 
+
+# Hakee tallennetun pelaajan tiedot tietokannasta pelaaja id:n avulla
 @app.route('/hae_pelaaja_tiedot/<peli_id>')
 def hae_pelaaja_tiedot(peli_id):
     sql = f'SELECT * FROM peli WHERE peli_id = {peli_id};'
@@ -73,13 +75,34 @@ def hae_pelaaja_tiedot(peli_id):
     pelaaja_tiedot = kursori.fetchall()
     return pelaaja_tiedot
 
+
+# Luo uuden pelaajan annetulla nimellä
+@app.route('/luo_uusi_pelaaja/<pelaaja_nimi>')
+def luo_uusi_pelaaja(pelaaja_nimi):
+    try:
+        # Käytä turvallisempaa parametriseen kyselyyn
+        sql = 'INSERT INTO peli (pelaaja_nimi) VALUES (%s);'
+        kursori = conn.cursor(dictionary=True)
+        kursori.execute(sql, (pelaaja_nimi,))
+
+        # Hae luodun pelaajan tiedot
+        sql = f'SELECT * FROM peli WHERE pelaaja_nimi = %s;'
+        kursori.execute(sql, (pelaaja_nimi,))
+        pelaaja_tiedot = kursori.fetchall()
+
+        return pelaaja_tiedot
+    except Exception as e:
+        # Käsittele virhe tarvittaessa
+        return str(e)
+
+
+# Hakee random ei boss vihollisen
 @app.route('/hae_random_vihollinen')
 def hae_random_vihollinen():
     sql = 'SELECT * FROM viholliset WHERE bossi = "0" ORDER by RAND() LIMIT 1'
     kursori = conn.cursor(dictionary=True)
     kursori.execute(sql)
     haku_tiedot = kursori.fetchone()
-
     return haku_tiedot
 
 
