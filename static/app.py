@@ -73,6 +73,14 @@ def hae_pelaaja_tiedot(peli_id):
     pelaaja_tiedot = kursori.fetchall()
     return pelaaja_tiedot
 
+@app.route('/hae_random_vihollinen')
+def hae_random_vihollinen():
+    sql = 'SELECT * FROM viholliset WHERE bossi = "0" ORDER by RAND() LIMIT 1'
+    kursori = conn.cursor(dictionary=True)
+    kursori.execute(sql)
+    haku_tiedot = kursori.fetchone()
+
+    return haku_tiedot
 
 
 if __name__ == '__main__':

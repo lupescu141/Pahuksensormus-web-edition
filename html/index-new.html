@@ -7,6 +7,7 @@
     <link href="../static/style-new.css" rel="stylesheet">
     <title>Pahuksen sormus</title>
     <script src="/javascript/paavalikko.js" defer></script>
+    <script src="/javascript/taistelu_valikko.js" defer></script>
     <script src="/javascript/taistelu.js" defer></script>
 </head>
 
@@ -31,11 +32,11 @@
 
     <div class="vasen-puoli">
         <div id="pelaaja-info" class="pelaaja-info">
-            <img src="../static/images/paikat/uudentoivonkylä1.png" class="paikkatausta">
+            <img id="paikkatausta" src="../static/images/paikat/uudentoivonkylä1.png" class="paikkatausta">
             <div class="pelaaja-kuva"></div>
             <div class="pelaaja-status">
                 <header>
-                    <h2>Status</h2>
+                    <h2 id="pelaaja-nimi">Pelaajan nimi</h2>
                 </header>
                 <table>
                     <tr>
@@ -47,7 +48,7 @@
                 </table>
                 <button id="lepo" class="nappi">Lepää</button>
                 <button id="reppu" class="nappi">Esineet</button>
-                <button id="taistelu" class="nappi" onclick="taistelu_testi()">Testaa taistelu ruutua</button>
+                <button id="taistelu" class="nappi" onclick="avaa_taistelu_ikkuna(); hae_random_vihollinen_tietokannasta()">Testaa taistelu ruutua</button>
             </div>
         </div>
         <div class="loki">
@@ -60,7 +61,7 @@
 
     <div class="vasen-puoli-taistelu">
         <div id="pelaaja-vihollinen" class="pelaaja-info">
-            <img src="../static/images/paikat/uudentoivonkylä1.png" class="paikkatausta">
+            <img id="paikkatausta-taistelu" src="../static/images/paikat/uudentoivonkylä1.png" class="paikkatausta">
             <div class="pelaaja-kuva"></div>
 
             <div class="vihollinen-kuva"></div>
@@ -69,9 +70,9 @@
         <div class="taistelu-rivi">
 
             <div class="valikko-taistelu">
-                <button class="taistelu-valikko-nappi" onclick="naytaValikko('hyokkaa')">Hyökkää</button>
-                <button class="taistelu-valikko-nappi" onclick="naytaValikko('taidot')">Taidot</button>
-                <button class="taistelu-valikko-nappi" onclick="naytaValikko('esineet')">Esineet</button>
+                <button class="taistelu-valikko-nappi" onclick="nayta_valikko('hyokkaa')">Hyökkää</button>
+                <button class="taistelu-valikko-nappi" onclick="nayta_valikko('taidot')">Taidot</button>
+                <button class="taistelu-valikko-nappi" onclick="nayta_valikko('esineet')">Esineet</button>
                 <button class="taistelu-valikko-nappi" onclick="lopeta_taistelu()">Lopeta</button>
 
                 <!-- Iskut -->
@@ -95,14 +96,11 @@
 
             <div class="vihollinen-status-taistelu">
                 <header>
-                    <h2>Status</h2>
+                    <h2 id="vihollinen_nimi">vihollinen nimi</h2>
                 </header>
                 <table>
                     <tr>
-                        <td>HP <span id="vihollinen-hp-taistelu">999</span></td>
-                    </tr>
-                    <tr>
-                        <td>TP <span id="vihollinen-tp-taistelu">999</span></td>
+                        <td>HP <span id="vihollinen-hp">999</span></td>
                     </tr>
                 </table>
             </div>
