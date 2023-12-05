@@ -162,6 +162,10 @@ table {
     width: 9%;
 }
 
+.uudentoivonkyla-nappi:hover{
+    opacity: 50%;
+}
+
 .tulivuori-nappi {
     position: absolute;
     top: 43%;
@@ -171,10 +175,7 @@ table {
 }
 
 .tulivuori-nappi:hover{
-    top: 43%;
-    left: 71.9%;
-    height: 17%;
-    width: 6.5%;
+    opacity: 50%;
 }
 
 .noitametsa-nappi {
@@ -185,12 +186,20 @@ table {
     width: 12%;
 }
 
+.noitametsa-nappi:hover{
+    opacity: 50%;
+}
+
 .varisrame-nappi {
     position: absolute;
     top: 61%;
     left: 51.5%;
     height: 22%;
     width: 10%;
+}
+
+.varisrame-nappi:hover{
+    opacity: 50%;
 }
 
 .hiisisuo-nappi {
@@ -206,11 +215,19 @@ table {
     height: 15%;
 }
 
+.velhotorni-nappi:hover{
+    opacity: 50%;
+}
+
 .peikkoluola-nappi {
     position: absolute;
     top: 56%;
     left: 91.5%;
     height: 8%;
+}
+
+.peikkoluola-nappi:hover{
+    opacity: 50%;
 }
 
 .suurentarmonkaupunki-nappi {
@@ -219,15 +236,11 @@ table {
     left: 87%;
     height: 12%;
     width: 11%;
+    z-index: 1;
 }
 
 .suurentarmonkaupunki-nappi:hover {
-    position: absolute;
-    top: 39%;
-    left: 86.5%;
-    height: 12.5%;
-    width: 12.5%;
-    rotate: -3deg;
+ opacity: 50%;
 }
 
 .sammakkojarvi-nappi {
@@ -239,12 +252,7 @@ table {
 }
 
 .sammakkojarvi-nappi:hover{
-    position: absolute;
-    top: 14.5%;
-    left: 90.5%;
-    height: 31%;
-    width: 7.4%;
-    rotate: 72deg;
+opacity: 50%;
 }
 
 .ruoholaakso-nappi {
