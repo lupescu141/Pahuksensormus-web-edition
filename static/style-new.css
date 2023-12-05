@@ -236,7 +236,7 @@ table {
     left: 87%;
     height: 12%;
     width: 11%;
-    z-index: 1;
+    z-index: 2;
 }
 
 .suurentarmonkaupunki-nappi:hover {
@@ -249,6 +249,7 @@ table {
     left: 82.5%;
     height: 24%;
     width: 18%;
+    z-index: 1;
 }
 
 .sammakkojarvi-nappi:hover{
@@ -257,8 +258,12 @@ opacity: 50%;
 
 .ruoholaakso-nappi {
     position: absolute;
-    top: 23%;
-    left: 87%;
+    top: 15%;
+    left: 81%;
+    height: 13%;
+}
+.ruoholaakso-nappi:hover{
+    opacity: 50%;
 }
 
 .oikea-puoli {
