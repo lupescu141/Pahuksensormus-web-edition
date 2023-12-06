@@ -53,10 +53,13 @@ body {
 
 /* Slideshow container */
 .slideshow-laatikko {
-    width: 70%;
-    height: 80%;
+    width: 80%;
+    height: 60%;
     position: relative;
-    margin: auto;
+}
+
+.slideshow-kuvat {
+    width: 50%;
 }
 
 /* Hide the images by default */
