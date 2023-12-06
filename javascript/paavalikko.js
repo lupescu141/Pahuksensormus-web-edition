@@ -26,6 +26,8 @@ function aseta_tiedot() {
       'pelaaja-tp').textContent = pelaaja_olio[0].pelaaja_taitopiste;
 }
 
+
+// Tämä piilottaa valikon ja avaa hahmoluokka valinnan
 function valitse_hahmoluokka() {
   // Piilota paavalikko
   const paavalikko = document.querySelector('.valikko');

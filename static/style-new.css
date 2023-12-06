@@ -53,7 +53,7 @@ body {
 
 /* Slideshow container */
 .slideshow-laatikko {
-  max-width: 70%;
+  width: 70%;
   position: relative;
   margin: auto;
 }
