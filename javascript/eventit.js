@@ -1,5 +1,5 @@
 // UUDET BOSSIT: VELHO, SYÖJÄTÄR DEMONI, PEIKKOKUNINGAS, RITARITAISTELU TOURNAMENT
-// KOLMIPÄINEN NOITA, VARISTEN HERRA
+// KOLMIPÄINEN NOITA, VARISTEN HERRA, PIMEÄN KUJAN DEMONI
 
 // Event: uudentoivonKylaEvent
 // tavernaNoppapeli
@@ -34,6 +34,11 @@
 // keijukaistenKuningatar
 // seuraaTulikarpastenValoa
 // suonLumous
+
+// Event: suurentarmonKaupunkiEvent
+// turnajaiset
+// taikurimarkkinat
+// uhkapeliOnnenpelikortit
 
 // Event: peikkoluola
 // peikkokuningas
@@ -674,6 +679,101 @@ function suonLumous(pelaaja) {
     console.log("Valinta 2: Hyppelehtiessäsi kivillä huomaat salaperäisen portin suossa.");
     console.log("Kompastut ja tipahdat portista toiseen ulottuvuuteen. Kohtaat painajaisena elämäsi traagisimmat tapahtumat. Menetit 5HP");
     pelaaja.hp -= 5;
+  } else {
+    console.log("Virheellinen syöte, valitse uudelleen!");
+  }
+}
+
+
+// Peli Eventti: Suurentarmon kaupunki
+function suurentarmonKaupunkiEvent(pelaaja) {
+  console.log("Suurentarmon kaupunki on kuin elävä maalaus, jossa turnajaiset herättävät ritarien taidot loistoon. Taikurimarkkinoiden värikkäät kojut houkuttelevat seikkailijoita etsimään mystisiä aarteita. Suurentarmo kutsuu seikkailijoita löytämään oman tarinansa sen monipuolisista tapahtumista ja historiallisista salaisuuksista.");
+
+  // Arpoo randomilla pelaajalle eventin 1, 2, 3.
+  const tapahtuma = Math.floor(Math.random() * 3) + 1;
+
+  // Ohjaa valintoihin, jossa pelaaja saa valita mitä tekee.
+  switch (tapahtuma) {
+    case 1:
+      turnajaiset(pelaaja);
+      break;
+    case 2:
+      taikurimarkkinat(pelaaja);
+      break;
+    case 3:
+      uhkapeliOnnenpelikortit(pelaaja);
+      break;
+    default:
+      console.log("Virheellinen syöte, valitse uudelleen!");
+      break;
+  }
+}
+
+// Event 1: Turnajaiset
+function turnajaiset(pelaaja) {
+  console.log("1. Turnajaiset:");
+  console.log("Suurentarmon kaupunki järjestää suuret turnajaiset, joissa ritarien taituruus pääsee loistamaan. Kaupunki on täynnä värikkäitä lippuja ja vilkkaita markkinoita. Voit valita osallistua turnajaisiin tai seurata niitä sivusta.");
+
+  // Valinnat:
+  console.log("Valinnat:");
+  const valinta = prompt("1. Osallistun turnajaisiin ja haastan toisen ritarin.\n2. Vikittelen turnajaisten prinsessaa");
+
+  // Valinta 1:
+  if (valinta === "1") {
+    console.log("Valinta 1: Osallistut turnajaisiin ja astut kilpakentälle. Heiluttelet mahtipontisesti miekkaasti kohti yleisöä ja haistattelet kilpakumppanillesi, taistelu alkaa!");
+    // OHJAA TAISTELUUN TEE FUNKTIO OIKEIN
+    avaa_taistelu_ikkuna();
+  } else if (valinta === "2") {
+    // Valinta 2:
+    console.log("Valinta 2: Innoissaan turnajaisten tunnelmasta päätät vikitellä turnajaisten prinsessaa, joka seisoo lähellä kuninkaallista katsomoa. Astut esiin ja pyydät häntä mukaan kävelylle kauniille puutarhakäytävälle. Prinsessa hymyilee viehättyneenä ja suostuu. Mennessänne kävelylle selviääkin ettei prinsessa ole oikea prinsessa! Hän ryöstää sinut ja menetät kaikki taikapotionit.");
+    // MUOKKAA MITÄ MENETTÄÄ, ELIKSIIREJÄ?
+    pelaaja.eliksiirit = 0;
+  } else {
+    console.log("Virheellinen syöte, valitse uudelleen!");
+  }
+}
+
+// Event 2: Suurentarmon Taikurimarkkinat
+function taikurimarkkinat(pelaaja) {
+  console.log("2. Suurentarmon Taikurimarkkinat:");
+  console.log("Kaupunki on täynnä taikureita ja magian ystäviä. Torilla järjestetään suuret taikurimarkkinat, joissa voit löytää harvinaisia taikakirjoja, taikajuomia ja muita salaperäisiä esineitä. Voit valita osallistua markkinoille tai jatkaa matkaasi.");
+
+  // Valinnat:
+  console.log("Valinnat:");
+  const valinta = prompt("1. Tutkin taikurimarkkinoita ja teen ostoksia.\n2. Seuraat hämärää myyjää pimeälle kujalle");
+
+  // Valinta 1:
+  if (valinta === "1") {
+    console.log("Valinta 1: Tutustut taikureiden tarjontaan ja teet muutamia hankintoja. Saat mukaasi taianomaisia esineitä, kuten lumouksia poistavia taikakiviä tai taikajuomia, jotka voivat auttaa tulevissa haasteissa.");
+    // TAITOPISTEET VAI MUUTA? MUOKKAA
+    pelaaja.taitopiste += 2;
+  } else if (valinta === "2") {
+    // Valinta 2:
+    console.log("Valinta 2: Salaperäinen myyjä yrittää kaupitella sinulle kiellettyjä esineitä. Tunnet luissasi kuinka tilanteessa on jotain mätää ja haluat poistua paikalta. Myyjä vihastuu tästä ja muuttuu demoniksi edessäsi! Tästä alkaa taistelu!");
+    // LISÄÄ TAISTELUFUNKTIO
+    avaa_taistelu_ikkuna();
+  } else {
+    console.log("Virheellinen syöte, valitse uudelleen!");
+  }
+}
+
+// Event 3: Uhkapeli Onnenpelikortit
+function uhkapeliOnnenpelikortit(pelaaja) {
+  console.log("3. Uhkapeli Onnenpelikortit:");
+  console.log("Kaupungin sydämessä sijaitsee vilkas taverna, joka tunnetaan uhkapelaajien kohtauspaikkana. Saavuttuasi tavernaan, huomaat erikoisen pöydän, jossa ihmiset pelaavat kiehtovaa peliä nimeltä Onnenpelikortit. Jokainen pelaaja voi valita yhden pelikortin, joka paljastaa heidän kohtalonsa.");
+
+  // Valinnat:
+  console.log("Valinnat:");
+  const valinta = prompt("1. Osallistun Onnenpelikortit-peliin ja valitsen kortin\n2. Päätän olla osallistumatta uhkapeliin ja jatkaa omaa matkaani");
+
+  // Valinta 1:
+  if (valinta === "1") {
+    console.log("Valinta 1: Valitset rohkeasti yhden pelikortin ja avaat sen varovasti. Kortti paljastaa, että voitat arvokkaan esineen tai taikavoiman. Tavernan ympärillä kokoontuu ihmisjoukko, ja voittosi herättää huomiota. Onneksi olkoon! Saat arvokkaan esineen, kuten harvinaisen taikakiven tai maagisen juoman, joka parantaa voimiasi. Saavutat myös mainetta tavernassa.");
+    pelaaja.taitopiste += 1;
+  } else if (valinta === "2") {
+    // Valinta 2:
+    console.log("Valinta 2: Päätät olla osallistumatta uhkapeliin ja istua muualle nauttimaan juomasta. Kuulet ympärilläsi pelaajien reaktiot, sekä riemunkiljahdukset että pettyneet huokaukset. Jatkat omaa matkaasi miettien, mitä olisi voinut voittaa..");
+    // LISÄTÄÄNKÖ TÄHÄN JOKU MITÄ MENETTÄÄ JNE?
   } else {
     console.log("Virheellinen syöte, valitse uudelleen!");
   }
