@@ -42,6 +42,11 @@ function valitse_hahmoluokka() {
   hahmoluokka_valinta.style.display = 'flex';
 }
 
+
+// Funktiot jotka avaavat sukupuolen valinnan
+// Tämä Funktio määrittää taikasoturin sukupuolen
+
+
 // Tämä hoitaa uuden pelaajan nimeämisen
 async function nimi_pelaajalle() {
   // Piilota paavalikko
