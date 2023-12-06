@@ -1,13 +1,14 @@
 // Luodaan pelaajalle muuttuja
 let pelaaja_olio;
 
+
 // Piilottaa seikkailu näkymän heti alussa
 document.addEventListener('DOMContentLoaded', function() {
   // Etsi vasemman puolen elementti ja aseta sille display: none;
   const vasen_puoli = document.querySelector('.vasen-puoli');
   vasen_puoli.style.display = 'none';
-
 });
+
 
 // Hakee pelaaja_nimet ja pelaaja_id:et tietokannasta
 async function hae_nimet() {
@@ -30,21 +31,14 @@ function aseta_tiedot() {
 // Tämä piilottaa valikon ja avaa hahmoluokka valinnan
 function valitse_hahmoluokka() {
   // Piilota paavalikko
-  const paavalikko = document.querySelector('.valikko');
-  paavalikko.style.display = 'none';
+  document.querySelector('.valikko').style.display = 'none';
 
-  const uusi_peli_valikko = document.querySelector('.uusi-peli-valikko');
-  uusi_peli_valikko.style.display = 'flex';
+  document.querySelector('.uusi-peli-valikko').style.display = 'flex';
 
   document.querySelector('.pelaajan-nimi-valinta').style.display = 'none';
 
-  const hahmoluokka_valinta = document.querySelector('.slideshow-laatikko');
-  hahmoluokka_valinta.style.display = 'flex';
+  document.querySelector('.slideshow-laatikko').style.display = 'flex';
 }
-
-
-// Funktiot jotka avaavat sukupuolen valinnan
-// Tämä Funktio määrittää taikasoturin sukupuolen
 
 
 // Tämä hoitaa uuden pelaajan nimeämisen
@@ -100,6 +94,7 @@ async function nimi_pelaajalle() {
   });
 }
 
+
 // Tämä hoitaa ladatun pelin aloittamisen
 async function avaa_lataapeli_valikko() {
   // Piilota paavalikko
@@ -142,6 +137,8 @@ async function avaa_lataapeli_valikko() {
   }
 }
 
+
+// Palaa alkuvalikkoon
 function palaa_alkuvalikkoon() {
   // Piilota napit
   const lataapeli_valikko = document.querySelector('.lataapeli-valikko');
@@ -163,3 +160,20 @@ function palaa_alkuvalikkoon() {
   const paavalikko = document.querySelector('.valikko');
   paavalikko.style.display = 'flex';
 }
+
+
+// Sukupuoleen liittyvät kuuntelijat
+
+// Paladin
+const paladin_mies = document.querySelector('.paladin-mies')
+paladin_mies.addEventListener('click', function() {
+  let paladin_kuva = document.querySelector('.paladin')
+  paladin_kuva.src = "../static/images/pelaaja-luokat/paladin.png"
+  paladin_kuva.id = 'paladin-mies'
+})
+const paladin_nainen = document.querySelector('.paladin-nainen')
+paladin_nainen.addEventListener('click', function() {
+  let paladin_kuva = document.querySelector('.paladin')
+  paladin_kuva.src = "../static/images/pelaaja-luokat/paladin-nainen.png"
+  paladin_kuva.id = 'paladin-nainen'
+})

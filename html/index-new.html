@@ -31,7 +31,7 @@
         <div class="slideshow-laatikko">
 
             <div class="slide fade">
-                <input  id="taikasoturi" type="image" src="../static/images/pelaaja-luokat/taikasoturi.png" alt="kuva taikasoturista" style="width:100%">
+                <input id="taikasoturi" type="image" src="../static/images/pelaaja-luokat/taikasoturi.png" alt="kuva taikasoturista" style="width:100%">
                 <div class="text">Taikasoturi</div>
             </div>
 
@@ -41,8 +41,10 @@
             </div>
 
             <div class="slide fade">
-                <input id="paladin" type="image" src="../static/images/pelaaja-luokat/paladin.png" alt="kuva paladinista" style="width:100%">
+                <input id="paladin" class="paladin" type="image" src="../static/images/pelaaja-luokat/paladin.png" alt="kuva paladinista" onclick="nimi_pelaajalle()" style="width:100%">
                 <div class="text">Paladin</div>
+                <button class="paladin-mies sukupuoli-nappi">Mies</button>
+                <button class="paladin-nainen sukupuoli-nappi">Nainen</button>
             </div>
 
             <!-- napit slideshow -->
@@ -52,7 +54,7 @@
         </div>
 
         <!-- slide pallot -->
-        <div style="text-align:center">
+        <div class="slideshow-pallot" style="text-align:center">
             <span class="slide-pallo" onclick="currentSlide(1)"></span>
             <span class="slide-pallo" onclick="currentSlide(2)"></span>
             <span class="slide-pallo" onclick="currentSlide(3)"></span>
