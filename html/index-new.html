@@ -17,7 +17,7 @@
 
 <div class="container">
 
-    <div class="valikko">
+    <div class="valikko fade">
 
         <img src="../static/images/ui/titteli.png" class="titteli">
         <button id="uusi_peli" class="nappi" onclick="valitse_hahmoluokka()">Aloita uusi peli</button>
@@ -26,7 +26,7 @@
 
     </div>
 
-    <div class="uusi-peli-valikko">
+    <div class="uusi-peli-valikko fade">
 
         <div class="slideshow-laatikko">
 
@@ -58,7 +58,7 @@
             <span class="slide-pallo" onclick="currentSlide(3)"></span>
         </div>
 
-        <div class="pelaajan-nimi-valinta">
+        <div class="pelaajan-nimi-valinta fade">
             <form id="uusi-peli-form">
 
                 <label for="pelaajan-nimi">Nimi:</label>
@@ -71,13 +71,13 @@
         </div>
     </div>
 
-    <div class="lataapeli-valikko">
+    <div class="lataapeli-valikko fade">
 
         <button id="palaa-alkuvalikkoon-lataa" class="nappi" onclick="palaa_alkuvalikkoon()">Palaa</button>
 
     </div>
 
-    <div class="vasen-puoli">
+    <div class="vasen-puoli fade">
 
         <div id="pelaaja-info" class="pelaaja-info">
 
@@ -115,7 +115,7 @@
 
         </div>
 
-        <div class="loki">
+        <div class="loki fade">
 
             <header>
                 <h2>Loki</h2>
@@ -127,7 +127,7 @@
 
     </div>
 
-    <div class="vasen-puoli-taistelu">
+    <div class="vasen-puoli-taistelu fade">
 
         <div id="pelaaja-vihollinen" class="pelaaja-info">
 
@@ -186,7 +186,7 @@
 
     </div>
 
-    <div class="oikea-puoli">
+    <div class="oikea-puoli fade">
 
         <div class="kartta">
 
@@ -224,7 +224,7 @@
 
     </div>
 
-    <div class="oikea-puoli-taistelu">
+    <div class="oikea-puoli-taistelu fade">
 
         <div class="taistelu_loki">
 
