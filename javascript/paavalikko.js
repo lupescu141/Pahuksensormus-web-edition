@@ -18,9 +18,12 @@ async function hae_nimet() {
 
 // Asettaa Pelaajan tiedot pelaaja-status ikkunaan
 function aseta_tiedot() {
-  document.getElementById('pelaaja-nimi').textContent = pelaaja_olio[0].pelaaja_nimi;
-  document.getElementById('pelaaja-hp').textContent = pelaaja_olio[0].pelaaja_hp;
-  document.getElementById('pelaaja-tp').textContent = pelaaja_olio[0].pelaaja_taitopiste;
+  document.getElementById(
+      'pelaaja-nimi').textContent = pelaaja_olio[0].pelaaja_nimi;
+  document.getElementById(
+      'pelaaja-hp').textContent = pelaaja_olio[0].pelaaja_hp;
+  document.getElementById(
+      'pelaaja-tp').textContent = pelaaja_olio[0].pelaaja_taitopiste;
 }
 
 // Tämä hoitaa uuden pelin aloittamisen
@@ -61,7 +64,7 @@ async function avaa_uusipeli_valikko() {
       console.log(pelaaja_tiedot);
 
       pelaaja_olio = pelaaja_tiedot;
-      aseta_tiedot()
+      aseta_tiedot();
 
       console.log('Aloitettu peli pelaajalla:', pelaaja_nimi);
 
@@ -94,7 +97,7 @@ async function avaa_lataapeli_valikko() {
   for (const pelaaja of data) {
     const pelaaja_nappi = document.createElement('button');
     pelaaja_nappi.textContent = pelaaja.pelaaja_nimi;
-    pelaaja_nappi.classList.add('nappi');
+    pelaaja_nappi.classList.add('nappi', 'tallennus');
     lataapeli_valikko.appendChild(pelaaja_nappi);
 
     // Kuuntelee tallennus napin painallusta
@@ -125,6 +128,15 @@ function palaa_alkuvalikkoon() {
 
   const uusipeli_valikko = document.querySelector('.uusi-peli-valikko');
   uusipeli_valikko.style.display = 'none';
+
+  // Piilottaa tallennukset
+  // Etsi kaikki tallennusnapit
+  const tallennus_nappi = document.querySelectorAll('.tallennus');
+
+  // Käy läpi jokainen tallennusnappi ja poista se
+  tallennus_nappi.forEach(nappi => {
+    nappi.parentNode.removeChild(nappi);
+  });
 
   // Näytä päävalikko
   const paavalikko = document.querySelector('.valikko');
