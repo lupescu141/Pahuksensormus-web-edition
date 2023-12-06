@@ -160,20 +160,3 @@ function palaa_alkuvalikkoon() {
   const paavalikko = document.querySelector('.valikko');
   paavalikko.style.display = 'flex';
 }
-
-
-// Sukupuoleen liittyvät kuuntelijat
-
-// Paladin
-const paladin_mies = document.querySelector('.paladin-mies')
-paladin_mies.addEventListener('click', function() {
-  let paladin_kuva = document.querySelector('.paladin')
-  paladin_kuva.src = "../static/images/pelaaja-luokat/paladin.png"
-  paladin_kuva.id = 'paladin-mies'
-})
-const paladin_nainen = document.querySelector('.paladin-nainen')
-paladin_nainen.addEventListener('click', function() {
-  let paladin_kuva = document.querySelector('.paladin')
-  paladin_kuva.src = "../static/images/pelaaja-luokat/paladin-nainen.png"
-  paladin_kuva.id = 'paladin-nainen'
-})
