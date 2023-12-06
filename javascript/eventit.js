@@ -1,3 +1,6 @@
+// UUDET BOSSIT: VELHO, SYÖJÄTÄR DEMONI, PEIKKOKUNINGAS, RITARITAISTELU TOURNAMENT
+// KOLMIPÄINEN NOITA, VARISTEN HERRA
+
 // Event: uudentoivonKylaEvent
 // tavernaNoppapeli
 // laksiaisjuhlat
