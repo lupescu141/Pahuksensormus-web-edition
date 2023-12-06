@@ -1,4 +1,6 @@
 import json
+import random
+
 import mysql.connector
 import os
 import config
@@ -24,8 +26,8 @@ try:
     )
 
 except Exception as e:
-   print(e)
-   print(type(e))
+    print(e)
+    print(type(e))
 
 
 class Pelaaja:
@@ -45,8 +47,10 @@ class Pelaaja:
         self.onko_sormus = onko_sormus
         self.sormus_sijainti = sormus_sijainti
 
+
 class Vihollinen:
-    def __init__(self, vihollinen_id, vihollinen_nimi, vihollinen_hp, vihollinen_maxhp, vihollinen_suojaus, vihollinen_isku):
+    def __init__(self, vihollinen_id, vihollinen_nimi, vihollinen_hp, vihollinen_maxhp, vihollinen_suojaus,
+                 vihollinen_isku):
         self.id = vihollinen_id
         self.nimi = vihollinen_nimi
         self.hp = vihollinen_hp
@@ -79,13 +83,17 @@ def hae_pelaaja_tiedot(peli_id):
 # Luo uuden pelaajan annetulla nimellä
 @app.route('/luo_uusi_pelaaja/<pelaaja_nimi>')
 def luo_uusi_pelaaja(pelaaja_nimi):
+    # Arvotaan sormuksen sijainti
+    sormus_sijainti = random.randint(2, 9, )
+
     try:
-        sql = 'INSERT INTO peli (pelaaja_nimi) VALUES (%s);'
+        # Lisää pelaaja tietokantaan sormus_sijainti-muuttujan kanssa
+        sql = 'INSERT INTO peli (pelaaja_nimi, sormus_sijainti) VALUES (%s, %s);'
         kursori = conn.cursor(dictionary=True)
-        kursori.execute(sql, (pelaaja_nimi,))
+        kursori.execute(sql, (pelaaja_nimi, sormus_sijainti))
 
         # Hae luodun pelaajan tiedot
-        sql = f'SELECT * FROM peli WHERE pelaaja_nimi = %s;'
+        sql = 'SELECT * FROM peli WHERE pelaaja_nimi = %s;'
         kursori.execute(sql, (pelaaja_nimi,))
         pelaaja_tiedot = kursori.fetchall()
 
