@@ -104,7 +104,7 @@ body {
 
 /* On hover, add a black background color with a little bit see-through */
 .edellinen-luokka:hover, .seuraava-luokka:hover {
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: rgba(0, 0, 0, 0.4);
 }
 
 /* Caption text */
@@ -123,14 +123,15 @@ body {
     height: 15px;
     width: 15px;
     margin: 0 2px;
-    background-color: black;
     border-radius: 50%;
     display: inline-block;
     transition: background-color 0.2s ease;
+    border-style: double;
 }
 
 .active, .slide-pallo:hover {
-    background-color: white;
+    background-color: black;
+    opacity: 80%;
 }
 
 /* Fading animation */
@@ -227,7 +228,7 @@ table {
 
 .nappi {
     font-size: 1.5rem;
-    margin-bottom: 0.2rem;
+    margin-top: 1%;
     display: block;
     height: 8%;
     width: 60%;
