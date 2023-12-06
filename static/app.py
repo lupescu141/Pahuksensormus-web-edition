@@ -31,21 +31,23 @@ except Exception as e:
 
 
 class Pelaaja:
-    def __init__(self, peli_id, pelaaja_nimi, pelaaja_sijainti, menneet_paivat, pelaaja_hp, pelaaja_maxhp,
-                 pelaaja_suojaus, pelaaja_isku, pelaaja_taitopiste, pelaaja_max_taitopiste,
-                 onko_sormus, sormus_sijainti):
+    def __init__(self, peli_id, pelaaja_nimi, pelaaja_sijainti, sormus_sijainti, menneet_paivat, pelaaja_luokka, pelaaja_hp, pelaaja_maksimi_hp,
+                 pelaaja_suojaus, pelaaja_isku, pelaaja_taitopiste, pelaaja_maksimi_taitopiste,
+                 onko_sormus):
         self.id = peli_id
         self.nimi = pelaaja_nimi
         self.sijainti = pelaaja_sijainti
+        self.sormus_sijainti = sormus_sijainti
         self.menneet_paivat = menneet_paivat
+        self.pelaaja_luokka = pelaaja_luokka
         self.hp = pelaaja_hp
-        self.maxhp = pelaaja_maxhp
+        self.maxhp = pelaaja_maksimi_hp
         self.suojaus = pelaaja_suojaus
         self.isku = pelaaja_isku
         self.taitopiste = pelaaja_taitopiste
-        self.max_taitopiste = pelaaja_max_taitopiste
+        self.max_taitopiste = pelaaja_maksimi_taitopiste
         self.onko_sormus = onko_sormus
-        self.sormus_sijainti = sormus_sijainti
+
 
 
 class Vihollinen:
@@ -81,26 +83,41 @@ def hae_pelaaja_tiedot(peli_id):
 
 
 # Luo uuden pelaajan annetulla nimellä
-@app.route('/luo_uusi_pelaaja/<pelaaja_nimi>')
-def luo_uusi_pelaaja(pelaaja_nimi):
+@app.route('/luo_uusi_pelaaja/<pelaaja_nimi>/<pelaaja_luokka>')
+def luo_uusi_pelaaja(pelaaja_nimi, pelaaja_luokka):
     # Arvotaan sormuksen sijainti
     sormus_sijainti = random.randint(2, 9, )
 
     try:
         # Lisää pelaaja tietokantaan sormus_sijainti-muuttujan kanssa
-        sql = 'INSERT INTO peli (pelaaja_nimi, sormus_sijainti) VALUES (%s, %s);'
+        sql = 'INSERT INTO peli (pelaaja_nimi, sormus_sijainti, pelaaja_luokka) VALUES (%s, %s, %s);'
         kursori = conn.cursor(dictionary=True)
-        kursori.execute(sql, (pelaaja_nimi, sormus_sijainti))
+        kursori.execute(sql, (pelaaja_nimi, sormus_sijainti, pelaaja_luokka))
 
-        # Hae luodun pelaajan tiedot
-        sql = 'SELECT * FROM peli WHERE pelaaja_nimi = %s;'
-        kursori.execute(sql, (pelaaja_nimi,))
-        pelaaja_tiedot = kursori.fetchall()
+        # Päivitetään tiedot ja palautetaan pelaaja
+        pelaaja = paivita_pelaaja_tiedot(pelaaja_nimi, pelaaja_luokka)
 
-        return pelaaja_tiedot
+        return pelaaja
     except Exception as e:
         # Käsittele virhe tarvittaessa
         return str(e)
+
+
+# Päivittää valitun luokan mukaiset tiedot pelaajalle
+def paivita_pelaaja_tiedot(pelaaja_nimi, pelaaja_luokka):
+    sql = 'SELECT * FROM luokat WHERE nimi = %s;'
+    kursori = conn.cursor(dictionary=True)
+    kursori.execute(sql, (pelaaja_luokka,))
+    luokka_tiedot = kursori.fetchone()
+
+    sql = f'''UPDATE peli SET pelaaja_hp = {int(luokka_tiedot['maksimi_hp'])}, pelaaja_maksimi_hp = {int(luokka_tiedot['maksimi_hp'])},  
+            pelaaja_taitopiste = {int(luokka_tiedot['maksimi_tp'])}, pelaaja_maksimi_taitopiste = {int(luokka_tiedot['maksimi_tp'])} WHERE pelaaja_nimi = "{pelaaja_nimi}"'''
+    kursori.execute(sql)
+
+    sql = 'SELECT * FROM peli WHERE pelaaja_nimi = %s;'
+    kursori.execute(sql, (pelaaja_nimi,))
+    pelaaja = kursori.fetchall()
+    return pelaaja
 
 
 # Hakee random ei boss vihollisen
