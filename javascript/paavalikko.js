@@ -26,8 +26,22 @@ function aseta_tiedot() {
       'pelaaja-tp').textContent = pelaaja_olio[0].pelaaja_taitopiste;
 }
 
-// Tämä hoitaa uuden pelin aloittamisen
-async function avaa_uusipeli_valikko() {
+function valitse_hahmoluokka() {
+  // Piilota paavalikko
+  const paavalikko = document.querySelector('.valikko');
+  paavalikko.style.display = 'none';
+
+  const uusi_peli_valikko = document.querySelector('.uusi-peli-valikko');
+  uusi_peli_valikko.style.display = 'flex';
+
+  document.querySelector('.pelaajan-nimi-valinta').style.display = 'none';
+
+  const hahmoluokka_valinta = document.querySelector('.slideshow-laatikko');
+  hahmoluokka_valinta.style.display = 'flex';
+}
+
+// Tämä hoitaa uuden pelaajan nimeämisen
+async function nimi_pelaajalle() {
   // Piilota paavalikko
   const paavalikko = document.querySelector('.valikko');
   paavalikko.style.display = 'none';

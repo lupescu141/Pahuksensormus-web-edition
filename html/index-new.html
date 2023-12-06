@@ -10,6 +10,7 @@
     <script src="/javascript/taistelu_valikko.js" defer></script>
     <script src="/javascript/taistelu.js" defer></script>
     <script src="/javascript/eventit.js" defer></script>
+    <script src="/javascript/slideshow.js" defer></script>
 </head>
 
 <body>
@@ -19,7 +20,7 @@
     <div class="valikko">
 
         <img src="../static/images/ui/titteli.png" class="titteli">
-        <button id="uusi_peli" class="nappi" onclick="avaa_uusipeli_valikko()">Aloita uusi peli</button>
+        <button id="uusi_peli" class="nappi" onclick="valitse_hahmoluokka()">Aloita uusi peli</button>
         <button id="lataa_peli" class="nappi" onclick="avaa_lataapeli_valikko()">Lataa peli</button>
         <button id="ennatukset" class="nappi" onclick="avaa_ennatukset_valikko()">Ennätykset</button>
 
@@ -27,16 +28,47 @@
 
     <div class="uusi-peli-valikko">
 
-        <form id="uusi-peli-form">
+        <div class="slideshow-laatikko">
 
-            <label for="pelaajan-nimi">Nimi:</label>
-            <input type="text" id="pelaajan-nimi" name="pelaajan-nimi" required minlength="3" maxlength="12">
-            <button type="submit">Aloita peli</button>
+            <div class="slide fade">
+                <input  id="taikasoturi" type="image" src="../static/images/pelaaja-luokat/taikasoturi.png" alt="kuva taikasoturista" style="width:100%">
+                <div class="text">Taikasoturi</div>
+            </div>
 
-        </form>
+            <div class="slide fade">
+                <input id="metsästäjä" type="image" src="../static/images/pelaaja-luokat/ranger-man.png" alt="kuva metsästäjästä" style="width:100%">
+                <div class="text">Metsästäjä</div>
+            </div>
 
-        <button id="palaa-alkuvalikkoon-uusi" class="nappi" onclick="palaa_alkuvalikkoon()">Palaa</button>
+            <div class="slide fade">
+                <input id="paladin" type="image" src="../static/images/pelaaja-luokat/paladin.png" alt="kuva paladinista" style="width:100%">
+                <div class="text">Paladin</div>
+            </div>
 
+            <!-- napit slideshow -->
+            <a class="edellinen-luokka" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="seuraava-luokka" onclick="plusSlides(1)">&#10095;</a>
+        </div>
+        <br>
+
+        <!-- slide pallot -->
+        <div style="text-align:center">
+            <span class="slide-pallo" onclick="currentSlide(1)"></span>
+            <span class="slide-pallo" onclick="currentSlide(2)"></span>
+            <span class="slide-pallo" onclick="currentSlide(3)"></span>
+        </div>
+
+        <div class="pelaajan-nimi-valinta">
+            <form id="uusi-peli-form">
+
+                <label for="pelaajan-nimi">Nimi:</label>
+                <input type="text" id="pelaajan-nimi" name="pelaajan-nimi" required minlength="3" maxlength="12">
+                <button type="submit">Aloita peli</button>
+
+            </form>
+
+            <button id="palaa-alkuvalikkoon-uusi" class="nappi" onclick="palaa_alkuvalikkoon()">Palaa</button>
+        </div>
     </div>
 
     <div class="lataapeli-valikko">
@@ -75,7 +107,9 @@
 
                 <button id="reppu" class="nappi">Esineet</button>
 
-                <button id="taistelu" class="nappi" onclick="avaa_taistelu_ikkuna(); hae_random_vihollinen_tietokannasta()">Testaa taistelu ruutua</button>
+                <button id="taistelu" class="nappi"
+                        onclick="avaa_taistelu_ikkuna(); hae_random_vihollinen_tietokannasta()">Testaa taistelu ruutua
+                </button>
 
             </div>
 
@@ -198,7 +232,7 @@
                 <h2>Taisteluloki</h2>
             </header>
 
-            <textarea  id="taistelu-loki" class="taistelu-loki-teksti" readonly></textarea>
+            <textarea id="taistelu-loki" class="taistelu-loki-teksti" readonly></textarea>
 
         </div>
 
