@@ -1,5 +1,5 @@
-// UUDET BOSSIT: VELHO, SYÖJÄTÄR DEMONI, PEIKKOKUNINGAS, RITARITAISTELU TOURNAMENT
-// KOLMIPÄINEN NOITA, VARISTEN HERRA, PIMEÄN KUJAN DEMONI
+// UUDET BOSSIT: VELHO, SYÖJÄTÄR, PEIKKOKUNINGAS, RITARITAISTELU TOURNAMENT
+// KOLMIPÄINEN NOITA, VARISTEN HERRA, DEMONI
 
 // Event: uudentoivonKylaEvent
 // tavernaNoppapeli
@@ -22,7 +22,7 @@
 // taikaesineenLoytaminen
 
 // Event: noitametsa
-// noitataloLoyhkaa
+// noitataloTaistelu
 // noitatalonKirjasto
 // harhailuNoitametsassa
 
@@ -181,8 +181,8 @@ function kukkienHurmio(pelaaja) {
     pelaaja.eliksiirit += 10;
   } else if (valinta1 === "2") {
     // Valinta 2:
-    console.log("Poimimalla kukkia huolettomasti, kukkien henki herää ja ne kutsuvat syöjättären luokseen. Joudut taisteluun syöjättär demonin kanssa!");
-    // OHJAA TAISTELUUN SYÖJÄTÄR DEMONIN KANSSA! PÄIVITETÄÄN FUNKTIO OIKEIN!
+    console.log("Poimimalla kukkia huolettomasti, kukkien henki herää ja ne kutsuvat syöjättären luokseen. Joudut taisteluun syöjättären kanssa!");
+    // OHJAA TAISTELUUN SYÖJÄTTÄREN KANSSA! PÄIVITETÄÄN FUNKTIO OIKEIN!
     avaa_taistelu_ikkuna();
   } else {
     console.log("Virheellinen syöte, valitse uudelleen!");
@@ -415,7 +415,7 @@ function taikaesineenLoytaminen(pelaaja) {
   } else if (valinta3 === "2") {
     // Valinta 2:
     console.log("Valinta 2: Et kunnioittanut taikaesinettä ja yritit pakottaa sen voimat ulos, herätit varisvihan, ja joudut taisteluun varisten herran kanssa! Ohjaa taisteluun!");
-    // OHJAA TAISTELUUN VARISTENHERRAN KANSSA! PÄIVITETÄÄN FUNKTIO OIKEIN!
+    // OHJAA TAISTELUUN VARISTEN HERRAN KANSSA! PÄIVITETÄÄN FUNKTIO OIKEIN!
     avaa_taistelu_ikkuna();
   } else {
     console.log("Virheellinen syöte, valitse uudelleen!");
@@ -433,7 +433,7 @@ function noitametsa(pelaaja) {
   // Ohjaa valintoihin, jossa pelaaja saa valita mitä tekee.
   switch (tapahtuma) {
     case 1:
-      noitataloLoyhkaa(pelaaja);
+      noitataloTaistelu(pelaaja);
       break;
     case 2:
       noitatalonKirjasto(pelaaja);
@@ -448,8 +448,8 @@ function noitametsa(pelaaja) {
 }
 
 // Event 1: Noitatalossa löyhkää!
-function noitataloLoyhkaa(pelaaja) {
-  console.log("1. Noitatalossa löyhkää!");
+function noitataloTaistelu(pelaaja) {
+  console.log("1. Mikä täällä haisee...");
   console.log("Menet rohkeana noitatalon sisälle, talo näyttää vaaralliselta joten päätät laittaa näkymättömyysviitan päälle. Hiivit hiirenhiljaa keittiöön, jossa leijailee kummallisen pistävä haju. Siellä huomaat padan, jossa porisee karmea liemi täynnä ruumiita! Tönäiset järkytyksestä vahingossa taikapataa, jäitkö kiinni vai pääsetkö jatkamaan matkaa?");
 
   // Valinnat:
