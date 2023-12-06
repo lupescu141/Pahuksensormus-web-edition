@@ -45,6 +45,8 @@
 // hamahakkikuningatar
 // lohikaarmeenPesa
 
+ const textarea = document.getElementById('loki');
+
 // Peli Eventti: Uudentoivon kylä
 
 function uudentoivonKylaEvent(pelaaja) {
@@ -614,12 +616,12 @@ function lumoavaSammakkokonsertti(pelaaja) {
 
   // Valinta 1:
   if (valinta1 === '1') {
+    // Tämä on turha. Korvaa textarea.value toiminnolla. muista \n tekstin eteen.
     console.log(
         'Valinta 1: Laulu on niin kaunis, että voit tuntea sen vaikutuksen ympärilläsi. Taikavoimat ympäröivät sinut ja saat täyden HP:n.');
 
     // Teksti textareaan tällä tyylillä
-    const textarea = document.getElementById('loki');
-    textarea.value += 'lisätty teksti';
+    textarea.value += '\nValinta 1: Laulu on niin kaunis, että voit tuntea sen vaikutuksen ympärilläsi. Taikavoimat ympäröivät sinut ja saat täyden HP:n.';
 
 
     // KORJAA FUNKTIO OIKEIN, MITEN MAXHP?
