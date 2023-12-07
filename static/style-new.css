@@ -193,9 +193,10 @@ body {
 }
 
 .pelaaja-kuva {
-    width: 50%;
+    margin-left: 2%;
+    width: 28%;
     height: 100%;
-    background: url("../static/images/pelaaja-luokat/paladin-nainen.png");
+    background: url(../static/images/pelaaja-luokat/paladin-nainen.png);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center bottom;
@@ -388,7 +389,7 @@ button:hover {
 }
 
 .vihollinen-kuva {
-    width: 50%;
+    width: 70%;
     height: 100%;
     background-size: contain;
     background-repeat: no-repeat;
@@ -422,7 +423,7 @@ button:hover {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 20%;
+    margin-top: 15%;
 }
 
 .taistelu-valikko-nappi {
