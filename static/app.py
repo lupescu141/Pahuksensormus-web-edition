@@ -6,8 +6,11 @@ import os
 import config
 
 import flask
-from flask import Flask, request
+from flask import Flask, request, jsonify
 from flask_cors import CORS
+
+import geopy
+from geopy import distance
 
 app = Flask(__name__)
 
@@ -128,6 +131,59 @@ def hae_random_vihollinen():
     kursori.execute(sql)
     haku_tiedot = kursori.fetchone()
     return haku_tiedot
+
+
+# Hakee kaikki kohteet
+def hae_kaikki_kohteet():
+
+    sql = f'''SELECT airport.id, airport.fantasia_nimi, airport.latitude_deg, airport.longitude_deg 
+              FROM airport'''
+    kursori = conn.cursor(dictionary=True)
+    kursori.execute(sql)
+    lista = kursori.fetchall()
+
+    return lista
+
+def hae_pelaajan_sijainti(pelaaja_sijainti):
+
+    sql = f'''SELECT airport.id, airport.fantasia_nimi, airport.latitude_deg, airport.longitude_deg 
+                  FROM airport WHERE airport.id = {pelaaja_sijainti}'''
+    kursori = conn.cursor(dictionary=True)
+    kursori.execute(sql)
+    lista = kursori.fetchone()
+
+    return lista
+
+@app.route('/laske_etäisyydet/<pelaajan_sijainti>')
+def laske_etäisyydet(pelaajan_sijainti):
+
+    kohteet_ja_matkat = []
+
+    nykyinen_sijainti = hae_pelaajan_sijainti(pelaajan_sijainti)
+
+    kohteet = hae_kaikki_kohteet()
+
+    for kohde in kohteet:
+        loppu_koordinaatit = kohde['latitude_deg'], kohde['longitude_deg']
+        alku_koordinaatit = nykyinen_sijainti['latitude_deg'], nykyinen_sijainti['longitude_deg']
+        matka = distance.distance(alku_koordinaatit, loppu_koordinaatit).km
+        # Ei lisätä kohdetta jossa pelaaja on
+        if matka < 1:
+            continue
+        if matka < 75:
+            matka = 1
+        elif matka < 125:
+            matka = 2
+        elif matka < 200:
+            matka = 3
+        else: matka = 4
+        vastaus = {
+            'fantasia_nimi' : kohde['fantasia_nimi'],
+            'matka_pv' : matka
+        }
+        kohteet_ja_matkat.append(vastaus)
+
+    return jsonify(kohteet_ja_matkat)
 
 
 if __name__ == '__main__':
