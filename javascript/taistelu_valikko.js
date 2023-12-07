@@ -1,8 +1,6 @@
 // Avaa taistelu näkymän. pelaaja-status siirretään alaspäin jotta arvot pysyvät samoina
 function avaa_taistelu_ikkuna() {
-  document.querySelector('.vasen-puoli').style.display = 'none';
   document.querySelector('.oikea-puoli').style.display = 'none';
-  document.querySelector('.vasen-puoli-taistelu').style.display = 'block';
   document.querySelector('.oikea-puoli-taistelu').style.display = 'block';
 
   const pelaaja_status = document.querySelector('.pelaaja-status');
@@ -14,6 +12,13 @@ function avaa_taistelu_ikkuna() {
     nappi.style.display = 'none';
   });
 
+  // Tuodaan vihollisen kuva esiin
+  document.querySelector('.vihollinen-kuva').style.display = 'flex'
+
+  document.querySelector('.loki').style.display = 'none'
+
+  document.querySelector('.taistelu-rivi').style.display = 'flex'
+
   // Lisää pelaaja_status taistelu_rivi:n ensimmäiseksi lapseksi
   taistelu_rivi.insertBefore(pelaaja_status, taistelu_rivi.firstChild);
 
@@ -23,9 +28,7 @@ function avaa_taistelu_ikkuna() {
 
 // Kun taistelu loppuu siirretään pelaajan status takaisin
 function lopeta_taistelu() {
-  document.querySelector('.vasen-puoli-taistelu').style.display = 'none';
   document.querySelector('.oikea-puoli-taistelu').style.display = 'none';
-  document.querySelector('.vasen-puoli').style.display = 'flex';
   document.querySelector('.oikea-puoli').style.display = 'flex';
 
   const pelaaja_status = document.querySelector('.pelaaja-status');
@@ -37,7 +40,13 @@ function lopeta_taistelu() {
     nappi.style.display = 'block';
   });
 
-  // Lisää pelaaja_status taistelu_rivi:n ensimmäiseksi lapseksi
+  document.querySelector('.vihollinen-kuva').style.display = 'none'
+
+  document.querySelector('.loki').style.display = 'flex'
+
+  document.querySelector('.taistelu-rivi').style.display = 'none'
+
+  // Lisää pelaaja_status seikkailu näkymän viimeiseksi lapseksi
   pelaaja_info.appendChild(pelaaja_status);
 }
 

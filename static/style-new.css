@@ -392,10 +392,11 @@ button:hover {
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center bottom;
+    display: none;
 }
 
 .taistelu-rivi {
-    display: flex;
+    display: none;
     flex-direction: row;
     background: url("../static/images/ui/border.png");
     background-size: 100% 100%;
