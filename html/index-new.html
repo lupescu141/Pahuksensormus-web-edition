@@ -35,11 +35,11 @@
                 <div class="text">Taikasoturi</div>
 
                 <div class="slideshow-kuvat">
-                <input id="taikasoturi-mies" type="image" src="../static/images/pelaaja-luokat/taikasoturi.png" alt="kuva taikasoturista-mies" class="luokka-kuvat">
+                <input id="taikasoturi-mies" value="taikasoturi" name="mies" type="image" src="../static/images/pelaaja-luokat/taikasoturi.png" alt="kuva taikasoturista-mies" class="luokka-kuvat">
                 </div>
 
                 <div class="slideshow-kuvat">
-                <input id="taikasoturi-nainen" type="image" src="../static/images/pelaaja-luokat/taikasoturi.png" alt="kuva taikasoturista-nainen" class="luokka-kuvat">
+                <input id="taikasoturi-nainen" value="taikasoturi" name="nainen" type="image" src="../static/images/pelaaja-luokat/taikasoturi.png" alt="kuva taikasoturista-nainen" class="luokka-kuvat">
                 </div>
 
 
@@ -50,11 +50,11 @@
                 <div class="text">Metsästäjä</div>
 
                 <div class="slideshow-kuvat">
-                <input id="metsästäjä-mies" type="image" src="../static/images/pelaaja-luokat/metsastaja.png" alt="kuva metsästäjästä-mies" class="luokka-kuvat">
+                <input id="metsästäjä-mies" value="metsästäjä" name="mies" type="image" src="../static/images/pelaaja-luokat/metsastaja.png" alt="kuva metsästäjästä-mies" class="luokka-kuvat">
                 </div>
 
                 <div class="slideshow-kuvat">
-                <input id="metsästäjä-nainen" type="image" src="../static/images/pelaaja-luokat/taikasoturi.png" alt="kuva metsästäjästä-nainen" class="luokka-kuvat">
+                <input id="metsästäjä-nainen" value="metsästäjä" name="nainen" type="image" src="../static/images/pelaaja-luokat/taikasoturi.png" alt="kuva metsästäjästä-nainen" class="luokka-kuvat">
                 </div>
 
             </div>
@@ -64,10 +64,10 @@
                 <div class="text">Paladin</div>
 
                 <div class="slideshow-kuvat">
-                <input id="paladin-mies" type="image" src="../static/images/pelaaja-luokat/paladin.png" alt="kuva paladinista-mies" class="luokka-kuvat">
+                <input id="paladin-mies" value="paladin" name="mies" type="image" src="../static/images/pelaaja-luokat/paladin.png" alt="kuva paladinista-mies" class="luokka-kuvat">
                 </div>
                 <div class="slideshow-kuvat">
-                <input id="paladin-nainen" type="image" src="../static/images/pelaaja-luokat/paladin-nainen.png" alt="kuva paladinista-nainen" class="luokka-kuvat">
+                <input id="paladin-nainen" value="paladin" name="nainen" type="image" src="../static/images/pelaaja-luokat/paladin-nainen.png" alt="kuva paladinista-nainen" class="luokka-kuvat">
                 </div>
 
 
@@ -86,7 +86,6 @@
             <span class="slide-pallo" onclick="currentSlide(3)"></span>
         </div>
 
-        <button id="palaa-alkuvalikkoon-luokka" class="nappi" onclick="palaa_alkuvalikkoon()">Palaa</button>
 
         <div class="pelaajan-nimi-valinta fade">
             <form id="uusi-peli-form">
@@ -97,8 +96,10 @@
 
             </form>
 
-            <button id="palaa-alkuvalikkoon-uusi" class="nappi" onclick="palaa_alkuvalikkoon()">Palaa</button>
         </div>
+
+        <button id="palaa-alkuvalikkoon-luokka" class="nappi" onclick="palaa_alkuvalikkoon()">Palaa</button>
+
     </div>
 
     <div class="lataapeli-valikko fade">

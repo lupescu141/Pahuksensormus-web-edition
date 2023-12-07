@@ -83,16 +83,16 @@ def hae_pelaaja_tiedot(peli_id):
 
 
 # Luo uuden pelaajan annetulla nimellä
-@app.route('/luo_uusi_pelaaja/<pelaaja_nimi>/<pelaaja_luokka>')
-def luo_uusi_pelaaja(pelaaja_nimi, pelaaja_luokka):
+@app.route('/luo_uusi_pelaaja/<pelaaja_nimi>/<pelaaja_luokka>/<sukupuoli>')
+def luo_uusi_pelaaja(pelaaja_nimi, pelaaja_luokka, sukupuoli):
     # Arvotaan sormuksen sijainti
     sormus_sijainti = random.randint(2, 9, )
 
     try:
         # Lisää pelaaja tietokantaan sormus_sijainti-muuttujan kanssa
-        sql = 'INSERT INTO peli (pelaaja_nimi, sormus_sijainti, pelaaja_luokka) VALUES (%s, %s, %s);'
+        sql = 'INSERT INTO peli (pelaaja_nimi, sormus_sijainti, pelaaja_luokka, sukupuoli) VALUES (%s, %s, %s, %s);'
         kursori = conn.cursor(dictionary=True)
-        kursori.execute(sql, (pelaaja_nimi, sormus_sijainti, pelaaja_luokka))
+        kursori.execute(sql, (pelaaja_nimi, sormus_sijainti, pelaaja_luokka, sukupuoli))
 
         # Päivitetään tiedot ja palautetaan pelaaja
         pelaaja = paivita_pelaaja_tiedot(pelaaja_nimi, pelaaja_luokka)
@@ -116,7 +116,7 @@ def paivita_pelaaja_tiedot(pelaaja_nimi, pelaaja_luokka):
 
     sql = 'SELECT * FROM peli WHERE pelaaja_nimi = %s;'
     kursori.execute(sql, (pelaaja_nimi,))
-    pelaaja = kursori.fetchall()
+    pelaaja = kursori.fetchone()
     return pelaaja
 
 

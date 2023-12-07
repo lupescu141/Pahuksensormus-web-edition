@@ -1,6 +1,62 @@
 // Luodaan pelaajalle muuttuja
 let pelaaja_olio;
 
+const hahmoluokka_kuva = document.querySelectorAll('.luokka-kuvat');
+
+hahmoluokka_kuva.forEach(kuva => {
+  kuva.addEventListener('click', async function() {
+    let hahmoluokka = kuva.value;
+    let sukupuoli = kuva.name;
+    // Tulostetaan hahmoluokka konsoliin
+    console.log(hahmoluokka);
+
+    document.querySelector('.slideshow-laatikko').style.display = 'none';
+    document.querySelector('.slideshow-pallot').style.display = 'none';
+    document.querySelector('.pelaajan-nimi-valinta').style.display = 'flex';
+
+    // Haetaan nimet ja varmistetaan että ei tule saman nimisiä
+    const varatut_nimet = await hae_nimet();
+    const varatut_nimet_lista = [];
+    for (let varattu_nimi of varatut_nimet) {
+      let varattu_nimi_caps = varattu_nimi.pelaaja_nimi.toUpperCase();
+      varatut_nimet_lista.push(varattu_nimi_caps);
+    }
+    console.log('varatut nimet: ' + varatut_nimet_lista);
+
+    // Etsi lomake ja lisää sille submit-kuuntelija
+    const uusi_peli_form = document.getElementById('uusi-peli-form');
+    uusi_peli_form.addEventListener('submit', async function(event) {
+      event.preventDefault(); // Estä lomakkeen oletustoiminta
+
+      // Tässä vaiheessa voit käsitellä pelaajan nimen ja aloittaa pelin
+      const pelaaja_nimi_elementti = document.getElementById('pelaajan-nimi');
+      const pelaaja_nimi = pelaaja_nimi_elementti.value;
+
+      if (varatut_nimet_lista.includes(pelaaja_nimi.toUpperCase())) {
+        console.log('nimi varattu');
+        // Tyhjennä pelaajan nimi
+        pelaaja_nimi_elementti.value = '';
+        pelaaja_nimi_elementti.placeholder = `${pelaaja_nimi} on varattu`;
+      } else {
+        const vastaus = await fetch(
+            `http://localhost:5000//luo_uusi_pelaaja/${pelaaja_nimi}/${hahmoluokka}/${sukupuoli}`);
+        pelaaja_olio = await vastaus.json();
+        // console.log(pelaaja_tiedot);
+
+        aseta_tiedot();
+        console.log(pelaaja_olio);
+
+        // Tyhjennä pelaajan nimi
+        pelaaja_nimi_elementti.value = '';
+
+        document.querySelector('.uusi-peli-valikko').style.display = 'none';
+
+        document.querySelector('.vasen-puoli').style.display = 'flex';
+      }
+    });
+
+  });
+});
 
 // Piilottaa seikkailu näkymän heti alussa
 document.addEventListener('DOMContentLoaded', function() {
@@ -8,7 +64,6 @@ document.addEventListener('DOMContentLoaded', function() {
   const vasen_puoli = document.querySelector('.vasen-puoli');
   vasen_puoli.style.display = 'none';
 });
-
 
 // Hakee pelaaja_nimet ja pelaaja_id:et tietokannasta
 async function hae_nimet() {
@@ -20,13 +75,12 @@ async function hae_nimet() {
 // Asettaa Pelaajan tiedot pelaaja-status ikkunaan
 function aseta_tiedot() {
   document.getElementById(
-      'pelaaja-nimi').textContent = pelaaja_olio[0].pelaaja_nimi;
+      'pelaaja-nimi').textContent = pelaaja_olio.pelaaja_nimi;
   document.getElementById(
-      'pelaaja-hp').textContent = pelaaja_olio[0].pelaaja_hp;
+      'pelaaja-hp').textContent = pelaaja_olio.pelaaja_hp;
   document.getElementById(
-      'pelaaja-tp').textContent = pelaaja_olio[0].pelaaja_taitopiste;
+      'pelaaja-tp').textContent = pelaaja_olio.pelaaja_taitopiste;
 }
-
 
 // Tämä piilottaa valikon ja avaa hahmoluokka valinnan
 function valitse_hahmoluokka() {
@@ -40,15 +94,12 @@ function valitse_hahmoluokka() {
   document.querySelector('.slideshow-laatikko').style.display = 'flex';
 }
 
-
 // Tämä hoitaa uuden pelaajan nimeämisen
 async function nimi_pelaajalle() {
   // Piilota paavalikko
-  const paavalikko = document.querySelector('.valikko');
-  paavalikko.style.display = 'none';
-
-  const uusi_peli_valikko = document.querySelector('.uusi-peli-valikko');
-  uusi_peli_valikko.style.display = 'flex';
+  document.querySelector('.slideshow-laatikko').style.display = 'none';
+  document.querySelector('.slideshow-pallot').style.display = 'none';
+  document.querySelector('.pelaajan-nimi-valinta').style.display = 'flex';
 
   const varatut_nimet = await hae_nimet();
   const varatut_nimet_lista = [];
@@ -74,7 +125,7 @@ async function nimi_pelaajalle() {
       pelaaja_nimi_elementti.placeholder = `${pelaaja_nimi} on varattu`;
     } else {
       const vastaus = await fetch(
-          `http://localhost:5000//luo_uusi_pelaaja/${pelaaja_nimi}`);
+          `http://localhost:5000//luo_uusi_pelaaja/${pelaaja_nimi}/paladin`);
       const pelaaja_tiedot = await vastaus.json();
       console.log(pelaaja_tiedot);
 
@@ -93,7 +144,6 @@ async function nimi_pelaajalle() {
     }
   });
 }
-
 
 // Tämä hoitaa ladatun pelin aloittamisen
 async function avaa_lataapeli_valikko() {
@@ -136,7 +186,6 @@ async function avaa_lataapeli_valikko() {
     });
   }
 }
-
 
 // Palaa alkuvalikkoon
 function palaa_alkuvalikkoon() {
