@@ -23,7 +23,7 @@
 
 // Event: noitametsa
 // noitataloTaistelu
-// noitatalonKirjasto
+// noitataloMetsassa
 // harhailuNoitametsassa
 
 // Event: sammakkojarvi
@@ -446,7 +446,7 @@ function noitametsa(pelaaja) {
       noitataloTaistelu(pelaaja);
       break;
     case 2:
-      noitatalonKirjasto(pelaaja);
+      noitataloMetsassa(pelaaja);
       break;
     case 3:
       harhailuNoitametsassa(pelaaja);
@@ -483,25 +483,26 @@ function noitataloTaistelu(pelaaja) {
 }
 
 // Event 2: Noitatalon Kielletty Kirjasto
-function noitatalonKirjasto(pelaaja) {
-  console.log('2. Noitatalon Kielletty Kirjasto');
-  textarea.value += '\nHiivit noitatalossa pimeään kirjastoon, joka on täynnä mysteerisiä kirjoja hämähäkin seittien peitossa. Voit löytää ikivanhoja loitsuja tai piilotettuja käytäviä, mutta ole varovainen, sillä noita voi ilmestyä odottamatta.';
+function noitataloMetsassa(pelaaja) {
+  console.log('2. noitatalonNoitatalon Kielletty Kirjasto');
+  textarea.value += '\nOlet syvällä noitametsässä, kun yllättäen huomaat puiden välistä pilkottavan kaukaa kummallisen rakennuksen. Lähemmäs tultuasi tunnistat sen olevan Noitatalo, joka on kietoutunut puiden oksien ja sammaleiden peittoon. Uskallatko mennä sisälle?';
 
   // Valinnat:
   console.log('Valinnat:');
   const valinta2 = prompt(
-      'Valinta 1: Narahtiko lattialauta alla?\nValinta 2: Hämähäkin seitit häiritsevät!');
+      'Valinta 1: Menen sisään?\nValinta 2: En uskalla mennä sisään');
 
   // Valinta 1:
   if (valinta2 === '1') {
-    textarea.value += '\nValinta 1: Onnistut löytämään kirjaston käytäviltä salaisen loitsukirjan, taiot loitsulla hetkellisen voiman ja saat 5 kpl eliksiirejä.';
+    textarea.value += '\nValinta 1: Päätät rohkeasti avata noitatalon raskaan oven. Astut varovasti sisään ja kävelet pimeään.';
+    textarea.value += '\nAstut eteenpäin kohti kirjastoa. Onnistut löytämään kirjaston käytäviltä salaisen loitsukirjan. Taikoen loitsulla hetkellisen voiman, löydät samalla piilossa olleet eliksiirit. Olet nyt vahvempi ja varustautuneempi jatkamaan seikkailuasi.';
     // ELIKSIIRIT VAI JOTAIN MUUTA, MUOKATAAN
     pelaaja.eliksiirit += 10;
   } else if (valinta2 === '2') {
     // Valinta 2:
-    textarea.value += '\nValinta 2: Häiritset liikaa hämähäkin seittiverhoa, kolmipäinen noita ilmaantuu, hän haastaa sinut taisteluun!';
-    // OHJAA TAISTELUUN NOIDAN KANSSA, MUOKKAA FUNKTIO!
-    avaa_taistelu_ikkuna();
+    textarea.value += '\nValinta 2: Päätät olla astumatta noitataloon ja jatkat syvemmälle metsään. Matkasi johdattaa sinut yhä syvemmälle puiden siimekseen. Kompuroit ajatuksissasi puun kantoon ja menetät 10 HP.';
+    // PELAAJAN SEURAAMUKSET?
+    pelaaja.hp -= 10;
   } else {
     console.log('Virheellinen syöte, valitse uudelleen!');
   }
