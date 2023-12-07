@@ -16,6 +16,8 @@ function avaa_taistelu_ikkuna() {
 
   // Lisää pelaaja_status taistelu_rivi:n ensimmäiseksi lapseksi
   taistelu_rivi.insertBefore(pelaaja_status, taistelu_rivi.firstChild);
+
+  taistelu();
 }
 
 

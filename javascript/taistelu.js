@@ -20,13 +20,12 @@ async function hae_random_vihollinen_tietokannasta() {
 }
 
 
-const taistelu = (pelaaja) => {
-
+const taistelu = async () => {
   //hakee taistelulokin tekstialueen
   const taisteluloki = document.getElementById("taistelu-loki");
 
   //hakee random vihollisen
-  let vihollinen = hae_random_vihollinen_tietokannasta();
+  let vihollinen = await hae_random_vihollinen_tietokannasta();
 
   //hakee taisteluvalikon napit
     const hyokkaa = document.getElementById("hyokkaa");
@@ -37,38 +36,41 @@ const taistelu = (pelaaja) => {
     const esine2 = document.getElementById("esine2");
     const esine3 = document.getElementById("esine3");
 
-  while (true){
 
-    if (pelaaja.pelaaja_hp <= 0) {
-      break
+    if (parseInt(pelaaja_olio.pelaaja_hp) <= 0) {
     }
 
     if (vihollinen.vihollinen_hp <= 0){
-      break
     }
 
     hyokkaa.addEventListener("click", ()=> {
 
-        if (pelaaja.pelaaja_hp > 0) {
+        if (pelaaja_olio.pelaaja_hp > 0) {
 
             const isku_osuma = (Math.floor(Math.random() * 21) + 1) + 2;
 
-            if (isku_osuma >= vihollinen.suojaus) {
-                const isku = (Math.floor(Math.random() * pelaaja.isku) + 1) + 2;
+            if (isku_osuma >= vihollinen.vihollinen_suojaus) {
+                const isku = (Math.floor(Math.random() * pelaaja_olio.pelaaja_isku) + 1) + 2;
                 vihollinen.vihollinen_hp -= isku
 
-                taisteluloki.innerText += `Teit viholliseen ${isku} vahinkoa!`
-                vihollinen_hp.innerText = vihollinen.vihollinen_hp;
+                taisteluloki.value += `\nTeit viholliseen ${isku} vahinkoa!`
+                taisteluloki.scrollTop = taisteluloki.scrollHeight;
+                vihollinen_hp.innerHTML = vihollinen.vihollinen_hp;
             }
 
             else {
-                taisteluloki.innerText += `${vihollinen.vihollinen_nimi} väisti iskusi!`
+                taisteluloki.value += `\n${vihollinen.vihollinen_nimi} väisti iskusi!`
+                taisteluloki.scrollTop = taisteluloki.scrollHeight;
             }
         }
     })
 
+}
 
-  }
+const vihollisen_vuoro = () => {
 
+    if (vihollinen.vihollinen_hp > 0){
+
+    }
 }
 
