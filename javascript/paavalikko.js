@@ -139,7 +139,7 @@ async function avaa_lataapeli_valikko() {
       lataapeli_valikko.style.display = 'none';
 
       document.querySelector('.vasen-puoli').style.display = 'flex';
-      document.querySelector('.oikea-puoli').style.display = 'none';
+      document.querySelector('.oikea-puoli').style.display = 'flex';
     });
   }
 }

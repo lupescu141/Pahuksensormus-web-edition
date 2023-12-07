@@ -78,7 +78,7 @@ def hae_pelaaja_tiedot(peli_id):
     sql = f'SELECT * FROM peli WHERE peli_id = {peli_id};'
     kursori = conn.cursor(dictionary=True)
     kursori.execute(sql)
-    pelaaja_tiedot = kursori.fetchall()
+    pelaaja_tiedot = kursori.fetchone()
     return pelaaja_tiedot
 
 
