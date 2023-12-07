@@ -2,7 +2,6 @@
 let pelaaja_olio;
 
 
-
 // Piilottaa seikkailu näkymän heti alussa
 document.addEventListener('DOMContentLoaded', function() {
   // Etsi vasemman puolen elementti ja aseta sille display: none;
@@ -19,7 +18,6 @@ async function hae_nimet() {
   return await vastaus.json();
 }
 
-
 // Asettaa Pelaajan tiedot pelaaja-status ikkunaan
 function aseta_tiedot() {
   document.getElementById(
@@ -28,7 +26,10 @@ function aseta_tiedot() {
       'pelaaja-hp').textContent = pelaaja_olio.pelaaja_hp;
   document.getElementById(
       'pelaaja-tp').textContent = pelaaja_olio.pelaaja_taitopiste;
+  document.querySelector(
+      '.pelaaja-kuva').style.backgroundImage = `url("../static/images/pelaaja-luokat/${pelaaja_olio.pelaaja_luokka}-${pelaaja_olio.sukupuoli}.png")`;
 }
+
 
 // Tämä piilottaa valikon ja avaa hahmoluokka valinnan
 function valitse_hahmoluokka() {
@@ -143,6 +144,7 @@ async function avaa_lataapeli_valikko() {
     });
   }
 }
+
 
 // Palaa alkuvalikkoon
 function palaa_alkuvalikkoon() {
