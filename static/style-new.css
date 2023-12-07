@@ -203,8 +203,6 @@ body {
 }
 
 .pelaaja-status {
-    position: relative;
-    left: 30%;
     width: 40%;
     height: 100%;
     /* background-color: rgba(50, 0, 0, 0.8); */
@@ -212,7 +210,7 @@ body {
     flex-direction: column;
     align-items: center;
     z-index: 1;
-    margin-top: 2%;
+    margin-top: 8%;
 }
 
 header {
