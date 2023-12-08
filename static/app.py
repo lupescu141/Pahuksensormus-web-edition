@@ -123,6 +123,17 @@ def paivita_pelaaja_tiedot(pelaaja_nimi, pelaaja_luokka):
     return pelaaja
 
 
+# Hakee ennätykset
+@app.route('/hae_ennatukset')
+def hae_ennatukset():
+    sql = f'''SELECT pelaaja_nimi, menneet_paivat FROM ennatukset ORDER BY (menneet_paivat) LIMIT 10;'''
+    kursori = conn.cursor(dictionary=True)
+    kursori.execute(sql)
+    top = kursori.fetchall()
+
+    return top
+
+
 # Tallentaa pelin
 @app.route('/tallennus/<peli_id>/<pelaaja_sijainti>/<menneet_paivat>/<pelaaja_hp>/<pelaaja_taitopiste>/<onko_sormus>')
 def tallennus(peli_id, pelaaja_sijainti, menneet_paivat, pelaaja_hp, pelaaja_taitopiste, onko_sormus):

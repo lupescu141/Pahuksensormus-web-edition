@@ -1,19 +1,33 @@
 // Luodaan pelaajalle muuttuja
 let pelaaja_olio;
 
-let pelaaja_inventaario
+let pelaaja_inventaario;
 
-let pelaaja_taidot
+let pelaaja_taidot;
 
-
-// Piilottaa seikkailu näkymän heti alussa
-document.addEventListener('DOMContentLoaded', function() {
+// Hoitaa alkuvalikon esittelyn
+document.addEventListener('DOMContentLoaded', async function() {
   // Etsi vasemman puolen elementti ja aseta sille display: none;
   document.querySelector('.vasen-puoli').style.display = 'none';
   document.querySelector('.kartta').style.display = 'none';
 
-});
+  const response = await fetch(`http://localhost:5000/hae_ennatukset`);
+  const vastaus = await response.json();
+  console.log(vastaus);
 
+  const taulukko = document.querySelector('.top-lista');
+
+  for (const pisteet of vastaus) {
+    const rivi = taulukko.insertRow();
+
+    const solu1 = rivi.insertCell(0);
+    solu1.textContent = pisteet.pelaaja_nimi;
+
+    const solu2 = rivi.insertCell(1);
+    solu2.textContent = pisteet.menneet_paivat;
+  }
+
+});
 
 // Hakee pelaaja_nimet ja pelaaja_id:et tietokannasta
 async function hae_nimet() {
@@ -34,7 +48,6 @@ function aseta_tiedot() {
       '.pelaaja-kuva').style.backgroundImage = `url("../static/images/pelaaja-luokat/${pelaaja_olio.pelaaja_luokka}-${pelaaja_olio.sukupuoli}.png")`;
 }
 
-
 // Tämä piilottaa valikon ja avaa hahmoluokka valinnan
 function valitse_hahmoluokka() {
   // Piilota paavalikko
@@ -46,7 +59,6 @@ function valitse_hahmoluokka() {
 
   document.querySelector('.slideshow-laatikko').style.display = 'flex';
 }
-
 
 // Tämä hoitaa uuden pelaajan luomisen
 const hahmoluokka_kuva = document.querySelectorAll('.luokka-kuvat');
@@ -97,15 +109,17 @@ hahmoluokka_kuva.forEach(kuva => {
         pelaaja_nimi_elementti.value = '';
 
         document.querySelector('.uusi-peli-valikko').style.display = 'none';
+        document.querySelector('.ennatykset').style.display = 'none';
 
         document.querySelector('.vasen-puoli').style.display = 'flex';
         document.querySelector('.oikea-puoli').style.display = 'flex';
+        document.querySelector('.kartta').style.display = 'flex';
+
       }
     });
 
   });
 });
-
 
 // Tämä hoitaa ladatun pelin aloittamisen
 async function avaa_lataapeli_valikko() {
@@ -143,12 +157,14 @@ async function avaa_lataapeli_valikko() {
 
       lataapeli_valikko.style.display = 'none';
 
+      document.querySelector('.ennatykset').style.display = 'none';
+
       document.querySelector('.vasen-puoli').style.display = 'flex';
       document.querySelector('.oikea-puoli').style.display = 'flex';
+      document.querySelector('.kartta').style.display = 'flex';
     });
   }
 }
-
 
 // Palaa alkuvalikkoon
 function palaa_alkuvalikkoon() {
