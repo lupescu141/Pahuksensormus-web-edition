@@ -48,7 +48,7 @@ async function hae_esine() {
 
 // Hakee Flask tietokannasta tallennuksen poiston
 async function tallennuksen_poisto_ja_pisteet() {
-  const response = await fetch(`http://localhost:5000/tallennuksen_poisto_ja_pisteet`);
+  const response = await fetch(`http://localhost:5000/tallennuksen_poisto_ja_pisteet/${pelaaja_olio.peli_id}/${pelaaja_olio.pelaaja_nimi}/${pelaaja_olio.menneet_paivat}`);
   const vastaus = await response.json()
   console.log(vastaus)
   return vastaus
