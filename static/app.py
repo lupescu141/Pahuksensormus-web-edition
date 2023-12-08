@@ -158,7 +158,7 @@ def tallennus(peli_id, pelaaja_sijainti, menneet_paivat, pelaaja_hp, pelaaja_tai
 def tallennuksen_poisto_ja_pisteet(peli_id, pelaaja_nimi, menneet_paivat):
 
     try:
-        sql = (f'''INSERT INTO pisteet (id, nimi, paivat) VALUES ("{peli_id}", "{pelaaja_nimi}", "{menneet_paivat}")''')
+        sql = (f'''INSERT INTO ennatukset (peli_id, pelaaja_nimi, menneet_paivat) VALUES ("{peli_id}", "{pelaaja_nimi}", "{menneet_paivat}")''')
         kursori = conn.cursor()
         kursori.execute(sql)
 
