@@ -8,6 +8,28 @@
     padding: 0;
 }
 
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 100%;
+    background: none;
+    color: black;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    font-size: 2.5rem;
+    position: absolute;
+    bottom: 45%;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
 html, body {
     margin: 0;
     padding: 0;
@@ -295,6 +317,11 @@ button:hover {
     margin-left: 2%;
 }
 
+.kartta-nappi-kuva{
+    height: 100%;
+    width: 100%;
+}
+
 .uudentoivonkyla-nappi {
     position: absolute;
     top: 68%;
@@ -355,7 +382,7 @@ button:hover {
 .suurentarmonkaupunki-nappi {
     position: absolute;
     top: 37%;
-    left: 87%;
+    left: 86%;
     height: 12%;
     width: 11%;
     z-index: 2;
@@ -378,7 +405,7 @@ button:hover {
 }
 
 .kartta-nappi:hover {
-    opacity: 50%;
+    opacity: 20%;
 }
 
 /* Täällä muotoilut taistelu näkymään */
