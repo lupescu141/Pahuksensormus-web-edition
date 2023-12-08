@@ -123,9 +123,9 @@ def paivita_pelaaja_tiedot(pelaaja_nimi, pelaaja_luokka):
     return pelaaja
 
 
+# Tallentaa pelin
 @app.route('/tallennus/<peli_id>/<pelaaja_sijainti>/<menneet_paivat>/<pelaaja_hp>/<pelaaja_taitopiste>/<onko_sormus>')
 def tallennus(peli_id, pelaaja_sijainti, menneet_paivat, pelaaja_hp, pelaaja_taitopiste, onko_sormus):
-
 
     try:
         sql = f'''UPDATE peli SET pelaaja_sijainti = {pelaaja_sijainti},
@@ -152,6 +152,7 @@ def hae_inventaario(peli_id):
     inventaario_lista = kursori.fetchall()
 
     return inventaario_lista
+
 
 # Hakee esineen tietokannasta
 @app.route('/hae_esine')
@@ -194,6 +195,7 @@ def hae_kaikki_kohteet():
     return lista
 
 
+# Hakee pelaajan sijainnin. Käytetään etäisyyksien laskennassa
 def hae_pelaajan_sijainti(pelaaja_sijainti):
     sql = f'''SELECT airport.id, airport.fantasia_nimi, airport.latitude_deg, airport.longitude_deg 
                   FROM airport WHERE airport.id = {pelaaja_sijainti}'''
@@ -204,6 +206,7 @@ def hae_pelaajan_sijainti(pelaaja_sijainti):
     return lista
 
 
+# Laskee etäisyydet pelaajan sijainnin mukaan.
 @app.route('/laske_etäisyydet/<pelaajan_sijainti>')
 def laske_etäisyydet(pelaajan_sijainti):
     kohteet_ja_matkat = []
