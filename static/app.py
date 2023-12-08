@@ -123,10 +123,30 @@ def paivita_pelaaja_tiedot(pelaaja_nimi, pelaaja_luokka):
     return pelaaja
 
 
+@app.route('/tallennus/<peli_id>/<pelaaja_sijainti>/<menneet_paivat>/<pelaaja_hp>/<pelaaja_taitopiste>/<onko_sormus>')
+def tallennus(peli_id, pelaaja_sijainti, menneet_paivat, pelaaja_hp, pelaaja_taitopiste, onko_sormus):
+
+
+    try:
+        sql = f'''UPDATE peli SET pelaaja_sijainti = {pelaaja_sijainti},
+                  menneet_paivat = {menneet_paivat}, pelaaja_hp = {pelaaja_hp},
+                  pelaaja_taitopiste = {pelaaja_taitopiste}, onko_sormus = {onko_sormus} 
+                  WHERE peli_id = {peli_id}'''
+        kursori = conn.cursor(dictionary=True)
+        kursori.execute(sql)
+
+        return jsonify({'status': 'success'})
+
+    except Exception as e:
+        # Käsittele virhe tarvittaessa
+        return str(e)
+
+
 # Hakee pelaajan inventaarion
 @app.route('/hae_inventaario/<peli_id>')
 def hae_inventaario(peli_id):
-    sql = (f'SELECT esine_nimi, esineen_id FROM inventaario, esineet, peli WHERE esineen_id = esine_id AND pelaajan_id = "{peli_id}" AND peli_id = "{peli_id}"')
+    sql = (
+        f'SELECT esine_nimi, esineen_id FROM inventaario, esineet, peli WHERE esineen_id = esine_id AND pelaajan_id = "{peli_id}" AND peli_id = "{peli_id}"')
     kursori = conn.cursor(dictionary=True)
     kursori.execute(sql)
     inventaario_lista = kursori.fetchall()
