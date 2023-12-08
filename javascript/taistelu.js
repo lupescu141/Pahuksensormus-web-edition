@@ -22,7 +22,6 @@ async function hae_random_vihollinen_tietokannasta() {
   return random_vihollinen;
 }
 
-
 const taistelu = async () => {
 
   //hakee random vihollisen
@@ -65,10 +64,8 @@ const taistelu = async () => {
             }
 
             vihollisen_vuoro(vihollinen)
-
         }
     })
-
 }
 
 const vihollisen_vuoro = (vihollinen) => {
@@ -86,10 +83,10 @@ const vihollisen_vuoro = (vihollinen) => {
                 pelaaja_hp.innerHTML = pelaaja_olio.pelaaja_hp;
             }
 
-            else {
+        else {
                 taisteluloki.value += `\nVäistit vihollisen iskun!`
                 taisteluloki.scrollTop = taisteluloki.scrollHeight;
-            }
+        }
     }
 }
 
