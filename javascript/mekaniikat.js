@@ -44,3 +44,12 @@ async function hae_esine() {
   console.log(vastaus)
   return vastaus
 }
+
+
+// Hakee Flask tietokannasta tallennuksen poiston
+async function tallennuksen_poisto_ja_pisteet() {
+  const response = await fetch(`http://localhost:5000/tallennuksen_poisto_ja_pisteet`);
+  const vastaus = await response.json()
+  console.log(vastaus)
+  return vastaus
+}

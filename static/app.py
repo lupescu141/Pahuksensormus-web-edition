@@ -153,6 +153,26 @@ def tallennus(peli_id, pelaaja_sijainti, menneet_paivat, pelaaja_hp, pelaaja_tai
         return str(e)
 
 
+# Pelin tallennuksen poisto
+@app.route('/tallennuksen_poisto_ja_pisteet/<peli_id>/<pelaaja_nimi>/<menneet_paivat>')
+def tallennuksen_poisto_ja_pisteet(peli_id, pelaaja_nimi, menneet_paivat):
+
+    try:
+        sql = (f'''INSERT INTO pisteet (id, nimi, paivat) VALUES ("{int(peli_id)}", "{str(pelaaja_nimi)}", "{int(menneet_paivat)}")''')
+        kursori = conn.cursor()
+        kursori.execute(sql)
+
+        sql = (f'DELETE FROM inventaario WHERE pelaajan_id = "{int(peli_id)}";')
+        kursori.execute(sql)
+        sql = (f'DELETE FROM peli WHERE peli_id = "{int(peli_id)}";')
+        kursori.execute(sql)
+
+        return jsonify({'status': 'success'})
+
+    except Exception as e:
+        # Käsittele virhe tarvittaessa
+        return str(e)
+
 # Hakee pelaajan inventaarion
 @app.route('/hae_inventaario/<peli_id>')
 def hae_inventaario(peli_id):
