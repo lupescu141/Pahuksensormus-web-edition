@@ -17,3 +17,11 @@ async function hae_inventaario() {
   console.log(vastaus)
   return vastaus
 }
+
+async function hae_random_bossi() {
+// Hakee Flask tietokannasta bossin
+  const response = await fetch(`http://localhost:5000/hae_random_bossi`);
+  const vastaus = await response.json()
+  console.log(vastaus)
+  return vastaus
+}
