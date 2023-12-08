@@ -219,7 +219,7 @@ def hae_inventaario(peli_id):
 @app.route('/hae_luokan_taidot/<pelaaja_luokka>')
 def hae_luokan_taidot(pelaaja_luokka):
     sql = (
-        f'SELECT * FROM taidot WHERE hahmon_luokka = {pelaaja_luokka}')
+        f'SELECT taito_id, taito_nimi FROM taidot WHERE hahmon_luokka = "{pelaaja_luokka}"')
     kursori = conn.cursor(dictionary=True)
     kursori.execute(sql)
     luokan_taidot = kursori.fetchall()
