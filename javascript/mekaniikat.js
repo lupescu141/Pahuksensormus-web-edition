@@ -40,6 +40,17 @@ async function hae_inventaario() {
 }
 
 
+// Hakee pelaajan taito inventaarion
+async function hae_pelaajan_taidot() {
+  // Hakee Flask tietokannasta pelaajan taidot
+  const response = await fetch(
+      `http://localhost:5000/hae_pelaajan_taidot/${pelaaja_olio.peli_id}`);
+  const vastaus = await response.json();
+  console.log(vastaus);
+  return pelaaja_taidot = vastaus;
+}
+
+
 // Laskee kohtiden sijainnit pelaajan sijainnin perusteella. Palauttaa kohteen nimen ja ja päivien määrän
 async function hae_matkustus_paivat() {
   // Hakee Flask tietokannasta kohteiden matkustus päivät pelaaja sijainnin mukaan
