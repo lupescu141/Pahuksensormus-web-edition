@@ -34,7 +34,8 @@ except Exception as e:
 
 
 class Pelaaja:
-    def __init__(self, peli_id, pelaaja_nimi, pelaaja_sijainti, sormus_sijainti, menneet_paivat, pelaaja_luokka, pelaaja_hp, pelaaja_maksimi_hp,
+    def __init__(self, peli_id, pelaaja_nimi, pelaaja_sijainti, sormus_sijainti, menneet_paivat, pelaaja_luokka,
+                 pelaaja_hp, pelaaja_maksimi_hp,
                  pelaaja_suojaus, pelaaja_isku, pelaaja_taitopiste, pelaaja_maksimi_taitopiste,
                  onko_sormus):
         self.id = peli_id
@@ -50,7 +51,6 @@ class Pelaaja:
         self.taitopiste = pelaaja_taitopiste
         self.max_taitopiste = pelaaja_maksimi_taitopiste
         self.onko_sormus = onko_sormus
-
 
 
 class Vihollinen:
@@ -123,6 +123,17 @@ def paivita_pelaaja_tiedot(pelaaja_nimi, pelaaja_luokka):
     return pelaaja
 
 
+# Hakee pelaajan inventaarion
+@app.route('/hae_inventaario/<peli_id>')
+def hae_inventaario(peli_id):
+    sql = (f'SELECT esine_nimi, esineen_id FROM inventaario, esineet, peli WHERE esineen_id = esine_id AND pelaajan_id = "{peli_id}" AND peli_id = "{peli_id}"')
+    kursori = conn.cursor(dictionary=True)
+    kursori.execute(sql)
+    inventaario_lista = kursori.fetchall()
+
+    return inventaario_lista
+
+
 # Hakee random ei boss vihollisen
 @app.route('/hae_random_vihollinen')
 def hae_random_vihollinen():
@@ -131,6 +142,7 @@ def hae_random_vihollinen():
     kursori.execute(sql)
     haku_tiedot = kursori.fetchone()
     return haku_tiedot
+
 
 # Hakee random bossin
 @app.route('/hae_random_bossi')
@@ -141,9 +153,9 @@ def hae_random_bossi():
     haku_tiedot = kursori.fetchone()
     return haku_tiedot
 
+
 # Hakee kaikki kohteet
 def hae_kaikki_kohteet():
-
     sql = f'''SELECT airport.id, airport.fantasia_nimi, airport.latitude_deg, airport.longitude_deg 
               FROM airport'''
     kursori = conn.cursor(dictionary=True)
@@ -152,8 +164,8 @@ def hae_kaikki_kohteet():
 
     return lista
 
-def hae_pelaajan_sijainti(pelaaja_sijainti):
 
+def hae_pelaajan_sijainti(pelaaja_sijainti):
     sql = f'''SELECT airport.id, airport.fantasia_nimi, airport.latitude_deg, airport.longitude_deg 
                   FROM airport WHERE airport.id = {pelaaja_sijainti}'''
     kursori = conn.cursor(dictionary=True)
@@ -162,9 +174,9 @@ def hae_pelaajan_sijainti(pelaaja_sijainti):
 
     return lista
 
+
 @app.route('/laske_etäisyydet/<pelaajan_sijainti>')
 def laske_etäisyydet(pelaajan_sijainti):
-
     kohteet_ja_matkat = []
 
     nykyinen_sijainti = hae_pelaajan_sijainti(pelaajan_sijainti)
@@ -184,10 +196,11 @@ def laske_etäisyydet(pelaajan_sijainti):
             matka = 2
         elif matka < 200:
             matka = 3
-        else: matka = 4
+        else:
+            matka = 4
         vastaus = {
-            'fantasia_nimi' : kohde['fantasia_nimi'],
-            'matka_pv' : matka
+            'fantasia_nimi': kohde['fantasia_nimi'],
+            'matka_pv': matka
         }
         kohteet_ja_matkat.append(vastaus)
 

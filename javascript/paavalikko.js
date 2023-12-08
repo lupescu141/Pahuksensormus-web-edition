@@ -1,6 +1,10 @@
 // Luodaan pelaajalle muuttuja
 let pelaaja_olio;
 
+let pelaaja_inventaario
+
+let pelaaja_taidot
+
 
 // Piilottaa seikkailu näkymän heti alussa
 document.addEventListener('DOMContentLoaded', function() {
