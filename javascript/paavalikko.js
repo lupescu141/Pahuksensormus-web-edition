@@ -155,6 +155,10 @@ async function avaa_lataapeli_valikko() {
       pelaaja_olio = pelaaja_tiedot;
       aseta_tiedot();
 
+      // Hakee pelaajan inventaarion ja palauttaa pelaaja_inventaario olion
+      hae_inventaario()
+
+      // Piilottaa alkuvalikon
       lataapeli_valikko.style.display = 'none';
 
       document.querySelector('.ennatykset').style.display = 'none';

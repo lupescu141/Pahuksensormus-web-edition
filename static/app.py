@@ -153,6 +153,36 @@ def tallennus(peli_id, pelaaja_sijainti, menneet_paivat, pelaaja_hp, pelaaja_tai
         return str(e)
 
 
+# Tyhjennä inventaario ennen tallennusta
+@app.route('/inventaario_tyhjennys/<peli_id>')
+def inventaario_tyhjennys(peli_id):
+    try:
+        sql = f'DELETE FROM inventaario WHERE pelaajan_id = "{peli_id}"'
+        kursori = conn.cursor()
+        kursori.execute(sql)
+
+        return jsonify({'inventaario': 'nollattu'})
+
+    except Exception as e:
+        # Käsittele virhe tarvittaessa
+        return str(e)
+
+
+# Tallenna inventaario
+@app.route ('/inventaario_tallennus/<peli_id>/<esineen_id>')
+def inventaario_tallennus(peli_id, esineen_id):
+    try:
+        sql = f'INSERT INTO inventaario (pelaajan_id, esineen_id) VALUES ({peli_id}, {esineen_id})'
+        kursori = conn.cursor(dictionary=True)
+        kursori.execute(sql)
+
+        return jsonify({f'Esine: {esineen_id}': 'tallennettu'})
+
+    except Exception as e:
+        # Käsittele virhe tarvittaessa
+        return str(e)
+
+
 # Poistaa tallennuksen ja lisää pisteet ennatukset tauluun
 @app.route('/tallennuksen_poisto_ja_pisteet/<peli_id>/<pelaaja_nimi>/<menneet_paivat>')
 def tallennuksen_poisto_ja_pisteet(peli_id, pelaaja_nimi, menneet_paivat):
