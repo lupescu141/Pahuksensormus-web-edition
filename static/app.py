@@ -123,6 +123,17 @@ def paivita_pelaaja_tiedot(pelaaja_nimi, pelaaja_luokka):
     return pelaaja
 
 
+# Hakee ennätykset
+@app.route('/hae_ennatukset')
+def hae_ennatukset():
+    sql = f'''SELECT pelaaja_nimi, menneet_paivat FROM ennatukset ORDER BY (menneet_paivat) LIMIT 10;'''
+    kursori = conn.cursor(dictionary=True)
+    kursori.execute(sql)
+    top = kursori.fetchall()
+
+    return top
+
+
 # Tallentaa pelin
 @app.route('/tallennus/<peli_id>/<pelaaja_sijainti>/<menneet_paivat>/<pelaaja_hp>/<pelaaja_taitopiste>/<onko_sormus>')
 def tallennus(peli_id, pelaaja_sijainti, menneet_paivat, pelaaja_hp, pelaaja_taitopiste, onko_sormus):
@@ -141,6 +152,26 @@ def tallennus(peli_id, pelaaja_sijainti, menneet_paivat, pelaaja_hp, pelaaja_tai
         # Käsittele virhe tarvittaessa
         return str(e)
 
+
+# Poistaa tallennuksen ja lisää pisteet ennatukset tauluun
+@app.route('/tallennuksen_poisto_ja_pisteet/<peli_id>/<pelaaja_nimi>/<menneet_paivat>')
+def tallennuksen_poisto_ja_pisteet(peli_id, pelaaja_nimi, menneet_paivat):
+
+    try:
+        sql = (f'''INSERT INTO ennatukset (peli_id, pelaaja_nimi, menneet_paivat) VALUES ("{peli_id}", "{pelaaja_nimi}", "{menneet_paivat}")''')
+        kursori = conn.cursor()
+        kursori.execute(sql)
+
+        sql = (f'DELETE FROM inventaario WHERE pelaajan_id = "{peli_id}";')
+        kursori.execute(sql)
+        sql = (f'DELETE FROM peli WHERE peli_id = "{peli_id}";')
+        kursori.execute(sql)
+
+        return jsonify({'status': 'success'})
+
+    except Exception as e:
+        # Käsittele virhe tarvittaessa
+        return str(e)
 
 # Hakee pelaajan inventaarion
 @app.route('/hae_inventaario/<peli_id>')

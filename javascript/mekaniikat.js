@@ -28,17 +28,27 @@ async function hae_inventaario() {
 }
 
 
-async function hae_random_bossi() {
 // Hakee Flask tietokannasta bossin
+async function hae_random_bossi() {
   const response = await fetch(`http://localhost:5000/hae_random_bossi`);
   const vastaus = await response.json()
   console.log(vastaus)
   return vastaus
 }
 
-async function hae_esine() {
+
 // Hakee Flask tietokannasta esineen
+async function hae_esine() {
   const response = await fetch(`http://localhost:5000/hae_esine`);
+  const vastaus = await response.json()
+  console.log(vastaus)
+  return vastaus
+}
+
+
+// Hakee Flask tietokannasta tallennuksen poiston
+async function tallennuksen_poisto_ja_pisteet() {
+  const response = await fetch(`http://localhost:5000/tallennuksen_poisto_ja_pisteet/${pelaaja_olio.peli_id}/${pelaaja_olio.pelaaja_nimi}/${pelaaja_olio.menneet_paivat}`);
   const vastaus = await response.json()
   console.log(vastaus)
   return vastaus
