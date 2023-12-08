@@ -227,22 +227,6 @@ def hae_luokan_taidot(pelaaja_luokka):
     return luokan_taidot
 
 
-# Hae pelaajan taito_inventaario
-@app.route('/hae_pelaajan_taidot/<peli_id>')
-def hae_pelaajan_taidot(peli_id):
-    try:
-        sql = (
-            f'SELECT taito_id, taito_nimi, taito_arvo, taito_kohde, hahmon_luokka FROM taito_inventaario, taidot, peli WHERE taidon_id = taito_id AND pelaajan_id = "{peli_id}" AND peli_id = "{peli_id}"')
-        kursori = conn.cursor(dictionary=True)
-        kursori.execute(sql)
-        taidot_lista = kursori.fetchall()
-
-        return taidot_lista
-
-    except Exception as e:
-        # Käsittele virhe tarvittaessa
-        return str(e)
-
 # Hakee esineen tietokannasta
 @app.route('/hae_esine')
 def hae_esine():

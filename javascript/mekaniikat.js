@@ -40,11 +40,11 @@ async function hae_inventaario() {
 }
 
 
-// Hakee pelaajan taito inventaarion
-async function hae_pelaajan_taidot() {
+// Hakee pelaajan luokan taidot
+async function hae_luokan_taidot() {
   // Hakee Flask tietokannasta pelaajan taidot
   const response = await fetch(
-      `http://localhost:5000/hae_pelaajan_taidot/${pelaaja_olio.peli_id}`);
+      `http://localhost:5000/hae_luokan_taidot/${pelaaja_olio.pelaaja_luokka}`);
   const vastaus = await response.json();
   console.log(vastaus);
   return pelaaja_taidot = vastaus;
