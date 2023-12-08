@@ -153,6 +153,15 @@ def hae_inventaario(peli_id):
 
     return inventaario_lista
 
+# Hakee esineen tietokannasta
+@app.route('/hae_esine')
+def hae_esine():
+    sql = 'SELECT esine_nimi, esine_id AS esineen_id FROM esineet ORDER by RAND() LIMIT 1'
+    kursori = conn.cursor(dictionary=True)
+    kursori.execute(sql)
+    random_esine = kursori.fetchone()
+    return random_esine
+
 
 # Hakee random ei boss vihollisen
 @app.route('/hae_random_vihollinen')

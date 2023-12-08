@@ -35,3 +35,11 @@ async function hae_random_bossi() {
   console.log(vastaus)
   return vastaus
 }
+
+async function hae_esine() {
+// Hakee Flask tietokannasta esineen
+  const response = await fetch(`http://localhost:5000/hae_esine`);
+  const vastaus = await response.json()
+  console.log(vastaus)
+  return vastaus
+}

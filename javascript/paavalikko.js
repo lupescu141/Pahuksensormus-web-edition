@@ -10,7 +10,7 @@ let pelaaja_taidot
 document.addEventListener('DOMContentLoaded', function() {
   // Etsi vasemman puolen elementti ja aseta sille display: none;
   document.querySelector('.vasen-puoli').style.display = 'none';
-  document.querySelector('.oikea-puoli').style.display = 'none';
+  document.querySelector('.kartta').style.display = 'none';
 
 });
 
