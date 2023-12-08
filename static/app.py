@@ -183,7 +183,7 @@ def laske_etäisyydet(pelaajan_sijainti):
         }
         kohteet_ja_matkat.append(vastaus)
 
-    return jsonify(kohteet_ja_matkat)
+    return kohteet_ja_matkat
 
 
 if __name__ == '__main__':
