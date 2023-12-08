@@ -132,6 +132,14 @@ def hae_random_vihollinen():
     haku_tiedot = kursori.fetchone()
     return haku_tiedot
 
+# Hakee random bossin
+@app.route('/hae_random_bossi')
+def hae_random_bossi():
+    sql = 'SELECT * FROM viholliset WHERE bossi = "1" ORDER by RAND() LIMIT 1'
+    kursori = conn.cursor(dictionary=True)
+    kursori.execute(sql)
+    haku_tiedot = kursori.fetchone()
+    return haku_tiedot
 
 # Hakee kaikki kohteet
 def hae_kaikki_kohteet():
