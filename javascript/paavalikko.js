@@ -106,8 +106,8 @@ hahmoluokka_kuva.forEach(kuva => {
         console.log(pelaaja_olio);
 
         // Hakee pelaajan inventaarion ja palauttaa pelaaja_inventaario olion
-        hae_inventaario();
-
+        await hae_inventaario();
+        await hae_luokan_taidot();
 
         // Tyhjennä pelaajan nimi
         pelaaja_nimi_elementti.value = '';
@@ -160,8 +160,8 @@ async function avaa_lataapeli_valikko() {
       aseta_tiedot();
 
       // Hakee pelaajan inventaarion ja palauttaa pelaaja_inventaario olion
-      hae_inventaario();
-      hae_luokan_taidot()
+      await hae_inventaario();
+      await hae_luokan_taidot();
 
       // Piilottaa alkuvalikon
       lataapeli_valikko.style.display = 'none';
