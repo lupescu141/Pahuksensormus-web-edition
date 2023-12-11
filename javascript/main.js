@@ -13,6 +13,8 @@ const lataapeli_valikko = document.querySelector('.lataapeli-valikko');
 const uusipeli_valikko = document.querySelector('.uusi-peli-valikko');
 const ennatukset = document.querySelector('.ennatykset')
 const taulukko = document.querySelector('.top-lista');
+// Pelaaja rivi
+const paikkatausta = document.getElementById('paikkatausta')
 // Loki elementit
 const textarea = document.getElementById('loki');
 const taisteluloki = document.getElementById('taistelu-loki');
