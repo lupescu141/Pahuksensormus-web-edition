@@ -4,9 +4,6 @@ async function avaa_taistelu_ikkuna() {
   document.querySelector('.oikea-puoli').style.display = 'none';
   document.querySelector('.oikea-puoli-taistelu').style.display = 'block';
 
-  // Tallennetaan muuttujat jotta voidaan siirtää pelaaja status taistelu riville
-  const pelaaja_status = document.querySelector('.pelaaja-status');
-  const taistelu_rivi = document.querySelector('.taistelu-rivi');
 
   // Piilota Lepää ja Esineet napit status ikkunasta
   document.querySelector(".esine-napit").style.display = 'none';
@@ -46,9 +43,7 @@ function lopeta_taistelu() {
   document.querySelector('.oikea-puoli-taistelu').style.display = 'none';
   document.querySelector('.oikea-puoli').style.display = 'flex';
 
-  // Tallennetaan muuttujat jotta voidaan siirtää pelaaja status ylemmälle riville
-  const pelaaja_status = document.querySelector('.pelaaja-status');
-  const pelaaja_info = document.querySelector('.pelaaja-info');
+
 
   // Tuodaan Lepää ja Esineet napit esiin status näkymään
   const napit = pelaaja_status.querySelectorAll('.nappi');

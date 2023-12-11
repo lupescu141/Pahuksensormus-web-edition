@@ -1,8 +1,3 @@
-// Haetaan lokin elementti
-const loki = document.getElementById('loki');
-
-
-
 // Tallentaa pelaajan tietokantaan
 async function tallenna() {
   const response = await fetch(
@@ -50,13 +45,13 @@ async function lepo() {
       pelaaja_olio.pelaaja_taitopiste ===
       pelaaja_olio.pelaaja_maksimi_taitopiste) {
     textarea.value += '\n-Pelaajan HP ja TP ovat jo maksimissaan!';
-    loki.scrollTop = loki.scrollHeight;
+    textarea.scrollTop = textarea.scrollHeight;
   } else {
     // Päivittää pelaajalle maksimi HP:n ja TP:n
     pelaaja_olio.pelaaja_hp = pelaaja_olio.pelaaja_maksimi_hp;
     pelaaja_olio.pelaaja_taitopiste = pelaaja_olio.pelaaja_maksimi_taitopiste;
     textarea.value += '\n-Lepäsit yhden päivä. HP ja TP ovat maksimissaan';
-    loki.scrollTop = loki.scrollHeight;
+    textarea.scrollTop = textarea.scrollHeight;
 
     document.getElementById(
         'pelaaja-hp').textContent = pelaaja_olio.pelaaja_hp;
@@ -90,8 +85,6 @@ async function hae_matkustus_paivat() {
 async function aseta_matkustus_paivat() {
   const kohteet = await hae_matkustus_paivat();
 
-  const kartta = document.querySelector('.kartta');
-
   if (kartta) {
     // Etsi kaikki span-elementit kartta-divin sisältä
     const spanit = kartta.querySelectorAll('.tooltiptext');
@@ -121,12 +114,9 @@ async function aseta_matkustus_paivat() {
     console.error('Kartta-elementtiä ei löytynyt.');
   }
 
-  // Etsi kaikki kartta-divin sisällä olevat divit
-  const karttaDiv = document.querySelector('.kartta');
-  const nappiDivs = karttaDiv.querySelectorAll('.kartta-nappi-kuva');
 
   // Käy läpi jokainen div ja lisää sille event listener
-  nappiDivs.forEach(div => {
+  kartta_nappi.forEach(div => {
     div.addEventListener('click', function() {
       // Etsi spanin value attribuutti ja tulosta se konsoliin
       const span = div.previousElementSibling;

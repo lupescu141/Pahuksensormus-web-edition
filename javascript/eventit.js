@@ -45,7 +45,6 @@
 // hamahakkikuningatar
 // lohikaarmeenPesa
 
- const textarea = document.getElementById('loki');
 
 // Peli Eventti: Uudentoivon kylä
 
