@@ -506,6 +506,30 @@ button:hover {
     border-radius: 5px;
 }
 
+.esine-napit {
+    display: inline-grid;
+    grid-template-columns: auto auto auto;
+    position: absolute;
+    bottom: 2%;
+    width: 39%;
+    height: 29%;
+    align-items: stretch;
+    justify-items: stretch;
+    z-index: 1;
+}
+
+.esineet{
+    width: 100%;
+    height: 100%;
+    background: none;
+    border: none;
+    box-shadow: inset rgb(32 1 1) 0 0 32px 10px;
+}
+
+.esine-div{
+border: black solid;
+}
+
 .jatka-nappi{
     display: none;
 }
