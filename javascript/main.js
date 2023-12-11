@@ -90,6 +90,7 @@ async function matkustaminen() {
             span.textContent = `${span_id} : ${laskettu_matka.matka_pv} päivän matkustus`;
             // Tallennetaan name arvoon kohteen id jotta voidaan asetta se pelaajalle
             span.name = laskettu_matka.id
+            span.type = laskettu_matka.fantasia_nimi
           }
         }
       } else {
@@ -112,6 +113,7 @@ async function matkustaminen() {
       pelaaja_olio.pelaaja_sijaint = span.name
       console.log('sijainnin id ' + span.name)
       console.log('pelaajan sijainnin id ' + pelaaja_olio.pelaaja_sijaint)
+      document.querySelector('.paikkatausta').src = `../static/images/paikat/${span.type}.png`;
       await taistelu_mahdollisuus(matkustus_paivien_maara);
     });
   });
