@@ -39,7 +39,6 @@ const taistelu_rivi = document.querySelector('.taistelu-rivi');
 const pelaaja_info = document.querySelector('.pelaaja-info');
 const hyokkaa_tooltip = document.getElementById("hyokkaa-tooltip");
 
-
 // Hoitaa alkuvalikon esittelyn sivun latautuessa
 document.addEventListener('DOMContentLoaded', async function() {
   // Etsi vasemman puolen elementti ja aseta sille display: none;
