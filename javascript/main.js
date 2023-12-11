@@ -38,6 +38,7 @@ const pelaaja_status = document.querySelector('.pelaaja-status');
 const taistelu_rivi = document.querySelector('.taistelu-rivi');
 const pelaaja_info = document.querySelector('.pelaaja-info');
 
+
 // Hoitaa alkuvalikon esittelyn sivun latautuessa
 document.addEventListener('DOMContentLoaded', async function() {
   // Etsi vasemman puolen elementti ja aseta sille display: none;
