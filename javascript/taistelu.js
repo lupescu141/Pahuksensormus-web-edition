@@ -11,6 +11,11 @@
     const esine2 = document.getElementById("esine2");
     const esine3 = document.getElementById("esine3");
 
+    jatka.addEventListener("click", () =>{
+    taisteluloki.value = ' ';
+    lopeta_taistelu();
+})
+
 
 
 // Luodaan random viholliselle olio muuttuja
@@ -28,7 +33,7 @@ async function hae_random_vihollinen_tietokannasta() {
     let random_vihollinen;
   random_vihollinen = await fetch('http://localhost:5000/hae_random_vihollinen');
   random_vihollinen = await random_vihollinen.json();
-
+  console.log(random_vihollinen);
   document.getElementById('vihollinen_nimi').textContent = random_vihollinen.vihollinen_nimi;
   vihollinen_hp.textContent = random_vihollinen.vihollinen_hp;
   document.querySelector(".vihollinen-kuva").style.backgroundImage = `url("../static/images/viholliset/${random_vihollinen.vihollinen_nimi.toLocaleLowerCase()}.png")`;
@@ -39,7 +44,7 @@ async function hae_random_vihollinen_tietokannasta() {
 const taistelu = async () => {
 
       //hakee random vihollisen
-  let vihollinen = await hae_random_vihollinen_tietokannasta();
+        let vihollinen = await hae_random_vihollinen_tietokannasta();
 
     //statukset
     pelaaja_statukset = {
@@ -56,7 +61,7 @@ const taistelu = async () => {
         pelkaa:0
     }
 
-    hyokkaa.addEventListener("click", ()=> {
+    hyokkaa.addEventListener("click", hyokkaa_painettu = ()=> {
 
         if (pelaaja_olio.pelaaja_hp > 0) {
 
@@ -80,7 +85,7 @@ const taistelu = async () => {
         }
     })
 
-    taidot.addEventListener("click", () =>{
+      taidot.addEventListener("click",  taito_painettu = () => {
 
         console.log(pelaaja_taidot);
         piilota_kaikki_napit();
@@ -147,11 +152,9 @@ const vihollisen_vuoro = (vihollinen) => {
         taisteluloki.value += `\nPaina jatka nappia poistuaksesi taistelusta.`;
         piilota_kaikki_napit();
         jatka.style.display = 'block';
+        hyokkaa.removeEventListener("click", hyokkaa_painettu);
+        taidot.removeEventListener("click", taito_painettu);
     }
-
 }
 
-jatka.addEventListener("click", () =>{
-    taisteluloki.value = ' ';
-    lopeta_taistelu();
-})
+
