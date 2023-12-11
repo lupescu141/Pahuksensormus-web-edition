@@ -13,6 +13,13 @@ function avaa_taistelu_ikkuna() {
   const napit = pelaaja_status.querySelectorAll('.nappi');
   napit.forEach(nappi => {
     nappi.style.display = 'none';
+
+      // Avaa taisteluvalikon napit
+   document.querySelectorAll('.taistelu-valikko-nappi').forEach(nappi => {
+    nappi.style.display = 'block';
+  });
+
+   jatka.style.display = 'none'
   });
 
   // Tuodaan vihollisen kuva esiin pelaajan viereen
@@ -32,6 +39,9 @@ function avaa_taistelu_ikkuna() {
 
 // Sulkee taistelu näkymän. Siirretään pelaajan status takaisin ylös
 function lopeta_taistelu() {
+  //sulkee jatka napin taisteluvalikosta
+  jatka.style.display = 'none';
+
   // Asetetaan oikea puoli kartta näkymään
   document.querySelector('.oikea-puoli-taistelu').style.display = 'none';
   document.querySelector('.oikea-puoli').style.display = 'flex';
@@ -85,7 +95,7 @@ function palaa() {
   // Piilotaa ensin kaikki napit
   piilota_kaikki_napit();
   // Avaa taisteluvalikon napit
-  document.querySelectorAll('.taistelu-valikko-nappi').forEach(nappi => {
+   document.querySelectorAll('.taistelu-valikko-nappi').forEach(nappi => {
     nappi.style.display = 'block';
   });
 }

@@ -14,7 +14,7 @@
 
 
 // Luodaan random viholliselle olio muuttuja
-let random_vihollinen
+
 
 //hakee elementit
 const vihollinen_nimi = document.getElementById('vihollinen_nimi');
@@ -24,7 +24,8 @@ const pelaaja_hp = document.getElementById("pelaaja-hp")
 
 // Haetaan random vihollinen
 async function hae_random_vihollinen_tietokannasta() {
-  // Hakee Flask tietokannasta random vihollisen
+  // Hakee Flask tietokannasta random
+    let random_vihollinen;
   random_vihollinen = await fetch('http://localhost:5000/hae_random_vihollinen');
   random_vihollinen = await random_vihollinen.json();
 
@@ -36,6 +37,9 @@ async function hae_random_vihollinen_tietokannasta() {
 }
 
 const taistelu = async () => {
+
+      //hakee random vihollisen
+  let vihollinen = await hae_random_vihollinen_tietokannasta();
 
     //statukset
     pelaaja_statukset = {
@@ -51,9 +55,6 @@ const taistelu = async () => {
         myrkytetty: 0,
         pelkaa:0
     }
-
-  //hakee random vihollisen
-  let vihollinen = await hae_random_vihollinen_tietokannasta();
 
     hyokkaa.addEventListener("click", ()=> {
 
@@ -151,5 +152,6 @@ const vihollisen_vuoro = (vihollinen) => {
 }
 
 jatka.addEventListener("click", () =>{
+    taisteluloki.value = ' ';
     lopeta_taistelu();
 })
