@@ -112,17 +112,36 @@ async function aseta_matkustus_paivat() {
   const karttaDiv = document.querySelector('.kartta');
   const nappiDivs = karttaDiv.querySelectorAll('.kartta-nappi-kuva');
 
-// Käy läpi jokainen div ja lisää sille event listener
+  // Käy läpi jokainen div ja lisää sille event listener
   nappiDivs.forEach(div => {
     div.addEventListener('click', function() {
       // Etsi spanin value attribuutti ja tulosta se konsoliin
       const span = div.previousElementSibling;
       const spanValue = span.value;
       console.log('Span value:', spanValue);
+
+      // Katsotaan tuleeko taistelu
+      // Lisää tähän if true niin taistelufunktio alkaa.
+      // Else eventti
+      taistelu_mahdollisuus(spanValue)
     });
   });
 
 }
+
+
+// Laskee mahdollisuuden tasiteluun
+async function taistelu_mahdollisuus(matkan_pituus) {
+  const mahdollisuus = Math.floor(Math.random() * 20) + 1;
+  const ei_taistelua = parseInt(pelaaja_olio.pelaaja_suojaus) - parseInt(matkan_pituus)
+  if (mahdollisuus > ei_taistelua) {
+    console.log('taistelu alkaa')
+    return true}
+  else {
+    console.log('ei taistelua')
+    return false}
+}
+
 
 // Hakee Flask tietokannasta bossin
 async function hae_random_bossi() {
@@ -149,4 +168,3 @@ async function tallennuksen_poisto_ja_pisteet() {
   return vastaus;
 
 }
-
