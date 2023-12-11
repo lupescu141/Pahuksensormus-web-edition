@@ -40,7 +40,6 @@ const pelaaja_info = document.querySelector('.pelaaja-info');
 const hyokkaa_tooltip = document.getElementById("hyokkaa-tooltip");
 
 
-
 // Hoitaa alkuvalikon esittelyn sivun latautuessa
 document.addEventListener('DOMContentLoaded', async function() {
   // Etsi vasemman puolen elementti ja aseta sille display: none;
@@ -63,3 +62,56 @@ document.addEventListener('DOMContentLoaded', async function() {
   }
 
 });
+
+
+// Funktio joka hoitaa matkustuksen ja kutsuu taistelua jos taistelu tapahtuu
+async function matkustaminen() {
+  const kohteet = await hae_matkustus_paivat();
+
+  if (kartta) {
+    // Etsi kaikki span-elementit kartta-divin sisältä
+    const spanit = kartta.querySelectorAll('.tooltiptext');
+
+    // Käy läpi jokainen span-elementti
+    for (let span of spanit) {
+      // Saadaan span-elementin id eli kohteen nimi
+      const span_id = span.id;
+
+      // Etsi vastaava kohde-elementti kartta-divin sisältä
+      const kohde = kartta.querySelector(`#${span_id}`);
+
+      // Tarkista, onko kohde-elementti olemassa
+      if (kohde) {
+        for (let laskettu_matka of kohteet) {
+          if (laskettu_matka.fantasia_nimi === span_id) {
+            // Päivitä spanin teksti
+            span.value = laskettu_matka.matka_pv;
+            span.textContent = `${span_id} : ${laskettu_matka.matka_pv} päivän matkustus`;
+            // Tallennetaan name arvoon kohteen id jotta voidaan asetta se pelaajalle
+            span.name = laskettu_matka.id
+          }
+        }
+      } else {
+        console.error('Kohde-elementtiä ei löytynyt spanille', span);
+      }
+    }
+  } else {
+    console.error('Kartta-elementtiä ei löytynyt.');
+  }
+
+
+  // Käy läpi jokainen div ja lisää sille event listener
+  kartta_nappi.forEach(div => {
+    div.addEventListener('click', async function() {
+      // Etsi spanin value attribuutti ja tulosta se konsoliin
+      const span = div.previousElementSibling;
+      const matkustus_paivien_maara = span.value;
+      console.log('päivien määrä:', matkustus_paivien_maara);
+
+      pelaaja_olio.pelaaja_sijaint = span.name
+      console.log('sijainnin id ' + span.name)
+      console.log('pelaajan sijainnin id ' + pelaaja_olio.pelaaja_sijaint)
+      await taistelu_mahdollisuus(matkustus_paivien_maara);
+    });
+  });
+}

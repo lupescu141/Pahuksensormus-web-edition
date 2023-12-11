@@ -306,7 +306,8 @@ def laske_etäisyydet(pelaajan_sijainti):
             matka = 4
         vastaus = {
             'fantasia_nimi': kohde['fantasia_nimi'],
-            'matka_pv': matka
+            'matka_pv': matka,
+            'id' : kohde['id']
         }
         kohteet_ja_matkat.append(vastaus)
 

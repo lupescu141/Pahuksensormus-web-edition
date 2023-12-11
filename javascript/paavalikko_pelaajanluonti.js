@@ -81,7 +81,7 @@ hahmoluokka_kuva.forEach(kuva => {
         oikea_puoli.style.display = 'flex';
         kartta.style.display = 'flex';
 
-        await aseta_matkustus_paivat();
+        await matkustaminen();
 
       }
     });
@@ -134,7 +134,7 @@ async function avaa_lataapeli_valikko() {
       oikea_puoli.style.display = 'flex';
       kartta.style.display = 'flex';
 
-      await aseta_matkustus_paivat();
+      await matkustaminen();
     });
   }
 }

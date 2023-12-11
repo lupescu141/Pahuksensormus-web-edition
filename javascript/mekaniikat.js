@@ -81,56 +81,6 @@ async function hae_matkustus_paivat() {
   return vastaus;
 }
 
-// Asettaa matkustus päivät kohteisiin
-async function aseta_matkustus_paivat() {
-  const kohteet = await hae_matkustus_paivat();
-
-  if (kartta) {
-    // Etsi kaikki span-elementit kartta-divin sisältä
-    const spanit = kartta.querySelectorAll('.tooltiptext');
-
-    // Käy läpi jokainen span-elementti
-    for (let span of spanit) {
-      // Saadaan span-elementin id
-      const spanId = span.id;
-
-      // Etsi vastaava kohde-elementti kartta-divin sisältä
-      const kohde = kartta.querySelector(`#${spanId}`);
-
-      // Tarkista, onko kohde-elementti olemassa
-      if (kohde) {
-        for (let laskettu_matka of kohteet) {
-          if (laskettu_matka.fantasia_nimi === spanId) {
-            // Päivitä spanin teksti
-            span.value = laskettu_matka.matka_pv;
-            span.textContent = `${spanId} : ${laskettu_matka.matka_pv} päivän matkustus`;
-          }
-        }
-      } else {
-        console.error('Kohde-elementtiä ei löytynyt spanille', span);
-      }
-    }
-  } else {
-    console.error('Kartta-elementtiä ei löytynyt.');
-  }
-
-
-  // Käy läpi jokainen div ja lisää sille event listener
-  kartta_nappi.forEach(div => {
-    div.addEventListener('click', function() {
-      // Etsi spanin value attribuutti ja tulosta se konsoliin
-      const span = div.previousElementSibling;
-      const spanValue = span.value;
-      console.log('Span value:', spanValue);
-
-      // Katsotaan tuleeko taistelu
-      // Lisää tähän if true niin taistelufunktio alkaa.
-      // Else eventti
-      taistelu_mahdollisuus(spanValue);
-    });
-  });
-
-}
 
 // Laskee mahdollisuuden tasiteluun
 async function taistelu_mahdollisuus(matkan_pituus) {
@@ -168,5 +118,9 @@ async function tallennuksen_poisto_ja_pisteet() {
   const vastaus = await response.json();
   console.log(vastaus);
   return vastaus;
+
+}
+
+async function aseta_uusi_kohde() {
 
 }
