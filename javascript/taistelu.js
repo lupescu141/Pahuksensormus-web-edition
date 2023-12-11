@@ -27,6 +27,7 @@ const taistelu = async () => {
 
   //hakee random vihollisen
   let vihollinen = await hae_random_vihollinen_tietokannasta();
+  
 
   //statukset
   pelaaja_statukset = {
