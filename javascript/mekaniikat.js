@@ -7,6 +7,7 @@ async function tallenna() {
   return vastaus;
 }
 
+
 // Tyhjentää pelaajan inventaarion
 async function inventaario_tyhjennys() {
   const response = await fetch(
@@ -40,6 +41,23 @@ async function hae_inventaario() {
 }
 
 
+  // Päivittää pelaajalle maksimi HP:n ja TP:n
+async function paivita_maksimi_hp_ja_tp() {
+  const response = await fetch(
+      `http://localhost:5000/paivita_maksimi_hp_ja_tp/${pelaaja_olio.peli_id}/${pelaaja_olio.pelaaja_maksimi_hp}/${pelaaja_olio.pelaaja_maksimi_tp}`)
+  const vastaus = await response.json();
+  console.log(vastaus);
+// Tarkistaa, onko pelaajan hp sama kuin maksimi_hp ja tp sama kuin maksimi_tp
+if (pelaaja_olio.hp === pelaaja_olio.maksimi_hp && pelaaja_olio.tp === pelaaja_olio.maksimi_tp) {
+  console.log("Pelaajan HP ja TP ovat jo maksimissaan!");
+} else {
+  // Päivittää pelaajalle maksimi HP:n ja TP:n
+  pelaaja_olio.maksimi_hp = vastaus.maksimi_hp;
+  pelaaja_olio.maksimi_tp = vastaus.maksimi_tp;
+  return vastaus;
+}
+
+
 // Hakee pelaajan luokan taidot
 async function hae_luokan_taidot() {
   // Hakee Flask tietokannasta pelaajan taidot
@@ -51,7 +69,7 @@ async function hae_luokan_taidot() {
 }
 
 
-// Laskee kohtiden sijainnit pelaajan sijainnin perusteella. Palauttaa kohteen nimen ja ja päivien määrän
+// Laskee kohteiden sijainnit pelaajan sijainnin perusteella. Palauttaa kohteen nimen ja ja päivien määrän
 async function hae_matkustus_paivat() {
   // Hakee Flask tietokannasta kohteiden matkustus päivät pelaaja sijainnin mukaan
   const response = await fetch(
@@ -62,6 +80,7 @@ async function hae_matkustus_paivat() {
   return vastaus;
 }
 
+
 // Hakee Flask tietokannasta bossin
 async function hae_random_bossi() {
   const response = await fetch(`http://localhost:5000/hae_random_bossi`);
@@ -69,6 +88,7 @@ async function hae_random_bossi() {
   console.log(vastaus);
   return vastaus;
 }
+
 
 // Hakee Flask tietokannasta esineen
 async function hae_esine() {
@@ -78,11 +98,14 @@ async function hae_esine() {
   return vastaus;
 }
 
+
 // Hakee Flask tietokannasta tallennuksen poiston
 async function tallennuksen_poisto_ja_pisteet() {
   const response = await fetch(
-      `http://localhost:5000/tallennuksen_poisto_ja_pisteet/${pelaaja_olio.peli_id}/${pelaaja_olio.pelaaja_nimi}/${pelaaja_olio.menneet_paivat}`);
+    `http://localhost:5000/tallennuksen_poisto_ja_pisteet/${pelaaja_olio.peli_id}/${pelaaja_olio.pelaaja_nimi}/${pelaaja_olio.menneet_paivat}`);
   const vastaus = await response.json();
   console.log(vastaus);
   return vastaus;
+  }
 }
+
