@@ -37,6 +37,8 @@ const pelaaja_hp = document.getElementById('pelaaja-hp');
 const pelaaja_status = document.querySelector('.pelaaja-status');
 const taistelu_rivi = document.querySelector('.taistelu-rivi');
 const pelaaja_info = document.querySelector('.pelaaja-info');
+const hyokkaa_tooltip = document.getElementById("hyokkaa-tooltip");
+
 
 // Hoitaa alkuvalikon esittelyn sivun latautuessa
 document.addEventListener('DOMContentLoaded', async function() {
