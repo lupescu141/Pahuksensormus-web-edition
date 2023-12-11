@@ -1,5 +1,5 @@
 // Avaa taistelu näkymän. pelaaja-status siirretään alaspäin jotta arvot pysyvät samoina
-function avaa_taistelu_ikkuna() {
+async function avaa_taistelu_ikkuna() {
   // Asettaa oikean puolen taistelu näkymään
   document.querySelector('.oikea-puoli').style.display = 'none';
   document.querySelector('.oikea-puoli-taistelu').style.display = 'block';
@@ -14,12 +14,12 @@ function avaa_taistelu_ikkuna() {
   napit.forEach(nappi => {
     nappi.style.display = 'none';
 
-      // Avaa taisteluvalikon napit
-   document.querySelectorAll('.taistelu-valikko-nappi').forEach(nappi => {
-    nappi.style.display = 'block';
-  });
+    // Avaa taisteluvalikon napit
+    document.querySelectorAll('.taistelu-valikko-nappi').forEach(nappi => {
+      nappi.style.display = 'block';
+    });
 
-   jatka.style.display = 'none'
+    jatka.style.display = 'none'
   });
 
   // Tuodaan vihollisen kuva esiin pelaajan viereen
@@ -33,7 +33,7 @@ function avaa_taistelu_ikkuna() {
   taistelu_rivi.insertBefore(pelaaja_status, taistelu_rivi.firstChild);
 
   // Testausta varten
-  taistelu();
+  await taistelu();
 }
 
 
