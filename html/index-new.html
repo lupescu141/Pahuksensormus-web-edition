@@ -164,8 +164,9 @@
             <div class="valikko-taistelu">
 
                 <button class="taistelu-valikko-nappi" id="hyokkaa">Hyökkää</button>
-                <button class="taistelu-valikko-nappi" onclick="nayta_valikko('taidot')">Taidot</button>
-                <button class="taistelu-valikko-nappi" onclick="nayta_valikko('esineet')">Esineet</button>
+                <button class="taistelu-valikko-nappi" id="taidot" >Taidot</button>
+                <button class="taistelu-valikko-nappi" id="esineet">Esineet</button>
+                <button class="taistelu-valikko-nappi jatka-nappi" id="jatka">Jatka</button>
                 <button class="taistelu-valikko-nappi" onclick="lopeta_taistelu()">Lopeta</button>
 
                 <!-- Iskut -->
@@ -174,15 +175,36 @@
                 <button id="isku3" class="isku-nappi hyokkaa isku3">Isku 3</button>
 
                 <!-- Taidot -->
-                <button id="taito1" class="isku-nappi taidot taito1">Taito 1</button>
-                <button id="taito2" class="isku-nappi taidot taito2">Taito 2</button>
-                <button id="taito3" class="isku-nappi taidot taito3">Taito 3</button>
+                <div class="taito-napit">
+
+                    <div class="tooltip">
+                        <span></span>
+                        <button id="taito1" class="isku-nappi taidot taito1">Taito 1</button>
+                    </div>
+
+                    <div class="tooltip">
+                        <span></span>
+                        <button id="taito2" class="isku-nappi taidot taito2">Taito 2</button>
+                    </div>
+
+                    <div class="tooltip">
+                        <span></span>
+                        <button id="taito3" class="isku-nappi taidot taito3">Taito 3</button>
+                    </div>
+                </div>
 
                 <!-- Esineet -->
-                <button id="esine1" class="isku-nappi esineet esine1">Esine 1</button>
-                <button id="esine2" class="isku-nappi esineet esine2">Esine 2</button>
-                <button id="esine3" class="isku-nappi esineet esine3">Esine 3</button>
-
+                <div class="esine-napit">
+                    <button id="esine1" class="isku-nappi esineet esine1">Esine 1</button>
+                    <button id="esine2" class="isku-nappi esineet esine2">Esine 2</button>
+                    <button id="esine3" class="isku-nappi esineet esine3">Esine 3</button>
+                    <button id="esine4" class="isku-nappi esineet esine1">Esine 4</button>
+                    <button id="esine5" class="isku-nappi esineet esine2">Esine 5</button>
+                    <button id="esine6" class="isku-nappi esineet esine3">Esine 6</button>
+                    <button id="esine7" class="isku-nappi esineet esine1">Esine 7</button>
+                    <button id="esine8" class="isku-nappi esineet esine2">Esine 8</button>
+                    <button id="esine9" class="isku-nappi esineet esine3">Esine 9</button>
+                </div>
                 <button id="palaa" class="isku-nappi palaa" onclick="palaa()">Palaa</button>
 
             </div>
@@ -196,7 +218,7 @@
 
                 <table>
                     <tr>
-                        <td>HP <span id="vihollinen-hp">999</span></td>
+                        <td>HP <span id="vihollinen-hp" style="color: firebrick">999</span></td>
                     </tr>
                 </table>
 

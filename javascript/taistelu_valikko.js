@@ -71,7 +71,7 @@ function nayta_valikko(valikko) {
 
 // Piilottaa kaikki napit taistelu valikosta
 function piilota_kaikki_napit() {
-  document.querySelectorAll('.taistelu-valikko-nappi, .isku-nappi').
+  document.querySelectorAll('.taistelu-valikko-nappi, .isku-nappi, .jatka-nappi').
       forEach(nappi => {
         nappi.style.display = 'none';
       });

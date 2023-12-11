@@ -1,3 +1,5 @@
+
+
 // Luodaan pelaajalle muuttuja
 let pelaaja_olio;
 
