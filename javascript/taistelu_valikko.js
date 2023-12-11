@@ -9,6 +9,7 @@ function avaa_taistelu_ikkuna() {
   const taistelu_rivi = document.querySelector('.taistelu-rivi');
 
   // Piilota Lepää ja Esineet napit status ikkunasta
+  document.querySelector(".esine-napit").style.display = 'none';
   const napit = pelaaja_status.querySelectorAll('.nappi');
   napit.forEach(nappi => {
     nappi.style.display = 'none';
@@ -71,6 +72,7 @@ function nayta_valikko(valikko) {
 
 // Piilottaa kaikki napit taistelu valikosta
 function piilota_kaikki_napit() {
+  document.querySelector(".esine-napit").style.display = 'none';
   document.querySelectorAll('.taistelu-valikko-nappi, .isku-nappi, .jatka-nappi').
       forEach(nappi => {
         nappi.style.display = 'none';
