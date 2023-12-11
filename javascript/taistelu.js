@@ -150,3 +150,6 @@ const vihollisen_vuoro = (vihollinen) => {
 
 }
 
+jatka.addEventListener("click", () =>{
+    lopeta_taistelu();
+})

@@ -7,7 +7,6 @@ async function tallenna() {
   return vastaus;
 }
 
-
 // Tyhjentää pelaajan inventaarion
 async function inventaario_tyhjennys() {
   const response = await fetch(
@@ -69,15 +68,52 @@ async function hae_luokan_taidot() {
 }
 
 
-// Laskee kohteiden sijainnit pelaajan sijainnin perusteella. Palauttaa kohteen nimen ja ja päivien määrän
+// Laskee kohtiden sijainnit pelaajan sijainnin perusteella. Palauttaa kohteen nimen ja päivien määrän
+// kutsutaan aseta_matkustus_paivat funktiossa
 async function hae_matkustus_paivat() {
   // Hakee Flask tietokannasta kohteiden matkustus päivät pelaaja sijainnin mukaan
   const response = await fetch(
       `http://localhost:5000/laske_etäisyydet/${pelaaja_olio.pelaaja_sijainti}`);
   const vastaus = await response.json();
   console.log(vastaus);
-  pelaaja_olio.pelaaja_sijainti = 10;
   return vastaus;
+}
+
+
+// Asettaa matkustus päivät kohteisiin
+async function aseta_matkustus_paivat() {
+  const kohteet = await hae_matkustus_paivat();
+
+  const kartta = document.querySelector('.kartta');
+
+  if (kartta) {
+    // Etsi kaikki span-elementit kartta-divin sisältä
+    const spanit = kartta.querySelectorAll('.tooltiptext');
+
+    // Käy läpi jokainen span-elementti
+    for (let span of spanit) {
+      // Saadaan span-elementin id
+      const spanId = span.id;
+
+      // Etsi vastaava kohde-elementti kartta-divin sisältä
+      const kohde = kartta.querySelector(`#${spanId}`);
+
+      // Tarkista, onko kohde-elementti olemassa
+      if (kohde) {
+        for (let laskettu_matka of kohteet) {
+          if (laskettu_matka.fantasia_nimi === spanId) {
+            // Päivitä spanin teksti
+            span.value = laskettu_matka.matka_pv
+            span.textContent = `${spanId} : ${laskettu_matka.matka_pv} päivän matkustus`;
+          }
+        }
+      } else {
+        console.error('Kohde-elementtiä ei löytynyt spanille', span);
+      }
+    }
+  } else {
+    console.error('Kartta-elementtiä ei löytynyt.');
+  }
 }
 
 
@@ -89,7 +125,6 @@ async function hae_random_bossi() {
   return vastaus;
 }
 
-
 // Hakee Flask tietokannasta esineen
 async function hae_esine() {
   const response = await fetch(`http://localhost:5000/hae_esine`);
@@ -98,11 +133,10 @@ async function hae_esine() {
   return vastaus;
 }
 
-
 // Hakee Flask tietokannasta tallennuksen poiston
 async function tallennuksen_poisto_ja_pisteet() {
   const response = await fetch(
-    `http://localhost:5000/tallennuksen_poisto_ja_pisteet/${pelaaja_olio.peli_id}/${pelaaja_olio.pelaaja_nimi}/${pelaaja_olio.menneet_paivat}`);
+      `http://localhost:5000/tallennuksen_poisto_ja_pisteet/${pelaaja_olio.peli_id}/${pelaaja_olio.pelaaja_nimi}/${pelaaja_olio.menneet_paivat}`);
   const vastaus = await response.json();
   console.log(vastaus);
   return vastaus;
