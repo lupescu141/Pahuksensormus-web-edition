@@ -49,7 +49,7 @@
 
 // Peli Eventti: Uudentoivon kylä
 
-function uudentoivonKylaEvent(pelaaja) {
+function uudentoivonKylaEvent(pelaaja_olio) {
   textarea.value += '\nTervetuloa Uudentoivon kylään, seikkailusi alkupisteeseen. Kylässä on monia tapahtumia ja mahdollisuuksia, jotka voivat muokata matkaasi. Tästä seikkailusi alkaa, onnea matkaan!';
 
   // Arpoo randomilla pelaajalle eventin 1, 2, 3.
@@ -58,13 +58,13 @@ function uudentoivonKylaEvent(pelaaja) {
   // Ohjaa valintoihin, jossa pelaaja saa valita mitä tekee.
   switch (event_nro) {
     case 1:
-      tavernaNoppapeli(pelaaja);
+      tavernaNoppapeli(pelaaja_olio);
       break;
     case 2:
-      laksiaisjuhlat(pelaaja);
+      laksiaisjuhlat(pelaaja_olio);
       break;
     case 3:
-      kylanKummallinenKojukauppias(pelaaja);
+      kylanKummallinenKojukauppias(pelaaja_olio);
       break;
     default:
       console.log('Virheellinen syöte, valitse uudelleen!');

@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', async function() {
   // Etsi vasemman puolen elementti ja aseta sille display: none;
   document.querySelector('.vasen-puoli').style.display = 'none';
   document.querySelector('.kartta').style.display = 'none';
+  document.getElementById('loki').value = '';
 
   const response = await fetch(`http://localhost:5000/hae_ennatukset`);
   const vastaus = await response.json();

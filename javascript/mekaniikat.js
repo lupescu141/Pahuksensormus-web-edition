@@ -38,17 +38,17 @@ async function hae_inventaario() {
 }
 
 // Päivittää pelaajalle maksimi HP:n ja TP:n
-async function paivita_maksimi_hp_ja_tp() {
+async function lepo() {
 // Tarkistaa, onko pelaajan hp sama kuin maksimi_hp ja tp sama kuin maksimi_tp
   if (pelaaja_olio.hp === pelaaja_olio.maksimi_hp &&
       pelaaja_olio.pelaaja_taitopiste ===
       pelaaja_olio.pelaaja_maksimi_taitopiste) {
-    console.log('Pelaajan HP ja TP ovat jo maksimissaan!');
+    textarea.value += '\n-Pelaajan HP ja TP ovat jo maksimissaan!';
   } else {
     // Päivittää pelaajalle maksimi HP:n ja TP:n
     pelaaja_olio.hp = pelaaja_olio.maksimi_hp;
     pelaaja_olio.pelaaja_taitopiste = pelaaja_olio.pelaaja_maksimi_taitopiste;
-    console.log('päivitetty');
+    textarea.value += '\n-päivitetty';
   }
 }
 
@@ -136,10 +136,10 @@ async function taistelu_mahdollisuus(matkan_pituus) {
   const ei_taistelua = parseInt(pelaaja_olio.pelaaja_suojaus) - parseInt(matkan_pituus)
   if (mahdollisuus > ei_taistelua) {
     console.log('taistelu alkaa')
-    return true}
+    avaa_taistelu_ikkuna()}
   else {
     console.log('ei taistelua')
-    return false}
+    }
 }
 
 
