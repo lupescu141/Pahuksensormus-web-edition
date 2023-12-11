@@ -122,6 +122,8 @@ hahmoluokka_kuva.forEach(kuva => {
         document.querySelector('.oikea-puoli').style.display = 'flex';
         document.querySelector('.kartta').style.display = 'flex';
 
+        await aseta_matkustus_paivat()
+
       }
     });
 
@@ -174,6 +176,8 @@ async function avaa_lataapeli_valikko() {
       document.querySelector('.vasen-puoli').style.display = 'flex';
       document.querySelector('.oikea-puoli').style.display = 'flex';
       document.querySelector('.kartta').style.display = 'flex';
+
+      await aseta_matkustus_paivat()
     });
   }
 }
