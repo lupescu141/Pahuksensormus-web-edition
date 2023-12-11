@@ -86,6 +86,7 @@ async function aseta_matkustus_paivat() {
         for (let laskettu_matka of kohteet) {
           if (laskettu_matka.fantasia_nimi === spanId) {
             // Päivitä spanin teksti
+            span.value = laskettu_matka.matka_pv
             span.textContent = `${spanId} : ${laskettu_matka.matka_pv} päivän matkustus`;
           }
         }
