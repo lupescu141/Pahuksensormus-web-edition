@@ -27,7 +27,9 @@ const taistelu = async () => {
 
   //hakee random vihollisen
   let vihollinen = await hae_random_vihollinen_tietokannasta();
-  
+
+  hyokkaa_tooltip.innerText = `Perus hyökkäys 1-${pelaaja_olio.pelaaja_isku + 2} vahinkoa.`
+  hyokkaa_tooltip.style.display = `hidden`;
 
   //statukset
   pelaaja_statukset = {
