@@ -1,3 +1,8 @@
+// Haetaan lokin elementti
+const loki = document.getElementById('loki');
+
+
+
 // Tallentaa pelaajan tietokantaan
 async function tallenna() {
   const response = await fetch(
@@ -37,101 +42,141 @@ async function hae_inventaario() {
   return pelaaja_inventaario = vastaus;
 }
 
+
 // Päivittää pelaajalle maksimi HP:n ja TP:n
-async function paivita_maksimi_hp_ja_tp() {
+async function lepo() {
 // Tarkistaa, onko pelaajan hp sama kuin maksimi_hp ja tp sama kuin maksimi_tp
-  if (pelaaja_olio.hp === pelaaja_olio.maksimi_hp &&
+  if (pelaaja_olio.pelaaja_hp === pelaaja_olio.pelaaja_maksimi_hp &&
       pelaaja_olio.pelaaja_taitopiste ===
       pelaaja_olio.pelaaja_maksimi_taitopiste) {
-    console.log('Pelaajan HP ja TP ovat jo maksimissaan!');
+    textarea.value += '\n-Pelaajan HP ja TP ovat jo maksimissaan!';
+    loki.scrollTop = loki.scrollHeight;
   } else {
     // Päivittää pelaajalle maksimi HP:n ja TP:n
-    pelaaja_olio.hp = pelaaja_olio.maksimi_hp;
+    pelaaja_olio.pelaaja_hp = pelaaja_olio.pelaaja_maksimi_hp;
     pelaaja_olio.pelaaja_taitopiste = pelaaja_olio.pelaaja_maksimi_taitopiste;
-    console.log('päivitetty');
+    textarea.value += '\n-Lepäsit yhden päivä. HP ja TP ovat maksimissaan';
+    loki.scrollTop = loki.scrollHeight;
+
+    document.getElementById(
+        'pelaaja-hp').textContent = pelaaja_olio.pelaaja_hp;
+    document.getElementById(
+        'pelaaja-tp').textContent = pelaaja_olio.pelaaja_taitopiste;
   }
 }
 
 // Hakee pelaajan luokan taidot
-  async function hae_luokan_taidot() {
-    // Hakee Flask tietokannasta pelaajan taidot
-    const response = await fetch(
-        `http://localhost:5000/hae_luokan_taidot/${pelaaja_olio.pelaaja_luokka}`);
-    const vastaus = await response.json();
-    console.log(vastaus);
-    return pelaaja_taidot = vastaus;
-  }
+async function hae_luokan_taidot() {
+  // Hakee Flask tietokannasta pelaajan taidot
+  const response = await fetch(
+      `http://localhost:5000/hae_luokan_taidot/${pelaaja_olio.pelaaja_luokka}`);
+  const vastaus = await response.json();
+  console.log(vastaus);
+  return pelaaja_taidot = vastaus;
+}
 
 // Laskee kohtiden sijainnit pelaajan sijainnin perusteella. Palauttaa kohteen nimen ja päivien määrän
 // kutsutaan aseta_matkustus_paivat funktiossa
-  async function hae_matkustus_paivat() {
-    // Hakee Flask tietokannasta kohteiden matkustus päivät pelaaja sijainnin mukaan
-    const response = await fetch(
-        `http://localhost:5000/laske_etäisyydet/${pelaaja_olio.pelaaja_sijainti}`);
-    const vastaus = await response.json();
-    console.log(vastaus);
-    return vastaus;
-  }
+async function hae_matkustus_paivat() {
+  // Hakee Flask tietokannasta kohteiden matkustus päivät pelaaja sijainnin mukaan
+  const response = await fetch(
+      `http://localhost:5000/laske_etäisyydet/${pelaaja_olio.pelaaja_sijainti}`);
+  const vastaus = await response.json();
+  console.log(vastaus);
+  return vastaus;
+}
 
 // Asettaa matkustus päivät kohteisiin
-  async function aseta_matkustus_paivat() {
-    const kohteet = await hae_matkustus_paivat();
+async function aseta_matkustus_paivat() {
+  const kohteet = await hae_matkustus_paivat();
 
-    const kartta = document.querySelector('.kartta');
+  const kartta = document.querySelector('.kartta');
 
-    if (kartta) {
-      // Etsi kaikki span-elementit kartta-divin sisältä
-      const spanit = kartta.querySelectorAll('.tooltiptext');
+  if (kartta) {
+    // Etsi kaikki span-elementit kartta-divin sisältä
+    const spanit = kartta.querySelectorAll('.tooltiptext');
 
-      // Käy läpi jokainen span-elementti
-      for (let span of spanit) {
-        // Saadaan span-elementin id
-        const spanId = span.id;
+    // Käy läpi jokainen span-elementti
+    for (let span of spanit) {
+      // Saadaan span-elementin id
+      const spanId = span.id;
 
-        // Etsi vastaava kohde-elementti kartta-divin sisältä
-        const kohde = kartta.querySelector(`#${spanId}`);
+      // Etsi vastaava kohde-elementti kartta-divin sisältä
+      const kohde = kartta.querySelector(`#${spanId}`);
 
-        // Tarkista, onko kohde-elementti olemassa
-        if (kohde) {
-          for (let laskettu_matka of kohteet) {
-            if (laskettu_matka.fantasia_nimi === spanId) {
-              // Päivitä spanin teksti
-              span.value = laskettu_matka.matka_pv;
-              span.textContent = `${spanId} : ${laskettu_matka.matka_pv} päivän matkustus`;
-            }
+      // Tarkista, onko kohde-elementti olemassa
+      if (kohde) {
+        for (let laskettu_matka of kohteet) {
+          if (laskettu_matka.fantasia_nimi === spanId) {
+            // Päivitä spanin teksti
+            span.value = laskettu_matka.matka_pv;
+            span.textContent = `${spanId} : ${laskettu_matka.matka_pv} päivän matkustus`;
           }
-        } else {
-          console.error('Kohde-elementtiä ei löytynyt spanille', span);
         }
+      } else {
+        console.error('Kohde-elementtiä ei löytynyt spanille', span);
       }
-    } else {
-      console.error('Kartta-elementtiä ei löytynyt.');
     }
+  } else {
+    console.error('Kartta-elementtiä ei löytynyt.');
   }
+
+  // Etsi kaikki kartta-divin sisällä olevat divit
+  const karttaDiv = document.querySelector('.kartta');
+  const nappiDivs = karttaDiv.querySelectorAll('.kartta-nappi-kuva');
+
+  // Käy läpi jokainen div ja lisää sille event listener
+  nappiDivs.forEach(div => {
+    div.addEventListener('click', function() {
+      // Etsi spanin value attribuutti ja tulosta se konsoliin
+      const span = div.previousElementSibling;
+      const spanValue = span.value;
+      console.log('Span value:', spanValue);
+
+      // Katsotaan tuleeko taistelu
+      // Lisää tähän if true niin taistelufunktio alkaa.
+      // Else eventti
+      taistelu_mahdollisuus(spanValue);
+    });
+  });
+
+}
+
+// Laskee mahdollisuuden tasiteluun
+async function taistelu_mahdollisuus(matkan_pituus) {
+  const mahdollisuus = Math.floor(Math.random() * 20) + 1;
+  const ei_taistelua = parseInt(pelaaja_olio.pelaaja_suojaus) -
+      parseInt(matkan_pituus);
+  if (mahdollisuus > ei_taistelua) {
+    console.log('taistelu alkaa');
+    avaa_taistelu_ikkuna();
+  } else {
+    console.log('ei taistelua');
+  }
+}
 
 // Hakee Flask tietokannasta bossin
-  async function hae_random_bossi() {
-    const response = await fetch(`http://localhost:5000/hae_random_bossi`);
-    const vastaus = await response.json();
-    console.log(vastaus);
-    return vastaus;
-  }
+async function hae_random_bossi() {
+  const response = await fetch(`http://localhost:5000/hae_random_bossi`);
+  const vastaus = await response.json();
+  console.log(vastaus);
+  return vastaus;
+}
 
 // Hakee Flask tietokannasta esineen
-  async function hae_esine() {
-    const response = await fetch(`http://localhost:5000/hae_esine`);
-    const vastaus = await response.json();
-    console.log(vastaus);
-    return vastaus;
-  }
+async function hae_esine() {
+  const response = await fetch(`http://localhost:5000/hae_esine`);
+  const vastaus = await response.json();
+  console.log(vastaus);
+  return vastaus;
+}
 
 // Hakee Flask tietokannasta tallennuksen poiston
-  async function tallennuksen_poisto_ja_pisteet() {
-    const response = await fetch(
-        `http://localhost:5000/tallennuksen_poisto_ja_pisteet/${pelaaja_olio.peli_id}/${pelaaja_olio.pelaaja_nimi}/${pelaaja_olio.menneet_paivat}`);
-    const vastaus = await response.json();
-    console.log(vastaus);
-    return vastaus;
+async function tallennuksen_poisto_ja_pisteet() {
+  const response = await fetch(
+      `http://localhost:5000/tallennuksen_poisto_ja_pisteet/${pelaaja_olio.peli_id}/${pelaaja_olio.pelaaja_nimi}/${pelaaja_olio.menneet_paivat}`);
+  const vastaus = await response.json();
+  console.log(vastaus);
+  return vastaus;
 
-  }
-
+}

@@ -58,13 +58,13 @@ function uudentoivonKylaEvent(pelaaja) {
   // Ohjaa valintoihin, jossa pelaaja saa valita mitä tekee.
   switch (event_nro) {
     case 1:
-      tavernaNoppapeli(pelaaja);
+      tavernaNoppapeli(pelaaja_olio);
       break;
     case 2:
-      laksiaisjuhlat(pelaaja);
+      laksiaisjuhlat(pelaaja_olio);
       break;
     case 3:
-      kylanKummallinenKojukauppias(pelaaja);
+      kylanKummallinenKojukauppias(pelaaja_olio);
       break;
     default:
       console.log('Virheellinen syöte, valitse uudelleen!');

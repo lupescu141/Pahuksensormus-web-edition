@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', async function() {
   // Etsi vasemman puolen elementti ja aseta sille display: none;
   document.querySelector('.vasen-puoli').style.display = 'none';
   document.querySelector('.kartta').style.display = 'none';
+  document.getElementById('loki').value = '';
 
   const response = await fetch(`http://localhost:5000/hae_ennatukset`);
   const vastaus = await response.json();
@@ -121,6 +122,8 @@ hahmoluokka_kuva.forEach(kuva => {
         document.querySelector('.oikea-puoli').style.display = 'flex';
         document.querySelector('.kartta').style.display = 'flex';
 
+        await aseta_matkustus_paivat()
+
       }
     });
 
@@ -173,6 +176,8 @@ async function avaa_lataapeli_valikko() {
       document.querySelector('.vasen-puoli').style.display = 'flex';
       document.querySelector('.oikea-puoli').style.display = 'flex';
       document.querySelector('.kartta').style.display = 'flex';
+
+      await aseta_matkustus_paivat()
     });
   }
 }
