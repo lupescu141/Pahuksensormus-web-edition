@@ -1,3 +1,8 @@
+// Haetaan lokin elementti
+const loki = document.getElementById('loki');
+
+
+
 // Tallentaa pelaajan tietokantaan
 async function tallenna() {
   const response = await fetch(
@@ -37,6 +42,7 @@ async function hae_inventaario() {
   return pelaaja_inventaario = vastaus;
 }
 
+
 // Päivittää pelaajalle maksimi HP:n ja TP:n
 async function lepo() {
 // Tarkistaa, onko pelaajan hp sama kuin maksimi_hp ja tp sama kuin maksimi_tp
@@ -44,11 +50,13 @@ async function lepo() {
       pelaaja_olio.pelaaja_taitopiste ===
       pelaaja_olio.pelaaja_maksimi_taitopiste) {
     textarea.value += '\n-Pelaajan HP ja TP ovat jo maksimissaan!';
+    loki.scrollTop = loki.scrollHeight;
   } else {
     // Päivittää pelaajalle maksimi HP:n ja TP:n
     pelaaja_olio.pelaaja_hp = pelaaja_olio.pelaaja_maksimi_hp;
     pelaaja_olio.pelaaja_taitopiste = pelaaja_olio.pelaaja_maksimi_taitopiste;
     textarea.value += '\n-Lepäsit yhden päivä. HP ja TP ovat maksimissaan';
+    loki.scrollTop = loki.scrollHeight;
 
     document.getElementById(
         'pelaaja-hp').textContent = pelaaja_olio.pelaaja_hp;
