@@ -40,15 +40,20 @@ async function hae_inventaario() {
 // Päivittää pelaajalle maksimi HP:n ja TP:n
 async function lepo() {
 // Tarkistaa, onko pelaajan hp sama kuin maksimi_hp ja tp sama kuin maksimi_tp
-  if (pelaaja_olio.hp === pelaaja_olio.maksimi_hp &&
+  if (pelaaja_olio.pelaaja_hp === pelaaja_olio.pelaaja_maksimi_hp &&
       pelaaja_olio.pelaaja_taitopiste ===
       pelaaja_olio.pelaaja_maksimi_taitopiste) {
     textarea.value += '\n-Pelaajan HP ja TP ovat jo maksimissaan!';
   } else {
     // Päivittää pelaajalle maksimi HP:n ja TP:n
-    pelaaja_olio.hp = pelaaja_olio.maksimi_hp;
+    pelaaja_olio.pelaaja_hp = pelaaja_olio.pelaaja_maksimi_hp;
     pelaaja_olio.pelaaja_taitopiste = pelaaja_olio.pelaaja_maksimi_taitopiste;
-    textarea.value += '\n-päivitetty';
+    textarea.value += '\n-Lepäsit yhden päivä. HP ja TP ovat maksimissaan';
+
+    document.getElementById(
+        'pelaaja-hp').textContent = pelaaja_olio.pelaaja_hp;
+    document.getElementById(
+        'pelaaja-tp').textContent = pelaaja_olio.pelaaja_taitopiste;
   }
 }
 
@@ -123,25 +128,24 @@ async function aseta_matkustus_paivat() {
       // Katsotaan tuleeko taistelu
       // Lisää tähän if true niin taistelufunktio alkaa.
       // Else eventti
-      taistelu_mahdollisuus(spanValue)
+      taistelu_mahdollisuus(spanValue);
     });
   });
 
 }
 
-
 // Laskee mahdollisuuden tasiteluun
 async function taistelu_mahdollisuus(matkan_pituus) {
   const mahdollisuus = Math.floor(Math.random() * 20) + 1;
-  const ei_taistelua = parseInt(pelaaja_olio.pelaaja_suojaus) - parseInt(matkan_pituus)
+  const ei_taistelua = parseInt(pelaaja_olio.pelaaja_suojaus) -
+      parseInt(matkan_pituus);
   if (mahdollisuus > ei_taistelua) {
-    console.log('taistelu alkaa')
-    avaa_taistelu_ikkuna()}
-  else {
-    console.log('ei taistelua')
-    }
+    console.log('taistelu alkaa');
+    avaa_taistelu_ikkuna();
+  } else {
+    console.log('ei taistelua');
+  }
 }
-
 
 // Hakee Flask tietokannasta bossin
 async function hae_random_bossi() {
