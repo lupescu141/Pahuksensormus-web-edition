@@ -142,8 +142,12 @@ async function peli_ohi(){
 async function hae_säätila() {
   const response = await fetch('https://api.openweathermap.org/data/2.5/weather?q=haiti&units=metric&appid=e34434fb9afb590f02e150bcb3eee98d');
   const vastaus = await response.json();
-  console.log(vastaus.temp);
-  return vastaus;
+  const aste = parseInt(vastaus.main.temp);
+  if (aste > 25) {
+    return 1
+  }
+  else {return 0
+  }
 }
 
 

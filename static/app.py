@@ -207,7 +207,6 @@ def tallennuksen_poisto_ja_pisteet(peli_id, pelaaja_nimi, menneet_paivat):
 # Poistaa kuolleen pelaajan
 @app.route('/peli_ohi/<peli_id>')
 def peli_ohi(peli_id):
-
     try:
         sql = (f'DELETE FROM peli WHERE peli_id = "{peli_id}";')
         kursori = conn.cursor()
@@ -312,7 +311,9 @@ def laske_etäisyydet(pelaajan_sijainti):
         loppu_koordinaatit = kohde['latitude_deg'], kohde['longitude_deg']
         alku_koordinaatit = nykyinen_sijainti['latitude_deg'], nykyinen_sijainti['longitude_deg']
         matka = distance.distance(alku_koordinaatit, loppu_koordinaatit).km
-        if matka < 75:
+        if matka < 1:
+            matka = 0
+        elif matka < 75:
             matka = 1
         elif matka < 125:
             matka = 2
