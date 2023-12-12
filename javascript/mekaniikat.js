@@ -137,3 +137,13 @@ async function peli_ohi(){
   textarea.value += `\n-Selvisit ${pelaaja_olio.menneet_paivat} Päivää.`
   return vastaus;
 }
+
+
+async function hae_säätila() {
+  const response = await fetch('https://api.openweathermap.org/data/2.5/weather?q=haiti&units=metric&appid=e34434fb9afb590f02e150bcb3eee98d');
+  const vastaus = await response.json();
+  console.log(vastaus.temp);
+  return vastaus;
+}
+
+
