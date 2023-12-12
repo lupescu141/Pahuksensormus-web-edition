@@ -31,6 +31,8 @@ async function hae_random_vihollinen_tietokannasta() {
 
 const taistelu = async () => {
 
+  taisteluloki.value += 'Jouduit taisteluun!';
+
   //hakee random vihollisen
   let vihollinen = await hae_random_vihollinen_tietokannasta();
 
@@ -57,10 +59,11 @@ const taistelu = async () => {
 
     if (pelaaja_olio.pelaaja_taitopiste > 0) {
 
+      palaa();
       tarkista_taito(pelaaja_taidot[0].taito_nimi, vihollinen, vihollinen_statukset, pelaaja_olio, pelaaja_statukset);
       pelaaja_olio.pelaaja_taitopiste -= 1;
       pelaaja_tp.innerText = pelaaja_olio.pelaaja_taitopiste;
-      palaa();
+
     }
     else {
 
@@ -71,10 +74,11 @@ const taistelu = async () => {
     taito2.addEventListener("click", taito2_painettu = () => {
       if (pelaaja_olio.pelaaja_taitopiste > 0) {
 
+        palaa();
         tarkista_taito(pelaaja_taidot[1].taito_nimi, vihollinen, vihollinen_statukset, pelaaja_olio, pelaaja_statukset);
         pelaaja_olio.pelaaja_taitopiste -= 1;
         pelaaja_tp.innerText = pelaaja_olio.pelaaja_taitopiste;
-        palaa();
+
       }
       else {
 
@@ -85,10 +89,11 @@ const taistelu = async () => {
     taito3.addEventListener("click", taito3_painettu = () => {
       if (pelaaja_olio.pelaaja_taitopiste > 0) {
 
+        palaa();
         tarkista_taito(pelaaja_taidot[2].taito_nimi, vihollinen, vihollinen_statukset, pelaaja_olio, pelaaja_statukset);
         pelaaja_olio.pelaaja_taitopiste -= 1;
         pelaaja_tp.innerText = pelaaja_olio.pelaaja_taitopiste;
-        palaa();
+
     }
       else {
 
