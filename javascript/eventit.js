@@ -129,15 +129,21 @@ function uudentoivonKylaEvent() {
 
 // Event 1: Tavernan noppapeli-ilta
 function tavernaNoppapeli() {
+  // Voidaan tulostaa konsoliin mikä event kyseessä jos tarvitsee esim debug
   console.log('1. Tavernan noppapeli-ilta:');
+  // Nämä pistävät tekstiä pelaajalle nähtäväksi
+  // \n\n Jättää tyhjän rivin selkeyden vuoksi. käytetään aina stringin alussa
   textarea.value += '\n\n-Kylän tavernassa pelaajalla on mahdollisuus osallistua noppapeli-iltaan. Istu alas paikallisten kanssa ja näytä taitosi. Kuka tietää, mitä voit voittaa tai menettää?';
   textarea.value += '\n1: Istu alas pelaamaan noppaa.';
   textarea.value += '\n2: Kieltäydy pelistä.';
   textarea.scrollTop = textarea.scrollHeight;
 
-  // Valinta 1
+  // Tehdään valinnoille event listenerit jotka kuuntelevat nappien klikkausta
+  // Tämä kuuntelee valinta 1 nappia
   valinta1.addEventListener('click', valinta1kuuntelija = async function() {
+    // Tämä liittyy valintaan yksi. Tässä eventissä heitetään random noppaa ja pelataan peliä
     const heitto = Math.floor(Math.random() * 21) + 1;
+    // Nämä pistävät tekstiä pelaajalle nähtäväksi
     textarea.value += `\n\nNopan heitto: ${heitto}`;
     textarea.scrollTop = textarea.scrollHeight;
     // Häviö noppa 1-10:
@@ -154,14 +160,18 @@ function tavernaNoppapeli() {
       // Sama HPlle toimii pelaaja_hp.textContent = pelaaja_olio.pelaaja_hp
       pelaaja_tp.textContent = pelaaja_olio.pelaaja_taitopiste;
     }
+    // piilotetaan valinta napit eventin jälkeen
     valinta1.style.display = 'none';
     valinta2.style.display = 'none';
   });
 
+  // Tehdään valinnoille event listenerit jotka kuuntelevat nappien klikkausta
+  // Tämä kuuntelee valinta 2 nappia
   valinta2.addEventListener('click', valinta2kuuntelija = async function() {
-    const heitto = Math.floor(Math.random() * 21) + 1;
+    // Nämä pistävät tekstiä pelaajalle nähtäväksi
     textarea.value += '\n\n-Kieltäydyt pelistä ja pöytä seurue antaa sinulle ilkeitä katseita';
     textarea.scrollTop = textarea.scrollHeight;
+    // piilotetaan valinta napit eventin jälkeen
     valinta1.style.display = 'none';
     valinta2.style.display = 'none';
   });
