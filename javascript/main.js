@@ -87,8 +87,13 @@ async function matkustaminen() {
   tooltipit.forEach((span) => {
     for (kohde of kohteet) {
       if (kohde.fantasia_nimi === span.id) {
-        span.textContent = `${span.id} ${kohde.matka_pv} matkustus`;
-        break;
+        if (parseInt(kohde.matka_pv) !== 0) {
+          span.textContent = `${span.id} ${kohde.matka_pv} päivää`;
+          break;
+        } else {
+          span.textContent = `Olet täällä!`;
+          break;
+        }
       }
     }
   });
