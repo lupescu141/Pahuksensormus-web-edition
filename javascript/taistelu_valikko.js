@@ -1,18 +1,22 @@
 // Avaa taistelu näkymän. pelaaja-status siirretään alaspäin jotta arvot pysyvät samoina
-function avaa_taistelu_ikkuna() {
+async function avaa_taistelu_ikkuna() {
   // Asettaa oikean puolen taistelu näkymään
   document.querySelector('.oikea-puoli').style.display = 'none';
   document.querySelector('.oikea-puoli-taistelu').style.display = 'block';
 
-  // Tallennetaan muuttujat jotta voidaan siirtää pelaaja status taistelu riville
-  const pelaaja_status = document.querySelector('.pelaaja-status');
-  const taistelu_rivi = document.querySelector('.taistelu-rivi');
 
   // Piilota Lepää ja Esineet napit status ikkunasta
   document.querySelector(".esine-napit").style.display = 'none';
   const napit = pelaaja_status.querySelectorAll('.nappi');
   napit.forEach(nappi => {
     nappi.style.display = 'none';
+
+    // Avaa taisteluvalikon napit
+    document.querySelectorAll('.taistelu-valikko-nappi').forEach(nappi => {
+      nappi.style.display = 'block';
+    });
+
+    jatka.style.display = 'none'
   });
 
   // Tuodaan vihollisen kuva esiin pelaajan viereen
@@ -26,19 +30,20 @@ function avaa_taistelu_ikkuna() {
   taistelu_rivi.insertBefore(pelaaja_status, taistelu_rivi.firstChild);
 
   // Testausta varten
-  taistelu();
+  await taistelu();
 }
 
 
 // Sulkee taistelu näkymän. Siirretään pelaajan status takaisin ylös
 function lopeta_taistelu() {
+  //sulkee jatka napin taisteluvalikosta
+  jatka.style.display = 'none';
+
   // Asetetaan oikea puoli kartta näkymään
   document.querySelector('.oikea-puoli-taistelu').style.display = 'none';
   document.querySelector('.oikea-puoli').style.display = 'flex';
 
-  // Tallennetaan muuttujat jotta voidaan siirtää pelaaja status ylemmälle riville
-  const pelaaja_status = document.querySelector('.pelaaja-status');
-  const pelaaja_info = document.querySelector('.pelaaja-info');
+
 
   // Tuodaan Lepää ja Esineet napit esiin status näkymään
   const napit = pelaaja_status.querySelectorAll('.nappi');
@@ -85,7 +90,7 @@ function palaa() {
   // Piilotaa ensin kaikki napit
   piilota_kaikki_napit();
   // Avaa taisteluvalikon napit
-  document.querySelectorAll('.taistelu-valikko-nappi').forEach(nappi => {
+   document.querySelectorAll('.taistelu-valikko-nappi').forEach(nappi => {
     nappi.style.display = 'block';
   });
 }

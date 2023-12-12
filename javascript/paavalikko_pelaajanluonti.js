@@ -1,36 +1,3 @@
-
-
-// Luodaan pelaajalle muuttuja
-let pelaaja_olio;
-
-let pelaaja_inventaario;
-
-let pelaaja_taidot;
-
-// Hoitaa alkuvalikon esittelyn
-document.addEventListener('DOMContentLoaded', async function() {
-  // Etsi vasemman puolen elementti ja aseta sille display: none;
-  document.querySelector('.vasen-puoli').style.display = 'none';
-  document.querySelector('.kartta').style.display = 'none';
-
-  const response = await fetch(`http://localhost:5000/hae_ennatukset`);
-  const vastaus = await response.json();
-  console.log(vastaus);
-
-  const taulukko = document.querySelector('.top-lista');
-
-  for (const pisteet of vastaus) {
-    const rivi = taulukko.insertRow();
-
-    const solu1 = rivi.insertCell(0);
-    solu1.textContent = pisteet.pelaaja_nimi;
-
-    const solu2 = rivi.insertCell(1);
-    solu2.textContent = pisteet.menneet_paivat;
-  }
-
-});
-
 // Hakee pelaaja_nimet ja pelaaja_id:et tietokannasta
 async function hae_nimet() {
   // Hakee Flask tietokannasta nimet
@@ -40,25 +7,19 @@ async function hae_nimet() {
 
 // Asettaa Pelaajan tiedot pelaaja-status ikkunaan
 function aseta_tiedot() {
-  document.getElementById(
-      'pelaaja-nimi').textContent = pelaaja_olio.pelaaja_nimi;
-  document.getElementById(
-      'pelaaja-hp').textContent = pelaaja_olio.pelaaja_hp;
-  document.getElementById(
-      'pelaaja-tp').textContent = pelaaja_olio.pelaaja_taitopiste;
-  document.querySelector(
-      '.pelaaja-kuva').style.backgroundImage = `url("../static/images/pelaaja-luokat/${pelaaja_olio.pelaaja_luokka}-${pelaaja_olio.sukupuoli}.png")`;
+  document.getElementById('pelaaja-nimi').textContent = pelaaja_olio.pelaaja_nimi;
+  document.getElementById('pelaaja-hp').textContent = pelaaja_olio.pelaaja_hp;
+  document.getElementById('pelaaja-tp').textContent = pelaaja_olio.pelaaja_taitopiste;
+  document.querySelector('.pelaaja-kuva').style.backgroundImage = `url("../static/images/pelaaja-luokat/${pelaaja_olio.pelaaja_luokka}-${pelaaja_olio.sukupuoli}.png")`;
+  paikkatausta.src = `../static/images/paikka_numerot/${pelaaja_olio.pelaaja_sijainti}.png`
 }
 
 // Tämä piilottaa valikon ja avaa hahmoluokka valinnan
 function valitse_hahmoluokka() {
   // Piilota paavalikko
-  document.querySelector('.valikko').style.display = 'none';
-
-  document.querySelector('.uusi-peli-valikko').style.display = 'flex';
-
+  paavalikko.style.display = 'none';
+  uusipeli_valikko.style.display = 'flex';
   document.querySelector('.pelaajan-nimi-valinta').style.display = 'none';
-
   document.querySelector('.slideshow-laatikko').style.display = 'flex';
 }
 
@@ -114,12 +75,14 @@ hahmoluokka_kuva.forEach(kuva => {
         // Tyhjennä pelaajan nimi
         pelaaja_nimi_elementti.value = '';
 
-        document.querySelector('.uusi-peli-valikko').style.display = 'none';
-        document.querySelector('.ennatykset').style.display = 'none';
+        uusipeli_valikko.style.display = 'none';
+        ennatukset.style.display = 'none';
 
-        document.querySelector('.vasen-puoli').style.display = 'flex';
-        document.querySelector('.oikea-puoli').style.display = 'flex';
-        document.querySelector('.kartta').style.display = 'flex';
+        vasen_puoli.style.display = 'flex';
+        oikea_puoli.style.display = 'flex';
+        kartta.style.display = 'flex';
+
+        await matkustaminen();
 
       }
     });
@@ -130,11 +93,9 @@ hahmoluokka_kuva.forEach(kuva => {
 // Tämä hoitaa ladatun pelin aloittamisen
 async function avaa_lataapeli_valikko() {
   // Piilota paavalikko
-  const paavalikko = document.querySelector('.valikko');
   paavalikko.style.display = 'none';
 
   // Tuo lataapeli valikko esiin
-  const lataapeli_valikko = document.querySelector('.lataapeli-valikko');
   lataapeli_valikko.style.display = 'flex';
 
   // Hakee Flask tietokannasta tallennukset
@@ -168,11 +129,13 @@ async function avaa_lataapeli_valikko() {
       // Piilottaa alkuvalikon
       lataapeli_valikko.style.display = 'none';
 
-      document.querySelector('.ennatykset').style.display = 'none';
+      ennatukset.style.display = 'none';
 
-      document.querySelector('.vasen-puoli').style.display = 'flex';
-      document.querySelector('.oikea-puoli').style.display = 'flex';
-      document.querySelector('.kartta').style.display = 'flex';
+      vasen_puoli.style.display = 'flex';
+      oikea_puoli.style.display = 'flex';
+      kartta.style.display = 'flex';
+
+      await matkustaminen();
     });
   }
 }
@@ -180,22 +143,15 @@ async function avaa_lataapeli_valikko() {
 // Palaa alkuvalikkoon
 function palaa_alkuvalikkoon() {
   // Piilota napit
-  const lataapeli_valikko = document.querySelector('.lataapeli-valikko');
   lataapeli_valikko.style.display = 'none';
-
-  const uusipeli_valikko = document.querySelector('.uusi-peli-valikko');
   uusipeli_valikko.style.display = 'none';
 
-  // Piilottaa tallennukset
-  // Etsi kaikki tallennusnapit
-  const tallennus_nappi = document.querySelectorAll('.tallennus');
-
   // Käy läpi jokainen tallennusnappi ja poista se
+  const tallennus_nappi = document.querySelectorAll('.tallennus');
   tallennus_nappi.forEach(nappi => {
     nappi.parentNode.removeChild(nappi);
   });
 
   // Näytä päävalikko
-  const paavalikko = document.querySelector('.valikko');
   paavalikko.style.display = 'flex';
 }

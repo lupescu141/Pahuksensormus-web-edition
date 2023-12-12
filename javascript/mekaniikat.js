@@ -38,17 +38,30 @@ async function hae_inventaario() {
 }
 
 // Päivittää pelaajalle maksimi HP:n ja TP:n
-async function paivita_maksimi_hp_ja_tp() {
+async function lepo() {
 // Tarkistaa, onko pelaajan hp sama kuin maksimi_hp ja tp sama kuin maksimi_tp
-  if (pelaaja_olio.hp === pelaaja_olio.maksimi_hp &&
+  if (pelaaja_olio.pelaaja_hp === pelaaja_olio.pelaaja_maksimi_hp &&
       pelaaja_olio.pelaaja_taitopiste ===
       pelaaja_olio.pelaaja_maksimi_taitopiste) {
-    console.log('Pelaajan HP ja TP ovat jo maksimissaan!');
+    textarea.value += '\n-Pelaajan HP ja TP ovat jo maksimissaan!';
+    textarea.scrollTop = textarea.scrollHeight;
   } else {
     // Päivittää pelaajalle maksimi HP:n ja TP:n
-    pelaaja_olio.hp = pelaaja_olio.maksimi_hp;
+    pelaaja_olio.pelaaja_hp = pelaaja_olio.pelaaja_maksimi_hp;
     pelaaja_olio.pelaaja_taitopiste = pelaaja_olio.pelaaja_maksimi_taitopiste;
-    console.log('päivitetty');
+    textarea.value += '\n-Lepäsit yhden päivä. HP ja TP ovat maksimissaan';
+    textarea.scrollTop = textarea.scrollHeight;
+
+    pelaaja_olio.menneet_paivat++
+    textarea.value += `\n-Olet käyttänyt ${pelaaja_olio.menneet_paivat} päivää etsiessäsi pahuksen sormusta.`;
+    textarea.scrollTop = textarea.scrollHeight;
+
+    await tallenna()
+
+    document.getElementById(
+        'pelaaja-hp').textContent = pelaaja_olio.pelaaja_hp;
+    document.getElementById(
+        'pelaaja-tp').textContent = pelaaja_olio.pelaaja_taitopiste;
   }
 }
 
@@ -73,55 +86,19 @@ async function hae_matkustus_paivat() {
   return vastaus;
 }
 
-// Asettaa matkustus päivät kohteisiin
-async function aseta_matkustus_paivat() {
-  const kohteet = await hae_matkustus_paivat();
-
-  const kartta = document.querySelector('.kartta');
-
-  if (kartta) {
-    // Etsi kaikki span-elementit kartta-divin sisältä
-    const spanit = kartta.querySelectorAll('.tooltiptext');
-
-    // Käy läpi jokainen span-elementti
-    for (let span of spanit) {
-      // Saadaan span-elementin id
-      const spanId = span.id;
-
-      // Etsi vastaava kohde-elementti kartta-divin sisältä
-      const kohde = kartta.querySelector(`#${spanId}`);
-
-      // Tarkista, onko kohde-elementti olemassa
-      if (kohde) {
-        for (let laskettu_matka of kohteet) {
-          if (laskettu_matka.fantasia_nimi === spanId) {
-            // Päivitä spanin teksti
-            span.value = laskettu_matka.matka_pv;
-            span.textContent = `${spanId} : ${laskettu_matka.matka_pv} päivän matkustus`;
-          }
-        }
-      } else {
-        console.error('Kohde-elementtiä ei löytynyt spanille', span);
-      }
-    }
+// Laskee mahdollisuuden tasiteluun
+async function taistelu_mahdollisuus(matkan_pituus) {
+  const mahdollisuus = Math.floor(Math.random() * 20) + 1;
+  const ei_taistelua = parseInt(pelaaja_olio.pelaaja_suojaus) -
+      parseInt(matkan_pituus);
+  if (mahdollisuus > ei_taistelua) {
+    textarea.value += `\n-Jouduit taisteluun!`;
+    textarea.scrollTop = textarea.scrollHeight;
+    await avaa_taistelu_ikkuna()
   } else {
-    console.error('Kartta-elementtiä ei löytynyt.');
+    textarea.value += `\n-Pääsit turvallisesti perille.`;
+    textarea.scrollTop = textarea.scrollHeight;
   }
-
-  // Etsi kaikki kartta-divin sisällä olevat divit
-  const karttaDiv = document.querySelector('.kartta');
-  const nappiDivs = karttaDiv.querySelectorAll('.kartta-nappi-kuva');
-
-// Käy läpi jokainen div ja lisää sille event listener
-  nappiDivs.forEach(div => {
-    div.addEventListener('click', function() {
-      // Etsi spanin value attribuutti ja tulosta se konsoliin
-      const span = div.previousElementSibling;
-      const spanValue = span.value;
-      console.log('Span value:', spanValue);
-    });
-  });
-
 }
 
 // Hakee Flask tietokannasta bossin
@@ -150,9 +127,13 @@ async function tallennuksen_poisto_ja_pisteet() {
 
 }
 
-async function hae_säätila() {
-  const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=haiti&units=metric&appid=e34434fb9afb590f02e150bcb3eee98d`);
+async function peli_ohi(){
+  const response = await fetch(
+      `http://localhost:5000/peli_ohi/${pelaaja_olio.peli_id}`);
   const vastaus = await response.json();
-  console.log(vastaus.temp);
-  return vastaus.temp;
+  console.log(vastaus);
+  textarea.value = ''
+  textarea.value += '\n-Sinä kuolit.'
+  textarea.value += `\n-Selvisit ${pelaaja_olio.menneet_paivat} Päivää.`
+  return vastaus;
 }

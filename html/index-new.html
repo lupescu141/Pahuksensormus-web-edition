@@ -6,12 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="../static/style-new.css" rel="stylesheet">
     <title>Pahuksen sormus</title>
-    <script src="/javascript/paavalikko.js" defer></script>
+    <script src="/javascript/main.js" defer></script>
+    <script src="/javascript/paavalikko_pelaajanluonti.js" defer></script>
+    <script src="/javascript/taidot.js" defer></script>
     <script src="/javascript/taistelu.js" defer></script>
     <script src="/javascript/eventit.js" defer></script>
     <script src="/javascript/slideshow.js" defer></script>
     <script src="/javascript/taistelu_valikko.js" defer></script>
     <script src="/javascript/mekaniikat.js" defer></script>
+
 </head>
 
 <body>
@@ -93,7 +96,7 @@
 
                 <label for="pelaajan-nimi">Nimi:</label>
                 <input type="text" id="pelaajan-nimi" name="pelaajan-nimi" required minlength="3" maxlength="12">
-                <button type="submit">Aloita peli</button>
+                <button type="submit" class="aloita-peli" >Aloita peli</button>
 
             </form>
 
@@ -113,7 +116,7 @@
 
         <div id="pelaaja-info" class="pelaaja-info">
 
-            <img id="paikkatausta" src="../static/images/paikat/Uudentoivonkyla/uudentoivonkylä1.png" alt="kuva paikasta" class="paikkatausta">
+            <img id="paikkatausta" src="../static/images/paikat/Uudentoivonkylä.png" alt="kuva paikasta" class="paikkatausta">
 
             <div class="pelaaja-kuva"></div>
 
@@ -135,9 +138,9 @@
 
                 </table>
 
-                <button id="lepo" class="nappi">Lepää</button>
+                <button id="lepo" class="nappi" onclick="lepo()">Lepää</button>
 
-                <button id="reppu" class="nappi">Esineet</button>
+                <button id="reppu" class="nappi" onclick="avaa_reppu()">Esineet</button>
 
                 <button id="taistelu" class="nappi"
                         onclick="avaa_taistelu_ikkuna();">Testaa taistelu ruutua
@@ -162,8 +165,10 @@
         <div class="taistelu-rivi">
 
             <div class="valikko-taistelu">
-
-                <button class="taistelu-valikko-nappi" id="hyokkaa">Hyökkää</button>
+                <div class="tooltip_taistelu">
+                    <span id="hyokkaa-tooltip" class="tooltiptext_hyokkaa"></span>
+                <button class="taistelu-valikko-nappi" id="hyokkaa" style="width: 100%; height: 75%;">Hyökkää</button>
+                </div>
                 <button class="taistelu-valikko-nappi" id="taidot" >Taidot</button>
                 <button class="taistelu-valikko-nappi" id="esineet">Esineet</button>
                 <button class="taistelu-valikko-nappi jatka-nappi" id="jatka">Jatka</button>
@@ -281,71 +286,71 @@
 
             <div class="uudentoivonkyla-nappi tooltip">
 
-                <span id="Uudentoivonkylä" value="moi" class="tooltiptext">Uudentoivonkylä</span>
-                <input type="image" class="kartta-nappi-kuva kartta-nappi" alt="uudentoivonkyla-nappi"
+                <span id="Uudentoivonkylä" class="tooltiptext">Uudentoivonkylä</span>
+                <input id="1" name="Uudentoivonkylä" type="image" class="kartta-nappi-kuva kartta-nappi" alt="uudentoivonkyla-nappi"
                         src="../static/images/ui/uudentoivonkyla-nappi3.png">
             </div>
 
             <div class="tulivuori-nappi tooltip">
 
                 <span id="Tulivuori" class="tooltiptext">Tulivuori</span>
-                <input type="image" class="kartta-nappi-kuva kartta-nappi" alt="tulivuorinappi"
+                <input id="10" name="Tulivuori" type="image" class="kartta-nappi-kuva kartta-nappi" alt="tulivuorinappi"
                         src="../static/images/ui/tulivuorinappi2.png">
             </div>
 
             <div class="hiisisuo-nappi tooltip">
 
                 <span id="Hiisisuo" class="tooltiptext">Hiisisuo</span>
-                <input type="image" class="kartta-nappi-kuva kartta-nappi" alt="hiisisuo-nappi"
+                <input id="8" name="Hiisisuo" type="image" class="kartta-nappi-kuva kartta-nappi" alt="hiisisuo-nappi"
                         src="../static/images/ui/hiisisuo-nappi.png">
             </div>
 
             <div class="noitametsa-nappi tooltip">
 
                 <span id="Noitametsä" class="tooltiptext">Noitametsä</span>
-                <input type="image" class="kartta-nappi-kuva kartta-nappi" alt="noitametsa-nappi"
+                <input id="5" name="Noitametsä" type="image" class="kartta-nappi-kuva kartta-nappi" alt="noitametsa-nappi"
                         src="../static/images/ui/noitametsa-nappi2.png">
             </div>
 
             <div class="varisrame-nappi tooltip">
 
                 <span id="Varisräme" class="tooltiptext">Varisräme</span>
-                <input type="image" class="kartta-nappi-kuva kartta-nappi" alt="varisrame-nappi"
+                <input id="4" name="Varisräme" type="image" class="kartta-nappi-kuva kartta-nappi" alt="varisrame-nappi"
                         src="../static/images/ui/varisrame-nappi.png">
             </div>
 
             <div class="velhotorni-nappi tooltip">
 
                 <span id="Velhotorni" class="tooltiptext">Velhotorni</span>
-                <input type="image" class="kartta-nappi-kuva kartta-nappi" alt="velhotorni-nappi"
+                <input id="3" name="Velhotorni" type="image" class="kartta-nappi-kuva kartta-nappi" alt="velhotorni-nappi"
                         src="../static/images/ui/velhotorni-nappi.png">
             </div>
 
             <div class="peikkoluola-nappi tooltip">
 
                 <span id="Peikkoluola" class="tooltiptext">Peikkoluola</span>
-                <input type="image" class="kartta-nappi-kuva kartta-nappi" alt="peikkoluola-nappi"
+                <input id="9" name="Peikkoluola" type="image" class="kartta-nappi-kuva kartta-nappi" alt="peikkoluola-nappi"
                         src="../static/images/ui/peikkoluola-nappi.png">
             </div>
 
             <div class="suurentarmonkaupunki-nappi tooltip">
 
                 <span id="Suurentarmon-kaupunki" class="tooltiptext">Suurentarmonkaupunki</span>
-                <input type="image" class="kartta-nappi-kuva kartta-nappi" alt="suurentarmonkaupunki-nappi"
+                <input id="7" name="Suurentarmon-kaupunki" type="image" class="kartta-nappi-kuva kartta-nappi" alt="suurentarmonkaupunki-nappi"
                         src="../static/images/ui/suurentarmonkaupunki-nappi8.png">
             </div>
 
             <div class="sammakkojarvi-nappi tooltip">
 
                 <span id="Sammakkojärvi" class="tooltiptext">Sammakkojärvi</span>
-                <input type="image" class="kartta-nappi-kuva kartta-nappi" alt="sammakkojarvi-nappi"
+                <input id="6" name="Sammakkojärvi" type="image" class="kartta-nappi-kuva kartta-nappi" alt="sammakkojarvi-nappi"
                        src="../static/images/ui/sammakkojarvi-nappi.png">
             </div>
 
             <div class="ruoholaakso-nappi tooltip">
 
                 <span id="Ruoholaakso" class="tooltiptext">Ruoholaakso</span>
-                <input type="image" class="kartta-nappi-kuva kartta-nappi" alt="ruoholaakso-nappi"
+                <input id="2" name="Ruoholaakso" type="image" class="kartta-nappi-kuva kartta-nappi" alt="ruoholaakso-nappi"
                                    src="../static/images/ui/ruoholaakso-nappi.png">
             </div>
 

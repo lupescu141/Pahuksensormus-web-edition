@@ -26,7 +26,31 @@
     bottom: 45%;
 }
 
+.tooltip_taistelu {
+    width: 80%;
+    height: 10%;
+}
+
+.tooltip_taistelu .tooltiptext_hyokkaa {
+    visibility: hidden;
+    width: 15%;
+    background: none;
+    color: black;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    font-size: 2rem;
+    position: absolute;
+    bottom: 30.5%;
+    right: 68%;
+    background: beige;
+}
+
 .tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+.tooltip_taistelu:hover .tooltiptext_hyokkaa  {
   visibility: visible;
 }
 
@@ -219,7 +243,7 @@ body {
 .paikkatausta {
     position: absolute;
     overflow: auto;
-    opacity: 40%;
+    opacity: 45%;
     height: 48%;
     width: 48%;
 }
