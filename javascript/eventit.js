@@ -45,6 +45,10 @@
 // hamahakkikuningatar
 // lohikaarmeenPesa
 
+const eliksiiri = {
+  'esine_nimi': 'eliksiiri',
+  'esineen_id': 1,
+};
 
 // Peli Eventti: Uudentoivon kylä
 
@@ -107,7 +111,10 @@ function laksiaisjuhlat(pelaaja_olio) {
   // Valinta 1:
   if (valinta === '1') {
     textarea.value += '\n-Valinta 1: Päätät osallistua juhliin hillitysti ja ottaa osaa kylän iloiseen tunnelmaan, ansaitset tällä paikallisten suosion. Kyläläiset muistavat ystävällisyytesi ikuisesti, ja saat heiltä mukaasi arvokkaita esineitä.';
-    pelaaja.pelaaja_eliksiiri += 5;
+    for (let i = 0; i < 5; i++) {
+      pelaaja_inventaario.push(eliksiiri)
+    }
+    console.log(pelaaja_inventaario)
   } else if (valinta === '2') {
     // Valinta 2:
     textarea.value += '\n-Valinta 2: Annat juhlavan tunnelman viedä mukanaan ja juot liikaa viiniä, menetät otteesi todellisuudesta. Seurauksena kyläläiset menettävät kunnioituksen sinuun. Menetit 5 HP voipuessa krapulasta ja maineesi on mennyt!';
@@ -774,7 +781,7 @@ function uhkapeliOnnenpelikortit(pelaaja_olio) {
 // Peli Eventti: Peikkoluola
 
 function peikkoluola(pelaaja_olio) {
-      textarea.value += '\n-Pimeän metsän kätköissä sijaitseva peikkoluola kuhisee salaisuuksia ja vaaroja. Luola kätkee monta salaisuuttaa uumeniinsa, katsotaan mihin tiet johtavat...';
+  textarea.value += '\n-Pimeän metsän kätköissä sijaitseva peikkoluola kuhisee salaisuuksia ja vaaroja. Luola kätkee monta salaisuuttaa uumeniinsa, katsotaan mihin tiet johtavat...';
 
   // Arpoo randomilla pelaajalle eventin 1, 2, 3.
   const tapahtuma = Math.floor(Math.random() * 3) + 1;
