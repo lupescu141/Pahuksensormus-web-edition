@@ -30,7 +30,7 @@ async function avaa_taistelu_ikkuna() {
   taistelu_rivi.insertBefore(pelaaja_status, taistelu_rivi.firstChild);
 
   // Testausta varten
-  await taistelu();
+  await taistelu(hae_random_vihollinen_tietokannasta());
 }
 
 

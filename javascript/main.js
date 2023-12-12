@@ -28,13 +28,15 @@ const kartta_nappi = kartta.querySelectorAll('.kartta-nappi-kuva');
 // Taistelu elementit
 const hyokkaa = document.getElementById('hyokkaa');
 const taidot = document.getElementById('taidot');
-const esineet = document.getElementById('esineet');
 const jatka = document.getElementById('jatka');
 const taito_napit = document.querySelectorAll(`.taidot`);
 console.log(taito_napit);
 const taito1 = document.getElementById('taito1');
 const taito2 = document.getElementById('taito2');
 const taito3 = document.getElementById('taito3');
+const taistelu_esineet_nappi = document.getElementById('esineet');
+const esineet = document.querySelector('.esine-napit');
+const inventaario_nappi = document.querySelectorAll('.inventaaio_nappi');
 const esine1 = document.getElementById('esine1');
 const esine2 = document.getElementById('esine2');
 const esine3 = document.getElementById('esine3');

@@ -29,12 +29,12 @@ async function hae_random_vihollinen_tietokannasta() {
   return random_vihollinen;
 }
 
-const taistelu = async () => {
+const taistelu = async (vihollinen1) => {
 
   taisteluloki.value += 'Jouduit taisteluun!';
 
   //hakee random vihollisen
-  let vihollinen = await hae_random_vihollinen_tietokannasta();
+  let vihollinen = await vihollinen1;
 
   hyokkaa_tooltip.innerText = `Perus hyökkäys 1-${pelaaja_olio.pelaaja_isku + 2} vahinkoa.`
   hyokkaa_tooltip.style.display = `hidden`;
@@ -136,6 +136,17 @@ const taistelu = async () => {
       taito_napit[i].style.display = 'block';
     }
   });
+
+  taistelu_esineet_nappi.addEventListener('click', esineet_painettu = () =>{
+
+    console.log(pelaaja_inventaario);
+    piilota_kaikki_napit();
+    esineet.style.display = 'inline-grid'
+    taistelu_palaa_nappi.style.display = 'block';
+    inventaario_nappi.forEach((nappi) =>{
+      nappi.style.display = 'none'
+    })
+  })
 };
 
 const vihollisen_vuoro = async (vihollinen) => {

@@ -20,14 +20,14 @@ function aseta_tiedot() {
       'Sen avulla paladinit pystyivät vangitsemaan Gorgonin sielun sormukseen.\n' +
       'Kauan paladinit varjelivat sormusta ja pitivät sen turvassa, mutta\n' +
       'pahuus ei koskaan pysy poissa ikuisesti. Ajan saatossa paladinien rivit ovat vähentyneet\n' +
-      'ja he ovat hävittäneet sormuksen. Nyt pahuus on alkanut kasvaa ja maailma tarvitsee sankaria,\n' +
+      'ja he ovat hävittäneet sormuksen. Nyt pahuus on alkanut kasvaa ja maailma tarvitsee sankaria, ' +
       'joka löytää ja tuhoaa pahuksen sormuksen!\n' +
       '\n' +
       '\n' +
       'Sinun tarinasi alkaa Uudentoivon-kylästä, jossa olet ikäsi viettänyt.\n' +
-      'Olet aina haaveillut seikkailusta ulkomaailmassa, mutta kylän rajoista poistuminen on asukkailta kielletty.\n' +
-      'Vain kylän päällikkö voi antaa erityisluvan poistua kylästä,\n' +
-      'sillä kylä joutuu usein puolustautumaan Gorgonin kätyreitä vastaan, eikä kylällä ole varaa menettää enempää asukkaita.\n' +
+      'Olet aina haaveillut seikkailusta ulkomaailmassa, mutta kylän rajoista poistuminen on asukkailta kielletty. ' +
+      'Vain kylän päällikkö voi antaa erityisluvan poistua kylästä, ' +
+      'sillä kylä joutuu usein puolustautumaan Gorgonin kätyreitä vastaan, eikä kylällä ole varaa menettää enempää asukkaita.\n\n' +
       'Uudentoivon-kylä tunnetaankin maailmalla sen vahvoista ja sinnikkäistä sotureistaan.\n' +
       'Eräänä päivänä kätyrit hyökkäsivät Uudentoivon-kylään ja he onnistuivat murtamaan kylän puolustuksen.\n' +
       'Taistelu oli julma, mutta lopulta kylän taistelijat saivat lyötyä kätyrit.\n' +
