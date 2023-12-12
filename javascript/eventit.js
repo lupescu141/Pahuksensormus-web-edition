@@ -94,6 +94,9 @@ function tavernaNoppapeli() {
     textarea.value += '\n-Voitto! Sait juuri uuden taitopisteen!';
     textarea.scrollTop = textarea.scrollHeight;
     pelaaja_olio.pelaaja_taitopiste += 5;
+    // Tällä tavalla päivitetään uusi arvo näkyviin
+    // Sama HPlle toimii pelaaja_hp.textContent = pelaaja_olio.pelaaja_hp
+    pelaaja_tp.textContent = pelaaja_olio.pelaaja_taitopiste
   } else {
     // Häviö noppa 11-21:
     textarea.value += '\n-Hävisit! Menetit juuri kasan eliksiirejä.';
