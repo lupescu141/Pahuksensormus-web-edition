@@ -60,41 +60,40 @@ const taikasauva = {
   'esineen_id': 3,
 };
 
-
 // Laukaisee eventin pelaajan sijainnin mukaan.
 function laukaise_event() {
-  console.log(parseInt(pelaaja_olio.pelaaja_sijainti))
+  valinta1.style.display = 'block';
+  valinta2.style.display = 'block';
   switch (parseInt(pelaaja_olio.pelaaja_sijainti)) {
     case 1:
-      uudentoivonKylaEvent()
-      break
+      uudentoivonKylaEvent();
+      break;
     case 2:
-      ruoholaaksonNiityt()
-      break
+      ruoholaaksonNiityt();
+      break;
     case 3:
-      velhotorniEvent()
-      break
+      velhotorniEvent();
+      break;
     case 4:
-      varisrameenSalaisuudet()
-      break
+      varisrameenSalaisuudet();
+      break;
     case 5:
-      noitametsa()
-      break
+      noitametsa();
+      break;
     case 6:
-      sammakkojarvi()
-      break
+      sammakkojarvi();
+      break;
     case 7:
-      suurentarmonKaupunkiEvent()
-      break
+      suurentarmonKaupunkiEvent();
+      break;
     case 8:
-      hiisisuonLaakso()
-      break
+      hiisisuonLaakso();
+      break;
     case 9:
-      peikkoluola()
-      break
+      peikkoluola();
+      break;
   }
 }
-
 
 // Peli Eventti: Uudentoivon kylä
 
@@ -125,30 +124,41 @@ function uudentoivonKylaEvent() {
 function tavernaNoppapeli() {
   console.log('1. Tavernan noppapeli-ilta:');
   textarea.value += '\n-Kylän tavernassa pelaajalla on mahdollisuus osallistua noppapeli-iltaan. Istu alas paikallisten kanssa ja näytä taitosi. Kuka tietää, mitä voit voittaa tai menettää?';
+  textarea.value += '\n1: Istu alas pelaamaan noppaa.';
+  textarea.value += '\n2: Kieltäydy pelistä.';
   textarea.scrollTop = textarea.scrollHeight;
 
-  // Valinnat:
-  console.log('Valinnat:');
-  const heitto = Math.floor(Math.random() * 21) + 1;
-
-  console.log(`Heitetään noppaa!`);
-  textarea.value += `Noppa: ${heitto}`;
-  textarea.scrollTop = textarea.scrollHeight;
-
-  // Häviö noppa 1-10:
-  if (heitto >= 1 && heitto <= 10) {
-    textarea.value += '\n-Hävisit! Menetit juuri esineen.';
+  // Valinta 1
+  valinta1.addEventListener('click', async function() {
+    const heitto = Math.floor(Math.random() * 21) + 1;
+    textarea.value += `\nNopan heitto: ${heitto}`;
     textarea.scrollTop = textarea.scrollHeight;
-    pelaaja_inventaario.pop(); // Poistaa pelaajalta yhden esineen
-  } else {
-    // Voitto noppa 11-21:
-    textarea.value += '\n-Voitto! Sait juuri uuden taitopisteen!';
+    // Häviö noppa 1-10:
+    if (heitto >= 1 && heitto <= 10) {
+      textarea.value += '\n-Hävisit! Menetit juuri esineen.';
+      textarea.scrollTop = textarea.scrollHeight;
+      pelaaja_inventaario.pop(); // Poistaa pelaajalta yhden esineen
+    } else {
+      // Voitto noppa 11-21:
+      textarea.value += '\n-Voitto! Sait juuri uuden taitopisteen!';
+      textarea.scrollTop = textarea.scrollHeight;
+      pelaaja_olio.pelaaja_taitopiste += 1;
+      // Tällä tavalla päivitetään uusi arvo näkyviin
+      // Sama HPlle toimii pelaaja_hp.textContent = pelaaja_olio.pelaaja_hp
+      pelaaja_tp.textContent = pelaaja_olio.pelaaja_taitopiste;
+    }
+    valinta1.style.display = 'none';
+    valinta2.style.display = 'none';
+  });
+
+  valinta2.addEventListener('click', async function() {
+    const heitto = Math.floor(Math.random() * 21) + 1;
+    textarea.value += '\n-Kieltäydyt pelistä ja pöytä seurue antaa sinulle ilkeitä katseita';
     textarea.scrollTop = textarea.scrollHeight;
-    pelaaja_olio.pelaaja_taitopiste += 1;
-    // Tällä tavalla päivitetään uusi arvo näkyviin
-    // Sama HPlle toimii pelaaja_hp.textContent = pelaaja_olio.pelaaja_hp
-    pelaaja_tp.textContent = pelaaja_olio.pelaaja_taitopiste
-  }
+    valinta1.style.display = 'none';
+    valinta2.style.display = 'none';
+  });
+
 }
 
 // Event 2: Läksiäisjuhlat
@@ -167,16 +177,16 @@ function laksiaisjuhlat() {
     textarea.scrollTop = textarea.scrollHeight;
     for (let i = 0; i < 5; i++) {
       if (pelaaja_inventaario.length < 12) {
-        pelaaja_inventaario.push(eliksiiri)
+        pelaaja_inventaario.push(eliksiiri);
       }
     }
-    console.log(pelaaja_inventaario)
+    console.log(pelaaja_inventaario);
   } else if (valinta === '2') {
     // Valinta 2:
     textarea.value += '\n-Valinta 2: Annat juhlavan tunnelman viedä mukanaan ja juot liikaa viiniä, menetät otteesi todellisuudesta. Seurauksena kyläläiset menettävät kunnioituksen sinuun. Menetit 5 HP voipuessa krapulasta ja maineesi on mennyt!';
     textarea.scrollTop = textarea.scrollHeight;
     pelaaja_olio.pelaaja_hp -= 5;
-    pelaaja_hp.textContent = pelaaja_olio.pelaaja_hp
+    pelaaja_hp.textContent = pelaaja_olio.pelaaja_hp;
   } else {
     console.log('Virheellinen syöte, valitse uudelleen!');
   }
@@ -195,16 +205,16 @@ function kylanKummallinenKojukauppias() {
       textarea.value += '\n-Hyvä valinta! Saat mukaasi harvinaisen pullon, sait matkaasi mukaan taitojuomaa!';
       textarea.scrollTop = textarea.scrollHeight;
       for (let i = 0; i < 3; i++) {
-      if (pelaaja_inventaario.length < 12) {
-        pelaaja_inventaario.push(taitojuoma)
+        if (pelaaja_inventaario.length < 12) {
+          pelaaja_inventaario.push(taitojuoma);
+        }
       }
-    }
-    console.log(pelaaja_inventaario)
+      console.log(pelaaja_inventaario);
     case '2':
       textarea.value += '\n-Voi ei! Valintasi ei ollut fiksu, kylän kummajainen kirosi sinut, menetit juuri 5 HP!';
       textarea.scrollTop = textarea.scrollHeight;
       pelaaja_olio.pelaaja_hp -= 5;
-      pelaaja_hp.textContent = pelaaja_olio.pelaaja_hp
+      pelaaja_hp.textContent = pelaaja_olio.pelaaja_hp;
       break;
     default:
       console.log('Virheellinen syöte, valitse uudelleen!');
@@ -254,10 +264,10 @@ function kukkienHurmio() {
     textarea.scrollTop = textarea.scrollHeight;
     for (let i = 0; i < 5; i++) {
       if (pelaaja_inventaario.length < 12) {
-        pelaaja_inventaario.push(eliksiiri)
+        pelaaja_inventaario.push(eliksiiri);
       }
     }
-    console.log(pelaaja_inventaario)
+    console.log(pelaaja_inventaario);
   } else if (valinta1 === '2') {
     // Valinta 2:
     textarea.value += '\n-Poimimalla kukkia huolettomasti, kukkien henki herää ja ne kutsuvat tappavan kauniin syöjättären luokseen. Joudut taisteluun syöjättären kanssa!';
@@ -284,13 +294,13 @@ function varjojenPiilo() {
     textarea.value += '\n-Liityt syöjättärien kanssa varjojen tanssiin ja saat osaksi niiden voimaa. Varjot suojaavat sinua pimeyden voimilta ja tarjoavat sinulle erityistaitoja varjojen maailmassa liikkumiseen. Saat 5 HP.';
     textarea.scrollTop = textarea.scrollHeight;
     pelaaja_olio.pelaaja_hp += 5;
-    pelaaja_hp.textContent = pelaaja_olio.pelaaja_hp
+    pelaaja_hp.textContent = pelaaja_olio.pelaaja_hp;
   } else if (valinta2 === '2') {
     // Valinta 2:
     textarea.value += '\n-Pysyt varjojen ulottumattomissa, mutta syöjättäret huomaavat sinut! Varjot luovat illuusioita, jotka hämmentävät sinua ja aiheuttavat tilapäistä sokeutta. Vajoat syvään uneen ja menetät 5 HP.';
     textarea.scrollTop = textarea.scrollHeight;
     pelaaja_olio.pelaaja_hp -= 5;
-    pelaaja_hp.textContent = pelaaja_olio.pelaaja_hp
+    pelaaja_hp.textContent = pelaaja_olio.pelaaja_hp;
   } else {
     console.log('Virheellinen syöte, valitse uudelleen!');
   }
@@ -311,13 +321,13 @@ function lumotunRiipuksenArvoitus() {
     textarea.value += '\n-Valinta 1: Riipus paljastaa sinulle tulevaisuuden näkymiä ja vihjeitä seuraavista vaiheista. Saat etulyöntiaseman tulevissa kohtaamisissa. Saat lisää taitoja matkaasi!';
     textarea.scrollTop = textarea.scrollHeight;
     pelaaja_olio.pelaaja_taitopiste += 1;
-    pelaaja_tp.textContent = pelaaja_olio.pelaaja_taitopiste
+    pelaaja_tp.textContent = pelaaja_olio.pelaaja_taitopiste;
   } else if (valinta3 === '2') {
     // Valinta 2:
     textarea.value += '\n-Valinta 2: Ohitat riipuksen, mutta sen voima koskettaa sinua. Joudut hetkellisesti ajan vääristymisen uhriksi, menettäen näkemyksen ajasta ja paikasta. Syöjätär ui mielesi sopukoihin ja hypnotisoi sinut lumouksiinsa, menetät 5 HP.';
     textarea.scrollTop = textarea.scrollHeight;
     pelaaja_olio.pelaaja_hp -= 5;
-    pelaaja_hp.textContent = pelaaja_olio.pelaaja_hp
+    pelaaja_hp.textContent = pelaaja_olio.pelaaja_hp;
   } else {
     console.log('Virheellinen syöte, valitse uudelleen!');
   }
@@ -366,7 +376,7 @@ function loitsuhuone() {
     // Valinta 2:
     textarea.value += '\n-Valinta 2: Aave raivostuu yrityksestäsi paeta ja päättää opettaa sinulle läksyn. Sinut peittää hetkellinen kylmyys, ja tunnet voimakkaan magian värähtelyn ympärilläsi. Aave varastaa sinulta esineen.';
     textarea.scrollTop = textarea.scrollHeight;
-    pelaaja_inventaario.pop() // Poistaa pelaajalta yhden esineen
+    pelaaja_inventaario.pop(); // Poistaa pelaajalta yhden esineen
   } else {
     console.log('Virheellinen syöte, valitse uudelleen!');
   }
@@ -387,13 +397,13 @@ function salakaytavienSokkelo() {
     textarea.value += '\n-Valinta 1: Intuition avulla valitset oikean tien sokkelossa. Pääset helposti ylös tornin huipulle. Saat matkaasi taitopisteen salakäytävien navigointiin.';
     textarea.scrollTop = textarea.scrollHeight;
     pelaaja_olio.pelaaja_taitopiste += 1;
-    pelaaja_tp.textContent = pelaaja_olio.pelaaja_taitopiste
+    pelaaja_tp.textContent = pelaaja_olio.pelaaja_taitopiste;
   } else if (valinta2 === '2') {
     // Valinta 2:
     textarea.value += '\n-Valinta 2: Vaistosi johdattavat sinut sokkeloiseen luolastoon ja eksyt. Menetät 2 HP!';
     textarea.scrollTop = textarea.scrollHeight;
     pelaaja_olio.pelaaja_hp -= 2;
-    pelaaja_hp.textContent = pelaaja_olio.pelaaja_hp
+    pelaaja_hp.textContent = pelaaja_olio.pelaaja_hp;
   } else {
     console.log('Virheellinen syöte, valitse uudelleen!');
   }
@@ -420,7 +430,7 @@ function velhonKaksintaistelu() {
     textarea.value += '\n-Valinta 2: Velho suuttuu pakoyrityksestäsi ja lähettää sinua kohti voimakkaan taian. Onnistut välttämään suurimman osan hyökkäyksistä ja pääset karkuun. Tornin pitkät ja kapeat portaat saavat sinut kaatumaan ja putoat tornin syvyyksiin. Häpeissäsi jatkat matkaa… Menetät 5 HP.';
     textarea.scrollTop = textarea.scrollHeight;
     pelaaja_olio.pelaaja_hp -= 5;
-    pelaaja_hp.textContent = pelaaja_olio.pelaaja_hp
+    pelaaja_hp.textContent = pelaaja_olio.pelaaja_hp;
   } else {
     console.log('Virheellinen syöte, valitse uudelleen!');
   }
@@ -465,13 +475,13 @@ function variksenkielenLoitsut() {
     textarea.value += '\n-Valinta 1: Onnistut ymmärtämään loitsut, mikä antaa sinulle taitoja tulevaisuuden ennustamiseen, saat 10 HP.';
     textarea.scrollTop = textarea.scrollHeight;
     pelaaja_olio.pelaaja_hp += 10;
-    pelaaja_hp.textContent = pelaaja_olio.pelaaja_hp
+    pelaaja_hp.textContent = pelaaja_olio.pelaaja_hp;
   } else if (valinta1 === '2') {
     // Valinta 2:
     textarea.value += '\n-Valinta 2: Väärin meni! Varikset lentelevät ympärilläsi ja nokkivat naamasi verille, vaivut syvään uneen, menetät 5 HP!';
     textarea.scrollTop = textarea.scrollHeight;
     pelaaja_olio.pelaaja_hp -= 5;
-    pelaaja_hp.textContent = pelaaja_olio.pelaaja_hp
+    pelaaja_hp.textContent = pelaaja_olio.pelaaja_hp;
   } else {
     console.log('Virheellinen syöte, valitse uudelleen!');
   }
@@ -492,13 +502,13 @@ function varjorituaalit() {
     textarea.value += '\n-Valinta 1: Liityt varjoryhmän rituaaliin, ryhmä yllättyy voimakkaista taidoistasi ja saat heiltä 10 HP.';
     textarea.scrollTop = textarea.scrollHeight;
     pelaaja_olio.pelaaja_hp += 10;
-    pelaaja_hp.textContent = pelaaja_olio.pelaaja_hp
+    pelaaja_hp.textContent = pelaaja_olio.pelaaja_hp;
   } else if (valinta2 === '2') {
     // Valinta 2:
     textarea.value += '\n-Valinta 2: Häiritset ryhmän rituaalia etkä ymmärrä sen merkitystä, varjojen voima kääntyy sinua vastaan aiheuttaen pimeitä näkyjä ja painajaisia. Menetät 5 HP.';
     textarea.scrollTop = textarea.scrollHeight;
     pelaaja_olio.pelaaja_hp -= 5;
-    pelaaja_hp.textContent = pelaaja_olio.pelaaja_hp
+    pelaaja_hp.textContent = pelaaja_olio.pelaaja_hp;
   } else {
     console.log('Virheellinen syöte, valitse uudelleen!');
   }
@@ -520,10 +530,10 @@ function taikaesineenLoytaminen() {
     textarea.scrollTop = textarea.scrollHeight;
     for (let i = 0; i < 2; i++) {
       if (pelaaja_inventaario.length < 12) {
-        pelaaja_inventaario.push(taikasauva)
+        pelaaja_inventaario.push(taikasauva);
       }
     }
-    console.log(pelaaja_inventaario)
+    console.log(pelaaja_inventaario);
   } else if (valinta3 === '2') {
     // Valinta 2:
     textarea.value += '\n-Valinta 2: Et kunnioittanut taikaesinettä ja yritit pakottaa sen voimat ulos, herätit varisvihan, ja joudut taisteluun varisten herran kanssa!';
@@ -575,10 +585,10 @@ function noitataloTaistelu() {
     textarea.scrollTop = textarea.scrollHeight;
     for (let i = 0; i < 5; i++) {
       if (pelaaja_inventaario.length < 12) {
-        pelaaja_inventaario.push(eliksiiri)
+        pelaaja_inventaario.push(eliksiiri);
       }
     }
-    console.log(pelaaja_inventaario)
+    console.log(pelaaja_inventaario);
   } else if (valinta1 === '2') {
     // Valinta 2:
     textarea.value += '\n-Valinta 2: Jäit kiinni ja kolmipäinen noita huomaa sinut. Noita haastaa sinut taisteluun!';
@@ -607,16 +617,16 @@ function noitataloMetsassa() {
     textarea.scrollTop = textarea.scrollHeight;
     for (let i = 0; i < 3; i++) {
       if (pelaaja_inventaario.length < 12) {
-        pelaaja_inventaario.push(taitojuoma)
+        pelaaja_inventaario.push(taitojuoma);
       }
     }
-    console.log(pelaaja_inventaario)
+    console.log(pelaaja_inventaario);
   } else if (valinta2 === '2') {
     // Valinta 2:
     textarea.value += '\n-Valinta 2: Päätät olla astumatta noitataloon ja jatkat syvemmälle metsään. Matkasi johdattaa sinut yhä syvemmälle puiden siimekseen. Kompuroit ajatuksissasi puun kantoon ja menetät 5 HP.';
     textarea.scrollTop = textarea.scrollHeight;
     pelaaja_olio.pelaaja_hp -= 5;
-    pelaaja_hp.textContent = pelaaja_olio.pelaaja_hp
+    pelaaja_hp.textContent = pelaaja_olio.pelaaja_hp;
   } else {
     console.log('Virheellinen syöte, valitse uudelleen!');
   }
@@ -638,16 +648,16 @@ function harhailuNoitametsassa() {
     textarea.scrollTop = textarea.scrollHeight;
     for (let i = 0; i < 5; i++) {
       if (pelaaja_inventaario.length < 12) {
-        pelaaja_inventaario.push(eliksiiri)
+        pelaaja_inventaario.push(eliksiiri);
       }
     }
-    console.log(pelaaja_inventaario)
+    console.log(pelaaja_inventaario);
   } else if (valinta3 === '2') {
     // Valinta 2:
     textarea.value += '\n-Valinta 2: Voi ei, suuntavaistosi meni harhaan! Eksyit metsään ja sekoat sen mysteereihin, ajantaju katoaa harhaillessasi puiden keskellä. Vajoat synkkyyteen ja menetät 5 HP!';
     textarea.scrollTop = textarea.scrollHeight;
     pelaaja_olio.pelaaja_hp -= 5;
-    pelaaja_hp.textContent = pelaaja_olio.pelaaja_hp
+    pelaaja_hp.textContent = pelaaja_olio.pelaaja_hp;
   } else {
     console.log('Virheellinen syöte, valitse uudelleen!');
   }
@@ -687,13 +697,13 @@ function lumoavaSammakkokonsertti() {
     textarea.value += '\n-Valinta 1: Laulu on niin kaunis, että voit tuntea sen vaikutuksen ympärilläsi. Taikavoimat ympäröivät sinut ja saat 10 HP.';
     textarea.scrollTop = textarea.scrollHeight;
     pelaaja_olio.pelaaja_hp += 10;
-    pelaaja_hp.textContent = pelaaja_olio.pelaaja_hp
+    pelaaja_hp.textContent = pelaaja_olio.pelaaja_hp;
   } else if (valinta1 === '2') {
     // Valinta 2:
     textarea.value += '\n-Valinta 2: Päätät jatkaa matkaa, sammakot loukkaantuvat ja heittävät päällesi vettä. Viittasi on läpimärkä, ja jäädyt kylmästä ilmasta. Menetät 5 HP.';
     textarea.scrollTop = textarea.scrollHeight;
     pelaaja_olio.pelaaja_hp -= 5;
-    pelaaja_hp.textContent = pelaaja_olio.pelaaja_hp
+    pelaaja_hp.textContent = pelaaja_olio.pelaaja_hp;
   } else {
     console.log('Virheellinen syöte, valitse uudelleen!');
   }
@@ -714,16 +724,16 @@ function lumoavaJarvenpeili() {
     textarea.scrollTop = textarea.scrollHeight;
     for (let i = 0; i < 3; i++) {
       if (pelaaja_inventaario.length < 12) {
-        pelaaja_inventaario.push(taikasauva)
+        pelaaja_inventaario.push(taikasauva);
       }
     }
-    console.log(pelaaja_inventaario)
+    console.log(pelaaja_inventaario);
   } else if (valinta2 === '2') {
     // Valinta 2:
     textarea.value += '\n-Valinta 2: Sammakko loukkaantuu ja heittää sinua kivellä päähän. Menetät 5 HP.';
     textarea.scrollTop = textarea.scrollHeight;
     pelaaja_olio.pelaaja_hp -= 5;
-    pelaaja_hp.textContent = pelaaja_olio.pelaaja_hp
+    pelaaja_hp.textContent = pelaaja_olio.pelaaja_hp;
   } else {
     console.log('Virheellinen syöte, valitse uudelleen!');
   }
@@ -768,17 +778,17 @@ function keijukaistenKuningatar() {
     textarea.scrollTop = textarea.scrollHeight;
     for (let i = 0; i < 5; i++) {
       if (pelaaja_inventaario.length < 12) {
-        pelaaja_inventaario.push(taitojuoma)
+        pelaaja_inventaario.push(taitojuoma);
       }
     }
-    console.log(pelaaja_inventaario)
+    console.log(pelaaja_inventaario);
   } else if (valinta1 === '2') {
     // Valinta 2:
     textarea.value += '\n-Valinta 2: Ilmaisit tunteesi liian rohkeasti, kuningatar säikähtää ja lentää pois.';
     textarea.value += '\n-Jäät katsomaan kaunista valoa, sydämesi täyttää suru ja menetit osan voimistasi, itku täyttää silmäkulmasi, elämästäsi kuihtuu 5 HP:ta pois....';
     textarea.scrollTop = textarea.scrollHeight;
     pelaaja_olio.pelaaja_hp -= 5;
-    pelaaja_hp.textContent = pelaaja_olio.pelaaja_hp
+    pelaaja_hp.textContent = pelaaja_olio.pelaaja_hp;
   } else {
     console.log('Virheellinen syöte, valitse uudelleen!');
   }
@@ -800,16 +810,16 @@ function seuraaTulikarpastenValoa() {
     textarea.scrollTop = textarea.scrollHeight;
     for (let i = 0; i < 3; i++) {
       if (pelaaja_inventaario.length < 12) {
-        pelaaja_inventaario.push(eliksiiri)
+        pelaaja_inventaario.push(eliksiiri);
       }
     }
-    console.log(pelaaja_inventaario)
+    console.log(pelaaja_inventaario);
   } else if (valinta2 === '2') {
     // Valinta 2:
     textarea.value += '\n-Valinta 2: Tulikärpäset johdattavat sinut suohiisin salaiseen paikkaan, tämä oli ansa! Tulikärpäset hyökkäävät kimppuusi ja menetät 5 HP.';
     textarea.scrollTop = textarea.scrollHeight;
     pelaaja_olio.pelaaja_hp -= 5;
-    pelaaja_hp.textContent = pelaaja_olio.pelaaja_hp
+    pelaaja_hp.textContent = pelaaja_olio.pelaaja_hp;
   } else {
     console.log('Virheellinen syöte, valitse uudelleen!');
   }
@@ -831,16 +841,16 @@ function suonLumous() {
     textarea.scrollTop = textarea.scrollHeight;
     for (let i = 0; i < 2; i++) {
       if (pelaaja_inventaario.length < 12) {
-        pelaaja_inventaario.push(taikasauva)
+        pelaaja_inventaario.push(taikasauva);
       }
     }
-    console.log(pelaaja_inventaario)
+    console.log(pelaaja_inventaario);
   } else if (valinta3 === '2') {
     // Valinta 2:
     textarea.value += '\n-Valinta 2: Hyppelehtiessäsi kivillä huomaat salaperäisen portin suossa. Kompastut ja tipahdat suoportista toiseen ulottuvuuteen. Kohtaat painajaisena elämäsi traagisimmat tapahtumat. Menetät 5 HP.';
     textarea.scrollTop = textarea.scrollHeight;
     pelaaja_olio.pelaaja_hp -= 5;
-    pelaaja_hp.textContent = pelaaja_olio.pelaaja_hp
+    pelaaja_hp.textContent = pelaaja_olio.pelaaja_hp;
   } else {
     console.log('Virheellinen syöte, valitse uudelleen!');
   }
@@ -911,7 +921,7 @@ function taikurimarkkinat() {
     textarea.value += '\n-Valinta 1: Tutustut taikureiden tarjontaan ja teet muutamia hankintoja. Saat mukaasi taianomaisia esineitä jotka antavat sinulle taitopisteen.';
     textarea.scrollTop = textarea.scrollHeight;
     pelaaja_olio.pelaaja_taitopiste += 1;
-    pelaaja_tp.textContent = pelaaja_olio.pelaaja_taitopiste
+    pelaaja_tp.textContent = pelaaja_olio.pelaaja_taitopiste;
   } else if (valinta === '2') {
     // Valinta 2:
     textarea.value += '\n-Valinta 2: Salaperäinen myyjä yrittää kaupitella sinulle kiellettyjä esineitä. Tunnet luissasi kuinka tilanteessa on jotain mätää ja haluat poistua paikalta. Myyjä vihastuu tästä ja muuttuu demoniksi edessäsi! Tästä alkaa taistelu!';
@@ -938,7 +948,7 @@ function uhkapeliOnnenpelikortit() {
     textarea.value += '\n-Valinta 1: Valitset rohkeasti yhden pelikortin ja avaat sen varovasti. Kortti paljastaa, että voitat arvokkaan esineen tai taikavoiman. Tavernan ympärillä kokoontuu ihmisjoukko, ja voittosi herättää huomiota. Onneksi olkoon! Saat lisää taitoa matkaasi. Saavutat myös mainetta tavernassa.';
     textarea.scrollTop = textarea.scrollHeight;
     pelaaja_olio.pelaaja_taitopiste += 1;
-    pelaaja_tp.textContent = pelaaja_olio.pelaaja_taitopiste
+    pelaaja_tp.textContent = pelaaja_olio.pelaaja_taitopiste;
   } else if (valinta === '2') {
     // Valinta 2:
     textarea.value += '\n-Valinta 2: Päätät olla osallistumatta uhkapeliin ja istut muualle nauttimaan juomasta. Kuulet ympärilläsi pelaajien reaktiot, sekä riemunkiljahdukset että pettyneet huokaukset. Jatkat omaa matkaasi miettien, mitä olisi voinut voittaa..';
@@ -987,10 +997,10 @@ function peikkokuningas() {
     textarea.scrollTop = textarea.scrollHeight;
     for (let i = 0; i < 6; i++) {
       if (pelaaja_inventaario.length < 12) {
-        pelaaja_inventaario.push(taitojuoma)
+        pelaaja_inventaario.push(taitojuoma);
       }
     }
-    console.log(pelaaja_inventaario)
+    console.log(pelaaja_inventaario);
   } else if (valinta1 === '2') {
     // Valinta 2:
     textarea.value += '\n-Valinta 2: Rohkeana seikkailijana päätät kohdata peikkokuninkaan suoraan. Astut esiin varjoista ja seisot hänen edessään. Peikkokuningas nauraa mahtipontisesti ja haastaa sinut taisteluun!';
@@ -1020,17 +1030,17 @@ function hamahakkikuningatar() {
     textarea.scrollTop = textarea.scrollHeight;
     for (let i = 0; i < 2; i++) {
       if (pelaaja_inventaario.length < 12) {
-        pelaaja_inventaario.push(taikasauva)
+        pelaaja_inventaario.push(taikasauva);
       }
     }
-    console.log(pelaaja_inventaario)
+    console.log(pelaaja_inventaario);
   } else if (valinta2 === '2') {
     // Valinta 2:
     textarea.value += '\n-Valinta 2: Päätät turvautua äärimmäiseen toimenpiteeseen ja sytytät hämähäkinseitit tuleen.';
     textarea.value += '\n-Kammiossa roihahtaa liekit, hämähäkkikuningatar kiroaa sinut ja menetät 5 HP. Kuulet vaikeroivat tuskan huudot takanasi kun pakenet luolasta…';
     textarea.scrollTop = textarea.scrollHeight;
     pelaaja_olio.pelaaja_hp -= 5;
-    pelaaja_hp.textContent = pelaaja_olio.pelaaja_hp
+    pelaaja_hp.textContent = pelaaja_olio.pelaaja_hp;
   } else {
     console.log('Virheellinen syöte, valitse uudelleen!');
   }
@@ -1054,10 +1064,10 @@ function lohikaarmeenPesa() {
     textarea.scrollTop = textarea.scrollHeight;
     for (let i = 0; i < 3; i++) {
       if (pelaaja_inventaario.length < 12) {
-        pelaaja_inventaario.push(eliksiiri)
+        pelaaja_inventaario.push(eliksiiri);
       }
     }
-    console.log(pelaaja_inventaario)
+    console.log(pelaaja_inventaario);
   } else if (valinta3 === '2') {
     // Valinta 2:
     textarea.value += '\n-Valinta 2: Päätät olla ottamatta riskiä ja jatkaa seikkailujasi.';

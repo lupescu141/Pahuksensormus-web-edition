@@ -15,6 +15,8 @@ const ennatukset = document.querySelector('.ennatykset');
 const taulukko = document.querySelector('.top-lista');
 // Pelaaja rivi
 const paikkatausta = document.getElementById('paikkatausta');
+const valinta1 = document.getElementById('valinta1');
+const valinta2 = document.getElementById('valinta2');
 // Loki elementit
 const textarea = document.getElementById('loki');
 const taisteluloki = document.getElementById('taistelu-loki');
