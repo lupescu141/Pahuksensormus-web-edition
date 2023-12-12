@@ -218,8 +218,8 @@ function kylanKummallinenKojukauppias () {
   console.log('3. Kylän kummallinen kojukauppias:')
   textarea.value += '\n\n-Kylästä löytyy salaperäinen kojukauppias, joka myy erikoisia esineitä. Voit käydä tutustumassa hänen tarjontaansa ja tehdä kauppoja. Kuka tietää, mitä hänellä on varastossaan?'
   // Valinnat
-  textarea.value += '\n1: Kojukauppias näyttää luotettavalta, katsotaan miten käy!.'
-  textarea.value += '\n2: Epäilyttävän oloinen ukkeli mutta pistetään rahat likoon!;'
+  textarea.value += '\n\n1: Kojukauppias näyttää luotettavalta, katsotaan miten käy!.'
+  textarea.value += '\n\n2: Epäilyttävän oloinen ukkeli mutta pistetään rahat likoon!;'
   textarea.scrollTop = textarea.scrollHeight
 
   valinta1.addEventListener('click', valinta1kuuntelija = async function () {
