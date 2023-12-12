@@ -64,41 +64,48 @@ const taikasauva = {
 function laukaise_event() {
   valinta1.style.display = 'block';
   valinta2.style.display = 'block';
-  switch (parseInt(pelaaja_olio.pelaaja_sijainti)) {
-    case 1:
-      uudentoivonKylaEvent();
-      break;
-    case 2:
-      ruoholaaksonNiityt();
-      break;
-    case 3:
-      velhotorniEvent();
-      break;
-    case 4:
-      varisrameenSalaisuudet();
-      break;
-    case 5:
-      noitametsa();
-      break;
-    case 6:
-      sammakkojarvi();
-      break;
-    case 7:
-      suurentarmonKaupunkiEvent();
-      break;
-    case 8:
-      hiisisuonLaakso();
-      break;
-    case 9:
-      peikkoluola();
-      break;
+  try {
+    valinta1.removeEventListener('click', valinta1kuuntelija);
+    valinta2.removeEventListener('click', valinta2kuuntelija);
+  } catch (err) {
+  } finally {
+    switch (parseInt(pelaaja_olio.pelaaja_sijainti)) {
+      case 1:
+        uudentoivonKylaEvent();
+        break;
+      case 2:
+        ruoholaaksonNiityt();
+        break;
+      case 3:
+        velhotorniEvent();
+        break;
+      case 4:
+        varisrameenSalaisuudet();
+        break;
+      case 5:
+        noitametsa();
+        break;
+      case 6:
+        sammakkojarvi();
+        break;
+      case 7:
+        suurentarmonKaupunkiEvent();
+        break;
+      case 8:
+        hiisisuonLaakso();
+        break;
+      case 9:
+        peikkoluola();
+        break;
+    }
   }
+
 }
 
 // Peli Eventti: Uudentoivon kylä
 
 function uudentoivonKylaEvent() {
-  textarea.value += '\n-Tervetuloa Uudentoivon kylään, seikkailusi alkupisteeseen. Kylässä on monia tapahtumia ja mahdollisuuksia, jotka voivat muokata matkaasi. Tästä seikkailusi alkaa, onnea matkaan!';
+  textarea.value += '\n\n-Tervetuloa Uudentoivon kylään, seikkailusi alkupisteeseen. Kylässä on monia tapahtumia ja mahdollisuuksia, jotka voivat muokata matkaasi. Tästä seikkailusi alkaa, onnea matkaan!';
   textarea.scrollTop = textarea.scrollHeight;
   // Arpoo randomilla pelaajalle eventin 1, 2, 3.
   const event_nro = Math.floor(Math.random() * 3) + 1;
@@ -123,24 +130,24 @@ function uudentoivonKylaEvent() {
 // Event 1: Tavernan noppapeli-ilta
 function tavernaNoppapeli() {
   console.log('1. Tavernan noppapeli-ilta:');
-  textarea.value += '\n-Kylän tavernassa pelaajalla on mahdollisuus osallistua noppapeli-iltaan. Istu alas paikallisten kanssa ja näytä taitosi. Kuka tietää, mitä voit voittaa tai menettää?';
+  textarea.value += '\n\n-Kylän tavernassa pelaajalla on mahdollisuus osallistua noppapeli-iltaan. Istu alas paikallisten kanssa ja näytä taitosi. Kuka tietää, mitä voit voittaa tai menettää?';
   textarea.value += '\n1: Istu alas pelaamaan noppaa.';
   textarea.value += '\n2: Kieltäydy pelistä.';
   textarea.scrollTop = textarea.scrollHeight;
 
   // Valinta 1
-  valinta1.addEventListener('click', async function() {
+  valinta1.addEventListener('click', valinta1kuuntelija = async function() {
     const heitto = Math.floor(Math.random() * 21) + 1;
-    textarea.value += `\nNopan heitto: ${heitto}`;
+    textarea.value += `\n\nNopan heitto: ${heitto}`;
     textarea.scrollTop = textarea.scrollHeight;
     // Häviö noppa 1-10:
     if (heitto >= 1 && heitto <= 10) {
-      textarea.value += '\n-Hävisit! Menetit juuri esineen.';
+      textarea.value += '\n\n-Hävisit! Menetit juuri esineen.';
       textarea.scrollTop = textarea.scrollHeight;
       pelaaja_inventaario.pop(); // Poistaa pelaajalta yhden esineen
     } else {
       // Voitto noppa 11-21:
-      textarea.value += '\n-Voitto! Sait juuri uuden taitopisteen!';
+      textarea.value += '\n\n-Voitto! Sait juuri uuden taitopisteen!';
       textarea.scrollTop = textarea.scrollHeight;
       pelaaja_olio.pelaaja_taitopiste += 1;
       // Tällä tavalla päivitetään uusi arvo näkyviin
@@ -151,9 +158,9 @@ function tavernaNoppapeli() {
     valinta2.style.display = 'none';
   });
 
-  valinta2.addEventListener('click', async function() {
+  valinta2.addEventListener('click', valinta2kuuntelija = async function() {
     const heitto = Math.floor(Math.random() * 21) + 1;
-    textarea.value += '\n-Kieltäydyt pelistä ja pöytä seurue antaa sinulle ilkeitä katseita';
+    textarea.value += '\n\n-Kieltäydyt pelistä ja pöytä seurue antaa sinulle ilkeitä katseita';
     textarea.scrollTop = textarea.scrollHeight;
     valinta1.style.display = 'none';
     valinta2.style.display = 'none';
