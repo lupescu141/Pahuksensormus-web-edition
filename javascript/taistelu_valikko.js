@@ -29,6 +29,8 @@ async function avaa_taistelu_ikkuna(vihollinen) {
   // Lisää pelaaja_status taistelu_rivi:n ensimmäiseksi lapseksi
   taistelu_rivi.insertBefore(pelaaja_status, taistelu_rivi.firstChild);
 
+  console.log(vihollinen)
+
   // Testausta varten
   await taistelu(vihollinen);
 }

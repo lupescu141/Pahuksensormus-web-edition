@@ -1,4 +1,4 @@
-
+let vihollinen
 
 jatka.addEventListener('click', async () => {
   taisteluloki.value = ' ';
@@ -39,10 +39,10 @@ async function hae_vihollisen_taidot(vihollisen_id){
 
 const taistelu = async (vihollinen1) => {
 
-  taisteluloki.value += 'Jouduit taisteluun!';
+  taisteluloki.value += `Jouduit taisteluun! ${vihollinen1.vihollinen_nimi} kanssa`;
 
   //hakee random vihollisen
-  let vihollinen = await vihollinen1;
+  vihollinen = await vihollinen1;
 
   hyokkaa_tooltip.innerText = `Perus hyökkäys 1-${pelaaja_olio.pelaaja_isku + 2} vahinkoa.`
   hyokkaa_tooltip.style.display = `hidden`;

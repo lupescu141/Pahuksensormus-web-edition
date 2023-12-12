@@ -151,7 +151,7 @@ async function tarkista_sormus(){
   }
   else if (parseInt(pelaaja_olio.onko_sormus) === 1 && parseInt(pelaaja_olio.pelaaja_sijainti) === 10) {
     textarea.value += '\n-Tässä alkaa viimeinen taistelu gorgonin kanssa'
-    await taistelu(hae_tunnettu_vihollinen(3))
+    await avaa_taistelu_ikkuna(await hae_tunnettu_vihollinen(3))
     textarea.scrollTop = textarea.scrollHeight;
   }
   else if (parseInt(pelaaja_olio.onko_sormus) === 1) {
@@ -171,6 +171,11 @@ async function hae_tunnettu_vihollinen(vihollisen_id) {
       `http://localhost:5000/hae_tunnettu_vihollinen/${vihollisen_id}`);
   const gorgon = await response.json();
   console.log(gorgon);
+  document.getElementById(
+      'vihollinen_nimi').textContent = gorgon.vihollinen_nimi;
+  vihollinen_hp.textContent = gorgon.vihollinen_hp;
+  document.querySelector(
+      '.vihollinen-kuva').style.backgroundImage = `url("../static/images/bossit/${gorgon.vihollinen_nimi.toLocaleLowerCase()}.png")`;
   return gorgon
 }
 
