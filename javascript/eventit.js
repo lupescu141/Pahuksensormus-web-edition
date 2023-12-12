@@ -112,7 +112,9 @@ function laksiaisjuhlat(pelaaja_olio) {
   if (valinta === '1') {
     textarea.value += '\n-Valinta 1: Päätät osallistua juhliin hillitysti ja ottaa osaa kylän iloiseen tunnelmaan, ansaitset tällä paikallisten suosion. Kyläläiset muistavat ystävällisyytesi ikuisesti, ja saat heiltä mukaasi arvokkaita esineitä.';
     for (let i = 0; i < 5; i++) {
-      pelaaja_inventaario.push(eliksiiri)
+      if (pelaaja_inventaario.length < 12) {
+        pelaaja_inventaario.push(eliksiiri)
+      }
     }
     console.log(pelaaja_inventaario)
   } else if (valinta === '2') {
