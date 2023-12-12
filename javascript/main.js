@@ -20,9 +20,11 @@ const valinta2 = document.getElementById('valinta2');
 // Loki elementit
 const textarea = document.getElementById('loki');
 const taisteluloki = document.getElementById('taistelu-loki');
+
 // Kartta elementit
 const kartta = document.querySelector('.kartta');
 const kartta_nappi = kartta.querySelectorAll('.kartta-nappi-kuva');
+
 // Taistelu elementit
 const hyokkaa = document.getElementById('hyokkaa');
 const taidot = document.getElementById('taidot');
@@ -45,6 +47,7 @@ const pelaaja_status = document.querySelector('.pelaaja-status');
 const taistelu_rivi = document.querySelector('.taistelu-rivi');
 const pelaaja_info = document.querySelector('.pelaaja-info');
 const hyokkaa_tooltip = document.getElementById('hyokkaa-tooltip');
+const taistelu_palaa_nappi = document.getElementById('palaa');
 
 // Hoitaa alkuvalikon esittelyn sivun latautuessa
 document.addEventListener('DOMContentLoaded', async function() {

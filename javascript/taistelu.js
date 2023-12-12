@@ -60,10 +60,11 @@ const taistelu = async () => {
       tarkista_taito(pelaaja_taidot[0].taito_nimi, vihollinen, vihollinen_statukset, pelaaja_olio, pelaaja_statukset);
       pelaaja_olio.pelaaja_taitopiste -= 1;
       pelaaja_tp.innerText = pelaaja_olio.pelaaja_taitopiste;
+      palaa();
     }
     else {
 
-      taisteluloki.value += "Sinulla ei ole taitopisteitä."
+      taisteluloki.value += "\nSinulla ei ole taitopisteitä."
     }
   })
 
@@ -73,10 +74,11 @@ const taistelu = async () => {
         tarkista_taito(pelaaja_taidot[1].taito_nimi, vihollinen, vihollinen_statukset, pelaaja_olio, pelaaja_statukset);
         pelaaja_olio.pelaaja_taitopiste -= 1;
         pelaaja_tp.innerText = pelaaja_olio.pelaaja_taitopiste;
+        palaa();
       }
       else {
 
-      taisteluloki.value += "Sinulla ei ole taitopisteitä."
+      taisteluloki.value += "\nSinulla ei ole taitopisteitä."
     }
   })
 
@@ -86,10 +88,11 @@ const taistelu = async () => {
         tarkista_taito(pelaaja_taidot[2].taito_nimi, vihollinen, vihollinen_statukset, pelaaja_olio, pelaaja_statukset);
         pelaaja_olio.pelaaja_taitopiste -= 1;
         pelaaja_tp.innerText = pelaaja_olio.pelaaja_taitopiste;
+        palaa();
     }
       else {
 
-      taisteluloki.value += "Sinulla ei ole taitopisteitä."
+      taisteluloki.value += "\nSinulla ei ole taitopisteitä."
     }
   })
 
@@ -121,6 +124,7 @@ const taistelu = async () => {
 
     console.log(pelaaja_taidot);
     piilota_kaikki_napit();
+    taistelu_palaa_nappi.style.display = 'block'
 
     for (let i = 0; i < pelaaja_taidot.length; i++) {
       taito_napit[i].textContent = pelaaja_taidot[i].taito_nimi;
