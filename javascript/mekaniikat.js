@@ -140,7 +140,6 @@ async function peli_ohi(){
   taisteluloki.value += `\n-Selvisit ${pelaaja_olio.menneet_paivat} Päivää.`;
 }
 
-
 // Tarkistaa onko kohteessa sormus
 async function tarkista_sormus(){
   console.log(pelaaja_olio.onko_sormus)
@@ -162,7 +161,6 @@ async function tarkista_sormus(){
     textarea.scrollTop = textarea.scrollHeight;
   }
 }
-
 
 async function hae_säätila() {
   const response = await fetch('https://api.openweathermap.org/data/2.5/weather?q=haiti&units=metric&appid=e34434fb9afb590f02e150bcb3eee98d');

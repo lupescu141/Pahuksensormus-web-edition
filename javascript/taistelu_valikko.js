@@ -78,6 +78,11 @@ function nayta_valikko(valikko) {
 // Piilottaa kaikki napit taistelu valikosta
 function piilota_kaikki_napit() {
   document.querySelector(".esine-napit").style.display = 'none';
+
+  taito_napit.forEach((nappi)=> {
+    nappi.style.display = 'none';
+  })
+
   document.querySelectorAll('.taistelu-valikko-nappi, .isku-nappi, .jatka-nappi').
       forEach(nappi => {
         nappi.style.display = 'none';
@@ -93,4 +98,6 @@ function palaa() {
    document.querySelectorAll('.taistelu-valikko-nappi').forEach(nappi => {
     nappi.style.display = 'block';
   });
+
+   jatka.style.display = 'none';
 }
