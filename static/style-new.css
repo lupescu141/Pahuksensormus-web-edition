@@ -325,15 +325,18 @@ button:hover {
 
 .loki-teksti {
     background: none;
-    width: 94%;
-    height: 100%;
+    width: 93%;
+    height: 90%;
     text-align: left;
     font-size: 1.4rem;
     align-self: center;
     border: none;
     box-shadow: 0 0 9px 2px rgb(0 0 0);
     resize: none;
-    outline: none
+    outline: none;
+    border-radius: 7px;
+    padding-inline: 10px;
+    padding-bottom: 15px;
 }
 
 .loki-teksti::-webkit-scrollbar-track{
@@ -613,6 +616,8 @@ border: black solid;
     border-radius: 10px;
     resize: none;
     outline: none;
+    padding-inline: 10px;
+    padding-bottom: 15px;
 }
 
 textarea::-webkit-scrollbar{
