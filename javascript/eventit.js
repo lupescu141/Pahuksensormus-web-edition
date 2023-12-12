@@ -76,9 +76,10 @@ function uudentoivonKylaEvent(pelaaja_olio) {
 }
 
 // Event 1: Tavernan noppapeli-ilta
-function tavernaNoppapeli(pelaaja_olio) {
+function tavernaNoppapeli() {
   console.log('1. Tavernan noppapeli-ilta:');
   textarea.value += '\n-Kylän tavernassa pelaajalla on mahdollisuus osallistua noppapeli-iltaan. Istu alas paikallisten kanssa ja näytä taitosi. Kuka tietää, mitä voit voittaa tai menettää?';
+  textarea.scrollTop = textarea.scrollHeight;
 
   // Valinnat:
   console.log('Valinnat:');
@@ -86,16 +87,19 @@ function tavernaNoppapeli(pelaaja_olio) {
 
   console.log(`Heitetään noppaa!`);
   textarea.value += `Noppa: ${heitto}`;
+  textarea.scrollTop = textarea.scrollHeight;
 
   // Voitto noppa 1-10:
   if (heitto >= 1 && heitto <= 10) {
     textarea.value += '\n-Voitto! Sait juuri uuden taitopisteen!';
+    textarea.scrollTop = textarea.scrollHeight;
     pelaaja_olio.pelaaja_taitopiste += 5;
   } else {
     // Häviö noppa 11-21:
     textarea.value += '\n-Hävisit! Menetit juuri kasan eliksiirejä.';
+    textarea.scrollTop = textarea.scrollHeight;
     // Pitää muuttaa inventaarioksi
-    pelaaja.eliksiirit -= 2;
+    pelaaja_inventaario.pop();
   }
 }
 
@@ -103,6 +107,7 @@ function tavernaNoppapeli(pelaaja_olio) {
 function laksiaisjuhlat(pelaaja_olio) {
   console.log('2. Läksiäisjuhlat:');
   textarea.value += '\n-Uudentoivon kylä järjestää sydämelliset läksiäisjuhlat sinulle. Koko kylässä vallitsee iloinen tunnelma. Osallistut juhliin ja liityt kyläläisten joukkoon juhlan huumassa. Ole kuitenkin varovainen, sillä liiallinen juhlinta saattaa tuoda mukanaan ikäviä seurauksia...';
+  textarea.scrollTop = textarea.scrollHeight;
 
   // Valinnat:
   console.log('Valinnat:');
@@ -111,6 +116,7 @@ function laksiaisjuhlat(pelaaja_olio) {
   // Valinta 1:
   if (valinta === '1') {
     textarea.value += '\n-Valinta 1: Päätät osallistua juhliin hillitysti ja ottaa osaa kylän iloiseen tunnelmaan, ansaitset tällä paikallisten suosion. Kyläläiset muistavat ystävällisyytesi ikuisesti, ja saat heiltä mukaasi arvokkaita esineitä.';
+    textarea.scrollTop = textarea.scrollHeight;
     for (let i = 0; i < 5; i++) {
       if (pelaaja_inventaario.length < 12) {
         pelaaja_inventaario.push(eliksiiri)
@@ -120,6 +126,7 @@ function laksiaisjuhlat(pelaaja_olio) {
   } else if (valinta === '2') {
     // Valinta 2:
     textarea.value += '\n-Valinta 2: Annat juhlavan tunnelman viedä mukanaan ja juot liikaa viiniä, menetät otteesi todellisuudesta. Seurauksena kyläläiset menettävät kunnioituksen sinuun. Menetit 5 HP voipuessa krapulasta ja maineesi on mennyt!';
+    textarea.scrollTop = textarea.scrollHeight;
     pelaaja_olio.pelaaja_hp -= 5;
   } else {
     console.log('Virheellinen syöte, valitse uudelleen!');
