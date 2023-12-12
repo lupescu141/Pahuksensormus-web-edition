@@ -128,14 +128,16 @@ async function tallennuksen_poisto_ja_pisteet() {
 }
 
 async function peli_ohi(){
-  const response = await fetch(
-      `http://localhost:5000/peli_ohi/${pelaaja_olio.peli_id}`);
+  await inventaario_tyhjennys()
+  console.log(pelaaja_olio.peli_id);
+  const response = await fetch(`http://localhost:5000/peli_ohi/${pelaaja_olio.peli_id}`);
   const vastaus = await response.json();
   console.log(vastaus);
-  textarea.value = ''
-  textarea.value += '\n-Sinä kuolit.'
-  textarea.value += `\n-Selvisit ${pelaaja_olio.menneet_paivat} Päivää.`
-  return vastaus;
+  textarea.value = '';
+  textarea.value += '\n-Sinä kuolit.';
+  textarea.value += `\n-Selvisit ${pelaaja_olio.menneet_paivat} Päivää.`;
+  taisteluloki.value += '\n-Sinä kuolit.';
+  taisteluloki.value += `\n-Selvisit ${pelaaja_olio.menneet_paivat} Päivää.`;
 }
 
 
