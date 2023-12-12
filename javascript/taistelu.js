@@ -149,8 +149,12 @@ const taistelu = async (vihollinen1) => {
     esineet.style.display = 'inline-grid'
     taistelu_palaa_nappi.style.display = 'block';
     inventaario_nappi.forEach((nappi) => {
-      nappi.style.display = 'none';
+      nappi.style.display = 'block';
     })
+
+    for (let i = 0; i < pelaaja_inventaario.length; i++){
+      inventaario_nappi[i].textContent = pelaaja_inventaario[i].esine_nimi;
+    }
   });
 }
 
