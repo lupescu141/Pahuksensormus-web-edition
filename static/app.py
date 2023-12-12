@@ -236,6 +236,28 @@ def hae_random_vihollinen():
     return haku_tiedot
 
 
+# Hakee tunnetun vihollisen id:n perusteella. Esim Gorgon id:3
+@app.route('/hae_tunnettu_vihollinen/<vihollinen_id>')
+def hae_tunnettu_vihollinen(vihollinen_id):
+    sql = f'SELECT * FROM viholliset WHERE vihollinen_id = {int(vihollinen_id)}'
+    kursori = conn.cursor(dictionary=True)
+    kursori.execute(sql)
+    haku_tiedot = kursori.fetchone()
+    return haku_tiedot
+
+
+# Hae kaikki vihollisen taidot
+@app.route('/hae_vihollisen_taidot/<vihollisen_id>')
+def hae_vihollisen_taidot(vihollisen_id):
+    sql = (
+        f'SELECT taito_id, vihollisen_id, taito_nimi FROM taidot_viholliset WHERE vihollisen_id = "{vihollisen_id}"')
+    kursori = conn.cursor(dictionary=True)
+    kursori.execute(sql)
+    vihollisen_taidot = kursori.fetchall()
+
+    return vihollisen_taidot
+
+
 # Hakee random bossin
 @app.route('/hae_random_bossi')
 def hae_random_bossi():
