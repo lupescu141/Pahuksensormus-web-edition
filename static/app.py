@@ -204,6 +204,25 @@ def tallennuksen_poisto_ja_pisteet(peli_id, pelaaja_nimi, menneet_paivat):
         return str(e)
 
 
+# Poistaa kuolleen pelaajan
+@app.route('/peli_ohi/<peli_id>')
+def peli_ohi(peli_id):
+
+    try:
+        sql = (f'DELETE FROM peli WHERE peli_id = "{peli_id}";')
+        kursori = conn.cursor()
+        kursori.execute(sql)
+
+        sql = (f'DELETE FROM inventaario WHERE pelaajan_id = "{peli_id}";')
+        kursori.execute(sql)
+
+        return jsonify({'peli': 'poistettu'})
+
+    except Exception as e:
+        # Käsittele virhe tarvittaessa
+        return str(e)
+
+
 # Hakee pelaajan inventaarion
 @app.route('/hae_inventaario/<peli_id>')
 def hae_inventaario(peli_id):

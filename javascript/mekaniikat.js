@@ -37,7 +37,6 @@ async function hae_inventaario() {
   return pelaaja_inventaario = vastaus;
 }
 
-
 // Päivittää pelaajalle maksimi HP:n ja TP:n
 async function lepo() {
 // Tarkistaa, onko pelaajan hp sama kuin maksimi_hp ja tp sama kuin maksimi_tp
@@ -52,6 +51,12 @@ async function lepo() {
     pelaaja_olio.pelaaja_taitopiste = pelaaja_olio.pelaaja_maksimi_taitopiste;
     textarea.value += '\n-Lepäsit yhden päivä. HP ja TP ovat maksimissaan';
     textarea.scrollTop = textarea.scrollHeight;
+
+    pelaaja_olio.menneet_paivat++
+    textarea.value += `\n-Olet käyttänyt ${pelaaja_olio.menneet_paivat} päivää etsiessäsi pahuksen sormusta.`;
+    textarea.scrollTop = textarea.scrollHeight;
+
+    await tallenna()
 
     document.getElementById(
         'pelaaja-hp').textContent = pelaaja_olio.pelaaja_hp;
@@ -81,17 +86,18 @@ async function hae_matkustus_paivat() {
   return vastaus;
 }
 
-
 // Laskee mahdollisuuden tasiteluun
 async function taistelu_mahdollisuus(matkan_pituus) {
   const mahdollisuus = Math.floor(Math.random() * 20) + 1;
   const ei_taistelua = parseInt(pelaaja_olio.pelaaja_suojaus) -
       parseInt(matkan_pituus);
   if (mahdollisuus > ei_taistelua) {
-    console.log('taistelu alkaa');
-    await avaa_taistelu_ikkuna();
+    textarea.value += `\n-Jouduit taisteluun!`;
+    textarea.scrollTop = textarea.scrollHeight;
+    await avaa_taistelu_ikkuna()
   } else {
-    console.log('ei taistelua');
+    textarea.value += `\n-Pääsit turvallisesti perille.`;
+    textarea.scrollTop = textarea.scrollHeight;
   }
 }
 
@@ -119,4 +125,15 @@ async function tallennuksen_poisto_ja_pisteet() {
   console.log(vastaus);
   return vastaus;
 
+}
+
+async function peli_ohi(){
+  const response = await fetch(
+      `http://localhost:5000/peli_ohi/${pelaaja_olio.peli_id}`);
+  const vastaus = await response.json();
+  console.log(vastaus);
+  textarea.value = ''
+  textarea.value += '\n-Sinä kuolit.'
+  textarea.value += `\n-Selvisit ${pelaaja_olio.menneet_paivat} Päivää.`
+  return vastaus;
 }
