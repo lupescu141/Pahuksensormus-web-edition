@@ -75,22 +75,23 @@ async function matkustaminen() {
   kartta_divit.forEach((div) => {
     for (kohde of kohteet) {
       if (parseInt(kohde.id) === parseInt(div.id)) {
-        div.value = kohde.matka_pv
-        console.log(`kohteeseen ${div.name} on ${div.value} eli ${kohde.matka_pv} matkustus`)
-        break
+        div.value = kohde.matka_pv;
+        console.log(
+            `kohteeseen ${div.name} on ${div.value} eli ${kohde.matka_pv} matkustus`);
+        break;
       }
     }
   });
 
-  const tooltipit = kartta.querySelectorAll('.tooltiptext')
+  const tooltipit = kartta.querySelectorAll('.tooltiptext');
   tooltipit.forEach((span) => {
     for (kohde of kohteet) {
       if (kohde.fantasia_nimi === span.id) {
-        span.textContent = `${span.id} ${kohde.matka_pv} matkustus`
-        break
+        span.textContent = `${span.id} ${kohde.matka_pv} matkustus`;
+        break;
       }
     }
-  })
+  });
 
 }
 
@@ -99,128 +100,178 @@ const kohde_1 = document.getElementById('1');
 kohde_1.addEventListener('click', async function() {
   console.log(`klikattu ${kohde_1.id} : ${kohde_1.name}`);
   pelaaja_olio.pelaaja_sijainti = kohde_1.id;
-  pelaaja_olio.menneet_paivat = parseInt(pelaaja_olio.menneet_paivat) + parseInt(kohde_1.value)
+  pelaaja_olio.menneet_paivat = parseInt(pelaaja_olio.menneet_paivat) +
+      parseInt(kohde_1.value);
   paikkatausta.src = `../static/images/paikka_numerot/${pelaaja_olio.pelaaja_sijainti}.png`;
   console.log('matkan kesto on ' + kohde_1.value);
-  console.log(`pelaaja on matkustanut ${pelaaja_olio.menneet_paivat} päivää`)
+  console.log(`pelaaja on matkustanut ${pelaaja_olio.menneet_paivat} päivää`);
+  textarea.value += `\n-Päätät matkustaa kohteeseen ${kohde_1.name}. Sinne on ${kohde_1.value} päivän matkustus`;
+  textarea.scrollTop = textarea.scrollHeight;
   //await taistelu_mahdollisuus(kohde_1.value);
-  await matkustaminen()
-  await tallenna()
+  await matkustaminen();
+  textarea.value += `\n-Olet matkustanut yhteensä ${pelaaja_olio.menneet_paivat} päivää. Voit levätä matkojen välissä jos tarvitset lisää HP tai TP`;
+  textarea.scrollTop = textarea.scrollHeight;
+  await tallenna();
 });
 
 const kohde_2 = document.getElementById('2');
 kohde_2.addEventListener('click', async function() {
   console.log(`klikattu ${kohde_2.id} : ${kohde_2.name}`);
   pelaaja_olio.pelaaja_sijainti = kohde_2.id;
-  pelaaja_olio.menneet_paivat = parseInt(pelaaja_olio.menneet_paivat) + parseInt(kohde_2.value)
+  pelaaja_olio.menneet_paivat = parseInt(pelaaja_olio.menneet_paivat) +
+      parseInt(kohde_2.value);
   paikkatausta.src = `../static/images/paikka_numerot/${pelaaja_olio.pelaaja_sijainti}.png`;
   console.log('matkan kesto on ' + kohde_2.value);
-  console.log(`pelaaja on matkustanut ${pelaaja_olio.menneet_paivat} päivää`)
-  //await taistelu_mahdollisuus(kohde_2.value);
-  await matkustaminen()
-  await tallenna()
+  console.log(`pelaaja on matkustanut ${pelaaja_olio.menneet_paivat} päivää`);
+  textarea.value += `\n-Päätät matkustaa kohteeseen ${kohde_2.name}. Sinne on ${kohde_2.value} päivän matkustus`;
+  textarea.scrollTop = textarea.scrollHeight;
+  //await taistelu_mahdollisuus(kohde_1.value);
+  await matkustaminen();
+  textarea.value += `\n-Olet matkustanut yhteensä ${pelaaja_olio.menneet_paivat} päivää. Voit levätä matkojen välissä jos tarvitset lisää HP tai TP`;
+  textarea.scrollTop = textarea.scrollHeight;
+  await tallenna();
 });
 
 const kohde_3 = document.getElementById('3');
 kohde_3.addEventListener('click', async function() {
   console.log(`klikattu ${kohde_3.id} : ${kohde_3.name}`);
   pelaaja_olio.pelaaja_sijainti = kohde_3.id;
-  pelaaja_olio.menneet_paivat = parseInt(pelaaja_olio.menneet_paivat) + parseInt(kohde_3.value)
+  pelaaja_olio.menneet_paivat = parseInt(pelaaja_olio.menneet_paivat) +
+      parseInt(kohde_3.value);
   paikkatausta.src = `../static/images/paikka_numerot/${pelaaja_olio.pelaaja_sijainti}.png`;
   console.log('matkan kesto on ' + kohde_3.value);
-  console.log(`pelaaja on matkustanut ${pelaaja_olio.menneet_paivat} päivää`)
-  //await taistelu_mahdollisuus(kohde_3.value);
-  await matkustaminen()
-  await tallenna()
+  console.log(`pelaaja on matkustanut ${pelaaja_olio.menneet_paivat} päivää`);
+  textarea.value += `\n-Päätät matkustaa kohteeseen ${kohde_3.name}. Sinne on ${kohde_3.value} päivän matkustus`;
+  textarea.scrollTop = textarea.scrollHeight;
+  //await taistelu_mahdollisuus(kohde_1.value);
+  await matkustaminen();
+  textarea.value += `\n-Olet matkustanut yhteensä ${pelaaja_olio.menneet_paivat} päivää. Voit levätä matkojen välissä jos tarvitset lisää HP tai TP`;
+  textarea.scrollTop = textarea.scrollHeight;
+  await tallenna();
 });
 
 const kohde_4 = document.getElementById('4');
 kohde_4.addEventListener('click', async function() {
   console.log(`klikattu ${kohde_4.id} : ${kohde_4.name}`);
   pelaaja_olio.pelaaja_sijainti = kohde_4.id;
-  pelaaja_olio.menneet_paivat = parseInt(pelaaja_olio.menneet_paivat) + parseInt(kohde_4.value)
+  pelaaja_olio.menneet_paivat = parseInt(pelaaja_olio.menneet_paivat) +
+      parseInt(kohde_4.value);
   paikkatausta.src = `../static/images/paikka_numerot/${pelaaja_olio.pelaaja_sijainti}.png`;
   console.log('matkan kesto on ' + kohde_4.value);
-  console.log(`pelaaja on matkustanut ${pelaaja_olio.menneet_paivat} päivää`)
-  //await taistelu_mahdollisuus(kohde_4.value);
-  await matkustaminen()
-  await tallenna()
+  console.log(`pelaaja on matkustanut ${pelaaja_olio.menneet_paivat} päivää`);
+  textarea.value += `\n-Päätät matkustaa kohteeseen ${kohde_4.name}. Sinne on ${kohde_4.value} päivän matkustus`;
+  textarea.scrollTop = textarea.scrollHeight;
+  //await taistelu_mahdollisuus(kohde_1.value);
+  await matkustaminen();
+  textarea.value += `\n-Olet matkustanut yhteensä ${pelaaja_olio.menneet_paivat} päivää. Voit levätä matkojen välissä jos tarvitset lisää HP tai TP`;
+  textarea.scrollTop = textarea.scrollHeight;
+  await tallenna();
 });
 
 const kohde_5 = document.getElementById('5');
 kohde_5.addEventListener('click', async function() {
   console.log(`klikattu ${kohde_5.id} : ${kohde_5.name}`);
   pelaaja_olio.pelaaja_sijainti = kohde_5.id;
-  pelaaja_olio.menneet_paivat = parseInt(pelaaja_olio.menneet_paivat) + parseInt(kohde_5.value)
+  pelaaja_olio.menneet_paivat = parseInt(pelaaja_olio.menneet_paivat) +
+      parseInt(kohde_5.value);
   paikkatausta.src = `../static/images/paikka_numerot/${pelaaja_olio.pelaaja_sijainti}.png`;
   console.log('matkan kesto on ' + kohde_5.value);
-  console.log(`pelaaja on matkustanut ${pelaaja_olio.menneet_paivat} päivää`)
-  //await taistelu_mahdollisuus(kohde_5.value);
-  await matkustaminen()
-  await tallenna()
+  console.log(`pelaaja on matkustanut ${pelaaja_olio.menneet_paivat} päivää`);
+  textarea.value += `\n-Päätät matkustaa kohteeseen ${kohde_5.name}. Sinne on ${kohde_5.value} päivän matkustus`;
+  textarea.scrollTop = textarea.scrollHeight;
+  //await taistelu_mahdollisuus(kohde_1.value);
+  await matkustaminen();
+  textarea.value += `\n-Olet matkustanut yhteensä ${pelaaja_olio.menneet_paivat} päivää. Voit levätä matkojen välissä jos tarvitset lisää HP tai TP`;
+  textarea.scrollTop = textarea.scrollHeight;
+  await tallenna();
 });
 
 const kohde_6 = document.getElementById('6');
 kohde_6.addEventListener('click', async function() {
   console.log(`klikattu ${kohde_6.id} : ${kohde_6.name}`);
   pelaaja_olio.pelaaja_sijainti = kohde_6.id;
-  pelaaja_olio.menneet_paivat = parseInt(pelaaja_olio.menneet_paivat) + parseInt(kohde_6.value)
+  pelaaja_olio.menneet_paivat = parseInt(pelaaja_olio.menneet_paivat) +
+      parseInt(kohde_6.value);
   paikkatausta.src = `../static/images/paikka_numerot/${pelaaja_olio.pelaaja_sijainti}.png`;
   console.log('matkan kesto on ' + kohde_6.value);
-  console.log(`pelaaja on matkustanut ${pelaaja_olio.menneet_paivat} päivää`)
-  //await taistelu_mahdollisuus(kohde_6.value);
-  await matkustaminen()
-  await tallenna()
+  console.log(`pelaaja on matkustanut ${pelaaja_olio.menneet_paivat} päivää`);
+  textarea.value += `\n-Päätät matkustaa kohteeseen ${kohde_6.name}. Sinne on ${kohde_6.value} päivän matkustus`;
+  textarea.scrollTop = textarea.scrollHeight;
+  //await taistelu_mahdollisuus(kohde_1.value);
+  await matkustaminen();
+  textarea.value += `\n-Olet matkustanut yhteensä ${pelaaja_olio.menneet_paivat} päivää. Voit levätä matkojen välissä jos tarvitset lisää HP tai TP`;
+  textarea.scrollTop = textarea.scrollHeight;
+  await tallenna();
 });
 
 const kohde_7 = document.getElementById('7');
 kohde_7.addEventListener('click', async function() {
   console.log(`klikattu ${kohde_7.id} : ${kohde_7.name}`);
   pelaaja_olio.pelaaja_sijainti = kohde_7.id;
-  pelaaja_olio.menneet_paivat = parseInt(pelaaja_olio.menneet_paivat) + parseInt(kohde_7.value)
+  pelaaja_olio.menneet_paivat = parseInt(pelaaja_olio.menneet_paivat) +
+      parseInt(kohde_7.value);
   paikkatausta.src = `../static/images/paikka_numerot/${pelaaja_olio.pelaaja_sijainti}.png`;
   console.log('matkan kesto on ' + kohde_7.value);
-  console.log(`pelaaja on matkustanut ${pelaaja_olio.menneet_paivat} päivää`)
-  //await taistelu_mahdollisuus(kohde_7.value);
-  await matkustaminen()
-  await tallenna()
+  console.log(`pelaaja on matkustanut ${pelaaja_olio.menneet_paivat} päivää`);
+  textarea.value += `\n-Päätät matkustaa kohteeseen ${kohde_7.name}. Sinne on ${kohde_7.value} päivän matkustus`;
+  textarea.scrollTop = textarea.scrollHeight;
+  //await taistelu_mahdollisuus(kohde_1.value);
+  await matkustaminen();
+  textarea.value += `\n-Olet matkustanut yhteensä ${pelaaja_olio.menneet_paivat} päivää. Voit levätä matkojen välissä jos tarvitset lisää HP tai TP`;
+  textarea.scrollTop = textarea.scrollHeight;
+  await tallenna();
 });
 
 const kohde_8 = document.getElementById('8');
 kohde_8.addEventListener('click', async function() {
   console.log(`klikattu ${kohde_8.id} : ${kohde_8.name}`);
   pelaaja_olio.pelaaja_sijainti = kohde_8.id;
-  pelaaja_olio.menneet_paivat = parseInt(pelaaja_olio.menneet_paivat) + parseInt(kohde_8.value)
+  pelaaja_olio.menneet_paivat = parseInt(pelaaja_olio.menneet_paivat) +
+      parseInt(kohde_8.value);
   paikkatausta.src = `../static/images/paikka_numerot/${pelaaja_olio.pelaaja_sijainti}.png`;
   console.log('matkan kesto on ' + kohde_8.value);
-  console.log(`pelaaja on matkustanut ${pelaaja_olio.menneet_paivat} päivää`)
-  //await taistelu_mahdollisuus(kohde_8.value);
-  await matkustaminen()
-  await tallenna()
+  console.log(`pelaaja on matkustanut ${pelaaja_olio.menneet_paivat} päivää`);
+  textarea.value += `\n-Päätät matkustaa kohteeseen ${kohde_8.name}. Sinne on ${kohde_8.value} päivän matkustus`;
+  textarea.scrollTop = textarea.scrollHeight;
+  //await taistelu_mahdollisuus(kohde_1.value);
+  await matkustaminen();
+  textarea.value += `\n-Olet matkustanut yhteensä ${pelaaja_olio.menneet_paivat} päivää. Voit levätä matkojen välissä jos tarvitset lisää HP tai TP`;
+  textarea.scrollTop = textarea.scrollHeight;
+  await tallenna();
 });
 
 const kohde_9 = document.getElementById('9');
 kohde_9.addEventListener('click', async function() {
   console.log(`klikattu ${kohde_9.id} : ${kohde_9.name}`);
   pelaaja_olio.pelaaja_sijainti = kohde_9.id;
-  pelaaja_olio.menneet_paivat = parseInt(pelaaja_olio.menneet_paivat) + parseInt(kohde_9.value)
+  pelaaja_olio.menneet_paivat = parseInt(pelaaja_olio.menneet_paivat) +
+      parseInt(kohde_9.value);
   paikkatausta.src = `../static/images/paikka_numerot/${pelaaja_olio.pelaaja_sijainti}.png`;
   console.log('matkan kesto on ' + kohde_9.value);
-  console.log(`pelaaja on matkustanut ${pelaaja_olio.menneet_paivat} päivää`)
-  //await taistelu_mahdollisuus(kohde_9.value);
-  await matkustaminen()
-  await tallenna()
+  console.log(`pelaaja on matkustanut ${pelaaja_olio.menneet_paivat} päivää`);
+  textarea.value += `\n-Päätät matkustaa kohteeseen ${kohde_9.name}. Sinne on ${kohde_9.value} päivän matkustus`;
+  textarea.scrollTop = textarea.scrollHeight;
+  //await taistelu_mahdollisuus(kohde_1.value);
+  await matkustaminen();
+  textarea.value += `\n-Olet matkustanut yhteensä ${pelaaja_olio.menneet_paivat} päivää. Voit levätä matkojen välissä jos tarvitset lisää HP tai TP`;
+  textarea.scrollTop = textarea.scrollHeight;
+  await tallenna();
 });
 
 const kohde_10 = document.getElementById('10');
 kohde_10.addEventListener('click', async function() {
   console.log(`klikattu ${kohde_10.id} : ${kohde_10.name}`);
   pelaaja_olio.pelaaja_sijainti = kohde_10.id;
-  pelaaja_olio.menneet_paivat = parseInt(pelaaja_olio.menneet_paivat) + parseInt(kohde_10.value)
+  pelaaja_olio.menneet_paivat = parseInt(pelaaja_olio.menneet_paivat) +
+      parseInt(kohde_10.value);
   paikkatausta.src = `../static/images/paikka_numerot/${pelaaja_olio.pelaaja_sijainti}.png`;
   console.log('matkan kesto on ' + kohde_10.value);
-  console.log(`pelaaja on matkustanut ${pelaaja_olio.menneet_paivat} päivää`)
-  //await taistelu_mahdollisuus(kohde_10.value);
-  await matkustaminen()
-  await tallenna()
+  console.log(`pelaaja on matkustanut ${pelaaja_olio.menneet_paivat} päivää`);
+  textarea.value += `\n-Päätät matkustaa kohteeseen ${kohde_10.name}. Sinne on ${kohde_10.value} päivän matkustus`;
+  textarea.scrollTop = textarea.scrollHeight;
+  //await taistelu_mahdollisuus(kohde_1.value);
+  await matkustaminen();
+  textarea.value += `\n-Olet matkustanut yhteensä ${pelaaja_olio.menneet_paivat} päivää. Voit levätä matkojen välissä jos tarvitset lisää HP tai TP`;
+  textarea.scrollTop = textarea.scrollHeight;
+  await tallenna();
 });
