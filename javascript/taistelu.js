@@ -46,6 +46,48 @@ const taistelu = async () => {
     pelkaa: 0,
   };
 
+  //Aktivoi taitonappien kuuntelijat
+  taito1.addEventListener("click", taito1_painettu = () => {
+
+    if (pelaaja_olio.pelaaja_taitopiste > 0) {
+
+      tarkista_taito(pelaaja_taidot[0].taito_nimi, vihollinen, vihollinen_statukset, pelaaja_olio, pelaaja_statukset);
+      pelaaja_olio.pelaaja_taitopiste -= 1;
+      pelaaja_tp.innerText = pelaaja_olio.pelaaja_taitopiste;
+    }
+    else {
+
+      taisteluloki.value += "Sinulla ei ole taitopisteitä."
+    }
+  })
+
+    taito2.addEventListener("click", taito2_painettu = () => {
+      if (pelaaja_olio.pelaaja_taitopiste > 0) {
+
+        tarkista_taito(pelaaja_taidot[1].taito_nimi, vihollinen, vihollinen_statukset, pelaaja_olio, pelaaja_statukset);
+        pelaaja_olio.pelaaja_taitopiste -= 1;
+        pelaaja_tp.innerText = pelaaja_olio.pelaaja_taitopiste;
+      }
+      else {
+
+      taisteluloki.value += "Sinulla ei ole taitopisteitä."
+    }
+  })
+
+    taito3.addEventListener("click", taito3_painettu = () => {
+      if (pelaaja_olio.pelaaja_taitopiste > 0) {
+
+        tarkista_taito(pelaaja_taidot[2].taito_nimi, vihollinen, vihollinen_statukset, pelaaja_olio, pelaaja_statukset);
+        pelaaja_olio.pelaaja_taitopiste -= 1;
+        pelaaja_tp.innerText = pelaaja_olio.pelaaja_taitopiste;
+    }
+      else {
+
+      taisteluloki.value += "Sinulla ei ole taitopisteitä."
+    }
+  })
+
+
   hyokkaa.addEventListener('click', hyokkaa_painettu = () => {
 
     if (pelaaja_olio.pelaaja_hp > 0) {
@@ -59,7 +101,7 @@ const taistelu = async () => {
 
         taisteluloki.value += `\nTeit viholliseen ${isku} vahinkoa!`;
         taisteluloki.scrollTop = taisteluloki.scrollHeight;
-        vihollinen_hp.textContent = vihollinen.vihollinen_hp;
+        vihollinen_hp.innerText = vihollinen.vihollinen_hp;
       } else {
         taisteluloki.value += `\n${vihollinen.vihollinen_nimi} väisti iskusi!`;
         taisteluloki.scrollTop = taisteluloki.scrollHeight;
@@ -83,6 +125,13 @@ const taistelu = async () => {
 
 const vihollisen_vuoro = (vihollinen) => {
 
+    if (pelaaja_statukset['myrkytetty'] > 0) {
+      const myrkkyvahinko = (Math.floor(Math.random() * 4) + 1);
+    pelaaja_olio.pelaaja_hp -= myrkkyvahinko;
+    taisteluloki.value += `${pelaaja_olio.pelaaja_nimi} on myrkyttyneenä ja menetti ${myrkkyvahinko} elämäpistettä.`;
+    pelaaja_statukset['myrkytetty'] -= 1;
+    }
+
   if (vihollinen_statukset['palaa'] > 0) {
     vihollinen.vihollinen_hp -= 2;
     taisteluloki.value += `\nVihollinen palaa ja menetti 2 elämäpistettä.`;
@@ -101,15 +150,10 @@ const vihollisen_vuoro = (vihollinen) => {
 
       taisteluloki.value += `\n${vihollinen.vihollinen_nimi} teki sinuun ${isku} vahinkoa!`;
       taisteluloki.scrollTop = taisteluloki.scrollHeight;
-      pelaaja_hp.innerHTML = pelaaja_olio.pelaaja_hp;
+      pelaaja_hp.innerText = pelaaja_olio.pelaaja_hp;
     } else {
       taisteluloki.value += `\nVäistit vihollisen iskun!`;
       taisteluloki.scrollTop = taisteluloki.scrollHeight;
-    }
-
-    if (pelaaja_statukset['palaa'] > 0) {
-      pelaaja_olio.pelaaja_hp -= 2;
-      pelaaja_statukset['palaa'] -= 1;
     }
 
     if (pelaaja_statukset['tainnutettu'] > 0) {
@@ -126,7 +170,7 @@ const vihollisen_vuoro = (vihollinen) => {
   if (vihollinen_statukset['myrkytetty'] > 0) {
     const myrkkyvahinko = (Math.floor(Math.random() * 4) + 1);
     vihollinen.vihollinen_hp -= myrkkyvahinko;
-    taisteluloki.value += `Vihollinen on myrkyttyneenä ja menetti ${myrkkyvahinko} elämäpistettä.`;
+    taisteluloki.value += `\nVihollinen on myrkyttyneenä ja menetti ${myrkkyvahinko} elämäpistettä.`;
     vihollinen_statukset['myrkytetty'] -= 1;
   }
 
@@ -138,28 +182,43 @@ const vihollisen_vuoro = (vihollinen) => {
     jatka.style.display = 'block';
     hyokkaa.removeEventListener('click', hyokkaa_painettu);
     taidot.removeEventListener('click', taito_painettu);
+    taito1.removeEventListener('click', taito1_painettu);
+    taito2.removeEventListener('click', taito2_painettu)
+    taito3.removeEventListener('click', taito3_painettu)
+    return
   }
+
+  if (pelaaja_statukset['palaa'] > 0) {
+      pelaaja_olio.pelaaja_hp -= 2;
+      pelaaja_hp.innerText = pelaaja_olio.pelaaja_hp;
+      pelaaja_statukset['palaa'] -= 1;
+    }
 };
 
 const tarkista_taito = (taitonimi, vihollinen, vihollinen_statukset, pelaaja, pelaaja_statukset) => {
 
-  if (taito_nimi === "tulipallo"){
+  if (taitonimi === "tulipallo"){
     tulipallo(vihollinen, vihollinen_statukset);
     vihollisen_vuoro(vihollinen)
   }
 
-  if (taito_nimi === "siunaus"){
+  if (taitonimi === "siunaus"){
     siunaus(pelaaja, pelaaja_statukset);
     vihollisen_vuoro(vihollinen)
   }
 
-  if (taito_nimi === "pyhä isku"){
+  if (taitonimi === "pyhä isku"){
     pyha_isku(vihollinen)
     vihollisen_vuoro(vihollinen)
   }
 
-  if (taito_nimi === "myrkytetty miekka"){
+  if (taitonimi === "myrkytetty miekka"){
     myrkytetty_miekka(vihollinen, vihollinen_statukset)
+    vihollisen_vuoro(vihollinen)
+  }
+
+    if (taitonimi === "palava nuoli"){
+    palava_nuoli(vihollinen, vihollinen_statukset)
     vihollisen_vuoro(vihollinen)
   }
 }
