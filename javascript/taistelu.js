@@ -1,8 +1,8 @@
 
 
-jatka.addEventListener('click', () => {
+jatka.addEventListener('click', async () => {
   taisteluloki.value = ' ';
-  lopeta_taistelu();
+  await lopeta_taistelu();
 });
 
 

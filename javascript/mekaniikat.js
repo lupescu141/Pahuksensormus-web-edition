@@ -89,7 +89,7 @@ async function taistelu_mahdollisuus(matkan_pituus) {
       parseInt(matkan_pituus);
   if (mahdollisuus > ei_taistelua) {
     console.log('taistelu alkaa');
-    avaa_taistelu_ikkuna();
+    await avaa_taistelu_ikkuna();
   } else {
     console.log('ei taistelua');
   }
@@ -120,8 +120,3 @@ async function tallennuksen_poisto_ja_pisteet() {
   return vastaus;
 
 }
-
-async function aseta_uusi_kohde() {
-
-}
-

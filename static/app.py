@@ -146,7 +146,7 @@ def tallennus(peli_id, pelaaja_sijainti, menneet_paivat, pelaaja_hp, pelaaja_tai
         kursori = conn.cursor(dictionary=True)
         kursori.execute(sql)
 
-        return jsonify({'status': 'success'})
+        return jsonify({'tallennus': 'onnistui'})
 
     except Exception as e:
         # Käsittele virhe tarvittaessa
@@ -293,9 +293,6 @@ def laske_etäisyydet(pelaajan_sijainti):
         loppu_koordinaatit = kohde['latitude_deg'], kohde['longitude_deg']
         alku_koordinaatit = nykyinen_sijainti['latitude_deg'], nykyinen_sijainti['longitude_deg']
         matka = distance.distance(alku_koordinaatit, loppu_koordinaatit).km
-        # Ei lisätä kohdetta jossa pelaaja on
-        if matka < 1:
-            continue
         if matka < 75:
             matka = 1
         elif matka < 125:
