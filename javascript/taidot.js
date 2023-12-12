@@ -1,3 +1,4 @@
+//Pelaajan taidot
 
 const tulipallo = (vihollinen, vihollinen_statukset) => {
 
@@ -56,3 +57,5 @@ const myrkytetty_miekka = (vihollinen, vihollinen_statukset) => {
     vihollinen_statukset["myrkytetty"] += 3;
     taisteluloki.value += `\n${vihollinen.vihollinen_nimi} on myrkyttynyt.`;
 }
+
+//Vihollisten taidot
