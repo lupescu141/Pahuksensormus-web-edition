@@ -136,7 +136,7 @@ async function peli_ohi(){
   textarea.value += '\n-Sinä kuolit.'
   textarea.value += `\n-Selvisit ${pelaaja_olio.menneet_paivat} Päivää.`
   textarea.scrollTop = textarea.scrollHeight;
-  return vastaus;
+  return await vastaus;
 }
 
 

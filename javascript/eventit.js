@@ -60,6 +60,42 @@ const taikasauva = {
   'esineen_id': 3,
 };
 
+
+// Laukaisee eventin pelaajan sijainnin mukaan.
+function laukaise_event() {
+  console.log(parseInt(pelaaja_olio.pelaaja_sijainti))
+  switch (parseInt(pelaaja_olio.pelaaja_sijainti)) {
+    case 1:
+      uudentoivonKylaEvent()
+      break
+    case 2:
+      ruoholaaksonNiityt()
+      break
+    case 3:
+      velhotorniEvent()
+      break
+    case 4:
+      varisrameenSalaisuudet()
+      break
+    case 5:
+      noitametsa()
+      break
+    case 6:
+      sammakkojarvi()
+      break
+    case 7:
+      suurentarmonKaupunkiEvent()
+      break
+    case 8:
+      hiisisuonLaakso()
+      break
+    case 9:
+      peikkoluola()
+      break
+  }
+}
+
+
 // Peli Eventti: Uudentoivon kylä
 
 function uudentoivonKylaEvent() {
