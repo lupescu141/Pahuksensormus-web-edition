@@ -128,14 +128,39 @@ async function tallennuksen_poisto_ja_pisteet() {
 }
 
 async function peli_ohi(){
-  const response = await fetch(
-      `http://localhost:5000/peli_ohi/${pelaaja_olio.peli_id}`);
+  await inventaario_tyhjennys()
+  console.log(pelaaja_olio.peli_id);
+  const response = await fetch(`http://localhost:5000/peli_ohi/${pelaaja_olio.peli_id}`);
   const vastaus = await response.json();
   console.log(vastaus);
-  textarea.value = ''
-  textarea.value += '\n-Sinä kuolit.'
-  textarea.value += `\n-Selvisit ${pelaaja_olio.menneet_paivat} Päivää.`
-  return vastaus;
+  textarea.value = '';
+  textarea.value += '\n-Sinä kuolit.';
+  textarea.value += `\n-Selvisit ${pelaaja_olio.menneet_paivat} Päivää.`;
+  taisteluloki.value += '\n-Sinä kuolit.';
+  taisteluloki.value += `\n-Selvisit ${pelaaja_olio.menneet_paivat} Päivää.`;
+}
+
+
+// Tarkistaa onko kohteessa sormus
+async function tarkista_sormus(){
+  console.log(pelaaja_olio.onko_sormus)
+  if (parseInt(pelaaja_olio.onko_sormus) === 0 && parseInt(pelaaja_olio.pelaaja_sijainti) === parseInt(pelaaja_olio.sormus_sijainti)){
+    textarea.value += '\n-Onneksi olkoon! Löysit pahuksen sormuksen. Voit nyt täyttää kohtalosi ja kohdata Gorgonin tulivuoressa.'
+    textarea.scrollTop = textarea.scrollHeight;
+    pelaaja_olio.onko_sormus = 1
+  }
+  else if (parseInt(pelaaja_olio.onko_sormus) === 1 && parseInt(pelaaja_olio.pelaaja_sijainti) === 10) {
+    textarea.value += '\n-Tässä alkaa viimeinen taistelu gorgonin kanssa'
+    textarea.scrollTop = textarea.scrollHeight;
+  }
+  else if (parseInt(pelaaja_olio.onko_sormus) === 1) {
+    textarea.value += '\n-Sinulla on jo sormus. Voit kohdata Gorgonin tulivuoressa'
+    textarea.scrollTop = textarea.scrollHeight;
+  }
+  else {
+    textarea.value += '\n-Kohteessa ei ole sormusta'
+    textarea.scrollTop = textarea.scrollHeight;
+  }
 }
 
 

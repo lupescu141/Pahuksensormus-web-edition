@@ -33,36 +33,6 @@ except Exception as e:
     print(type(e))
 
 
-class Pelaaja:
-    def __init__(self, peli_id, pelaaja_nimi, pelaaja_sijainti, sormus_sijainti, menneet_paivat, pelaaja_luokka,
-                 pelaaja_hp, pelaaja_maksimi_hp,
-                 pelaaja_suojaus, pelaaja_isku, pelaaja_taitopiste, pelaaja_maksimi_taitopiste,
-                 onko_sormus):
-        self.id = peli_id
-        self.nimi = pelaaja_nimi
-        self.sijainti = pelaaja_sijainti
-        self.sormus_sijainti = sormus_sijainti
-        self.menneet_paivat = menneet_paivat
-        self.pelaaja_luokka = pelaaja_luokka
-        self.hp = pelaaja_hp
-        self.maxhp = pelaaja_maksimi_hp
-        self.suojaus = pelaaja_suojaus
-        self.isku = pelaaja_isku
-        self.taitopiste = pelaaja_taitopiste
-        self.max_taitopiste = pelaaja_maksimi_taitopiste
-        self.onko_sormus = onko_sormus
-
-
-class Vihollinen:
-    def __init__(self, vihollinen_id, vihollinen_nimi, vihollinen_hp, vihollinen_maxhp, vihollinen_suojaus,
-                 vihollinen_isku):
-        self.id = vihollinen_id
-        self.nimi = vihollinen_nimi
-        self.hp = vihollinen_hp
-        self.maxhp = vihollinen_maxhp
-        self.suojaus = vihollinen_suojaus
-        self.isku = vihollinen_isku
-
 
 # Hakee pelaaja_nimet ja pelaaja_id:et tietokannasta, jotta voidaan välttää tupla nimiä
 # ja saadaan valittua oikea tallennus hae_pelaaja_tiedot funktiolla
