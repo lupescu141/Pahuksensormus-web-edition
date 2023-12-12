@@ -43,13 +43,13 @@ async function lepo() {
   if (pelaaja_olio.pelaaja_hp === pelaaja_olio.pelaaja_maksimi_hp &&
       pelaaja_olio.pelaaja_taitopiste ===
       pelaaja_olio.pelaaja_maksimi_taitopiste) {
-    textarea.value += '\n-Pelaajan HP ja TP ovat jo maksimissaan!';
+    textarea.value += '\n\n-Pelaajan HP ja TP ovat jo maksimissaan!';
     textarea.scrollTop = textarea.scrollHeight;
   } else {
     // Päivittää pelaajalle maksimi HP:n ja TP:n
     pelaaja_olio.pelaaja_hp = pelaaja_olio.pelaaja_maksimi_hp;
     pelaaja_olio.pelaaja_taitopiste = pelaaja_olio.pelaaja_maksimi_taitopiste;
-    textarea.value += '\n-Lepäsit yhden päivä. HP ja TP ovat maksimissaan';
+    textarea.value += '\n\n-Lepäsit yhden päivä. HP ja TP ovat maksimissaan';
     textarea.scrollTop = textarea.scrollHeight;
 
     pelaaja_olio.menneet_paivat++
@@ -92,11 +92,11 @@ async function taistelu_mahdollisuus(matkan_pituus) {
   const ei_taistelua = parseInt(pelaaja_olio.pelaaja_suojaus) -
       parseInt(matkan_pituus);
   if (mahdollisuus > ei_taistelua) {
-    textarea.value += `\n-Jouduit taisteluun!`;
+    textarea.value += `\n\n-Jouduit taisteluun!`;
     textarea.scrollTop = textarea.scrollHeight;
     await avaa_taistelu_ikkuna()
   } else {
-    textarea.value += `\n-Pääsit turvallisesti perille.`;
+    textarea.value += `\n\n-Pääsit turvallisesti perille.`;
     textarea.scrollTop = textarea.scrollHeight;
   }
 }
@@ -117,6 +117,7 @@ async function hae_esine() {
   return vastaus;
 }
 
+
 // Hakee Flask tietokannasta tallennuksen poiston
 async function tallennuksen_poisto_ja_pisteet() {
   const response = await fetch(
@@ -134,7 +135,7 @@ async function peli_ohi(){
   const vastaus = await response.json();
   console.log(vastaus);
   textarea.value = '';
-  textarea.value += '\n-Sinä kuolit.';
+  textarea.value += '\n\n-Sinä kuolit.';
   textarea.value += `\n-Selvisit ${pelaaja_olio.menneet_paivat} Päivää.`;
   taisteluloki.value += '\n-Sinä kuolit.';
   taisteluloki.value += `\n-Selvisit ${pelaaja_olio.menneet_paivat} Päivää.`;
@@ -150,6 +151,7 @@ async function tarkista_sormus(){
   }
   else if (parseInt(pelaaja_olio.onko_sormus) === 1 && parseInt(pelaaja_olio.pelaaja_sijainti) === 10) {
     textarea.value += '\n-Tässä alkaa viimeinen taistelu gorgonin kanssa'
+    await taistelu(hae_tunnettu_vihollinen(3))
     textarea.scrollTop = textarea.scrollHeight;
   }
   else if (parseInt(pelaaja_olio.onko_sormus) === 1) {
@@ -161,6 +163,18 @@ async function tarkista_sormus(){
     textarea.scrollTop = textarea.scrollHeight;
   }
 }
+
+
+// Hakee tunnetun vihollisen
+async function hae_tunnettu_vihollinen(vihollisen_id) {
+  const response = await fetch(
+      `http://localhost:5000/hae_tunnettu_vihollinen/${vihollisen_id}`);
+  const gorgon = await response.json();
+  console.log(gorgon);
+  return gorgon
+}
+
+
 
 async function hae_säätila() {
   const response = await fetch('https://api.openweathermap.org/data/2.5/weather?q=haiti&units=metric&appid=e34434fb9afb590f02e150bcb3eee98d');

@@ -31,6 +31,16 @@ async function hae_random_vihollinen_tietokannasta() {
 
 const taistelu = async (vihollinen1) => {
 
+// Hakee vihollisen taidon/taidot
+async function hae_vihollisen_taidot(vihollisen_id){
+  const response = await fetch(`http://localhost:5000/hae_vihollisen_taidot/${vihollisen_id}`);
+  const vastaus = await response.json();
+  return vastaus;
+}
+
+
+const taistelu = async () => {
+
   taisteluloki.value += 'Jouduit taisteluun!';
 
   //hakee random vihollisen
