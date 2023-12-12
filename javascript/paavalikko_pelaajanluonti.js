@@ -12,6 +12,31 @@ function aseta_tiedot() {
   document.getElementById('pelaaja-tp').textContent = pelaaja_olio.pelaaja_taitopiste;
   document.querySelector('.pelaaja-kuva').style.backgroundImage = `url("../static/images/pelaaja-luokat/${pelaaja_olio.pelaaja_luokka}-${pelaaja_olio.sukupuoli}.png")`;
   paikkatausta.src = `../static/images/paikka_numerot/${pelaaja_olio.pelaaja_sijainti}.png`
+  textarea.value = 'Kauan sitten hyvyys ja pahuus taistelivat keskenään.\n' +
+      'Taistelut jatkuivat pitkään ja ne jättivät jälkeensä usein vain tuhoa.\n' +
+      'Hyvyttään puolustaneet paladinit kuitenkin keksivät juonen pahan Gorgonin päihittämiseksi.\n' +
+      'He hyökkäsivät Gorgonin kimppuun suurella voimalla ja saivat hänet heikennettyä.\n' +
+      'Kun Gorgon oli tarpeeksi heikoilla, paladinit lausuivat kirouksen.\n' +
+      'Sen avulla paladinit pystyivät vangitsemaan Gorgonin sielun sormukseen.\n' +
+      'Kauan paladinit varjelivat sormusta ja pitivät sen turvassa, mutta\n' +
+      'pahuus ei koskaan pysy poissa ikuisesti. Ajan saatossa paladinien rivit ovat vähentyneet\n' +
+      'ja he ovat hävittäneet sormuksen. Nyt pahuus on alkanut kasvaa ja maailma tarvitsee sankaria,\n' +
+      'joka löytää ja tuhoaa pahuksen sormuksen!\n' +
+      '\n' +
+      '\n' +
+      'Sinun tarinasi alkaa Uudentoivon-kylästä, jossa olet ikäsi viettänyt.\n' +
+      'Olet aina haaveillut seikkailusta ulkomaailmassa, mutta kylän rajoista poistuminen on asukkailta kielletty.\n' +
+      'Vain kylän päällikkö voi antaa erityisluvan poistua kylästä,\n' +
+      'sillä kylä joutuu usein puolustautumaan Gorgonin kätyreitä vastaan, eikä kylällä ole varaa menettää enempää asukkaita.\n' +
+      'Uudentoivon-kylä tunnetaankin maailmalla sen vahvoista ja sinnikkäistä sotureistaan.\n' +
+      'Eräänä päivänä kätyrit hyökkäsivät Uudentoivon-kylään ja he onnistuivat murtamaan kylän puolustuksen.\n' +
+      'Taistelu oli julma, mutta lopulta kylän taistelijat saivat lyötyä kätyrit.\n' +
+      'Mellakan jälkeen nousit piilostasi vain huomataksesi vanhempiesi makaavan elottomina maassa.\n' +
+      'Tälläinen pahuus ei saa nousta valtaan. Vaadit päälliköltä lupaa lähteä etsimään Pahuksen sormusta ja\n' +
+      'väittelyn jälkeen hän myöntää sinulle luvan kostaa vanhempiesi kohtalo.\n' +
+      '\n' +
+      'Tehtäväsi on etsiä maailmalta Pahuuden sormus ja heittää se tulivuoreen, jotta se tuhoutuu ja maailma vapautuu sen korruptiolta.\n' +
+      'Ken tietää, mitä kaikkea muuta löydätkään seikkailusi aikana.'
 }
 
 // Tämä piilottaa valikon ja avaa hahmoluokka valinnan
