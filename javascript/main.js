@@ -116,6 +116,7 @@ kohde_1.addEventListener('click', async function() {
   await matkustaminen();
   textarea.value += `\n-Olet matkustanut yhteensä ${pelaaja_olio.menneet_paivat} päivää. Voit levätä matkojen välissä jos tarvitset lisää HP tai TP`;
   textarea.scrollTop = textarea.scrollHeight;
+  await tarkista_sormus()
   await tallenna();
 });
 
@@ -134,6 +135,7 @@ kohde_2.addEventListener('click', async function() {
   await matkustaminen();
   textarea.value += `\n-Olet matkustanut yhteensä ${pelaaja_olio.menneet_paivat} päivää. Voit levätä matkojen välissä jos tarvitset lisää HP tai TP`;
   textarea.scrollTop = textarea.scrollHeight;
+  await tarkista_sormus()
   await tallenna();
 });
 
@@ -152,6 +154,7 @@ kohde_3.addEventListener('click', async function() {
   await matkustaminen();
   textarea.value += `\n-Olet matkustanut yhteensä ${pelaaja_olio.menneet_paivat} päivää. Voit levätä matkojen välissä jos tarvitset lisää HP tai TP`;
   textarea.scrollTop = textarea.scrollHeight;
+  await tarkista_sormus()
   await tallenna();
 });
 
@@ -170,6 +173,7 @@ kohde_4.addEventListener('click', async function() {
   await matkustaminen();
   textarea.value += `\n-Olet matkustanut yhteensä ${pelaaja_olio.menneet_paivat} päivää. Voit levätä matkojen välissä jos tarvitset lisää HP tai TP`;
   textarea.scrollTop = textarea.scrollHeight;
+  await tarkista_sormus()
   await tallenna();
 });
 
@@ -188,6 +192,7 @@ kohde_5.addEventListener('click', async function() {
   await matkustaminen();
   textarea.value += `\n-Olet matkustanut yhteensä ${pelaaja_olio.menneet_paivat} päivää. Voit levätä matkojen välissä jos tarvitset lisää HP tai TP`;
   textarea.scrollTop = textarea.scrollHeight;
+  await tarkista_sormus()
   await tallenna();
 });
 
@@ -206,6 +211,7 @@ kohde_6.addEventListener('click', async function() {
   await matkustaminen();
   textarea.value += `\n-Olet matkustanut yhteensä ${pelaaja_olio.menneet_paivat} päivää. Voit levätä matkojen välissä jos tarvitset lisää HP tai TP`;
   textarea.scrollTop = textarea.scrollHeight;
+  await tarkista_sormus()
   await tallenna();
 });
 
@@ -224,6 +230,7 @@ kohde_7.addEventListener('click', async function() {
   await matkustaminen();
   textarea.value += `\n-Olet matkustanut yhteensä ${pelaaja_olio.menneet_paivat} päivää. Voit levätä matkojen välissä jos tarvitset lisää HP tai TP`;
   textarea.scrollTop = textarea.scrollHeight;
+  await tarkista_sormus()
   await tallenna();
 });
 
@@ -242,6 +249,7 @@ kohde_8.addEventListener('click', async function() {
   await matkustaminen();
   textarea.value += `\n-Olet matkustanut yhteensä ${pelaaja_olio.menneet_paivat} päivää. Voit levätä matkojen välissä jos tarvitset lisää HP tai TP`;
   textarea.scrollTop = textarea.scrollHeight;
+  await tarkista_sormus()
   await tallenna();
 });
 
@@ -260,6 +268,7 @@ kohde_9.addEventListener('click', async function() {
   await matkustaminen();
   textarea.value += `\n-Olet matkustanut yhteensä ${pelaaja_olio.menneet_paivat} päivää. Voit levätä matkojen välissä jos tarvitset lisää HP tai TP`;
   textarea.scrollTop = textarea.scrollHeight;
+  await tarkista_sormus()
   await tallenna();
 });
 
@@ -278,5 +287,6 @@ kohde_10.addEventListener('click', async function() {
   await matkustaminen();
   textarea.value += `\n-Olet matkustanut yhteensä ${pelaaja_olio.menneet_paivat} päivää. Voit levätä matkojen välissä jos tarvitset lisää HP tai TP`;
   textarea.scrollTop = textarea.scrollHeight;
+  await tarkista_sormus()
   await tallenna();
 });
