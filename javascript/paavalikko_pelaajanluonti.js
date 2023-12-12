@@ -11,6 +11,7 @@ function aseta_tiedot() {
   document.getElementById('pelaaja-hp').textContent = pelaaja_olio.pelaaja_hp;
   document.getElementById('pelaaja-tp').textContent = pelaaja_olio.pelaaja_taitopiste;
   document.querySelector('.pelaaja-kuva').style.backgroundImage = `url("../static/images/pelaaja-luokat/${pelaaja_olio.pelaaja_luokka}-${pelaaja_olio.sukupuoli}.png")`;
+  paikkatausta.src = `../static/images/paikka_numerot/${pelaaja_olio.pelaaja_sijainti}.png`
 }
 
 // Tämä piilottaa valikon ja avaa hahmoluokka valinnan

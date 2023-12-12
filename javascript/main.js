@@ -11,10 +11,10 @@ const vasen_puoli = document.querySelector('.vasen-puoli');
 const oikea_puoli = document.querySelector('.oikea-puoli');
 const lataapeli_valikko = document.querySelector('.lataapeli-valikko');
 const uusipeli_valikko = document.querySelector('.uusi-peli-valikko');
-const ennatukset = document.querySelector('.ennatykset')
+const ennatukset = document.querySelector('.ennatykset');
 const taulukko = document.querySelector('.top-lista');
 // Pelaaja rivi
-const paikkatausta = document.getElementById('paikkatausta')
+const paikkatausta = document.getElementById('paikkatausta');
 // Loki elementit
 const textarea = document.getElementById('loki');
 const taisteluloki = document.getElementById('taistelu-loki');
@@ -39,7 +39,7 @@ const pelaaja_hp = document.getElementById('pelaaja-hp');
 const pelaaja_status = document.querySelector('.pelaaja-status');
 const taistelu_rivi = document.querySelector('.taistelu-rivi');
 const pelaaja_info = document.querySelector('.pelaaja-info');
-const hyokkaa_tooltip = document.getElementById("hyokkaa-tooltip");
+const hyokkaa_tooltip = document.getElementById('hyokkaa-tooltip');
 
 // Hoitaa alkuvalikon esittelyn sivun latautuessa
 document.addEventListener('DOMContentLoaded', async function() {
@@ -64,57 +64,109 @@ document.addEventListener('DOMContentLoaded', async function() {
 
 });
 
-
 // Funktio joka hoitaa matkustuksen ja kutsuu taistelua jos taistelu tapahtuu
 async function matkustaminen() {
   const kohteet = await hae_matkustus_paivat();
 
-  if (kartta) {
-    // Etsi kaikki span-elementit kartta-divin sisältä
-    const spanit = kartta.querySelectorAll('.tooltiptext');
-
-    // Käy läpi jokainen span-elementti
-    for (let span of spanit) {
-      // Saadaan span-elementin id eli kohteen nimi
-      const span_id = span.id;
-
-      // Etsi vastaava kohde-elementti kartta-divin sisältä
-      const kohde = kartta.querySelector(`#${span_id}`);
-
-      // Tarkista, onko kohde-elementti olemassa
-      if (kohde) {
-        for (let laskettu_matka of kohteet) {
-          if (laskettu_matka.fantasia_nimi === span_id) {
-            // Päivitä spanin teksti
-            span.value = laskettu_matka.matka_pv;
-            span.textContent = `${span_id} : ${laskettu_matka.matka_pv} päivän matkustus`;
-            // Tallennetaan name arvoon kohteen id jotta voidaan asetta se pelaajalle
-            span.name = laskettu_matka.id
-            span.type = laskettu_matka.fantasia_nimi
-          }
-        }
-      } else {
-        console.error('Kohde-elementtiä ei löytynyt spanille', span);
+  const kartta_divit = kartta.querySelectorAll('.kartta-nappi');
+  kartta_divit.forEach((div) => {
+    for (kohde of kohteet) {
+      if (parseInt(kohde.id) === parseInt(div.id)) {
+        div.value = kohde.matka_pv
+        console.log(`kohteeseen ${div.name} on ${div.value} eli ${kohde.matka_pv} matkustus`)
+        break
       }
     }
-  } else {
-    console.error('Kartta-elementtiä ei löytynyt.');
-  }
-
-
-  // Käy läpi jokainen div ja lisää sille event listener
-  kartta_nappi.forEach(div => {
-    div.addEventListener('click', async function() {
-      // Etsi spanin value attribuutti ja tulosta se konsoliin
-      const span = div.previousElementSibling;
-      const matkustus_paivien_maara = span.value;
-      console.log('päivien määrä:', matkustus_paivien_maara);
-
-      pelaaja_olio.pelaaja_sijaint = span.name
-      console.log('sijainnin id ' + span.name)
-      console.log('pelaajan sijainnin id ' + pelaaja_olio.pelaaja_sijaint)
-      document.querySelector('.paikkatausta').src = `../static/images/paikat/${span.type}.png`;
-      await taistelu_mahdollisuus(matkustus_paivien_maara);
-    });
   });
 }
+
+// Kartta nappien kuuntelijat
+const kohde_1 = document.getElementById('1');
+kohde_1.addEventListener('click', function() {
+  console.log(`klikattu ${kohde_1.id} : ${kohde_1.name}`);
+  pelaaja_olio.pelaaja_sijainti = kohde_1.id;
+  paikkatausta.src = `../static/images/paikka_numerot/${pelaaja_olio.pelaaja_sijainti}.png`;
+  console.log('matkan kesto on ' + kohde_1.value);
+  taistelu_mahdollisuus(kohde_1.value);
+});
+
+const kohde_2 = document.getElementById('2');
+kohde_2.addEventListener('click', function() {
+  console.log(`klikattu ${kohde_2.id} : ${kohde_2.name}`);
+  pelaaja_olio.pelaaja_sijainti = kohde_2.id;
+  paikkatausta.src = `../static/images/paikka_numerot/${pelaaja_olio.pelaaja_sijainti}.png`;
+  console.log('matkan kesto on ' + kohde_2.value);
+  taistelu_mahdollisuus(kohde_2.value);
+});
+
+const kohde_3 = document.getElementById('3');
+kohde_3.addEventListener('click', function() {
+  console.log(`klikattu ${kohde_3.id} : ${kohde_3.name}`);
+  pelaaja_olio.pelaaja_sijainti = kohde_3.id;
+  paikkatausta.src = `../static/images/paikka_numerot/${pelaaja_olio.pelaaja_sijainti}.png`;
+  console.log('matkan kesto on ' + kohde_3.value);
+  taistelu_mahdollisuus(kohde_3.value);
+});
+
+const kohde_4 = document.getElementById('4');
+kohde_4.addEventListener('click', function() {
+  console.log(`klikattu ${kohde_4.id} : ${kohde_4.name}`);
+  pelaaja_olio.pelaaja_sijainti = kohde_4.id;
+  paikkatausta.src = `../static/images/paikka_numerot/${pelaaja_olio.pelaaja_sijainti}.png`;
+  console.log('matkan kesto on ' + kohde_4.value);
+  taistelu_mahdollisuus(kohde_4.value);
+});
+
+const kohde_5 = document.getElementById('5');
+kohde_5.addEventListener('click', function() {
+  console.log(`klikattu ${kohde_5.id} : ${kohde_5.name}`);
+  pelaaja_olio.pelaaja_sijainti = kohde_5.id;
+  paikkatausta.src = `../static/images/paikka_numerot/${pelaaja_olio.pelaaja_sijainti}.png`;
+  console.log('matkan kesto on ' + kohde_5.value);
+  taistelu_mahdollisuus(kohde_5.value);
+});
+
+const kohde_6 = document.getElementById('6');
+kohde_6.addEventListener('click', function() {
+  console.log(`klikattu ${kohde_6.id} : ${kohde_6.name}`);
+  pelaaja_olio.pelaaja_sijainti = kohde_6.id;
+  paikkatausta.src = `../static/images/paikka_numerot/${pelaaja_olio.pelaaja_sijainti}.png`;
+  console.log('matkan kesto on ' + kohde_6.value);
+  taistelu_mahdollisuus(kohde_6.value);
+});
+
+const kohde_7 = document.getElementById('7');
+kohde_7.addEventListener('click', function() {
+  console.log(`klikattu ${kohde_7.id} : ${kohde_7.name}`);
+  pelaaja_olio.pelaaja_sijainti = kohde_7.id;
+  paikkatausta.src = `../static/images/paikka_numerot/${pelaaja_olio.pelaaja_sijainti}.png`;
+  console.log('matkan kesto on ' + kohde_7.value);
+  taistelu_mahdollisuus(kohde_7.value);
+});
+
+const kohde_8 = document.getElementById('8');
+kohde_8.addEventListener('click', function() {
+  console.log(`klikattu ${kohde_8.id} : ${kohde_8.name}`);
+  pelaaja_olio.pelaaja_sijainti = kohde_8.id;
+  paikkatausta.src = `../static/images/paikka_numerot/${pelaaja_olio.pelaaja_sijainti}.png`;
+  console.log('matkan kesto on ' + kohde_8.value);
+  taistelu_mahdollisuus(kohde_8.value);
+});
+
+const kohde_9 = document.getElementById('9');
+kohde_9.addEventListener('click', function() {
+  console.log(`klikattu ${kohde_9.id} : ${kohde_9.name}`);
+  pelaaja_olio.pelaaja_sijainti = kohde_9.id;
+  paikkatausta.src = `../static/images/paikka_numerot/${pelaaja_olio.pelaaja_sijainti}.png`;
+  console.log('matkan kesto on ' + kohde_9.value);
+  taistelu_mahdollisuus(kohde_9.value);
+});
+
+const kohde_10 = document.getElementById('10');
+kohde_10.addEventListener('click', function() {
+  console.log(`klikattu ${kohde_10.id} : ${kohde_10.name}`);
+  pelaaja_olio.pelaaja_sijainti = kohde_10.id;
+  paikkatausta.src = `../static/images/paikka_numerot/${pelaaja_olio.pelaaja_sijainti}.png`;
+  console.log('matkan kesto on ' + kohde_10.value);
+  taistelu_mahdollisuus(kohde_10.value);
+});
