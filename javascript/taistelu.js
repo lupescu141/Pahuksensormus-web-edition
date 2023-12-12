@@ -75,7 +75,7 @@ const taistelu = async () => {
     piilota_kaikki_napit();
 
     for (let i = 0; i < pelaaja_taidot.length; i++) {
-      taito_napit[i].innerHTML = pelaaja_taidot[i].taito_nimi;
+      taito_napit[i].textContent = pelaaja_taidot[i].taito_nimi;
       taito_napit[i].style.display = 'block';
     }
   });
@@ -140,5 +140,28 @@ const vihollisen_vuoro = (vihollinen) => {
     taidot.removeEventListener('click', taito_painettu);
   }
 };
+
+const tarkista_taito = (taitonimi, vihollinen, vihollinen_statukset, pelaaja, pelaaja_statukset) => {
+
+  if (taito_nimi === "tulipallo"){
+    tulipallo(vihollinen, vihollinen_statukset);
+    vihollisen_vuoro(vihollinen)
+  }
+
+  if (taito_nimi === "siunaus"){
+    siunaus(pelaaja, pelaaja_statukset);
+    vihollisen_vuoro(vihollinen)
+  }
+
+  if (taito_nimi === "pyhä isku"){
+    pyha_isku(vihollinen)
+    vihollisen_vuoro(vihollinen)
+  }
+
+  if (taito_nimi === "myrkytetty miekka"){
+    myrkytetty_miekka(vihollinen, vihollinen_statukset)
+    vihollisen_vuoro(vihollinen)
+  }
+}
 
 

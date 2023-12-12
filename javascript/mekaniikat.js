@@ -124,3 +124,4 @@ async function tallennuksen_poisto_ja_pisteet() {
 async function aseta_uusi_kohde() {
 
 }
+
