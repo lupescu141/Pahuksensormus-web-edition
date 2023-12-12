@@ -29,8 +29,6 @@ async function hae_random_vihollinen_tietokannasta() {
   return random_vihollinen;
 }
 
-const taistelu = async (vihollinen1) => {
-
 // Hakee vihollisen taidon/taidot
 async function hae_vihollisen_taidot(vihollisen_id){
   const response = await fetch(`http://localhost:5000/hae_vihollisen_taidot/${vihollisen_id}`);
@@ -39,7 +37,7 @@ async function hae_vihollisen_taidot(vihollisen_id){
 }
 
 
-const taistelu = async () => {
+const taistelu = async (vihollinen1) => {
 
   taisteluloki.value += 'Jouduit taisteluun!';
 
@@ -74,38 +72,35 @@ const taistelu = async () => {
       pelaaja_olio.pelaaja_taitopiste -= 1;
       pelaaja_tp.innerText = pelaaja_olio.pelaaja_taitopiste;
 
-    }
-    else {
+    } else {
 
       taisteluloki.value += "\nSinulla ei ole taitopisteitä."
     }
   })
 
-    taito2.addEventListener("click", taito2_painettu = () => {
-      if (pelaaja_olio.pelaaja_taitopiste > 0) {
+  taito2.addEventListener("click", taito2_painettu = () => {
+    if (pelaaja_olio.pelaaja_taitopiste > 0) {
 
-        palaa();
-        tarkista_taito(pelaaja_taidot[1].taito_nimi, vihollinen, vihollinen_statukset, pelaaja_olio, pelaaja_statukset);
-        pelaaja_olio.pelaaja_taitopiste -= 1;
-        pelaaja_tp.innerText = pelaaja_olio.pelaaja_taitopiste;
+      palaa();
+      tarkista_taito(pelaaja_taidot[1].taito_nimi, vihollinen, vihollinen_statukset, pelaaja_olio, pelaaja_statukset);
+      pelaaja_olio.pelaaja_taitopiste -= 1;
+      pelaaja_tp.innerText = pelaaja_olio.pelaaja_taitopiste;
 
-      }
-      else {
+    } else {
 
       taisteluloki.value += "\nSinulla ei ole taitopisteitä."
     }
   })
 
-    taito3.addEventListener("click", taito3_painettu = () => {
-      if (pelaaja_olio.pelaaja_taitopiste > 0) {
+  taito3.addEventListener("click", taito3_painettu = () => {
+    if (pelaaja_olio.pelaaja_taitopiste > 0) {
 
-        palaa();
-        tarkista_taito(pelaaja_taidot[2].taito_nimi, vihollinen, vihollinen_statukset, pelaaja_olio, pelaaja_statukset);
-        pelaaja_olio.pelaaja_taitopiste -= 1;
-        pelaaja_tp.innerText = pelaaja_olio.pelaaja_taitopiste;
+      palaa();
+      tarkista_taito(pelaaja_taidot[2].taito_nimi, vihollinen, vihollinen_statukset, pelaaja_olio, pelaaja_statukset);
+      pelaaja_olio.pelaaja_taitopiste -= 1;
+      pelaaja_tp.innerText = pelaaja_olio.pelaaja_taitopiste;
 
-    }
-      else {
+    } else {
 
       taisteluloki.value += "\nSinulla ei ole taitopisteitä."
     }
@@ -147,17 +142,17 @@ const taistelu = async () => {
     }
   });
 
-  taistelu_esineet_nappi.addEventListener('click', esineet_painettu = () =>{
+  taistelu_esineet_nappi.addEventListener('click', esineet_painettu = () => {
 
     console.log(pelaaja_inventaario);
     piilota_kaikki_napit();
     esineet.style.display = 'inline-grid'
     taistelu_palaa_nappi.style.display = 'block';
-    inventaario_nappi.forEach((nappi) =>{
-      nappi.style.display = 'none'
+    inventaario_nappi.forEach((nappi) => {
+      nappi.style.display = 'none';
     })
-  })
-};
+  });
+}
 
 const vihollisen_vuoro = async (vihollinen) => {
 
@@ -241,7 +236,7 @@ const vihollisen_vuoro = async (vihollinen) => {
     taito2.removeEventListener('click', taito2_painettu);
     taito3.removeEventListener('click', taito3_painettu);
   }
-};
+}
 
 
 const tarkista_taito = (taitonimi, vihollinen, vihollinen_statukset, pelaaja, pelaaja_statukset) => {
