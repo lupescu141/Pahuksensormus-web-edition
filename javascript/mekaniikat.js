@@ -94,7 +94,7 @@ async function taistelu_mahdollisuus(matkan_pituus) {
   if (mahdollisuus > ei_taistelua) {
     textarea.value += `\n\n-Jouduit taisteluun!`;
     textarea.scrollTop = textarea.scrollHeight;
-    await avaa_taistelu_ikkuna()
+    await avaa_taistelu_ikkuna(hae_random_vihollinen_tietokannasta())
   } else {
     textarea.value += `\n\n-Pääsit turvallisesti perille.`;
     textarea.scrollTop = textarea.scrollHeight;

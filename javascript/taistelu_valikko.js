@@ -1,5 +1,5 @@
 // Avaa taistelu näkymän. pelaaja-status siirretään alaspäin jotta arvot pysyvät samoina
-async function avaa_taistelu_ikkuna() {
+async function avaa_taistelu_ikkuna(vihollinen) {
   // Asettaa oikean puolen taistelu näkymään
   document.querySelector('.oikea-puoli').style.display = 'none';
   document.querySelector('.oikea-puoli-taistelu').style.display = 'block';
@@ -30,7 +30,7 @@ async function avaa_taistelu_ikkuna() {
   taistelu_rivi.insertBefore(pelaaja_status, taistelu_rivi.firstChild);
 
   // Testausta varten
-  await taistelu(hae_random_vihollinen_tietokannasta());
+  await taistelu(vihollinen);
 }
 
 
