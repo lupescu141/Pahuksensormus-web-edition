@@ -62,7 +62,7 @@ const taikasauva = {
 
 // Peli Eventti: Uudentoivon kylä
 
-function uudentoivonKylaEvent(pelaaja_olio) {
+function uudentoivonKylaEvent() {
   textarea.value += '\n-Tervetuloa Uudentoivon kylään, seikkailusi alkupisteeseen. Kylässä on monia tapahtumia ja mahdollisuuksia, jotka voivat muokata matkaasi. Tästä seikkailusi alkaa, onnea matkaan!';
   textarea.scrollTop = textarea.scrollHeight;
   // Arpoo randomilla pelaajalle eventin 1, 2, 3.
@@ -71,13 +71,13 @@ function uudentoivonKylaEvent(pelaaja_olio) {
   // Ohjaa valintoihin, jossa pelaaja saa valita mitä tekee.
   switch (event_nro) {
     case 1:
-      tavernaNoppapeli(pelaaja_olio);
+      tavernaNoppapeli();
       break;
     case 2:
-      laksiaisjuhlat(pelaaja_olio);
+      laksiaisjuhlat();
       break;
     case 3:
-      kylanKummallinenKojukauppias(pelaaja_olio);
+      kylanKummallinenKojukauppias();
       break;
     default:
       console.log('Virheellinen syöte, valitse uudelleen!');
@@ -116,7 +116,7 @@ function tavernaNoppapeli() {
 }
 
 // Event 2: Läksiäisjuhlat
-function laksiaisjuhlat(pelaaja_olio) {
+function laksiaisjuhlat() {
   console.log('2. Läksiäisjuhlat:');
   textarea.value += '\n-Uudentoivon kylä järjestää sydämelliset läksiäisjuhlat sinulle. Koko kylässä vallitsee iloinen tunnelma. Osallistut juhliin ja liityt kyläläisten joukkoon juhlan huumassa. Ole kuitenkin varovainen, sillä liiallinen juhlinta saattaa tuoda mukanaan ikäviä seurauksia...';
   textarea.scrollTop = textarea.scrollHeight;
@@ -177,7 +177,7 @@ function kylanKummallinenKojukauppias() {
 }
 
 // Peli Eventti: Ruoholaakson niityt
-function ruoholaaksonNiityt(pelaaja_olio) {
+function ruoholaaksonNiityt() {
   textarea.value += '\n-Matkaat Ruoholaaksoon joka on täynnä niittyjä ja salaperäisiä hohtavia kukkia. Laakson sydämessä asuu tappavan kaunis syöjätär, jonka lumoava voima vetää puoleensa uteliaita seikkailijoita. Seuraat kukkien huumaavaa tuoksua..';
   textarea.scrollTop = textarea.scrollHeight;
 
@@ -187,13 +187,13 @@ function ruoholaaksonNiityt(pelaaja_olio) {
   // Ohjaa valintoihin, jossa pelaaja saa valita mitä tekee.
   switch (tapahtuma) {
     case 1:
-      kukkienHurmio(pelaaja_olio);
+      kukkienHurmio();
       break;
     case 2:
-      varjojenPiilo(pelaaja_olio);
+      varjojenPiilo();
       break;
     case 3:
-      lumotunRiipuksenArvoitus(pelaaja_olio);
+      lumotunRiipuksenArvoitus();
       break;
     default:
       console.log('Virheellinen syöte, valitse uudelleen!');
@@ -202,7 +202,7 @@ function ruoholaaksonNiityt(pelaaja_olio) {
 }
 
 // Event 1: Kukkien Hurmio
-function kukkienHurmio(pelaaja_olio) {
+function kukkienHurmio() {
   console.log('1. Kukkien Hurmio:');
   textarea.value += '\n-Haistat lumoavien kukkien tuoksun, tuoksu kutsuu sinua kohti piilotettua laaksoa. Keskellä laaksoa avautuu kukkien ympäröimä paikka, jossa voit kokea niiden lumoavan voiman..';
   textarea.scrollTop = textarea.scrollHeight;
@@ -234,7 +234,7 @@ function kukkienHurmio(pelaaja_olio) {
 }
 
 // Event 2: Varjojen piilo
-function varjojenPiilo(pelaaja_olio) {
+function varjojenPiilo() {
   console.log('2. Varjojen piilo:');
   textarea.value += '\n-Kohtaat syöjättärien salaperäisen piilon, joka näyttää olevan täynnä vaarallisia petoja ja pimeää voimaa. Liitytkö vahingossa varjojen tanssiin vai piilottelet...';
   textarea.scrollTop = textarea.scrollHeight;
@@ -261,7 +261,7 @@ function varjojenPiilo(pelaaja_olio) {
 }
 
 // Event 3: Lumotun Riipuksen Arvoitus
-function lumotunRiipuksenArvoitus(pelaaja_olio) {
+function lumotunRiipuksenArvoitus() {
   console.log('3. Lumotun Riipuksen Arvoitus:');
   textarea.value += '\n-Löydät laakson keskeltä demonisen riipuksen, joka kiinnittää huomiosi voimakkaaseen energiaan. Riipus näyttää sisältävän piilotetun viestin, voit joko yrittää selvittää sen tai ohittaa sen.';
   textarea.scrollTop = textarea.scrollHeight;
@@ -288,7 +288,7 @@ function lumotunRiipuksenArvoitus(pelaaja_olio) {
 }
 
 // Peli Eventti: Velhotorni
-function velhotorniEvent(pelaaja_olio) {
+function velhotorniEvent() {
   textarea.value += '\n-Astuttuasi sisälle Velhotorniin, huomaat sen olevan täynnä salaisuuksia ja vaaroja, siellä asustaa hullunkurinen velho. Torni on täynnä salakäytäviä ja ansoja. Eksytkö käytävien uumeniin, vai kohtaatko mahdollisesti velhon. Onnea matkaan!';
   textarea.scrollTop = textarea.scrollHeight;
   // Arpoo randomilla pelaajalle eventin 1, 2, 3.
@@ -297,13 +297,13 @@ function velhotorniEvent(pelaaja_olio) {
   // Ohjaa valintoihin, jossa pelaaja saa valita mitä tekee.
   switch (event_nro) {
     case 1:
-      loitsuhuone(pelaaja_olio);
+      loitsuhuone();
       break;
     case 2:
-      salakaytavienSokkelo(pelaaja_olio);
+      salakaytavienSokkelo();
       break;
     case 3:
-      velhonKaksintaistelu(pelaaja_olio);
+      velhonKaksintaistelu();
       break;
     default:
       console.log('Virheellinen syöte, valitse uudelleen!');
@@ -312,7 +312,7 @@ function velhotorniEvent(pelaaja_olio) {
 }
 
 // Event 1: Loitsuhuone
-function loitsuhuone(pelaaja_olio) {
+function loitsuhuone() {
   console.log('1. Loitsuhuone:');
   textarea.value += '\n-Astuttuasi tornin eteishalliin, huomaat huoneen joka on täynnä korkeita hyllyjä, joissa on pölyisiä loitsukirjoja ja taikavarusteita. Keskellä huonetta leijailee vanha aave, joka vaikuttaa olevan tornin menneiden aikojen suojelija. Se katsoo sinua kylmän sinisillä silmillään ja lausuu kumealla äänellään: "Astu eteenpäin vain jos uskallat"';
   textarea.scrollTop = textarea.scrollHeight;
@@ -337,7 +337,7 @@ function loitsuhuone(pelaaja_olio) {
 }
 
 // Event 2: Salakäytävien Sokkelo
-function salakaytavienSokkelo(pelaaja_olio) {
+function salakaytavienSokkelo() {
   console.log('2. Salakäytävien Sokkelo:');
   textarea.value += '\n-Kun olet kiivennyt tornin portaita ylemmäs, huomaat labyrinttimaisen salakäytävien sokkelon. Jokainen käytävä näyttää samanlaiselta, mutta vain yksi johtaa ylös. Kuinka päätät navigoida sokkelossa?';
   textarea.scrollTop = textarea.scrollHeight;
@@ -364,7 +364,7 @@ function salakaytavienSokkelo(pelaaja_olio) {
 }
 
 // Event 3: Velhon Kaksintaistelu
-function velhonKaksintaistelu(pelaaja_olio) {
+function velhonKaksintaistelu() {
   console.log('3. Velhon Kaksintaistelu:');
   textarea.value += '\n-Saavut tornin huipulle, Velhon hullunkurinen hahmo seisoo edessäsi, hänen katseensa paljastaa vuosisatojen viisauden ja taikuuden. Hän kohottaa kättään ja haastaa sinut kaksintaisteluun voimien mittelöimiseksi, onnea matkaan!';
   textarea.scrollTop = textarea.scrollHeight;
@@ -391,7 +391,7 @@ function velhonKaksintaistelu(pelaaja_olio) {
 }
 
 // Peli Eventti: Varisrämeen Salaisuudet
-function varisrameenSalaisuudet(pelaaja_olio) {
+function varisrameenSalaisuudet() {
   textarea.value += '\n-Astuttuasi maagiseen Varisrämeeseen, ympärilläsi väreilee pimeä magia ja punasilmäiset pelottavat varikset lentelevät ympärillä salaperäisinä. Edessäsi avautuu kolme polkua, joista jokainen johtaa kohti erilaista mysteeriä. Onnea matkaan!';
   textarea.scrollTop = textarea.scrollHeight;
   // Arpoo randomilla pelaajalle eventin 1, 2, 3.
@@ -400,13 +400,13 @@ function varisrameenSalaisuudet(pelaaja_olio) {
   // Ohjaa valintoihin, jossa pelaaja saa valita mitä tekee.
   switch (tapahtuma) {
     case 1:
-      variksenkielenLoitsut(pelaaja_olio);
+      variksenkielenLoitsut();
       break;
     case 2:
-      varjorituaalit(pelaaja_olio);
+      varjorituaalit();
       break;
     case 3:
-      taikaesineenLoytaminen(pelaaja_olio);
+      taikaesineenLoytaminen();
       break;
     default:
       console.log('Virheellinen syöte, valitse uudelleen!');
@@ -415,7 +415,7 @@ function varisrameenSalaisuudet(pelaaja_olio) {
 }
 
 // Event 1: Variksenkielen Loitsut
-function variksenkielenLoitsut(pelaaja_olio) {
+function variksenkielenLoitsut() {
   console.log('1. Variksenkielen Loitsut:');
   textarea.value += '\n-Lähdet seuraamaan varisten ääniä ja löydät piilossa olevan varisalttarin. Varikset alkavat laulamaan ikivanhoja loitsuja, Variksenkieltä. Pystytkö ymmärtämään loitsut ja saamaan varisten viisauden itsellesi?';
   textarea.scrollTop = textarea.scrollHeight;
@@ -442,7 +442,7 @@ function variksenkielenLoitsut(pelaaja_olio) {
 }
 
 // Event 2: Varjorituaalit
-function varjorituaalit(pelaaja_olio) {
+function varjorituaalit() {
   console.log('2. Varjorituaalit:');
   textarea.value += '\n-Kohtaat rämeellä salaperäisen varjoryhmän, joka suorittaa rituaaleja puiden ympärillä. Voit liittyä heidän seuraansa tai tarkkailla sivusta. Pystytkö ymmärtämään varjorituaalien tarkoituksen ja vaikutukset?';
   textarea.scrollTop = textarea.scrollHeight;
@@ -469,7 +469,7 @@ function varjorituaalit(pelaaja_olio) {
 }
 
 // Event 3: Taikaesineen Löytäminen
-function taikaesineenLoytaminen(pelaaja_olio) {
+function taikaesineenLoytaminen() {
   console.log('3. Taikaesineen Löytäminen:');
   textarea.value += '\n-Tutkiessasi rämettä, huomaat heikosti loistavan valon. Lähemmäksi siirtyessäsi löydät piilotetun kolon, jossa sijaitsee vanha magialla täytetty riipus. Mihin tiesi vie...';
   textarea.scrollTop = textarea.scrollHeight;
@@ -500,7 +500,7 @@ function taikaesineenLoytaminen(pelaaja_olio) {
 }
 
 // Peli Eventti: Noitametsä
-function noitametsa(pelaaja_olio) {
+function noitametsa() {
   textarea.value += '\n-Eksyttyäsi polulta löydät itsesi noitametsästä, metsän uumenissa on kammottava noitatalo. Selviätkö täysijärkisenä metsästä, vai löydätkö itsesi noitatalosta keskeltä vaarallista taistelua karmivan kolmipäisen noidan kanssa. Onnea matkaan!';
   textarea.scrollTop = textarea.scrollHeight;
   // Arpoo randomilla pelaajalle eventin 1, 2, 3.
@@ -509,13 +509,13 @@ function noitametsa(pelaaja_olio) {
   // Ohjaa valintoihin, jossa pelaaja saa valita mitä tekee.
   switch (tapahtuma) {
     case 1:
-      noitataloTaistelu(pelaaja_olio);
+      noitataloTaistelu();
       break;
     case 2:
-      noitataloMetsassa(pelaaja_olio);
+      noitataloMetsassa();
       break;
     case 3:
-      harhailuNoitametsassa(pelaaja_olio);
+      harhailuNoitametsassa();
       break;
     default:
       console.log('Virheellinen syöte, valitse uudelleen!');
@@ -524,7 +524,7 @@ function noitametsa(pelaaja_olio) {
 }
 
 // Event 1: Noitatalossa löyhkää!
-function noitataloTaistelu(pelaaja_olio) {
+function noitataloTaistelu() {
   console.log('1. Mikä täällä haisee...');
   textarea.value += '\n-Menet rohkeana noitatalon sisälle, talo näyttää vaaralliselta joten päätät laittaa näkymättömyysviitan päälle. Hiivit hiirenhiljaa keittiöön, jossa leijailee kummallisen pistävä haju. Siellä huomaat padan, jossa porisee karmea liemi täynnä ruumiita! Tönäiset järkytyksestä vahingossa taikapataa, jäitkö kiinni vai pääsetkö jatkamaan matkaa?';
   textarea.scrollTop = textarea.scrollHeight;
@@ -555,7 +555,7 @@ function noitataloTaistelu(pelaaja_olio) {
 }
 
 // Event 2: Noitatalon Kielletty Kirjasto
-function noitataloMetsassa(pelaaja_olio) {
+function noitataloMetsassa() {
   console.log('2. noitatalonNoitatalon Kielletty Kirjasto');
   textarea.value += '\n-Olet syvällä noitametsässä, kun yllättäen huomaat puiden välistä pilkottavan kaukaa kummallisen rakennuksen. Lähemmäs tultuasi tunnistat sen olevan Noitatalo, joka on kietoutunut puiden oksien ja sammaleiden peittoon. Uskallatko mennä sisälle?';
   textarea.scrollTop = textarea.scrollHeight;
@@ -587,7 +587,7 @@ function noitataloMetsassa(pelaaja_olio) {
 }
 
 // Event 3: Harhailu Noitametsässä
-function harhailuNoitametsassa(pelaaja_olio) {
+function harhailuNoitametsassa() {
   console.log('3. Harhailu Noitametsässä:');
   textarea.value += '\n-Suuntaat metsän syvyyksiin, jossa vaimeat kuiskaukset ja leijailevat varjot luovat kiehtovan, mutta samalla karmaisevan tunnelman. Uppoatko metsän syvyyksiin vai löydätkö tiesi ulos?';
   textarea.scrollTop = textarea.scrollHeight;
@@ -619,7 +619,7 @@ function harhailuNoitametsassa(pelaaja_olio) {
 
 // Peli Eventti: Sammakkojärvi
 
-function sammakkojarvi(pelaaja_olio) {
+function sammakkojarvi() {
   textarea.value += '\n-Taianomainen sammakkojärvi herättää uteliaisuuden ja seikkailunhalun. Sammakkojärven rannat täyttyvät satojen sammakoiden kurnutuksesta.';
   textarea.scrollTop = textarea.scrollHeight;
   // Arpoo randomilla pelaajalle eventin 1, 2, 3.
@@ -628,19 +628,16 @@ function sammakkojarvi(pelaaja_olio) {
   // Ohjaa valintoihin, jossa pelaaja saa valita mitä tekee.
   switch (tapahtuma) {
     case 1:
-      lumoavaSammakkokonsertti(pelaaja_olio);
+      lumoavaSammakkokonsertti();
       break;
     case 2:
-      lumoavaJarvenpeili(pelaaja_olio);
-      break;
-    default:
-      console.log('Päätät jatkaa matkaa sammakkojärveltä.');
+      lumoavaJarvenpeili();
       break;
   }
 }
 
 // Event 1: Lumoava Sammakkokonsertti
-function lumoavaSammakkokonsertti(pelaaja_olio) {
+function lumoavaSammakkokonsertti() {
   console.log('1. Lumoava Sammakkokonsertti:');
   textarea.value += '\n-Kun saavut sammakkojärvelle, huomaat, että rannalla istuu joukko sammakoita. Yhtäkkiä ne alkavat laulaa kauniisti yhteen, muodostaen lumoavan konsertin.';
   textarea.scrollTop = textarea.scrollHeight;
@@ -667,7 +664,7 @@ function lumoavaSammakkokonsertti(pelaaja_olio) {
 }
 
 // Event 2: Lumoava Järvenpeili
-function lumoavaJarvenpeili(pelaaja_olio) {
+function lumoavaJarvenpeili() {
   console.log('2. Lumoava Järvenpeili:');
   textarea.value += '\n-Näet järven pinnalla heijastuksen, joka ei näytä perinteiseltä veden heijastukselta. Huomaat, että heijastuksesta ilmestyy jotain. Yhtäkkiä järvestä pompsahtaa ruttuinen sammakko joka ehdottaa sinulle suudelmaa!';
   textarea.scrollTop = textarea.scrollHeight;
@@ -698,7 +695,7 @@ function lumoavaJarvenpeili(pelaaja_olio) {
 
 // Peli Eventti: Hiisisuon Laakso
 
-function hiisisuonLaakso(pelaaja_olio) {
+function hiisisuonLaakso() {
   textarea.value += '\n-Hiisisuon laakso on täynnä tulikärpästen tanssia ja kukkien hehkua. Kaunis keijukaiskuningatar liitelee suoliljojen yllä. Astutko lähemmäksi ihastumaan, seikkailemaan vai uppoamaan suon syvyyksiin? Onnea matkaan!';
   textarea.scrollTop = textarea.scrollHeight;
   // Arpoo randomilla pelaajalle eventin 1, 2, 3.
@@ -707,19 +704,19 @@ function hiisisuonLaakso(pelaaja_olio) {
   // Ohjaa valintoihin, jossa pelaaja saa valita mitä tekee.
   switch (tapahtuma) {
     case 1:
-      keijukaistenKuningatar(pelaaja_olio);
+      keijukaistenKuningatar();
       break;
     case 2:
-      seuraaTulikarpastenValoa(pelaaja_olio);
+      seuraaTulikarpastenValoa();
       break;
     default:
-      suonLumous(pelaaja_olio);
+      suonLumous();
       break;
   }
 }
 
 // Event 1: Keijukaisten kuningatar
-function keijukaistenKuningatar(pelaaja_olio) {
+function keijukaistenKuningatar() {
   console.log('1. Keijukaisten kuningatar:');
   textarea.value += '\n-Astelet lähemmäksi hiisisuon keijukaiskuningatarta, jonka valo saa koko laakson kimaltelemaan.';
   textarea.scrollTop = textarea.scrollHeight;
@@ -752,7 +749,7 @@ function keijukaistenKuningatar(pelaaja_olio) {
 }
 
 // Event 2: Seuraa Tulikärpästen Valoa
-function seuraaTulikarpastenValoa(pelaaja_olio) {
+function seuraaTulikarpastenValoa() {
   console.log('2. Seuraa Tulikärpästen Valoa:');
   textarea.value += '\n-Päätät seurata tulikärpästen valoa, jotka tanssivat ilmassa luoden maagista tunnelmaa.';
   textarea.scrollTop = textarea.scrollHeight;
@@ -783,7 +780,7 @@ function seuraaTulikarpastenValoa(pelaaja_olio) {
 }
 
 // Event 3: Suon lumous
-function suonLumous(pelaaja_olio) {
+function suonLumous() {
   console.log('3. Suon Lumous:');
   textarea.value += '\n-Suo lumoaa sinut kauneudella, kuulet kuinka hiisit laulavat kauniita laulujaan piiloissan. Aika poistua, löydätkö suolta pois?';
   textarea.scrollTop = textarea.scrollHeight;
@@ -814,7 +811,7 @@ function suonLumous(pelaaja_olio) {
 }
 
 // Peli Eventti: Suurentarmon kaupunki
-function suurentarmonKaupunkiEvent(pelaaja_olio) {
+function suurentarmonKaupunkiEvent() {
   textarea.value += '\n-Suurentarmon kaupunki on kuin elävä maalaus, jossa turnajaiset herättävät ritarien taidot loistoon. Taikurimarkkinoiden värikkäät kojut houkuttelevat seikkailijoita etsimään mystisiä aarteita. Suurentarmo kutsuu seikkailijoita löytämään oman tarinansa sen monipuolisista tapahtumista ja historiallisista salaisuuksista!';
   textarea.scrollTop = textarea.scrollHeight;
   // Arpoo randomilla pelaajalle eventin 1, 2, 3.
@@ -823,13 +820,13 @@ function suurentarmonKaupunkiEvent(pelaaja_olio) {
   // Ohjaa valintoihin, jossa pelaaja saa valita mitä tekee.
   switch (tapahtuma) {
     case 1:
-      turnajaiset(pelaaja_olio);
+      turnajaiset();
       break;
     case 2:
-      taikurimarkkinat(pelaaja_olio);
+      taikurimarkkinat();
       break;
     case 3:
-      uhkapeliOnnenpelikortit(pelaaja_olio);
+      uhkapeliOnnenpelikortit();
       break;
     default:
       console.log('Virheellinen syöte, valitse uudelleen!');
@@ -838,7 +835,7 @@ function suurentarmonKaupunkiEvent(pelaaja_olio) {
 }
 
 // Event 1: Turnajaiset
-function turnajaiset(pelaaja_olio) {
+function turnajaiset() {
   console.log('1. Turnajaiset:');
   textarea.value += '\n-Suurentarmon kaupunki järjestää suuret turnajaiset, joissa ritarien taituruus pääsee loistamaan. Kaupunki on täynnä värikkäitä lippuja ja vilkkaita markkinoita. Voit valita osallistua turnajaisiin tai seurata niitä sivusta.';
   textarea.scrollTop = textarea.scrollHeight;
@@ -864,7 +861,7 @@ function turnajaiset(pelaaja_olio) {
 }
 
 // Event 2: Suurentarmon Taikurimarkkinat
-function taikurimarkkinat(pelaaja) {
+function taikurimarkkinat() {
   console.log('2. Suurentarmon Taikurimarkkinat:');
   textarea.value += '\n-Kaupunki on täynnä taikureita ja magian ystäviä. Torilla järjestetään suuret taikurimarkkinat, joissa voit löytää harvinaisia taikakirjoja taikajuomia ja muita salaperäisiä esineitä. Voit valita osallistua markkinoille tai jatkaa matkaasi.';
   textarea.scrollTop = textarea.scrollHeight;
@@ -891,7 +888,7 @@ function taikurimarkkinat(pelaaja) {
 }
 
 // Event 3: Uhkapeli Onnenpelikortit
-function uhkapeliOnnenpelikortit(pelaaja_olio) {
+function uhkapeliOnnenpelikortit() {
   console.log('3. Uhkapeli Onnenpelikortit:');
   textarea.value += '\n-Kaupungin sydämessä sijaitsee vilkas taverna, joka tunnetaan uhkapelaajien kohtauspaikkana. Saavuttuasi tavernaan, huomaat erikoisen pöydän, jossa ihmiset pelaavat kiehtovaa peliä nimeltä Onnenpelikortit. Jokainen pelaaja voi valita yhden pelikortin, joka paljastaa heidän kohtalonsa.';
   textarea.scrollTop = textarea.scrollHeight;
@@ -917,7 +914,7 @@ function uhkapeliOnnenpelikortit(pelaaja_olio) {
 
 // Peli Eventti: Peikkoluola
 
-function peikkoluola(pelaaja_olio) {
+function peikkoluola() {
   textarea.value += '\n-Pimeän metsän kätköissä sijaitseva peikkoluola kuhisee salaisuuksia ja vaaroja. Luola kätkee monta salaisuuttaa uumeniinsa, katsotaan mihin tiet johtavat...';
   textarea.scrollTop = textarea.scrollHeight;
   // Arpoo randomilla pelaajalle eventin 1, 2, 3.
@@ -926,19 +923,19 @@ function peikkoluola(pelaaja_olio) {
   // Ohjaa valintoihin, jossa pelaaja saa valita mitä tekee.
   switch (tapahtuma) {
     case 1:
-      peikkokuningas(pelaaja_olio);
+      peikkokuningas();
       break;
     case 2:
-      hamahakkikuningatar(pelaaja_olio);
+      hamahakkikuningatar();
       break;
     default:
-      lohikaarmeenPesa(pelaaja_olio);
+      lohikaarmeenPesa();
       break;
   }
 }
 
 // Event 1: Peikkokuningas
-function peikkokuningas(pelaaja_olio) {
+function peikkokuningas() {
   console.log('1. Peikkokuningas:');
   textarea.value += '\n-Seikkailija tutkii peikkoluolaa ja toivoo löytävänsä aarteita, törmäänkö peikkokuninkaaseen? ';
   textarea.scrollTop = textarea.scrollHeight;
@@ -970,7 +967,7 @@ function peikkokuningas(pelaaja_olio) {
 }
 
 // Event 2: Hämähäkkikuningatar
-function hamahakkikuningatar(pelaaja_olio) {
+function hamahakkikuningatar() {
   console.log('2. Hämähäkkikuningatar:');
   textarea.value += '\n-Syvimmän kammion pimeimmässä nurkassa seikkailija kohtaa hämähäkkikuningattaren, joka vartioi kultaisia silkkisiä aarteitaan.';
   textarea.scrollTop = textarea.scrollHeight;
@@ -1004,7 +1001,7 @@ function hamahakkikuningatar(pelaaja_olio) {
 }
 
 // Event 3: Lohikäärmeen Pesä
-function lohikaarmeenPesa(pelaaja_olio) {
+function lohikaarmeenPesa() {
   console.log('3. Lohikäärmeen Pesä:');
   textarea.value += '\n-Peikkoluolan uumeniin kätkeytyy lohikäärmeen pesä, jonka peikot ovat vanginneet kahleisiin. Löydätkö lohikäärmeen?';
   textarea.scrollTop = textarea.scrollHeight;
