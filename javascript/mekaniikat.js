@@ -213,17 +213,16 @@ async function viimeinen_taistelu() {
       valinta1.style.display = 'none';
       valinta2.style.display = 'none';
       await avaa_taistelu_ikkuna(await hae_tunnettu_vihollinen(3));
-      textarea.value = 'Teit valinnan rauhan puolesta'
-      textarea.scrollTop = textarea.scrollHeight;
 
+      await pelin_lopetus()
     });
 
     valinta2.addEventListener('click', valinta2kuuntelija = async function() {
       valinta1.style.display = 'none';
       valinta2.style.display = 'none';
       await avaa_taistelu_ikkuna(await hae_tunnettu_vihollinen(3));
-      textarea.value = 'Päätit vallata maailman'
-      textarea.scrollTop = textarea.scrollHeight;
+
+      await pelin_lopetus()
     });
   }
 }
