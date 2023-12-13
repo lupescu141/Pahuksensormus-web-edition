@@ -12,6 +12,7 @@ const paavalikko = document.querySelector('.valikko');
 const vasen_puoli = document.querySelector('.vasen-puoli');
 const oikea_puoli = document.querySelector('.oikea-puoli');
 const lataapeli_valikko = document.querySelector('.lataapeli-valikko');
+const lataapeli_form = document.getElementById('lataa-peli-form')
 const uusipeli_valikko = document.querySelector('.uusi-peli-valikko');
 const ennatukset = document.querySelector('.ennatykset');
 const taulukko = document.querySelector('.top-lista');

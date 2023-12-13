@@ -7,11 +7,14 @@ async function hae_nimet() {
 
 // Asettaa Pelaajan tiedot pelaaja-status ikkunaan
 function aseta_tiedot() {
-  document.getElementById('pelaaja-nimi').textContent = pelaaja_olio.pelaaja_nimi;
+  document.getElementById(
+      'pelaaja-nimi').textContent = pelaaja_olio.pelaaja_nimi;
   document.getElementById('pelaaja-hp').textContent = pelaaja_olio.pelaaja_hp;
-  document.getElementById('pelaaja-tp').textContent = pelaaja_olio.pelaaja_taitopiste;
-  document.querySelector('.pelaaja-kuva').style.backgroundImage = `url("../static/images/pelaaja-luokat/${pelaaja_olio.pelaaja_luokka}-${pelaaja_olio.sukupuoli}.png")`;
-  paikkatausta.src = `../static/images/paikka_numerot/${pelaaja_olio.pelaaja_sijainti}.png`
+  document.getElementById(
+      'pelaaja-tp').textContent = pelaaja_olio.pelaaja_taitopiste;
+  document.querySelector(
+      '.pelaaja-kuva').style.backgroundImage = `url("../static/images/pelaaja-luokat/${pelaaja_olio.pelaaja_luokka}-${pelaaja_olio.sukupuoli}.png")`;
+  paikkatausta.src = `../static/images/paikka_numerot/${pelaaja_olio.pelaaja_sijainti}.png`;
   textarea.value = 'Kauan sitten hyvyys ja pahuus taistelivat keskenään.\n' +
       'Taistelut jatkuivat pitkään ja ne jättivät jälkeensä usein vain tuhoa.\n' +
       'Hyvyttään puolustaneet paladinit kuitenkin keksivät juonen pahan Gorgonin päihittämiseksi.\n' +
@@ -36,7 +39,7 @@ function aseta_tiedot() {
       'väittelyn jälkeen hän myöntää sinulle luvan kostaa vanhempiesi kohtalo.\n' +
       '\n' +
       'Tehtäväsi on etsiä maailmalta Pahuuden sormus ja heittää se tulivuoreen, jotta se tuhoutuu ja maailma vapautuu sen korruptiolta.\n' +
-      'Ken tietää, mitä kaikkea muuta löydätkään seikkailusi aikana.'
+      'Ken tietää, mitä kaikkea muuta löydätkään seikkailusi aikana.';
 }
 
 // Tämä piilottaa valikon ja avaa hahmoluokka valinnan
@@ -163,6 +166,55 @@ async function avaa_lataapeli_valikko() {
       await matkustaminen();
     });
   }
+}
+
+// Tämä hoitaa ladatun pelin aloittamisen
+async function hae_tallennus() {
+  // Piilota paavalikko
+  paavalikko.style.display = 'none';
+
+  // Tuo lataapeli valikko esiin
+  lataapeli_valikko.style.display = 'flex';
+
+  // Hakee Flask tietokannasta tallennukset
+  data = await hae_nimet();
+  console.log(data);
+
+  // Kuuntelee tallennus napin painallusta
+  lataapeli_form.addEventListener('submit', async function(event) {
+    event.preventDefault();
+
+    const haettu_tallennus_nimi = document.getElementById('tallennus-nimi').value;
+
+    for (let tallennus of data) {
+      if (tallennus.pelaaja_nimi.toLowerCase() === haettu_tallennus_nimi.toLowerCase()) {
+        const vastaus = await fetch(`http://localhost:5000//hae_pelaaja_tiedot/${tallennus.peli_id}`);
+        const pelaaja_tiedot = await vastaus.json();
+        console.log(pelaaja_tiedot);
+
+        pelaaja_olio = pelaaja_tiedot;
+        aseta_tiedot();
+
+        // Hakee pelaajan inventaarion ja palauttaa pelaaja_inventaario olion
+        await hae_inventaario();
+        await hae_luokan_taidot();
+
+        // Piilottaa alkuvalikon
+        lataapeli_valikko.style.display = 'none';
+
+        ennatukset.style.display = 'none';
+
+        vasen_puoli.style.display = 'flex';
+        oikea_puoli.style.display = 'flex';
+        kartta.style.display = 'flex';
+
+        await matkustaminen();
+      } else {
+        document.getElementById('tallennus-nimi').value = ''
+        document.getElementById('tallennus-nimi').placeholder = 'Tallennusta ei löytynyt'
+      }
+    }
+  })
 }
 
 // Palaa alkuvalikkoon
