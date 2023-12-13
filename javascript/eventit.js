@@ -102,28 +102,49 @@ function laukaise_event () {
 
 }
 
-// Peli Eventti: Uudentoivon kylä
 
+// Peli Eventti: Uudentoivon kylä
+let uudentoivonkylä_käytetyt_eventit = []
 function uudentoivonKylaEvent () {
   textarea.value += '\n\n-Tervetuloa Uudentoivon kylään, seikkailusi alkupisteeseen. Kylässä on monia tapahtumia ja mahdollisuuksia, jotka voivat muokata matkaasi. Tästä seikkailusi alkaa, onnea matkaan!'
   textarea.scrollTop = textarea.scrollHeight
   // Arpoo randomilla pelaajalle eventin 1, 2, 3.
-  const event_nro = Math.floor(Math.random() * 3) + 1
 
-  // Ohjaa valintoihin, jossa pelaaja saa valita mitä tekee.
-  switch (event_nro) {
-    case 1:
-      tavernaNoppapeli()
-      break
-    case 2:
-      laksiaisjuhlat()
-      break
-    case 3:
-      kylanKummallinenKojukauppias()
-      break
-    default:
-      console.log('Virheellinen syöte, valitse uudelleen!')
-      break
+  // Tarkista, onko kaikki eventit jo käytetty
+  if (uudentoivonkylä_käytetyt_eventit.length === 3) {
+    // Kaikki eventit on käytetty, ilmoita pelaajalle
+    textarea.value += '\n\n-Et löytänyt enää mitään uutta';
+    textarea.scrollTop = textarea.scrollHeight;
+    valinta1.style.display = 'none'
+    valinta2.style.display = 'none'
+    return; // Lopeta funktio
+  }
+  else {
+
+    let event_nro;
+    do {
+      event_nro = Math.floor(Math.random() * 3) + 1;
+    } while (uudentoivonkylä_käytetyt_eventit.includes(event_nro));
+
+    console.log(event_nro)
+
+    uudentoivonkylä_käytetyt_eventit.push(event_nro)
+
+    // Ohjaa valintoihin, jossa pelaaja saa valita mitä tekee.
+    switch (event_nro) {
+      case 1:
+        tavernaNoppapeli()
+        break
+      case 2:
+        laksiaisjuhlat()
+        break
+      case 3:
+        kylanKummallinenKojukauppias()
+        break
+      default:
+        console.log('Virheellinen syöte, valitse uudelleen!')
+        break
+    }
   }
 }
 
@@ -248,27 +269,49 @@ function kylanKummallinenKojukauppias () {
 }
 
 // Peli Eventti: Ruoholaakson niityt
+let ruoholaakso_käytetyt_eventit = []
 function ruoholaaksonNiityt () {
   textarea.value += '\n\n-Matkaat Ruoholaaksoon joka on täynnä niittyjä ja salaperäisiä hohtavia kukkia. Laakson sydämessä asuu tappavan kaunis syöjätär, jonka lumoava voima vetää puoleensa uteliaita seikkailijoita. Seuraat kukkien huumaavaa tuoksua..'
   textarea.scrollTop = textarea.scrollHeight
 
-  // Arpoo randomilla pelaajalle eventin 1, 2, 3.
-  const tapahtuma = Math.floor(Math.random() * 3) + 1
+  // Tarkista, onko kaikki eventit jo käytetty
+  if (ruoholaakso_käytetyt_eventit.length === 3) {
+    // Kaikki eventit on käytetty, ilmoita pelaajalle
+    textarea.value += '\n\n-Et löytänyt enää mitään uutta';
+    textarea.scrollTop = textarea.scrollHeight;
+    valinta1.style.display = 'none'
+    valinta2.style.display = 'none'
+    return; // Lopeta funktio
+  }
+  else {
 
-  // Ohjaa valintoihin, jossa pelaaja saa valita mitä tekee.
-  switch (tapahtuma) {
-    case 1:
-      kukkienHurmio()
-      break
-    case 2:
-      varjojenPiilo()
-      break
-    case 3:
-      lumotunRiipuksenArvoitus()
-      break
-    default:
-      console.log('Virheellinen syöte, valitse uudelleen!')
-      break
+    let event_nro;
+    do {
+      event_nro = Math.floor(Math.random() * 3) + 1;
+    } while (ruoholaakso_käytetyt_eventit.includes(event_nro));
+
+    console.log(event_nro)
+
+    ruoholaakso_käytetyt_eventit.push(event_nro)
+
+    // Arpoo randomilla pelaajalle eventin 1, 2, 3.
+    const tapahtuma = Math.floor(Math.random() * 3) + 1
+
+    // Ohjaa valintoihin, jossa pelaaja saa valita mitä tekee.
+    switch (tapahtuma) {
+      case 1:
+        kukkienHurmio()
+        break
+      case 2:
+        varjojenPiilo()
+        break
+      case 3:
+        lumotunRiipuksenArvoitus()
+        break
+      default:
+        console.log('Virheellinen syöte, valitse uudelleen!')
+        break
+    }
   }
 }
 
@@ -361,26 +404,46 @@ function lumotunRiipuksenArvoitus () {
 }
 
 // Peli Eventti: Velhotorni
+let velhotorni_käytetyt_eventit = []
 function velhotorniEvent () {
   textarea.value += '\n\n-Astuttuasi sisälle Velhotorniin, huomaat sen olevan täynnä salaisuuksia ja vaaroja, siellä asustaa hullunkurinen velho. Torni on täynnä salakäytäviä ja ansoja. Eksytkö käytävien uumeniin, vai kohtaatko mahdollisesti velhon. Onnea matkaan!'
   textarea.scrollTop = textarea.scrollHeight
-  // Arpoo randomilla pelaajalle eventin 1, 2, 3.
-  const event_nro = Math.floor(Math.random() * 3) + 1
 
-  // Ohjaa valintoihin, jossa pelaaja saa valita mitä tekee.
-  switch (event_nro) {
-    case 1:
-      loitsuhuone()
-      break
-    case 2:
-      salakaytavienSokkelo()
-      break
-    case 3:
-      velhonKaksintaistelu()
-      break
-    default:
-      console.log('Virheellinen syöte, valitse uudelleen!')
-      break
+  // Tarkista, onko kaikki eventit jo käytetty
+  if (velhotorni_käytetyt_eventit.length === 3) {
+    // Kaikki eventit on käytetty, ilmoita pelaajalle
+    textarea.value += '\n\n-Et löytänyt enää mitään uutta';
+    textarea.scrollTop = textarea.scrollHeight;
+    valinta1.style.display = 'none'
+    valinta2.style.display = 'none'
+    return; // Lopeta funktio
+  }
+  else {
+
+    let event_nro;
+    do {
+      event_nro = Math.floor(Math.random() * 3) + 1;
+    } while (velhotorni_käytetyt_eventit.includes(event_nro));
+
+    console.log(event_nro)
+
+    velhotorni_käytetyt_eventit.push(event_nro)
+
+    // Ohjaa valintoihin, jossa pelaaja saa valita mitä tekee.
+    switch (event_nro) {
+      case 1:
+        loitsuhuone()
+        break
+      case 2:
+        salakaytavienSokkelo()
+        break
+      case 3:
+        velhonKaksintaistelu()
+        break
+      default:
+        console.log('Virheellinen syöte, valitse uudelleen!')
+        break
+    }
   }
 }
 
@@ -469,27 +532,48 @@ function velhonKaksintaistelu () {
 
 }
 
+
 // Peli Eventti: Varisrämeen Salaisuudet
+let varisräme_käytetyt_eventit = []
 function varisrameenSalaisuudet () {
   textarea.value += '\n\n-Astuttuasi maagiseen Varisrämeeseen, ympärilläsi väreilee pimeä magia ja punasilmäiset pelottavat varikset lentelevät ympärillä salaperäisinä. Edessäsi avautuu kolme polkua, joista jokainen johtaa kohti erilaista mysteeriä. Onnea matkaan!'
   textarea.scrollTop = textarea.scrollHeight
   // Arpoo randomilla pelaajalle eventin 1, 2, 3.
-  const tapahtuma = Math.floor(Math.random() * 3) + 1
+  // Tarkista, onko kaikki eventit jo käytetty
+  if (varisräme_käytetyt_eventit.length === 3) {
+    // Kaikki eventit on käytetty, ilmoita pelaajalle
+    textarea.value += '\n\n-Et löytänyt enää mitään uutta';
+    textarea.scrollTop = textarea.scrollHeight;
+    valinta1.style.display = 'none'
+    valinta2.style.display = 'none'
+    return; // Lopeta funktio
+  }
+  else {
 
-  // Ohjaa valintoihin, jossa pelaaja saa valita mitä tekee.
-  switch (tapahtuma) {
-    case 1:
-      variksenkielenLoitsut()
-      break
-    case 2:
-      varjorituaalit()
-      break
-    case 3:
-      taikaesineenLoytaminen()
-      break
-    default:
-      console.log('Virheellinen syöte, valitse uudelleen!')
-      break
+    let event_nro;
+    do {
+      event_nro = Math.floor(Math.random() * 3) + 1;
+    } while (varisräme_käytetyt_eventit.includes(event_nro));
+
+    console.log(event_nro)
+
+    varisräme_käytetyt_eventit.push(event_nro)
+
+    // Ohjaa valintoihin, jossa pelaaja saa valita mitä tekee.
+    switch (tapahtuma) {
+      case 1:
+        variksenkielenLoitsut()
+        break
+      case 2:
+        varjorituaalit()
+        break
+      case 3:
+        taikaesineenLoytaminen()
+        break
+      default:
+        console.log('Virheellinen syöte, valitse uudelleen!')
+        break
+    }
   }
 }
 
@@ -586,27 +670,48 @@ function taikaesineenLoytaminen () {
 
 }
 
+
 // Peli Eventti: Noitametsä
+let noitametsä_käytetyt_eventit = []
 function noitametsa () {
   textarea.value += '\n\n-Eksyttyäsi polulta löydät itsesi noitametsästä, metsän uumenissa on kammottava noitatalo. Selviätkö täysijärkisenä metsästä, vai löydätkö itsesi noitatalosta keskeltä vaarallista taistelua karmivan kolmipäisen noidan kanssa. Onnea matkaan!'
   textarea.scrollTop = textarea.scrollHeight
   // Arpoo randomilla pelaajalle eventin 1, 2, 3.
-  const tapahtuma = Math.floor(Math.random() * 3) + 1
+  // Tarkista, onko kaikki eventit jo käytetty
+  if (noitametsä_käytetyt_eventit.length === 3) {
+    // Kaikki eventit on käytetty, ilmoita pelaajalle
+    textarea.value += '\n\n-Et löytänyt enää mitään uutta';
+    textarea.scrollTop = textarea.scrollHeight;
+    valinta1.style.display = 'none'
+    valinta2.style.display = 'none'
+    return; // Lopeta funktio
+  }
+  else {
 
-  // Ohjaa valintoihin, jossa pelaaja saa valita mitä tekee.
-  switch (tapahtuma) {
-    case 1:
-      noitataloTaistelu()
-      break
-    case 2:
-      noitataloMetsassa()
-      break
-    case 3:
-      harhailuNoitametsassa()
-      break
-    default:
-      console.log('Virheellinen syöte, valitse uudelleen!')
-      break
+    let event_nro;
+    do {
+      event_nro = Math.floor(Math.random() * 3) + 1;
+    } while (noitametsä_käytetyt_eventit.includes(event_nro));
+
+    console.log(event_nro)
+
+    noitametsä_käytetyt_eventit.push(event_nro)
+
+    // Ohjaa valintoihin, jossa pelaaja saa valita mitä tekee.
+    switch (tapahtuma) {
+      case 1:
+        noitataloTaistelu()
+        break
+      case 2:
+        noitataloMetsassa()
+        break
+      case 3:
+        harhailuNoitametsassa()
+        break
+      default:
+        console.log('Virheellinen syöte, valitse uudelleen!')
+        break
+    }
   }
 }
 
@@ -713,21 +818,40 @@ function harhailuNoitametsassa () {
 }
 
 // Peli Eventti: Sammakkojärvi
-
+let sammakkojärvi_käytetyt_eventit = []
 function sammakkojarvi () {
   textarea.value += '\n\n-Taianomainen sammakkojärvi herättää uteliaisuuden ja seikkailunhalun. Sammakkojärven rannat täyttyvät satojen sammakoiden kurnutuksesta.'
   textarea.scrollTop = textarea.scrollHeight
   // Arpoo randomilla pelaajalle eventin 1, 2, 3.
-  const tapahtuma = Math.floor(Math.random() * 2) + 1
+  // Tarkista, onko kaikki eventit jo käytetty
+  if (sammakkojärvi_käytetyt_eventit.length === 2) {
+    // Kaikki eventit on käytetty, ilmoita pelaajalle
+    textarea.value += '\n\n-Et löytänyt enää mitään uutta';
+    textarea.scrollTop = textarea.scrollHeight;
+    valinta1.style.display = 'none'
+    valinta2.style.display = 'none'
+    return; // Lopeta funktio
+  }
+  else {
 
-  // Ohjaa valintoihin, jossa pelaaja saa valita mitä tekee.
-  switch (tapahtuma) {
-    case 1:
-      lumoavaSammakkokonsertti()
-      break
-    case 2:
-      lumoavaJarvenpeili()
-      break
+    let event_nro;
+    do {
+      event_nro = Math.floor(Math.random() * 2) + 1;
+    } while (sammakkojärvi_käytetyt_eventit.includes(event_nro));
+
+    console.log(event_nro)
+
+    sammakkojärvi_käytetyt_eventit.push(event_nro)
+
+    // Ohjaa valintoihin, jossa pelaaja saa valita mitä tekee.
+    switch (tapahtuma) {
+      case 1:
+        lumoavaSammakkokonsertti()
+        break
+      case 2:
+        lumoavaJarvenpeili()
+        break
+    }
   }
 }
 
@@ -794,24 +918,43 @@ function lumoavaJarvenpeili () {
 }
 
 // Peli Eventti: Hiisisuon Laakso
-
+let hiisisuo_käytetyt_eventit = []
 function hiisisuonLaakso () {
   textarea.value += '\n\n-Hiisisuon laakso on täynnä tulikärpästen tanssia ja kukkien hehkua. Kaunis keijukaiskuningatar liitelee suoliljojen yllä. Astutko lähemmäksi ihastumaan, seikkailemaan vai uppoamaan suon syvyyksiin? Onnea matkaan!'
   textarea.scrollTop = textarea.scrollHeight
   // Arpoo randomilla pelaajalle eventin 1, 2, 3.
-  const tapahtuma = Math.floor(Math.random() * 3) + 1
+  // Tarkista, onko kaikki eventit jo käytetty
+  if (hiisisuo_käytetyt_eventit.length === 3) {
+    // Kaikki eventit on käytetty, ilmoita pelaajalle
+    textarea.value += '\n\n-Et löytänyt enää mitään uutta';
+    textarea.scrollTop = textarea.scrollHeight;
+    valinta1.style.display = 'none'
+    valinta2.style.display = 'none'
+    return; // Lopeta funktio
+  }
+  else {
 
-  // Ohjaa valintoihin, jossa pelaaja saa valita mitä tekee.
-  switch (tapahtuma) {
-    case 1:
-      keijukaistenKuningatar()
-      break
-    case 2:
-      seuraaTulikarpastenValoa()
-      break
-    default:
-      suonLumous()
-      break
+    let event_nro;
+    do {
+      event_nro = Math.floor(Math.random() * 3) + 1;
+    } while (hiisisuo_käytetyt_eventit.includes(event_nro));
+
+    console.log(event_nro)
+
+    hiisisuo_käytetyt_eventit.push(event_nro)
+
+    // Ohjaa valintoihin, jossa pelaaja saa valita mitä tekee.
+    switch (tapahtuma) {
+      case 1:
+        keijukaistenKuningatar()
+        break
+      case 2:
+        seuraaTulikarpastenValoa()
+        break
+      case 3:
+        suonLumous()
+        break
+    }
   }
 }
 
@@ -921,26 +1064,46 @@ function suonLumous () {
 }
 
 // Peli Eventti: Suurentarmon kaupunki
+let suurentarmonkaupunki_käytetyt_eventit = []
 function suurentarmonKaupunkiEvent () {
   textarea.value += '\n\n-Suurentarmon kaupunki on kuin elävä maalaus, jossa turnajaiset herättävät ritarien taidot loistoon. Taikurimarkkinoiden värikkäät kojut houkuttelevat seikkailijoita etsimään mystisiä aarteita. Suurentarmo kutsuu seikkailijoita löytämään oman tarinansa sen monipuolisista tapahtumista ja historiallisista salaisuuksista!'
   textarea.scrollTop = textarea.scrollHeight
   // Arpoo randomilla pelaajalle eventin 1, 2, 3.
-  const tapahtuma = Math.floor(Math.random() * 3) + 1
+  // Tarkista, onko kaikki eventit jo käytetty
+  if (suurentarmonkaupunki_käytetyt_eventit.length === 3) {
+    // Kaikki eventit on käytetty, ilmoita pelaajalle
+    textarea.value += '\n\n-Et löytänyt enää mitään uutta';
+    textarea.scrollTop = textarea.scrollHeight;
+    valinta1.style.display = 'none'
+    valinta2.style.display = 'none'
+    return; // Lopeta funktio
+  }
+  else {
 
-  // Ohjaa valintoihin, jossa pelaaja saa valita mitä tekee.
-  switch (tapahtuma) {
-    case 1:
-      turnajaiset()
-      break
-    case 2:
-      taikurimarkkinat()
-      break
-    case 3:
-      uhkapeliOnnenpelikortit()
-      break
-    default:
-      console.log('Virheellinen syöte, valitse uudelleen!')
-      break
+    let event_nro;
+    do {
+      event_nro = Math.floor(Math.random() * 3) + 1;
+    } while (suurentarmonkaupunki_käytetyt_eventit.includes(event_nro));
+
+    console.log(event_nro)
+
+    suurentarmonkaupunki_käytetyt_eventit.push(event_nro)
+
+    // Ohjaa valintoihin, jossa pelaaja saa valita mitä tekee.
+    switch (tapahtuma) {
+      case 1:
+        turnajaiset()
+        break
+      case 2:
+        taikurimarkkinat()
+        break
+      case 3:
+        uhkapeliOnnenpelikortit()
+        break
+      default:
+        console.log('Virheellinen syöte, valitse uudelleen!')
+        break
+    }
   }
 }
 
@@ -1031,24 +1194,43 @@ function uhkapeliOnnenpelikortit () {
 }
 
 // Peli Eventti: Peikkoluola
-
+let peikkoluola_käytetyt_eventit = []
 function peikkoluola () {
   textarea.value += '\n\n-Pimeän metsän kätköissä sijaitseva peikkoluola kuhisee salaisuuksia ja vaaroja. Luola kätkee monta salaisuuttaa uumeniinsa, katsotaan mihin tiet johtavat...'
   textarea.scrollTop = textarea.scrollHeight
   // Arpoo randomilla pelaajalle eventin 1, 2, 3.
-  const tapahtuma = Math.floor(Math.random() * 3) + 1
+  // Tarkista, onko kaikki eventit jo käytetty
+  if (peikkoluola_käytetyt_eventit.length === 3) {
+    // Kaikki eventit on käytetty, ilmoita pelaajalle
+    textarea.value += '\n\n-Et löytänyt enää mitään uutta';
+    textarea.scrollTop = textarea.scrollHeight;
+    valinta1.style.display = 'none'
+    valinta2.style.display = 'none'
+    return; // Lopeta funktio
+  }
+  else {
 
-  // Ohjaa valintoihin, jossa pelaaja saa valita mitä tekee.
-  switch (tapahtuma) {
-    case 1:
-      peikkokuningas()
-      break
-    case 2:
-      hamahakkikuningatar()
-      break
-    default:
-      lohikaarmeenPesa()
-      break
+    let event_nro;
+    do {
+      event_nro = Math.floor(Math.random() * 3) + 1;
+    } while (peikkoluola_käytetyt_eventit.includes(event_nro));
+
+    console.log(event_nro)
+
+    peikkoluola_käytetyt_eventit.push(event_nro)
+
+    // Ohjaa valintoihin, jossa pelaaja saa valita mitä tekee.
+    switch (tapahtuma) {
+      case 1:
+        peikkokuningas()
+        break
+      case 2:
+        hamahakkikuningatar()
+        break
+      case 3:
+        lohikaarmeenPesa()
+        break
+    }
   }
 }
 
