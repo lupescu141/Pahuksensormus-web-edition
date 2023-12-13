@@ -38,6 +38,7 @@ function aseta_tiedot() {
       '\n\n-Tehtäväsi on etsiä maailmalta pahuksen sormus ja heittää se tulivuoreen, jotta se tuhoutuu ja maailma vapautuu sen korruptiolta. ' +
       'Ken tietää, mitä kaikkea muuta löydätkään seikkailusi aikana. ' +
       '\n\n-Voit liikkua kartalla klikkaamalla kohteita. Liikuttamalla hiiren kohteen päälle näet kartan yläreunassa matkan keston. ' +
+      'Ylä-reunassa näet myös tämän hetken lämpötilan. Liian korkea tai matala lämpötila vaikeuttaa matkustamista ja kasvattaa matkan kestoa ' +
       '\n\n-Mitä nopeammin löydät sormuksen sen parempi, mutta jos matkustat liian pitkälle niin Gorgonin kätyrit saattavat löytää sinut helpommin. ' +
       '\n\n-Tutkimalla kohteita saatat parantaa mahdollisuuksiasi viimeisessä taistelussa Gorgonia vastaan. '
 }
