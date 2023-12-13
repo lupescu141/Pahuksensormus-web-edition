@@ -331,6 +331,8 @@ function kylanKummallinenKojukauppias () {
 // Peli Eventti: Ruoholaakson niityt
 let ruoholaakso_käytetyt_eventit = []
 function ruoholaaksonNiityt () {
+  textarea.value = ''
+  textarea.scrollTop = textarea.scrollHeight
   textarea.value += '\n\n-Matkaat Ruoholaaksoon joka on täynnä niittyjä ja salaperäisiä hohtavia kukkia. Laakson sydämessä asuu tappavan kaunis syöjätär, jonka lumoava voima vetää puoleensa uteliaita seikkailijoita. Seuraat kukkien huumaavaa tuoksua..'
   textarea.scrollTop = textarea.scrollHeight
 
@@ -381,6 +383,8 @@ function kukkienHurmio () {
   textarea.scrollTop = textarea.scrollHeight
 
   valinta1.addEventListener('click', valinta1kuuntelija = async function () {
+    textarea.value = ''
+    textarea.scrollTop = textarea.scrollHeight
     textarea.value += '\n\n-Astut varovasti kukkien keskelle ja tunnet niiden lumoavan voiman ympärilläsi. Kukat suojelevat sinua vihollisilta lyhyen aikaa. Saat matkaasi mukaan eliksiirejä.'
     textarea.scrollTop = textarea.scrollHeight
     for (let i = 0; i < 5; i++) {
@@ -395,6 +399,8 @@ function kukkienHurmio () {
   })
 
   valinta2.addEventListener('click', valinta2kuuntelija = async function () {
+    textarea.value = ''
+    textarea.scrollTop = textarea.scrollHeight
     textarea.value += '\n\n-Poimimalla kukkia huolettomasti, kukkien henki herää ja ne kutsuvat tappavan kauniin syöjättären luokseen. Joudut taisteluun syöjättären kanssa!'
     textarea.scrollTop = textarea.scrollHeight
     await avaa_taistelu_ikkuna(await hae_tunnettu_vihollinen(14)) // OHJAA TAISTELUUN SYÖJÄTÄR KUNINGATTAREN KANSSA
@@ -413,6 +419,8 @@ function varjojenPiilo () {
   textarea.scrollTop = textarea.scrollHeight
 
   valinta1.addEventListener('click', valinta1kuuntelija = async function () {
+    textarea.value = ''
+    textarea.scrollTop = textarea.scrollHeight
     textarea.value += '\n\n-Liityt syöjättärien kanssa varjojen tanssiin ja saat osaksi niiden voimaa. Varjot suojaavat sinua pimeyden voimilta ja tarjoavat sinulle erityistaitoja varjojen maailmassa liikkumiseen. Saat 5 HP.'
     textarea.scrollTop = textarea.scrollHeight
     pelaaja_olio.pelaaja_hp += 5
@@ -422,6 +430,8 @@ function varjojenPiilo () {
   })
 
   valinta2.addEventListener('click', valinta2kuuntelija = async function () {
+    textarea.value = ''
+    textarea.scrollTop = textarea.scrollHeight
     textarea.value += '\n\n-Pysyt varjojen ulottumattomissa, mutta syöjättäret huomaavat sinut! Varjot luovat illuusioita, jotka hämmentävät sinua ja aiheuttavat tilapäistä sokeutta. Vajoat syvään uneen ja menetät 5 HP.'
     textarea.scrollTop = textarea.scrollHeight
     pelaaja_olio.pelaaja_hp -= 5
@@ -442,6 +452,8 @@ function lumotunRiipuksenArvoitus () {
   textarea.scrollTop = textarea.scrollHeight
 
   valinta1.addEventListener('click', valinta1kuuntelija = async function () {
+    textarea.value = ''
+    textarea.scrollTop = textarea.scrollHeight
     textarea.value += '\n\n-Valinta 1: Riipus paljastaa sinulle tulevaisuuden näkymiä ja vihjeitä seuraavista vaiheista. Saat etulyöntiaseman tulevissa kohtaamisissa. Saat lisää taitoja matkaasi!'
     textarea.scrollTop = textarea.scrollHeight
     pelaaja_olio.pelaaja_taitopiste += 1
@@ -451,6 +463,8 @@ function lumotunRiipuksenArvoitus () {
   })
 
   valinta2.addEventListener('click', valinta2kuuntelija = async function () {
+    textarea.value = ''
+    textarea.scrollTop = textarea.scrollHeight
     textarea.value += '\n\n-Valinta 2: Ohitat riipuksen, mutta sen voima koskettaa sinua. Joudut hetkellisesti ajan vääristymisen uhriksi, menettäen näkemyksen ajasta ja paikasta. Syöjätär ui mielesi sopukoihin ja hypnotisoi sinut lumouksiinsa, menetät 5 HP.'
     textarea.scrollTop = textarea.scrollHeight
     pelaaja_olio.pelaaja_hp -= 5
@@ -465,6 +479,8 @@ function lumotunRiipuksenArvoitus () {
 let velhotorni_käytetyt_eventit = []
 
 function velhotorniEvent () {
+  textarea.value = ''
+  textarea.scrollTop = textarea.scrollHeight
   textarea.value += '\n\n-Astuttuasi sisälle Velhotorniin, huomaat sen olevan täynnä salaisuuksia ja vaaroja, siellä asustaa hullunkurinen velho. Torni on täynnä salakäytäviä ja ansoja. Eksytkö käytävien uumeniin, vai kohtaatko mahdollisesti velhon. Onnea matkaan!'
   textarea.scrollTop = textarea.scrollHeight
 
@@ -515,6 +531,8 @@ function loitsuhuone () {
   textarea.scrollTop = textarea.scrollHeight
 
   valinta1.addEventListener('click', valinta1kuuntelija = async function () {
+    textarea.value = ''
+    textarea.scrollTop = textarea.scrollHeight
     textarea.value += '\n\n-Valinta 1: Aave nyökkää hyväksyvästi. "Olet osoittanut olevasi arvollinen. Saat tämän loitsukirjan ja sen voiman omaksesi." Saat matkaasi loitsukirjan, joka lisää taitojasi erilaisissa taikuuden muodoissa. Maksimi taitopisteesi kasvaa yhdellä!'
     textarea.scrollTop = textarea.scrollHeight
     pelaaja_olio.pelaaja_maksimi_taitopiste += 1
@@ -525,6 +543,8 @@ function loitsuhuone () {
   })
 
   valinta2.addEventListener('click', valinta2kuuntelija = async function () {
+    textarea.value = ''
+    textarea.scrollTop = textarea.scrollHeight
     textarea.value += '\n\n-Valinta 2: Aave raivostuu yrityksestäsi paeta ja päättää opettaa sinulle läksyn. Sinut peittää hetkellinen kylmyys, ja tunnet voimakkaan magian värähtelyn ympärilläsi. Aave varastaa sinulta esineen.'
     textarea.scrollTop = textarea.scrollHeight
     pelaaja_inventaario.pop() // Poistaa pelaajalta yhden esineen
@@ -544,6 +564,8 @@ function salakaytavienSokkelo () {
   textarea.scrollTop = textarea.scrollHeight
 
   valinta1.addEventListener('click', valinta1kuuntelija = async function () {
+    textarea.value = ''
+    textarea.scrollTop = textarea.scrollHeight
     textarea.value += '\n\n-Valinta 1: Intuition avulla valitset oikean tien sokkelossa. Pääset helposti ylös tornin huipulle. Saat matkaasi taitopisteen salakäytävien navigointiin.'
     textarea.scrollTop = textarea.scrollHeight
     pelaaja_olio.pelaaja_taitopiste += 1
@@ -553,6 +575,8 @@ function salakaytavienSokkelo () {
   })
 
   valinta2.addEventListener('click', valinta2kuuntelija = async function () {
+    textarea.value = ''
+    textarea.scrollTop = textarea.scrollHeight
     textarea.value += '\n\n-Valinta 2: Vaistosi johdattavat sinut sokkeloiseen luolastoon ja eksyt. Menetät 2 HP!'
     textarea.scrollTop = textarea.scrollHeight
     pelaaja_olio.pelaaja_hp -= 2
@@ -574,6 +598,8 @@ function velhonKaksintaistelu () {
   textarea.scrollTop = textarea.scrollHeight
 
   valinta1.addEventListener('click', valinta1kuuntelija = async function () {
+    textarea.value = ''
+    textarea.scrollTop = textarea.scrollHeight
     textarea.value += '\n\n-Valinta 1: Taistelu on intensiivinen, kun aseet ja taikuus kohtaavat. Velho osoittautuu taitavaksi taistelijaksi, mutta sinä käytät taitojasi voimakkaasti hyväksesi.'
     textarea.scrollTop = textarea.scrollHeight
     await avaa_taistelu_ikkuna(await hae_tunnettu_vihollinen(19))  // OHJAA TAISTELUUN VELHON KANSSA
@@ -582,6 +608,8 @@ function velhonKaksintaistelu () {
   })
 
   valinta2.addEventListener('click', valinta2kuuntelija = async function () {
+    textarea.value = ''
+    textarea.scrollTop = textarea.scrollHeight
     textarea.value += '\n\n-Valinta 2: Velho suuttuu pakoyrityksestäsi ja lähettää sinua kohti voimakkaan taian. Onnistut välttämään suurimman osan hyökkäyksistä ja pääset karkuun. Tornin pitkät ja kapeat portaat saavat sinut kaatumaan ja putoat tornin syvyyksiin. Häpeissäsi jatkat matkaa… Menetät 5 HP.'
     textarea.scrollTop = textarea.scrollHeight
     pelaaja_olio.pelaaja_hp -= 5
@@ -596,6 +624,8 @@ function velhonKaksintaistelu () {
 let varisräme_käytetyt_eventit = []
 
 function varisrameenSalaisuudet () {
+  textarea.value = ''
+  textarea.scrollTop = textarea.scrollHeight
   textarea.value += '\n\n-Astuttuasi maagiseen Varisrämeeseen, ympärilläsi väreilee pimeä magia ja punasilmäiset pelottavat varikset lentelevät ympärillä salaperäisinä. Edessäsi avautuu kolme polkua, joista jokainen johtaa kohti erilaista mysteeriä. Onnea matkaan!'
   textarea.scrollTop = textarea.scrollHeight
   // Arpoo randomilla pelaajalle eventin 1, 2, 3.
@@ -647,6 +677,8 @@ function variksenkielenLoitsut () {
   textarea.scrollTop = textarea.scrollHeight
 
   valinta1.addEventListener('click', valinta1kuuntelija = async function () {
+    textarea.value = ''
+    textarea.scrollTop = textarea.scrollHeight
     textarea.value += '\n\n-Valinta 1: Onnistut ymmärtämään loitsut, mikä antaa sinulle täyden voiman ja HP:n.'
     textarea.scrollTop = textarea.scrollHeight
     pelaaja_olio.pelaaja_maksimi_hp += 1
@@ -657,6 +689,8 @@ function variksenkielenLoitsut () {
   })
 
   valinta2.addEventListener('click', valinta2kuuntelija = async function () {
+    textarea.value = ''
+    textarea.scrollTop = textarea.scrollHeight
     textarea.value += '\n\n-Valinta 2: Väärin meni! Varikset lentelevät ympärilläsi ja nokkivat naamasi verille, vaivut syvään uneen, menetät 5 HP!'
     textarea.scrollTop = textarea.scrollHeight
     pelaaja_olio.pelaaja_hp -= 5
@@ -678,6 +712,8 @@ function varjorituaalit () {
   textarea.scrollTop = textarea.scrollHeight
 
   valinta1.addEventListener('click', valinta1kuuntelija = async function () {
+    textarea.value = ''
+    textarea.scrollTop = textarea.scrollHeight
     textarea.value += '\n\n-Valinta 1: Liityt varjoryhmän rituaaliin, ryhmä yllättyy taidoistasi! Saat heiltä voimaa ja iskuvoimasi on kasvanut.'
     textarea.scrollTop = textarea.scrollHeight
     pelaaja_olio.pelaaja_isku += 1
@@ -686,6 +722,8 @@ function varjorituaalit () {
   })
 
   valinta2.addEventListener('click', valinta2kuuntelija = async function () {
+    textarea.value = ''
+    textarea.scrollTop = textarea.scrollHeight
     textarea.value += '\n\n-Valinta 2: Häiritset ryhmän rituaalia etkä ymmärrä sen merkitystä, varjojen voima kääntyy sinua vastaan aiheuttaen pimeitä näkyjä ja painajaisia. Menetät 5 HP.'
     textarea.scrollTop = textarea.scrollHeight
     pelaaja_olio.pelaaja_hp -= 5
@@ -706,6 +744,8 @@ function taikaesineenLoytaminen () {
   textarea.scrollTop = textarea.scrollHeight
 
   valinta1.addEventListener('click', valinta1kuuntelija = async function () {
+    textarea.value = ''
+    textarea.scrollTop = textarea.scrollHeight
     textarea.value += '\n\n-Valinta 1: Onnistuit kurottamaan käden syvälle koloon ja löydät muutaman taikasauvan, sauvat antavat sinulle suojaa pimeitä voimia vastaan.'
     textarea.scrollTop = textarea.scrollHeight
     for (let i = 0; i < 2; i++) {
@@ -719,6 +759,8 @@ function taikaesineenLoytaminen () {
   })
 
   valinta2.addEventListener('click', valinta2kuuntelija = async function () {
+    textarea.value = ''
+    textarea.scrollTop = textarea.scrollHeight
     textarea.value += '\n\n-Valinta 2: Et kunnioittanut taikaesinettä ja yritit pakottaa sen voimat ulos, herätit varisvihan, ja joudut taisteluun varisten herran kanssa!'
     textarea.scrollTop = textarea.scrollHeight
     // OHJAA TAISTELUUN VARISTEN HERRAN KANSSA! PÄIVITETÄÄN FUNKTIO OIKEIN!
@@ -733,6 +775,8 @@ function taikaesineenLoytaminen () {
 let noitametsä_käytetyt_eventit = []
 
 function noitametsa () {
+  textarea.value = ''
+  textarea.scrollTop = textarea.scrollHeight
   textarea.value += '\n\n-Eksyttyäsi polulta löydät itsesi noitametsästä, metsän uumenissa on kammottava noitatalo. Selviätkö täysijärkisenä metsästä, vai löydätkö itsesi noitatalosta keskeltä vaarallista taistelua karmivan kolmipäisen noidan kanssa. Onnea matkaan!'
   textarea.scrollTop = textarea.scrollHeight
   // Arpoo randomilla pelaajalle eventin 1, 2, 3.
@@ -784,6 +828,8 @@ function noitataloTaistelu () {
   paikkatausta.src = '../static/images/eventit/noitametsa_noitatalotaistelu.jpg'
 
   valinta1.addEventListener('click', valinta1kuuntelija = async function () {
+    textarea.value = ''
+    textarea.scrollTop = textarea.scrollHeight
     textarea.value += '\n\n-Valinta 1: Hiippailet keittiössä näkymättömyysviitan kanssa ilman kiinnijäämistä, löydät salaisen komeron jossa säilytetään arvokkaita taika-aineita. Löydät eliksiirejä ja sait taitopisteen! Mahtavaa!'
     textarea.scrollTop = textarea.scrollHeight
     pelaaja_olio.pelaaja_maksimi_taitopiste += 1
@@ -800,6 +846,8 @@ function noitataloTaistelu () {
   })
 
   valinta2.addEventListener('click', valinta2kuuntelija = async function () {
+    textarea.value = ''
+    textarea.scrollTop = textarea.scrollHeight
     textarea.value += '\n\n-Valinta 2: Jäit kiinni ja kolmipäinen noita huomaa sinut. Noita haastaa sinut taisteluun!'
     textarea.scrollTop = textarea.scrollHeight
     await avaa_taistelu_ikkuna(await hae_tunnettu_vihollinen(22))  // OHJAA TAISTELUUN KOLMIPÄISEN NOIDAN KANSSA
@@ -820,6 +868,8 @@ function noitataloMetsassa () {
   paikkatausta.src = '../static/images/eventit/noitametsa_noitataloMetsassa.png'
 
   valinta1.addEventListener('click', valinta1kuuntelija = async function () {
+    textarea.value = ''
+    textarea.scrollTop = textarea.scrollHeight
     textarea.value += '\n\n-Valinta 1: Päätät rohkeasti avata noitatalon raskaan oven. Astut varovasti sisään ja kävelet pimeään.'
     textarea.value += '\n\n-Astut eteenpäin kohti kirjastoa. Onnistut löytämään kirjaston käytäviltä salaisen loitsukirjan. Taikoen loitsulla hetkellisen voiman, syliisi tipahtaa taitojuomia. Olet nyt vahvempi ja varustautuneempi jatkamaan seikkailuasi!'
     textarea.scrollTop = textarea.scrollHeight
@@ -834,6 +884,8 @@ function noitataloMetsassa () {
   })
 
   valinta2.addEventListener('click', valinta2kuuntelija = async function () {
+    textarea.value = ''
+    textarea.scrollTop = textarea.scrollHeight
     textarea.value += '\n\n-Valinta 2: Päätät olla astumatta noitataloon ja jatkat syvemmälle metsään. Matkasi johdattaa sinut yhä syvemmälle puiden siimekseen. Kompuroit ajatuksissasi puun kantoon ja menetät 5 HP.'
     textarea.scrollTop = textarea.scrollHeight
     pelaaja_olio.pelaaja_hp -= 5
@@ -855,6 +907,8 @@ function harhailuNoitametsassa () {
   paikkatausta.src = '../static/images/eventit/noitametsa_harhailunoitam.png'
 
   valinta1.addEventListener('click', valinta1kuuntelija = async function () {
+    textarea.value = ''
+    textarea.scrollTop = textarea.scrollHeight
     textarea.value += '\n\n-Valinta 1: Harhailet noitametsän läpi ja löydät vanhan maagisen lähteen. Tämä lähde antaa sinulle erityisen taidon, joka auttaa tulevissa koitoksissa. Löydät tiesi ulos metsästä ja sait lähteestä mukaasi eliksiirejä!'
     textarea.scrollTop = textarea.scrollHeight
     for (let i = 0; i < 5; i++) {
@@ -868,6 +922,8 @@ function harhailuNoitametsassa () {
   })
 
   valinta2.addEventListener('click', valinta2kuuntelija = async function () {
+    textarea.value = ''
+    textarea.scrollTop = textarea.scrollHeight
     textarea.value += '\n\n-Valinta 2: Voi ei, suuntavaistosi meni harhaan! Eksyit metsään ja sekoat sen mysteereihin, ajantaju katoaa harhaillessasi puiden keskellä. Vajoat synkkyyteen ja menetät 5 HP!'
     textarea.scrollTop = textarea.scrollHeight
     pelaaja_olio.pelaaja_hp -= 5
@@ -882,6 +938,8 @@ function harhailuNoitametsassa () {
 let sammakkojärvi_käytetyt_eventit = []
 
 function sammakkojarvi () {
+  textarea.value = ''
+  textarea.scrollTop = textarea.scrollHeight
   textarea.value += '\n\n-Taianomainen sammakkojärvi herättää uteliaisuuden ja seikkailunhalun. Sammakkojärven rannat täyttyvät satojen sammakoiden kurnutuksesta.'
   textarea.scrollTop = textarea.scrollHeight
   // Arpoo randomilla pelaajalle eventin 1, 2, 3.
@@ -926,6 +984,8 @@ function lumoavaSammakkokonsertti () {
   textarea.scrollTop = textarea.scrollHeight
 
   valinta1.addEventListener('click', valinta1kuuntelija = async function () {
+    textarea.value = ''
+    textarea.scrollTop = textarea.scrollHeight
     textarea.value += '\n\n-Valinta 1: Laulu on niin kaunis, että voit tuntea sen vaikutuksen ympärilläsi. Taikavoimat ympäröivät sinut ja sammakot antavat sinulle täyden HP:n.'
     textarea.scrollTop = textarea.scrollHeight
     pelaaja_olio.pelaaja_maksimi_hp += 1
@@ -936,7 +996,9 @@ function lumoavaSammakkokonsertti () {
   })
 
   valinta2.addEventListener('click', valinta2kuuntelija = async function () {
-    textarea.value += '\n\n-Valinta 2: Päätät jatkaa matkaa, sammakot loukkaantuvat ja heittävät päällesi vettä. Viittasi on läpimärkä, ja jäädyt kylmästä ilmasta. Menetät 5 HP.'
+    textarea.value = ''
+    textarea.scrollTop = textarea.scrollHeight
+    textarea.value += '\n\n-Valinta 2: Päätät jatkaa matkaa, sammakot suutahtavat ja heittävät päällesi vettä.. Vaatteesi ovat läpimärät ja jäädyt kylmästä ilmasta. Menetät 5 HP.'
     textarea.scrollTop = textarea.scrollHeight
     pelaaja_olio.pelaaja_hp -= 5
     pelaaja_hp.textContent = pelaaja_olio.pelaaja_hp
@@ -956,6 +1018,8 @@ function lumoavaJarvenpeili () {
   textarea.scrollTop = textarea.scrollHeight
 
   valinta1.addEventListener('click', valinta1kuuntelija = async function () {
+    textarea.value = ''
+    textarea.scrollTop = textarea.scrollHeight
     textarea.value += '\n\n-Valinta 1: Suutelet vastenmielistä sammakkoa, ja hän muuttuu kauniiksi prinssiksi! Hän kiittää sinua pelastuksesta ja antaa sinulle taitopisteen sekä taikasauvaa;)'
     textarea.scrollTop = textarea.scrollHeight
     pelaaja_olio.pelaaja_maksimi_taitopiste += 1
@@ -972,6 +1036,8 @@ function lumoavaJarvenpeili () {
   })
 
   valinta2.addEventListener('click', valinta2kuuntelija = async function () {
+    textarea.value = ''
+    textarea.scrollTop = textarea.scrollHeight
     textarea.value += '\n\n-Valinta 2: Sammakko loukkaantuu ja heittää sinua kivellä päähän. Menetät 5 HP.'
     textarea.scrollTop = textarea.scrollHeight
     pelaaja_olio.pelaaja_hp -= 5
@@ -986,6 +1052,8 @@ function lumoavaJarvenpeili () {
 let hiisisuo_käytetyt_eventit = []
 
 function hiisisuonLaakso () {
+  textarea.value = ''
+  textarea.scrollTop = textarea.scrollHeight
   textarea.value += '\n\n-Hiisisuon laakso on täynnä tulikärpästen tanssia ja kukkien hehkua. Kaunis keijukaiskuningatar liitelee suoliljojen yllä. Astutko lähemmäksi ihastumaan, seikkailemaan vai uppoamaan suon syvyyksiin? Onnea matkaan!'
   textarea.scrollTop = textarea.scrollHeight
   // Arpoo randomilla pelaajalle eventin 1, 2, 3.
@@ -1034,6 +1102,8 @@ function keijukaistenKuningatar () {
   textarea.scrollTop = textarea.scrollHeight
 
   valinta1.addEventListener('click', valinta1kuuntelija = async function () {
+    textarea.value = ''
+    textarea.scrollTop = textarea.scrollHeight
     textarea.value += '\n\n-Valinta 1: Ilmaisit ihailusi kunnioittavasti ja rakkaudella. Keijukainen avaa sydämensä sinulle.'
     textarea.value += '\n\n-Koette lumoavan yön suohiisien valossa. Saat keijukaiselta taitojuomia matkaasi.'
     textarea.scrollTop = textarea.scrollHeight
@@ -1048,6 +1118,8 @@ function keijukaistenKuningatar () {
   })
 
   valinta2.addEventListener('click', valinta2kuuntelija = async function () {
+    textarea.value = ''
+    textarea.scrollTop = textarea.scrollHeight
     textarea.value += '\n\n-Valinta 2: Ilmaisit tunteesi liian rohkeasti, kuningatar säikähtää ja lentää pois.'
     textarea.value += '\n\n-Jäät katsomaan kaunista valoa, sydämesi täyttää suru ja menetit osan voimistasi, itku täyttää silmäkulmasi, elämästäsi kuihtuu 5 HP:ta pois....'
     textarea.scrollTop = textarea.scrollHeight
@@ -1071,6 +1143,8 @@ function seuraaTulikarpastenValoa () {
   paikkatausta.src = '../static/images/eventit/hiisisuo_tulikarpastenvalo.png'
 
   valinta1.addEventListener('click', valinta1kuuntelija = async function () {
+    textarea.value = ''
+    textarea.scrollTop = textarea.scrollHeight
     textarea.value += '\n\n-Valinta 1: Onnistuit seuraamaan tulikärpäsiä, ne opastavat sinut piilotetulle aarteelle suohiisien keskellä. Löydät lumoavia esineitä ja voimakasta taikaa. Sait mukaasi eliksiirejä!'
     textarea.scrollTop = textarea.scrollHeight
     for (let i = 0; i < 3; i++) {
@@ -1084,6 +1158,8 @@ function seuraaTulikarpastenValoa () {
   })
 
   valinta2.addEventListener('click', valinta2kuuntelija = async function () {
+    textarea.value = ''
+    textarea.scrollTop = textarea.scrollHeight
     textarea.value += '\n\n-Valinta 2: Tulikärpäset johdattavat sinut suohiisin salaiseen paikkaan, tämä oli ansa! Tulikärpäset hyökkäävät kimppuusi ja menetät 5 HP.'
     textarea.scrollTop = textarea.scrollHeight
     pelaaja_olio.pelaaja_hp -= 5
@@ -1106,6 +1182,8 @@ function suonLumous () {
   paikkatausta.src = '../static/images/eventit/hiisisuo_suonlumous.png'
 
   valinta1.addEventListener('click', valinta1kuuntelija = async function () {
+    textarea.value = ''
+    textarea.scrollTop = textarea.scrollHeight
     textarea.value += '\n\n-Valinta 1: Pysyt suon reunoilla ja olet varovainen. Löysit vielä kaikenlisäksi taikasauvan ollessasi extra varovainen!'
     textarea.scrollTop = textarea.scrollHeight
     if (pelaaja_inventaario.length < 12) {
@@ -1117,6 +1195,8 @@ function suonLumous () {
   })
 
   valinta2.addEventListener('click', valinta2kuuntelija = async function () {
+    textarea.value = ''
+    textarea.scrollTop = textarea.scrollHeight
     textarea.value += '\n\n-Valinta 2: Hyppelehtiessäsi kivillä huomaat salaperäisen portin suossa. Kompastut ja tipahdat suoportista toiseen ulottuvuuteen. Kohtaat painajaisena elämäsi traagisimmat tapahtumat. Menetät 5 HP.'
     textarea.scrollTop = textarea.scrollHeight
     pelaaja_olio.pelaaja_hp -= 5
@@ -1131,6 +1211,8 @@ function suonLumous () {
 let suurentarmonkaupunki_käytetyt_eventit = []
 
 function suurentarmonKaupunkiEvent () {
+  textarea.value = ''
+  textarea.scrollTop = textarea.scrollHeight
   textarea.value += '\n\n-Suurentarmon kaupunki on kuin elävä maalaus, jossa turnajaiset herättävät ritarien taidot loistoon. Taikurimarkkinoiden värikkäät kojut houkuttelevat seikkailijoita etsimään mystisiä aarteita. Suurentarmo kutsuu seikkailijoita löytämään oman tarinansa sen monipuolisista tapahtumista ja historiallisista salaisuuksista!'
   textarea.scrollTop = textarea.scrollHeight
   // Arpoo randomilla pelaajalle eventin 1, 2, 3.
@@ -1181,6 +1263,8 @@ function turnajaiset () {
   textarea.scrollTop = textarea.scrollHeight
 
   valinta1.addEventListener('click', valinta1kuuntelija = async function () {
+    textarea.value = ''
+    textarea.scrollTop = textarea.scrollHeight
     textarea.value += '\n-Valinta 1: Osallistut turnajaisiin ja astut kilpakentälle. Heiluttelet mahtipontisesti miekkaasti kohti yleisöä ja haistattelet kilpakumppanillesi, taistelu alkaa!'
     textarea.scrollTop = textarea.scrollHeight
     await avaa_taistelu_ikkuna(await hae_tunnettu_vihollinen(21))  // OHJAA TAISTELUUN RITARIN KANSSA
@@ -1189,6 +1273,8 @@ function turnajaiset () {
   })
 
   valinta2.addEventListener('click', valinta2kuuntelija = async function () {
+    textarea.value = ''
+    textarea.scrollTop = textarea.scrollHeight
     textarea.value += '\n\n-Valinta 2: Innoissaan turnajaisten tunnelmasta päätät vikitellä turnajaisten prinsessaa, joka seisoo lähellä kuninkaallista katsomoa. Astut esiin ja pyydät häntä mukaan kävelylle kauniille puutarhakäytävälle. Prinsessa hymyilee viehättyneenä ja suostuu. Mennessänne kävelylle selviääkin ettei prinsessa ole oikea prinsessa! Hän ryöstää sinulta esineen...'
     textarea.scrollTop = textarea.scrollHeight
     pelaaja_inventaario.pop() // Poistaa pelaajalta yhden esineen
@@ -1208,6 +1294,8 @@ function taikurimarkkinat () {
   textarea.scrollTop = textarea.scrollHeight
 
   valinta1.addEventListener('click', valinta1kuuntelija = async function () {
+    textarea.value = ''
+    textarea.scrollTop = textarea.scrollHeight
     textarea.value += '\n\n-Valinta 1: Tutustut taikureiden tarjontaan ja teet muutamia hankintoja. Saat mukaasi taianomaisia esineitä, jotka antavat sinulle taitopisteen.'
     textarea.scrollTop = textarea.scrollHeight
     pelaaja_olio.pelaaja_maksimi_taitopiste += 1
@@ -1218,6 +1306,8 @@ function taikurimarkkinat () {
   })
 
   valinta2.addEventListener('click', valinta2kuuntelija = async function () {
+    textarea.value = ''
+    textarea.scrollTop = textarea.scrollHeight
     textarea.value += '\n\n-Valinta 2: Salaperäinen myyjä yrittää kaupitella sinulle kiellettyjä esineitä. Tunnet luissasi kuinka tilanteessa on jotain mätää ja haluat poistua paikalta. Myyjä vihastuu tästä ja muuttuu demoniksi edessäsi! Tästä alkaa taistelu!'
     textarea.scrollTop = textarea.scrollHeight
     // Tässä haetaan tunnettu vihollinen tietokannasta ja aloitetaan taistelu
@@ -1241,6 +1331,8 @@ function uhkapeliOnnenpelikortit () {
   textarea.scrollTop = textarea.scrollHeight
 
   valinta1.addEventListener('click', valinta1kuuntelija = async function () {
+    textarea.value = ''
+    textarea.scrollTop = textarea.scrollHeight
     textarea.value += '\n\n-Valinta 1: Valitset rohkeasti yhden pelikortin ja avaat sen varovasti. Kortti paljastaa, että voitat arvokkaan esineen tai taikavoiman. Tavernan ympärillä kokoontuu ihmisjoukko, ja voittosi herättää huomiota. Onneksi olkoon! Saat lisää taitoa matkaasi. Saavutat myös mainetta tavernassa.'
     textarea.scrollTop = textarea.scrollHeight
     pelaaja_olio.pelaaja_taitopiste += 1
@@ -1250,6 +1342,8 @@ function uhkapeliOnnenpelikortit () {
   })
 
   valinta2.addEventListener('click', valinta2kuuntelija = async function () {
+    textarea.value = ''
+    textarea.scrollTop = textarea.scrollHeight
     textarea.value += '\n\n-Valinta 2: Päätät olla osallistumatta uhkapeliin ja istut muualle nauttimaan juomasta. Kuulet ympärilläsi pelaajien reaktiot, sekä riemunkiljahdukset että pettyneet huokaukset. Jatkat omaa matkaasi miettien, mitä olisi voinut voittaa..'
     textarea.scrollTop = textarea.scrollHeight
     valinta1.style.display = 'none'
@@ -1262,6 +1356,8 @@ function uhkapeliOnnenpelikortit () {
 let peikkoluola_käytetyt_eventit = []
 
 function peikkoluola () {
+  textarea.value = ''
+  textarea.scrollTop = textarea.scrollHeight
   textarea.value += '\n\n-Pimeän metsän kätköissä sijaitseva peikkoluola kuhisee salaisuuksia ja vaaroja. Luola kätkee monta salaisuuttaa uumeniinsa, katsotaan mihin tiet johtavat...'
   textarea.scrollTop = textarea.scrollHeight
   // Arpoo randomilla pelaajalle eventin 1, 2, 3.
@@ -1309,6 +1405,8 @@ function peikkokuningas () {
   textarea.scrollTop = textarea.scrollHeight
 
   valinta1.addEventListener('click', valinta1kuuntelija = async function () {
+    textarea.value = ''
+    textarea.scrollTop = textarea.scrollHeight
     textarea.value += '\n\n-Valinta 1: Pysyt kärsivällisenä ja odotat peikkokuninkaan poistuvan.'
     textarea.value += '\n\n-Näet tilaisuutesi ja pääset hiipimään peikkokuninkaan kätköihin. Varastat peikkokuninkaalta sikspäkin taitojuomia ja hipsit nopeasti karkuun!'
     textarea.scrollTop = textarea.scrollHeight
@@ -1323,6 +1421,8 @@ function peikkokuningas () {
   })
 
   valinta2.addEventListener('click', valinta2kuuntelija = async function () {
+    textarea.value = ''
+    textarea.scrollTop = textarea.scrollHeight
     textarea.value += '\n\n-Valinta 2: Rohkeana seikkailijana päätät kohdata peikkokuninkaan suoraan. Astut esiin varjoista ja seisot hänen edessään. Peikkokuningas nauraa mahtipontisesti ja haastaa sinut taisteluun!'
     textarea.scrollTop = textarea.scrollHeight
     await avaa_taistelu_ikkuna(await hae_tunnettu_vihollinen(20)) // OHJAA TAISTELUUN PEIKKOKUNINKAAN KANSSA
@@ -1342,6 +1442,8 @@ function hamahakkikuningatar () {
   textarea.scrollTop = textarea.scrollHeight
 
   valinta1.addEventListener('click', valinta1kuuntelija = async function () {
+    textarea.value = ''
+    textarea.scrollTop = textarea.scrollHeight
     textarea.value += '\n\n-Valinta 1: Astut rohkeasti eteenpäin ja kohtaat kuningattaren.'
     textarea.value += '\n\n-Hämähäkkikuningatar tunnistaa rohkeutesi ja arvostaa että uskalsit astua hänen eteensä.'
     textarea.value += '\n\n-Kuningatar kietoo sinulle seitistä taistelun kestävät hanskat ja iskuvoimasi kasvaa!'
@@ -1352,6 +1454,8 @@ function hamahakkikuningatar () {
   })
 
   valinta2.addEventListener('click', valinta2kuuntelija = async function () {
+    textarea.value = ''
+    textarea.scrollTop = textarea.scrollHeight
     textarea.value += '\n\n-Valinta 2: Päätät turvautua äärimmäiseen toimenpiteeseen ja sytytät hämähäkinseitit tuleen.'
     textarea.value += '\n\n-Kammiossa roihahtaa liekit, hämähäkkikuningatar kiroaa sinut ja menetät 5 HP. Kuulet vaikeroivat tuskan huudot takanasi kun pakenet luolasta…'
     textarea.scrollTop = textarea.scrollHeight
@@ -1373,6 +1477,8 @@ function lohikaarmeenPesa () {
   textarea.scrollTop = textarea.scrollHeight
 
   valinta1.addEventListener('click', valinta1kuuntelija = async function () {
+    textarea.value = ''
+    textarea.scrollTop = textarea.scrollHeight
     textarea.value += '\n\n-Valinta 1: Astut varoen kohti luolaa, jossa lohikäärme piileskelee.'
     textarea.value += '\n\n-Päätät olla rohkea ja vapautat lohikäärmeen kahleista. Lohikäärme syöksee tulta vapautuessaan, mutta yllättäen lohikäärme heltyy ja antaa kiitokseksi osan aarteistaan, mukaan lukien maagisia eliksiirejä.'
     textarea.scrollTop = textarea.scrollHeight
@@ -1387,6 +1493,8 @@ function lohikaarmeenPesa () {
   })
 
   valinta2.addEventListener('click', valinta2kuuntelija = async function () {
+    textarea.value = ''
+    textarea.scrollTop = textarea.scrollHeight
     textarea.value += '\n\n-Valinta 2: Päätät olla ottamatta riskiä ja jatkaa seikkailujasi.'
     textarea.value += '\n\n-Pian kuulet, että joku toinen rohkea seikkailija on lähtenyt lohikäärmeen pesälle ja saanut haltuunsa uskomattomia aarteita. Kieltämättä vituttaa eikö, mutta matkan on jatkuttava...'
     textarea.scrollTop = textarea.scrollHeight
