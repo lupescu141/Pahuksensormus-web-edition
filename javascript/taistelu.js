@@ -269,6 +269,106 @@ const tarkista_taito = (taitonimi, vihollinen, vihollinen_statukset, pelaaja, pe
     palava_nuoli(vihollinen, vihollinen_statukset);
     vihollisen_vuoro(vihollinen);
   }
+
+  else if (taitonimi === "elämä varkaus"){
+    elämä_varkaus(pelaaja);
+  }
+
+  else if (taitonimi === "parasiitti"){
+    parasiitti(pelaaja);
+  }
+
+  else if (taitonimi === "kannibalismi"){
+    kannibalismi(pelaaja);
+  }
+
+  else if (taitonimi === "puukon heilutus"){
+    puukon_heilutus(pelaaja);
+  }
+
+  else if (taitonimi === "myrkytys"){
+    myrkytys(pelaaja);
+  }
+
+  else if (taitonimi === "luuhyökkäys"){
+    luuhyökkäys(pelaaja);
+  }
+
+  else if (taitonimi === "nappaus"){
+    nappaus(pelaaja);
+  }
+
+  else if (taitonimi === "noituus"){
+    noituus(pelaaja);
+  }
+
+  else if (taitonimi === "jengi"){
+    jengi(pelaaja);
+  }
+
+  else if (taitonimi === "siipisakset"){
+    siipisakset(pelaaja);
+  }
+
+  else if (taitonimi === "kaato"){
+    kaato(pelaaja);
+  }
+
+  else if (taitonimi === "myrkky") {
+    myrkky(pelaaja);
+  }
+
+  else if (taitonimi === "suohonveto") {
+    suohonveto(pelaaja);
+  }
+
+  else if (taitonimi === "myrkky") {
+    myrkky(pelaaja);
+  }
+
+  else if (taitonimi === "palanaps") {
+    palanaps(pelaaja);
+  }
+
+  else if (taitonimi === "palo") {
+    palo(pelaaja);
+  }
+
+  else if (taitonimi === "puraisu") {
+    puraisu(pelaaja);
+  }
+
+  else if (taitonimi === "oppilaan loitsu") {
+    loitsu_oppilas(pelaaja);
+  }
+
+  else if (taitonimi === "vesikauhu") {
+    vesikauhu(pelaaja);
+  }
+
+  else if (taitonimi === "velhon loitsu") {
+    loitsu_velho(pelaaja);
+  }
+
+  else if (taitonimi === "super peikkojengi") {
+    speikkojengi(pelaaja);
+  }
+
+  else if (taitonimi === "vihollisen tulipallo") {
+    vtulipallo(pelaaja);
+  }
+
+  else if (taitonimi === "noidan loitsu") {
+    loitsu_noita(pelaaja);
+  }
+
+  else if (taitonimi === "herran vesikauhu") {
+    herravesikauhu(pelaaja);
+  }
+
+  else if (taitonimi === "sielunotto") {
+    sielunotto(pelaaja);
+  }
 }
 
 
