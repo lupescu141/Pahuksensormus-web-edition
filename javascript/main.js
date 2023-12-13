@@ -24,6 +24,9 @@ const taisteluloki = document.getElementById('taistelu-loki');
 // Kartta elementit
 const kartta = document.querySelector('.kartta');
 const kartta_nappi = kartta.querySelectorAll('.kartta-nappi-kuva');
+const sijainti_nimi = document.getElementById('sijainti_nimi');
+const sää = document.getElementById('sää');
+const kesto = document.getElementById('kesto');
 
 // Taistelu elementit
 const hyokkaa = document.getElementById('hyokkaa');
@@ -77,6 +80,8 @@ document.addEventListener('DOMContentLoaded', async function() {
 // Funktio joka hoitaa matkustuksen ja kutsuu taistelua jos taistelu tapahtuu
 async function matkustaminen() {
   const kohteet = await hae_matkustus_paivat();
+
+  const aste = await hae_säätila()
 
   const kartta_divit = kartta.querySelectorAll('.kartta-nappi');
   kartta_divit.forEach((div) => {
