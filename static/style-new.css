@@ -244,8 +244,9 @@ body {
     position: absolute;
     overflow: auto;
     opacity: 100%;
-    height: 48%;
+    height: 50%;
     width: 48%;
+    bottom: 50%;
 }
 
 .pelaaja-kuva {
