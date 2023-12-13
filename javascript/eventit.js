@@ -618,7 +618,7 @@ function noitataloTaistelu () {
   textarea.value += '\n\n1: Pidät henkesi voimalla taikaviitan reunasta kiinni ja toivot ettet paljastunut!'
   textarea.value += '\n\n2: Tuskanhiki valuu selkää pitkin, apua?'
   textarea.scrollTop = textarea.scrollHeight
-  paikkatausta.src = '../static/images/eventit/noitametsa_noitatalotaistelu.png'
+  paikkatausta.src = '../static/images/eventit/noitametsa_noitatalotaistelu.jpg'
 
   valinta1.addEventListener('click', valinta1kuuntelija = async function () {
     textarea.value += '\n\n-Valinta 1: Hiippailet keittiössä näkymättömyysviitan kanssa ilman kiinnijäämistä, löydät salaisen komeron jossa säilytetään arvokkaita taika-aineita. Löydät eliksiirejä! Mahtavaa!'
