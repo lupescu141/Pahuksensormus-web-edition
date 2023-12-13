@@ -1,4 +1,4 @@
-
+let vihollinen
 
 jatka.addEventListener('click', async () => {
   taisteluloki.value = ' ';
@@ -29,10 +29,20 @@ async function hae_random_vihollinen_tietokannasta() {
   return random_vihollinen;
 }
 
-const taistelu = async () => {
+// Hakee vihollisen taidon/taidot
+async function hae_vihollisen_taidot(vihollisen_id){
+  const response = await fetch(`http://localhost:5000/hae_vihollisen_taidot/${vihollisen_id}`);
+  const vastaus = await response.json();
+  return vastaus;
+}
+
+
+const taistelu = async (vihollinen1) => {
 
   //hakee random vihollisen
-  let vihollinen = await hae_random_vihollinen_tietokannasta();
+  vihollinen = await vihollinen1;
+
+  taisteluloki.value += `-Jouduit taisteluun! vihollisen: ${vihollinen.vihollinen_nimi} kanssa`;
 
   hyokkaa_tooltip.innerText = `Perus hyökkäys 1-${pelaaja_olio.pelaaja_isku + 2} vahinkoa.`
   hyokkaa_tooltip.style.display = `hidden`;
@@ -57,39 +67,42 @@ const taistelu = async () => {
 
     if (pelaaja_olio.pelaaja_taitopiste > 0) {
 
+      palaa();
       tarkista_taito(pelaaja_taidot[0].taito_nimi, vihollinen, vihollinen_statukset, pelaaja_olio, pelaaja_statukset);
       pelaaja_olio.pelaaja_taitopiste -= 1;
       pelaaja_tp.innerText = pelaaja_olio.pelaaja_taitopiste;
-    }
-    else {
 
-      taisteluloki.value += "Sinulla ei ole taitopisteitä."
-    }
-  })
+    } else {
 
-    taito2.addEventListener("click", taito2_painettu = () => {
-      if (pelaaja_olio.pelaaja_taitopiste > 0) {
-
-        tarkista_taito(pelaaja_taidot[1].taito_nimi, vihollinen, vihollinen_statukset, pelaaja_olio, pelaaja_statukset);
-        pelaaja_olio.pelaaja_taitopiste -= 1;
-        pelaaja_tp.innerText = pelaaja_olio.pelaaja_taitopiste;
-      }
-      else {
-
-      taisteluloki.value += "Sinulla ei ole taitopisteitä."
+      taisteluloki.value += "\nSinulla ei ole taitopisteitä."
     }
   })
 
-    taito3.addEventListener("click", taito3_painettu = () => {
-      if (pelaaja_olio.pelaaja_taitopiste > 0) {
+  taito2.addEventListener("click", taito2_painettu = () => {
+    if (pelaaja_olio.pelaaja_taitopiste > 0) {
 
-        tarkista_taito(pelaaja_taidot[2].taito_nimi, vihollinen, vihollinen_statukset, pelaaja_olio, pelaaja_statukset);
-        pelaaja_olio.pelaaja_taitopiste -= 1;
-        pelaaja_tp.innerText = pelaaja_olio.pelaaja_taitopiste;
+      palaa();
+      tarkista_taito(pelaaja_taidot[1].taito_nimi, vihollinen, vihollinen_statukset, pelaaja_olio, pelaaja_statukset);
+      pelaaja_olio.pelaaja_taitopiste -= 1;
+      pelaaja_tp.innerText = pelaaja_olio.pelaaja_taitopiste;
+
+    } else {
+
+      taisteluloki.value += "\nSinulla ei ole taitopisteitä."
     }
-      else {
+  })
 
-      taisteluloki.value += "Sinulla ei ole taitopisteitä."
+  taito3.addEventListener("click", taito3_painettu = () => {
+    if (pelaaja_olio.pelaaja_taitopiste > 0) {
+
+      palaa();
+      tarkista_taito(pelaaja_taidot[2].taito_nimi, vihollinen, vihollinen_statukset, pelaaja_olio, pelaaja_statukset);
+      pelaaja_olio.pelaaja_taitopiste -= 1;
+      pelaaja_tp.innerText = pelaaja_olio.pelaaja_taitopiste;
+
+    } else {
+
+      taisteluloki.value += "\nSinulla ei ole taitopisteitä."
     }
   })
 
@@ -121,13 +134,29 @@ const taistelu = async () => {
 
     console.log(pelaaja_taidot);
     piilota_kaikki_napit();
+    taistelu_palaa_nappi.style.display = 'block'
 
     for (let i = 0; i < pelaaja_taidot.length; i++) {
       taito_napit[i].textContent = pelaaja_taidot[i].taito_nimi;
       taito_napit[i].style.display = 'block';
     }
   });
-};
+
+  taistelu_esineet_nappi.addEventListener('click', esineet_painettu = () => {
+
+    console.log(pelaaja_inventaario);
+    piilota_kaikki_napit();
+    esineet.style.display = 'inline-grid'
+    taistelu_palaa_nappi.style.display = 'block';
+    inventaario_nappi.forEach((nappi) => {
+      nappi.style.display = 'block';
+    })
+
+    for (let i = 0; i < pelaaja_inventaario.length; i++){
+      inventaario_nappi[i].textContent = pelaaja_inventaario[i].esine_nimi;
+    }
+  });
+}
 
 const vihollisen_vuoro = async (vihollinen) => {
 
@@ -211,7 +240,7 @@ const vihollisen_vuoro = async (vihollinen) => {
     taito2.removeEventListener('click', taito2_painettu);
     taito3.removeEventListener('click', taito3_painettu);
   }
-};
+}
 
 
 const tarkista_taito = (taitonimi, vihollinen, vihollinen_statukset, pelaaja, pelaaja_statukset) => {

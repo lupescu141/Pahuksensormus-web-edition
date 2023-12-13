@@ -1,5 +1,5 @@
 // Avaa taistelu näkymän. pelaaja-status siirretään alaspäin jotta arvot pysyvät samoina
-async function avaa_taistelu_ikkuna() {
+async function avaa_taistelu_ikkuna(vihollinen) {
   // Asettaa oikean puolen taistelu näkymään
   document.querySelector('.oikea-puoli').style.display = 'none';
   document.querySelector('.oikea-puoli-taistelu').style.display = 'block';
@@ -29,8 +29,10 @@ async function avaa_taistelu_ikkuna() {
   // Lisää pelaaja_status taistelu_rivi:n ensimmäiseksi lapseksi
   taistelu_rivi.insertBefore(pelaaja_status, taistelu_rivi.firstChild);
 
+  console.log(vihollinen)
+
   // Testausta varten
-  await taistelu();
+  await taistelu(vihollinen);
 }
 
 
@@ -78,6 +80,11 @@ function nayta_valikko(valikko) {
 // Piilottaa kaikki napit taistelu valikosta
 function piilota_kaikki_napit() {
   document.querySelector(".esine-napit").style.display = 'none';
+
+  taito_napit.forEach((nappi)=> {
+    nappi.style.display = 'none';
+  })
+
   document.querySelectorAll('.taistelu-valikko-nappi, .isku-nappi, .jatka-nappi').
       forEach(nappi => {
         nappi.style.display = 'none';
@@ -93,4 +100,6 @@ function palaa() {
    document.querySelectorAll('.taistelu-valikko-nappi').forEach(nappi => {
     nappi.style.display = 'block';
   });
+
+   jatka.style.display = 'none';
 }

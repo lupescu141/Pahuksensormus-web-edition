@@ -15,22 +15,28 @@ const ennatukset = document.querySelector('.ennatykset');
 const taulukko = document.querySelector('.top-lista');
 // Pelaaja rivi
 const paikkatausta = document.getElementById('paikkatausta');
+const valinta1 = document.getElementById('valinta1');
+const valinta2 = document.getElementById('valinta2');
 // Loki elementit
 const textarea = document.getElementById('loki');
 const taisteluloki = document.getElementById('taistelu-loki');
+
 // Kartta elementit
 const kartta = document.querySelector('.kartta');
 const kartta_nappi = kartta.querySelectorAll('.kartta-nappi-kuva');
+
 // Taistelu elementit
 const hyokkaa = document.getElementById('hyokkaa');
 const taidot = document.getElementById('taidot');
-const esineet = document.getElementById('esineet');
 const jatka = document.getElementById('jatka');
 const taito_napit = document.querySelectorAll(`.taidot`);
 console.log(taito_napit);
 const taito1 = document.getElementById('taito1');
 const taito2 = document.getElementById('taito2');
 const taito3 = document.getElementById('taito3');
+const taistelu_esineet_nappi = document.getElementById('esineet');
+const esineet = document.querySelector('.esine-napit');
+const inventaario_nappi = document.querySelectorAll('.inventaaio_nappi');
 const esine1 = document.getElementById('esine1');
 const esine2 = document.getElementById('esine2');
 const esine3 = document.getElementById('esine3');
@@ -43,6 +49,7 @@ const pelaaja_status = document.querySelector('.pelaaja-status');
 const taistelu_rivi = document.querySelector('.taistelu-rivi');
 const pelaaja_info = document.querySelector('.pelaaja-info');
 const hyokkaa_tooltip = document.getElementById('hyokkaa-tooltip');
+const taistelu_palaa_nappi = document.getElementById('palaa');
 
 // Hoitaa alkuvalikon esittelyn sivun latautuessa
 document.addEventListener('DOMContentLoaded', async function() {
