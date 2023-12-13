@@ -365,6 +365,20 @@ button:hover {
     height: 100%;
 }
 
+.sijainti-palkki {
+    position: absolute;
+    width: 44%;
+    right: 1.5%;
+    height: fit-content;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    background: none;
+    background-size: cover;
+    font-size: 3rem;
+    box-shadow: 0 0 9px 2px rgb(0 0 0);
+}
+
 .kartta {
     width: 97%;
     height: 100%;

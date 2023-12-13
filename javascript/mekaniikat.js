@@ -183,11 +183,7 @@ async function hae_säätila() {
       'https://api.openweathermap.org/data/2.5/weather?q=haiti&units=metric&appid=e34434fb9afb590f02e150bcb3eee98d');
   const vastaus = await response.json();
   const aste = parseInt(vastaus.main.temp);
-  if (aste > 25) {
-    return 1;
-  } else {
-    return 0;
-  }
+  return aste
 }
 
 async function viimeinen_taistelu() {

@@ -502,9 +502,11 @@ function loitsuhuone() {
   textarea.scrollTop = textarea.scrollHeight;
 
   valinta1.addEventListener('click', valinta1kuuntelija = async function() {
-    textarea.value += '\n\n-Valinta 1: Aave nyökkää hyväksyvästi. "Olet osoittanut olevasi arvollinen. Saat tämän loitsukirjan ja sen voiman omaksesi." Saat matkaasi loitsukirjan, joka lisää taitojasi erilaisissa taikuuden muodoissa.';
+    textarea.value += '\n\n-Valinta 1: Aave nyökkää hyväksyvästi. "Olet osoittanut olevasi arvollinen. Saat tämän loitsukirjan ja sen voiman omaksesi." Saat matkaasi loitsukirjan, joka lisää taitojasi erilaisissa taikuuden muodoissa. Maksimi taitopisteesi kasvaa yhdellä!';
     textarea.scrollTop = textarea.scrollHeight;
-    pelaaja_olio.pelaaja_taitopiste += 1;
+    pelaaja_olio.pelaaja_maksimi_taitopiste += 1;
+    pelaaja_olio.pelaaja_taitopiste = pelaaja_olio.pelaaja_maksimi_taitopiste;
+    pelaaja_tp.textContent = pelaaja_olio.pelaaja_taitopiste;
     valinta1.style.display = 'none';
     valinta2.style.display = 'none';
   });
