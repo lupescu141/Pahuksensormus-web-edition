@@ -105,14 +105,14 @@ def hae_ennatukset():
 
 
 # Tallentaa pelin
-@app.route('/tallennus/<peli_id>/<pelaaja_sijainti>/<menneet_paivat>/<pelaaja_hp>/<pelaaja_taitopiste>/<onko_sormus>')
-def tallennus(peli_id, pelaaja_sijainti, menneet_paivat, pelaaja_hp, pelaaja_taitopiste, onko_sormus):
+@app.route('/tallennus/<peli_id>/<pelaaja_sijainti>/<menneet_paivat>/<pelaaja_hp>/<pelaaja_maksimi_hp>/<pelaaja_suojaus>/<pelaaja_isku>/<pelaaja_taitopiste>/<pelaaja_maksimi_taitopiste>/<onko_sormus>')
+def tallennus(peli_id, pelaaja_sijainti, menneet_paivat, pelaaja_hp, pelaaja_maksimi_hp, pelaaja_suojaus, pelaaja_isku, pelaaja_taitopiste, pelaaja_maksimi_taitopiste, onko_sormus, ):
 
     try:
         sql = f'''UPDATE peli SET pelaaja_sijainti = {pelaaja_sijainti},
-                  menneet_paivat = {menneet_paivat}, pelaaja_hp = {pelaaja_hp},
-                  pelaaja_taitopiste = {pelaaja_taitopiste}, onko_sormus = {onko_sormus} 
-                  WHERE peli_id = {peli_id}'''
+                  menneet_paivat = {menneet_paivat}, pelaaja_hp = {pelaaja_hp}, pelaaja_maksimi_hp = {pelaaja_maksimi_hp},
+                  pelaaja_suojaus = {pelaaja_suojaus}, pelaaja_isku = {pelaaja_isku}, pelaaja_taitopiste = {pelaaja_taitopiste}, 
+                  pelaaja_maksimi_taitopiste = {pelaaja_maksimi_taitopiste}, onko_sormus = {onko_sormus} WHERE peli_id = {peli_id}'''
         kursori = conn.cursor(dictionary=True)
         kursori.execute(sql)
 

@@ -240,7 +240,7 @@ function kylanKummallinenKojukauppias () {
   textarea.value += '\n\n-Kylästä löytyy salaperäinen kojukauppias, joka myy erikoisia esineitä. Voit käydä tutustumassa hänen tarjontaansa ja tehdä kauppoja. Kuka tietää, mitä hänellä on varastossaan?'
   // Valinnat
   textarea.value += '\n\n1: Kojukauppias näyttää luotettavalta, katsotaan miten käy!.'
-  textarea.value += '\n\n2: Epäilyttävän oloinen ukkeli mutta pistetään rahat likoon!;'
+  textarea.value += '\n\n2: Epäilyttävän oloinen ukkeli mutta pistetään rahat likoon!'
   textarea.scrollTop = textarea.scrollHeight
 
   valinta1.addEventListener('click', valinta1kuuntelija = async function () {
@@ -294,11 +294,8 @@ function ruoholaaksonNiityt () {
 
     ruoholaakso_käytetyt_eventit.push(event_nro)
 
-    // Arpoo randomilla pelaajalle eventin 1, 2, 3.
-    const tapahtuma = Math.floor(Math.random() * 3) + 1
-
     // Ohjaa valintoihin, jossa pelaaja saa valita mitä tekee.
-    switch (tapahtuma) {
+    switch (event_nro) {
       case 1:
         kukkienHurmio()
         break
@@ -361,6 +358,8 @@ function varjojenPiilo () {
     textarea.scrollTop = textarea.scrollHeight
     pelaaja_olio.pelaaja_hp += 5
     pelaaja_hp.textContent = pelaaja_olio.pelaaja_hp
+    valinta1.style.display = 'none'
+    valinta2.style.display = 'none'
   })
 
   valinta2.addEventListener('click', valinta2kuuntelija = async function () {
@@ -560,7 +559,7 @@ function varisrameenSalaisuudet () {
     varisräme_käytetyt_eventit.push(event_nro)
 
     // Ohjaa valintoihin, jossa pelaaja saa valita mitä tekee.
-    switch (tapahtuma) {
+    switch (event_nro) {
       case 1:
         variksenkielenLoitsut()
         break
@@ -663,7 +662,7 @@ function taikaesineenLoytaminen () {
     textarea.value += '\n\n-Valinta 2: Et kunnioittanut taikaesinettä ja yritit pakottaa sen voimat ulos, herätit varisvihan, ja joudut taisteluun varisten herran kanssa!'
     textarea.scrollTop = textarea.scrollHeight
     // OHJAA TAISTELUUN VARISTEN HERRAN KANSSA! PÄIVITETÄÄN FUNKTIO OIKEIN!
-    avaa_taistelu_ikkuna()
+    await avaa_taistelu_ikkuna(await hae_tunnettu_vihollinen(23))
     valinta1.style.display = 'none'
     valinta2.style.display = 'none'
   })
@@ -698,7 +697,7 @@ function noitametsa () {
     noitametsä_käytetyt_eventit.push(event_nro)
 
     // Ohjaa valintoihin, jossa pelaaja saa valita mitä tekee.
-    switch (tapahtuma) {
+    switch (event_nro) {
       case 1:
         noitataloTaistelu()
         break
@@ -844,7 +843,7 @@ function sammakkojarvi () {
     sammakkojärvi_käytetyt_eventit.push(event_nro)
 
     // Ohjaa valintoihin, jossa pelaaja saa valita mitä tekee.
-    switch (tapahtuma) {
+    switch (event_nro) {
       case 1:
         lumoavaSammakkokonsertti()
         break
@@ -944,7 +943,7 @@ function hiisisuonLaakso () {
     hiisisuo_käytetyt_eventit.push(event_nro)
 
     // Ohjaa valintoihin, jossa pelaaja saa valita mitä tekee.
-    switch (tapahtuma) {
+    switch (event_nro) {
       case 1:
         keijukaistenKuningatar()
         break
@@ -1090,7 +1089,7 @@ function suurentarmonKaupunkiEvent () {
     suurentarmonkaupunki_käytetyt_eventit.push(event_nro)
 
     // Ohjaa valintoihin, jossa pelaaja saa valita mitä tekee.
-    switch (tapahtuma) {
+    switch (event_nro) {
       case 1:
         turnajaiset()
         break
@@ -1220,7 +1219,7 @@ function peikkoluola () {
     peikkoluola_käytetyt_eventit.push(event_nro)
 
     // Ohjaa valintoihin, jossa pelaaja saa valita mitä tekee.
-    switch (tapahtuma) {
+    switch (event_nro) {
       case 1:
         peikkokuningas()
         break
