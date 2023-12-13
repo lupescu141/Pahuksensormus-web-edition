@@ -21,7 +21,7 @@
 // varjorituaalit
 // taikaesineenLoytaminen - VARISTEN HERRA (valinta2)
 
-// Event: noitametsa
+// Event: noitametsa (Noitametsä taustakuvat ja boss kuva ok!)
 // noitataloTaistelu -KOLMIPÄINEN NOITA (valinta2)
 // noitataloMetsassa
 // harhailuNoitametsassa
