@@ -5,6 +5,8 @@ let pelaaja_inventaario;
 
 let pelaaja_taidot;
 
+let nykyinen_sijainti
+
 // Päävalikon elementtejä
 const paavalikko = document.querySelector('.valikko');
 const vasen_puoli = document.querySelector('.vasen-puoli');
@@ -81,15 +83,34 @@ document.addEventListener('DOMContentLoaded', async function() {
 async function matkustaminen() {
   const kohteet = await hae_matkustus_paivat();
 
-  const aste = await hae_säätila()
+  let aste = await hae_säätila()
+  aste = parseInt(aste)
+
+  let matkan_vaikeus
+
+  sää.innerText = aste + ' C'
+
+  if (aste > 32) {
+    matkan_vaikeus = 3
+  } else if (aste > 29) {
+    matkan_vaikeus = 2
+  } else if (aste > 27) {
+    matkan_vaikeus = 1
+  } else if (aste > 25 ){
+    matkan_vaikeus = 0
+  } else if (aste > 22 ){
+    matkan_vaikeus = 1
+  } else {
+    matkan_vaikeus = 2
+  }
 
   const kartta_divit = kartta.querySelectorAll('.kartta-nappi');
   kartta_divit.forEach((div) => {
     for (kohde of kohteet) {
-      if (parseInt(kohde.id) === parseInt(div.id)) {
-        div.value = kohde.matka_pv;
+      if (parseInt(kohde.id) === parseInt(div.id) && parseInt(kohde.id) !== pelaaja_olio.pelaaja_sijainti) {
+        div.value = kohde.matka_pv + matkan_vaikeus;
         console.log(
-            `kohteeseen ${div.name} on ${div.value} eli ${kohde.matka_pv} matkustus`);
+            `Sää on ${aste} C. Matkan vaikeus ${matkan_vaikeus}. Kokonais matka on ${div.value}`);
         break;
       }
     }
@@ -100,16 +121,16 @@ async function matkustaminen() {
     for (kohde of kohteet) {
       if (kohde.fantasia_nimi === span.id) {
         if (parseInt(kohde.matka_pv) !== 0) {
-          span.textContent = `${span.id} ${kohde.matka_pv} päivää`;
+          span.textContent = kohde.fantasia_nimi;
           break;
         } else {
           span.textContent = `Olet täällä!`;
+          sijainti_nimi.textContent = span.id
           break;
         }
       }
     }
   });
-
 }
 
 // Kartta nappien kuuntelijat
@@ -301,4 +322,29 @@ kohde_10.addEventListener('click', async function() {
   textarea.scrollTop = textarea.scrollHeight;
   await tarkista_sormus()
   await tallenna();
+});
+
+
+// Lisää tapahtumakäsittelijät jokaiselle .kartta-nappi -elementille
+kartta_nappi.forEach(nappi => {
+  nappi.addEventListener('mouseover', () => {
+    // Tapahtuu kun hiiri on elementin päällä (hover)
+    nykyinen_sijainti = sijainti_nimi.innerText
+    sijainti_nimi.innerText = nappi.name
+    sää.style.display = 'none'
+    kesto.style.display = 'flex'
+    if (parseInt(nappi.id) !== parseInt(pelaaja_olio.pelaaja_sijainti)) {
+      kesto.innerText = nappi.value + ' Päivää'
+    } else {
+      kesto.innerText = 'Olet täällä'
+    }
+  });
+
+  nappi.addEventListener('mouseout', () => {
+    // Tapahtuu kun hiiri poistuu elementin päältä (hoverin poistuminen)
+    sijainti_nimi.innerText = nykyinen_sijainti
+    sää.style.display = 'flex'
+    kesto.style.display = 'none'
+    kesto.innerText = ''
+  });
 });

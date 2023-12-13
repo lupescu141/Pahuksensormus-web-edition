@@ -153,6 +153,8 @@ function laukaise_event () {
 let uudentoivonkylä_käytetyt_eventit = []
 
 function uudentoivonKylaEvent () {
+  textarea.value = ''
+  textarea.scrollTop = textarea.scrollHeight
   textarea.value += '\n\n-Tervetuloa Uudentoivon kylään, seikkailusi alkupisteeseen. Kylässä on monia tapahtumia ja mahdollisuuksia, jotka voivat muokata matkaasi. Tästä seikkailusi alkaa, onnea matkaan!'
   textarea.scrollTop = textarea.scrollHeight
   // Arpoo randomilla pelaajalle eventin 1, 2, 3.
@@ -209,6 +211,8 @@ function tavernaNoppapeli () {
   // Tehdään valinnoille event listenerit jotka kuuntelevat nappien klikkausta
   // Tämä kuuntelee valinta 1 nappia
   valinta1.addEventListener('click', valinta1kuuntelija = async function () {
+    textarea.value = ''
+    textarea.scrollTop = textarea.scrollHeight
     // Tämä liittyy valintaan yksi. Tässä eventissä heitetään random noppaa ja pelataan peliä
     const heitto = Math.floor(Math.random() * 21) + 1
     // Nämä pistävät tekstiä pelaajalle nähtäväksi
@@ -236,6 +240,8 @@ function tavernaNoppapeli () {
   // Tehdään valinnoille event listenerit jotka kuuntelevat nappien klikkausta
   // Tämä kuuntelee valinta 2 nappia
   valinta2.addEventListener('click', valinta2kuuntelija = async function () {
+    textarea.value = ''
+    textarea.scrollTop = textarea.scrollHeight
     // Nämä pistävät tekstiä pelaajalle nähtäväksi
     textarea.value += '\n\n-Kieltäydyt pelistä ja pöytä seurue antaa sinulle ilkeitä katseita'
     textarea.scrollTop = textarea.scrollHeight
@@ -256,6 +262,8 @@ function laksiaisjuhlat () {
   textarea.scrollTop = textarea.scrollHeight
 
   valinta1.addEventListener('click', valinta1kuuntelija = async function () {
+    textarea.value = ''
+    textarea.scrollTop = textarea.scrollHeight
     // Nämä pistävät tekstiä pelaajalle nähtäväksi
     textarea.value += '\n\n-Valinta 1: Päätät osallistua juhliin hillitysti ja ottaa osaa kylän iloiseen tunnelmaan, ansaitset tällä paikallisten suosion. Kyläläiset muistavat ystävällisyytesi ikuisesti, ja saat heiltä mukaasi arvokkaita esineitä.'
     textarea.scrollTop = textarea.scrollHeight
@@ -268,6 +276,8 @@ function laksiaisjuhlat () {
   })
 
   valinta2.addEventListener('click', valinta2kuuntelija = async function () {
+    textarea.value = ''
+    textarea.scrollTop = textarea.scrollHeight
     // Nämä pistävät tekstiä pelaajalle nähtäväksi
     textarea.value += '\n\n-Valinta 2: Annat juhlavan tunnelman viedä mukanaan ja juot liikaa viiniä, menetät otteesi todellisuudesta. Seurauksena kyläläiset menettävät kunnioituksen sinuun. Menetit 5 HP voipuessa krapulasta ja maineesi on mennyt!'
     textarea.scrollTop = textarea.scrollHeight
@@ -290,6 +300,8 @@ function kylanKummallinenKojukauppias () {
   textarea.scrollTop = textarea.scrollHeight
 
   valinta1.addEventListener('click', valinta1kuuntelija = async function () {
+    textarea.value = ''
+    textarea.scrollTop = textarea.scrollHeight
     textarea.value += '\n\n-Hyvä valinta! Saat mukaasi harvinaisen pullon, sait matkaasi mukaan taitojuomaa!'
     textarea.scrollTop = textarea.scrollHeight
     for (let i = 0; i < 3; i++) {
@@ -304,6 +316,8 @@ function kylanKummallinenKojukauppias () {
   })
 
   valinta2.addEventListener('click', valinta2kuuntelija = async function () {
+    textarea.value = ''
+    textarea.scrollTop = textarea.scrollHeight
     textarea.value += '\n\n-Voi ei! Valintasi ei ollut fiksu, kylän kummajainen kirosi sinut, menetit juuri 5 HP!'
     textarea.scrollTop = textarea.scrollHeight
     pelaaja_olio.pelaaja_hp -= 5
@@ -316,7 +330,6 @@ function kylanKummallinenKojukauppias () {
 
 // Peli Eventti: Ruoholaakson niityt
 let ruoholaakso_käytetyt_eventit = []
-
 function ruoholaaksonNiityt () {
   textarea.value += '\n\n-Matkaat Ruoholaaksoon joka on täynnä niittyjä ja salaperäisiä hohtavia kukkia. Laakson sydämessä asuu tappavan kaunis syöjätär, jonka lumoava voima vetää puoleensa uteliaita seikkailijoita. Seuraat kukkien huumaavaa tuoksua..'
   textarea.scrollTop = textarea.scrollHeight
