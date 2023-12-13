@@ -610,7 +610,7 @@ function noitametsa () {
   }
 }
 
-// Event 1: Noitatalossa löyhkää!
+// Event 1: Noitatalo Taistelu!
 function noitataloTaistelu () {
   console.log('1. Mikä täällä haisee...')
   textarea.value += '\n\n-Menet rohkeana noitatalon sisälle, talo näyttää vaaralliselta joten päätät laittaa näkymättömyysviitan päälle. Hiivit hiirenhiljaa keittiöön, jossa leijailee kummallisen pistävä haju. Siellä huomaat padan, jossa porisee karmea liemi täynnä ruumiita! Tönäiset järkytyksestä vahingossa taikapataa, jäitkö kiinni vai pääsetkö jatkamaan matkaa?'
@@ -618,6 +618,7 @@ function noitataloTaistelu () {
   textarea.value += '\n\n1: Pidät henkesi voimalla taikaviitan reunasta kiinni ja toivot ettet paljastunut!'
   textarea.value += '\n\n2: Tuskanhiki valuu selkää pitkin, apua?'
   textarea.scrollTop = textarea.scrollHeight
+  paikkatausta.src = '../static/images/eventit/noitametsa_noitatalotaistelu.png'
 
   valinta1.addEventListener('click', valinta1kuuntelija = async function () {
     textarea.value += '\n\n-Valinta 1: Hiippailet keittiössä näkymättömyysviitan kanssa ilman kiinnijäämistä, löydät salaisen komeron jossa säilytetään arvokkaita taika-aineita. Löydät eliksiirejä! Mahtavaa!'
@@ -642,7 +643,7 @@ function noitataloTaistelu () {
 
 }
 
-// Event 2: Noitatalon Kielletty Kirjasto
+// Event 2: Noitatalo metsässä
 function noitataloMetsassa () {
   console.log('2. noitatalonNoitatalon Kielletty Kirjasto')
   textarea.value += '\n\n-Olet syvällä noitametsässä, kun yllättäen huomaat puiden välistä pilkottavan kaukaa kummallisen rakennuksen. Lähemmäs tultuasi tunnistat sen olevan Noitatalo, joka on kietoutunut puiden oksien ja sammaleiden peittoon. Uskallatko mennä sisälle?'
@@ -650,6 +651,7 @@ function noitataloMetsassa () {
   textarea.value += '\n\n1: Menen sisään?'
   textarea.value += '\n\n2: En uskalla mennä sisään'
   textarea.scrollTop = textarea.scrollHeight
+  paikkatausta.src = '../static/images/eventit/noitametsa_noitataloMetsassa.png'
 
   valinta1.addEventListener('click', valinta1kuuntelija = async function () {
     textarea.value += '\n\n-Valinta 1: Päätät rohkeasti avata noitatalon raskaan oven. Astut varovasti sisään ja kävelet pimeään.'
@@ -684,6 +686,7 @@ function harhailuNoitametsassa () {
   textarea.value += '\n\n1: Lähdet oikealle'
   textarea.value += '\n\n2: Suuntaat vasemmalle'
   textarea.scrollTop = textarea.scrollHeight
+  paikkatausta.src = '../static/images/eventit/noitametsa_harhailunoitam.png'
 
   valinta1.addEventListener('click', valinta1kuuntelija = async function () {
     textarea.value += '\n\n-Valinta 1: Harhailet noitametsän läpi ja löydät vanhan maagisen lähteen. Tämä lähde antaa sinulle erityisen taidon, joka auttaa tulevissa koitoksissa. Löydät tiesi ulos metsästä ja sait lähteestä mukaasi eliksiirejä!'
