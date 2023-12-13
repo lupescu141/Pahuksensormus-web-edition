@@ -107,6 +107,17 @@
 
     <div class="lataapeli-valikko fade">
 
+        <div class="lataapeli-form fade">
+            <form id="lataa-peli-form">
+
+                <label for="pelaajan-nimi">Nimi:</label>
+                <input type="text" id="tallennus-nimi" name="pelaajan-nimi" required minlength="3" maxlength="12">
+                <button type="submit" class="aloita-peli" >Etsi tallennus</button>
+
+            </form>
+
+        </div>
+
         <button id="palaa-alkuvalikkoon-lataa" class="nappi" onclick="palaa_alkuvalikkoon()">Palaa</button>
 
     </div>

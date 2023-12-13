@@ -121,6 +121,7 @@ async function matkustaminen() {
     for (kohde of kohteet) {
       if (kohde.fantasia_nimi === span.id) {
         if (parseInt(kohde.matka_pv) !== 0) {
+          span.textContent = kohde.fantasia_nimi;
           break;
         } else {
           span.textContent = `Olet täällä!`;
