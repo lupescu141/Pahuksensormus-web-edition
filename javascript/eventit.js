@@ -455,7 +455,7 @@ function velhonKaksintaistelu () {
     textarea.value += '\n\n-Valinta 1: Taistelu on intensiivinen, kun aseet ja taikuus kohtaavat. Velho osoittautuu taitavaksi taistelijaksi, mutta sinä käytät taitojasi voimakkaasti hyväksesi.'
     textarea.scrollTop = textarea.scrollHeight
     // OHJAA TAISTELUUN VELHON KANSSA! PÄIVITETÄÄN FUNKTIO OIKEIN!
-    avaa_taistelu_ikkuna()
+    avaa_taistelu_ikkuna(hae_tunnettu_vihollinen(19))
     valinta1.style.display = 'none'
     valinta2.style.display = 'none'
   })
@@ -859,6 +859,8 @@ function seuraaTulikarpastenValoa () {
   textarea.value += '\n\n1: Seuraat tulikärpäsiä.'
   textarea.value += '\n\n2: Tulikärpäset johdattelevat sinut eteenpäin'
   textarea.scrollTop = textarea.scrollHeight
+  // Näin asetetaan tausta eventille
+  paikkatausta.src = '../static/images/eventit/hiisisuo_tulikarpastenvalo.png'
 
   valinta1.addEventListener('click', valinta1kuuntelija = async function () {
     textarea.value += '\n\n-Valinta 1: Onnistuit seuraamaan tulikärpäsiä, ne opastavat sinut piilotetulle aarteelle suohiisien keskellä. Löydät lumoavia esineitä ja voimakasta taikaa. Sait mukaasi eliksiirejä!'
@@ -887,20 +889,21 @@ function seuraaTulikarpastenValoa () {
 // Event 3: Suon lumous
 function suonLumous () {
   console.log('3. Suon Lumous:')
-  textarea.value += '\n\n-Suo lumoaa sinut kauneudella, kuulet kuinka hiisit laulavat kauniita laulujaan piiloissan. Aika poistua, löydätkö suolta pois?'
+  textarea.value += '\n\n-Suo lumoaa sinut kauneudella, kuulet kuinka hiidet laulavat kauniita laulujaan piiloissan. Aika poistua, löydätkö suolta pois?'
   // Valinnat
   textarea.value += '\n\n1: Hyppelehdit reunoja pitkin.'
   textarea.value += '\n\n2: Olet uhkarohkea ja hyppelet kiviä pitkin järven läpi'
   textarea.scrollTop = textarea.scrollHeight
+  // Näin asetetaan tausta eventille
+  paikkatausta.src = '../static/images/eventit/hiisisuo_suonlumous.png'
 
   valinta1.addEventListener('click', valinta1kuuntelija = async function () {
-    textarea.value += '\n\n-Valinta 1: Pysyt suon reunoilla ja olet varovainen. Löysit vielä kaikenlisäksi taikasauvan olessasi extra varovainen!'
+    textarea.value += '\n\n-Valinta 1: Pysyt suon reunoilla ja olet varovainen. Löysit vielä kaikenlisäksi taikasauvan ollessasi extra varovainen!'
     textarea.scrollTop = textarea.scrollHeight
-    for (let i = 0; i < 2; i++) {
       if (pelaaja_inventaario.length < 12) {
         pelaaja_inventaario.push(taikasauva)
       }
-    }
+
     console.log(pelaaja_inventaario)
     valinta1.style.display = 'none'
     valinta2.style.display = 'none'
@@ -990,8 +993,9 @@ function taikurimarkkinat () {
   valinta2.addEventListener('click', valinta2kuuntelija = async function () {
     textarea.value += '\n\n-Valinta 2: Salaperäinen myyjä yrittää kaupitella sinulle kiellettyjä esineitä. Tunnet luissasi kuinka tilanteessa on jotain mätää ja haluat poistua paikalta. Myyjä vihastuu tästä ja muuttuu demoniksi edessäsi! Tästä alkaa taistelu!'
     textarea.scrollTop = textarea.scrollHeight
-    // LISÄÄ TAISTELUFUNKTIO
-    avaa_taistelu_ikkuna()
+    // Tässä haetaan tunnettu vihollinen tietokannasta ja aloitetaan taistelu
+    // vihollisen id:n voi tarkistaa tietokannasta
+    avaa_taistelu_ikkuna(hae_tunnettu_vihollinen(24))
     valinta1.style.display = 'none'
     valinta2.style.display = 'none'
   })
