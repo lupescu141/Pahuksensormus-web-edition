@@ -995,7 +995,8 @@ function taikurimarkkinat () {
     textarea.scrollTop = textarea.scrollHeight
     // Tässä haetaan tunnettu vihollinen tietokannasta ja aloitetaan taistelu
     // vihollisen id:n voi tarkistaa tietokannasta
-    avaa_taistelu_ikkuna(hae_tunnettu_vihollinen(24))
+    // Muista await jotta tietokanta haku suoritetaan ennenkuin mennään eteenpäin
+    await avaa_taistelu_ikkuna(await hae_tunnettu_vihollinen(24))
     valinta1.style.display = 'none'
     valinta2.style.display = 'none'
   })
