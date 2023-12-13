@@ -718,7 +718,7 @@ function sammakkojarvi () {
   textarea.value += '\n\n-Taianomainen sammakkojärvi herättää uteliaisuuden ja seikkailunhalun. Sammakkojärven rannat täyttyvät satojen sammakoiden kurnutuksesta.'
   textarea.scrollTop = textarea.scrollHeight
   // Arpoo randomilla pelaajalle eventin 1, 2, 3.
-  const tapahtuma = Math.floor(Math.random() * 3) + 1
+  const tapahtuma = Math.floor(Math.random() * 2) + 1
 
   // Ohjaa valintoihin, jossa pelaaja saa valita mitä tekee.
   switch (tapahtuma) {
