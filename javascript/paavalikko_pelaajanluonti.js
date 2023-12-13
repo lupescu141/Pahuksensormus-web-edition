@@ -15,31 +15,31 @@ function aseta_tiedot() {
   document.querySelector(
       '.pelaaja-kuva').style.backgroundImage = `url("../static/images/pelaaja-luokat/${pelaaja_olio.pelaaja_luokka}-${pelaaja_olio.sukupuoli}.png")`;
   paikkatausta.src = `../static/images/paikka_numerot/${pelaaja_olio.pelaaja_sijainti}.png`;
-  textarea.value = 'Kauan sitten hyvyys ja pahuus taistelivat keskenään.\n' +
-      'Taistelut jatkuivat pitkään ja ne jättivät jälkeensä usein vain tuhoa.\n' +
-      'Hyvyttään puolustaneet paladinit kuitenkin keksivät juonen pahan Gorgonin päihittämiseksi.\n' +
-      'He hyökkäsivät Gorgonin kimppuun suurella voimalla ja saivat hänet heikennettyä.\n' +
-      'Kun Gorgon oli tarpeeksi heikoilla, paladinit lausuivat kirouksen.\n' +
-      'Sen avulla paladinit pystyivät vangitsemaan Gorgonin sielun sormukseen.\n' +
-      'Kauan paladinit varjelivat sormusta ja pitivät sen turvassa, mutta\n' +
-      'pahuus ei koskaan pysy poissa ikuisesti. Ajan saatossa paladinien rivit ovat vähentyneet\n' +
+  textarea.value = 'Kauan sitten hyvyys ja pahuus taistelivat keskenään. ' +
+      'Taistelut jatkuivat pitkään ja ne jättivät jälkeensä usein vain tuhoa. ' +
+      'Hyvyttään puolustaneet paladinit kuitenkin keksivät juonen pahan Gorgonin päihittämiseksi. ' +
+      'He hyökkäsivät Gorgonin kimppuun suurella voimalla ja saivat hänet heikennettyä. ' +
+      'Kun Gorgon oli tarpeeksi heikoilla, paladinit lausuivat kirouksen. ' +
+      'Sen avulla paladinit pystyivät vangitsemaan Gorgonin sielun sormukseen. ' +
+      '\n\nKauan paladinit varjelivat sormusta ja pitivät sen turvassa, mutta ' +
+      'pahuus ei koskaan pysy poissa ikuisesti. Ajan saatossa paladinien rivit ovat vähentyneet ' +
       'ja he ovat hävittäneet sormuksen. Nyt pahuus on alkanut kasvaa ja maailma tarvitsee sankaria, ' +
-      'joka löytää ja tuhoaa pahuksen sormuksen!\n' +
-      '\n' +
-      '\n' +
-      'Sinun tarinasi alkaa Uudentoivon-kylästä, jossa olet ikäsi viettänyt.\n' +
+      'joka löytää ja tuhoaa pahuksen sormuksen! ' +
+      '\n\nSinun tarinasi alkaa Uudentoivon-kylästä, jossa olet ikäsi viettänyt. ' +
       'Olet aina haaveillut seikkailusta ulkomaailmassa, mutta kylän rajoista poistuminen on asukkailta kielletty. ' +
       'Vain kylän päällikkö voi antaa erityisluvan poistua kylästä, ' +
-      'sillä kylä joutuu usein puolustautumaan Gorgonin kätyreitä vastaan, eikä kylällä ole varaa menettää enempää asukkaita.\n\n' +
-      'Uudentoivon-kylä tunnetaankin maailmalla sen vahvoista ja sinnikkäistä sotureistaan.\n' +
-      'Eräänä päivänä kätyrit hyökkäsivät Uudentoivon-kylään ja he onnistuivat murtamaan kylän puolustuksen.\n' +
-      'Taistelu oli julma, mutta lopulta kylän taistelijat saivat lyötyä kätyrit.\n' +
-      'Mellakan jälkeen nousit piilostasi vain huomataksesi vanhempiesi makaavan elottomina maassa.\n' +
-      'Tälläinen pahuus ei saa nousta valtaan. Vaadit päälliköltä lupaa lähteä etsimään Pahuksen sormusta ja\n' +
-      'väittelyn jälkeen hän myöntää sinulle luvan kostaa vanhempiesi kohtalo.\n' +
-      '\n' +
-      'Tehtäväsi on etsiä maailmalta Pahuuden sormus ja heittää se tulivuoreen, jotta se tuhoutuu ja maailma vapautuu sen korruptiolta.\n' +
-      'Ken tietää, mitä kaikkea muuta löydätkään seikkailusi aikana.';
+      'sillä kylä joutuu usein puolustautumaan Gorgonin kätyreitä vastaan, eikä kylällä ole varaa menettää enempää asukkaita. ' +
+      '\n\nUudentoivon-kylä tunnetaankin maailmalla sen vahvoista ja sinnikkäistä sotureistaan. ' +
+      'Eräänä päivänä kätyrit hyökkäsivät Uudentoivon-kylään ja he onnistuivat murtamaan kylän puolustuksen. ' +
+      'Taistelu oli julma, mutta lopulta kylän taistelijat saivat lyötyä kätyrit. ' +
+      'Mellakan jälkeen nousit piilostasi vain huomataksesi vanhempiesi makaavan elottomina maassa. ' +
+      'Tälläinen pahuus ei saa nousta valtaan. Vaadit päälliköltä lupaa lähteä etsimään Pahuksen sormusta ja ' +
+      'väittelyn jälkeen hän myöntää sinulle luvan kostaa vanhempiesi kohtalo. ' +
+      '\n\n-Tehtäväsi on etsiä maailmalta pahuksen sormus ja heittää se tulivuoreen, jotta se tuhoutuu ja maailma vapautuu sen korruptiolta. ' +
+      'Ken tietää, mitä kaikkea muuta löydätkään seikkailusi aikana. ' +
+      '\n\n-Voit liikkua kartalla klikkaamalla kohteita. Liikuttamalla hiiren kohteen päälle näet kartan yläreunassa matkan keston. ' +
+      '\n\n-Mitä nopeammin löydät sormuksen sen parempi, mutta jos matkustat liian pitkälle niin Gorgonin kätyrit saattavat löytää sinut helpommin. ' +
+      '\n\n-Tutkimalla kohteita saatat parantaa mahdollisuuksiasi viimeisessä taistelussa Gorgonia vastaan. '
 }
 
 // Tämä piilottaa valikon ja avaa hahmoluokka valinnan

@@ -137,6 +137,8 @@ async function matkustaminen() {
 // Kartta nappien kuuntelijat
 const kohde_1 = document.getElementById('1');
 kohde_1.addEventListener('click', async function() {
+  textarea.value = ``;
+  textarea.scrollTop = textarea.scrollHeight;
   console.log(`klikattu ${kohde_1.id} : ${kohde_1.name}`);
   pelaaja_olio.pelaaja_sijainti = kohde_1.id;
   pelaaja_olio.menneet_paivat = parseInt(pelaaja_olio.menneet_paivat) +
@@ -152,10 +154,14 @@ kohde_1.addEventListener('click', async function() {
   textarea.scrollTop = textarea.scrollHeight;
   await tarkista_sormus()
   await tallenna();
+  await inventaario_tyhjennys()
+  await inventaario_tallennus()
 });
 
 const kohde_2 = document.getElementById('2');
 kohde_2.addEventListener('click', async function() {
+  textarea.value = ``;
+  textarea.scrollTop = textarea.scrollHeight;
   console.log(`klikattu ${kohde_2.id} : ${kohde_2.name}`);
   pelaaja_olio.pelaaja_sijainti = kohde_2.id;
   pelaaja_olio.menneet_paivat = parseInt(pelaaja_olio.menneet_paivat) +
@@ -171,10 +177,14 @@ kohde_2.addEventListener('click', async function() {
   textarea.scrollTop = textarea.scrollHeight;
   await tarkista_sormus()
   await tallenna();
+  await inventaario_tyhjennys()
+  await inventaario_tallennus()
 });
 
 const kohde_3 = document.getElementById('3');
 kohde_3.addEventListener('click', async function() {
+  textarea.value = ``;
+  textarea.scrollTop = textarea.scrollHeight;
   console.log(`klikattu ${kohde_3.id} : ${kohde_3.name}`);
   pelaaja_olio.pelaaja_sijainti = kohde_3.id;
   pelaaja_olio.menneet_paivat = parseInt(pelaaja_olio.menneet_paivat) +
@@ -190,10 +200,14 @@ kohde_3.addEventListener('click', async function() {
   textarea.scrollTop = textarea.scrollHeight;
   await tarkista_sormus()
   await tallenna();
+  await inventaario_tyhjennys()
+  await inventaario_tallennus()
 });
 
 const kohde_4 = document.getElementById('4');
 kohde_4.addEventListener('click', async function() {
+  textarea.value = ``;
+  textarea.scrollTop = textarea.scrollHeight;
   console.log(`klikattu ${kohde_4.id} : ${kohde_4.name}`);
   pelaaja_olio.pelaaja_sijainti = kohde_4.id;
   pelaaja_olio.menneet_paivat = parseInt(pelaaja_olio.menneet_paivat) +
@@ -209,10 +223,14 @@ kohde_4.addEventListener('click', async function() {
   textarea.scrollTop = textarea.scrollHeight;
   await tarkista_sormus()
   await tallenna();
+  await inventaario_tyhjennys()
+  await inventaario_tallennus()
 });
 
 const kohde_5 = document.getElementById('5');
 kohde_5.addEventListener('click', async function() {
+  textarea.value = ``;
+  textarea.scrollTop = textarea.scrollHeight;
   console.log(`klikattu ${kohde_5.id} : ${kohde_5.name}`);
   pelaaja_olio.pelaaja_sijainti = kohde_5.id;
   pelaaja_olio.menneet_paivat = parseInt(pelaaja_olio.menneet_paivat) +
@@ -228,10 +246,14 @@ kohde_5.addEventListener('click', async function() {
   textarea.scrollTop = textarea.scrollHeight;
   await tarkista_sormus()
   await tallenna();
+  await inventaario_tyhjennys()
+  await inventaario_tallennus()
 });
 
 const kohde_6 = document.getElementById('6');
 kohde_6.addEventListener('click', async function() {
+  textarea.value = ``;
+  textarea.scrollTop = textarea.scrollHeight;
   console.log(`klikattu ${kohde_6.id} : ${kohde_6.name}`);
   pelaaja_olio.pelaaja_sijainti = kohde_6.id;
   pelaaja_olio.menneet_paivat = parseInt(pelaaja_olio.menneet_paivat) +
@@ -247,10 +269,14 @@ kohde_6.addEventListener('click', async function() {
   textarea.scrollTop = textarea.scrollHeight;
   await tarkista_sormus()
   await tallenna();
+  await inventaario_tyhjennys()
+  await inventaario_tallennus()
 });
 
 const kohde_7 = document.getElementById('7');
 kohde_7.addEventListener('click', async function() {
+  textarea.value = ``;
+  textarea.scrollTop = textarea.scrollHeight;
   console.log(`klikattu ${kohde_7.id} : ${kohde_7.name}`);
   pelaaja_olio.pelaaja_sijainti = kohde_7.id;
   pelaaja_olio.menneet_paivat = parseInt(pelaaja_olio.menneet_paivat) +
@@ -266,10 +292,14 @@ kohde_7.addEventListener('click', async function() {
   textarea.scrollTop = textarea.scrollHeight;
   await tarkista_sormus()
   await tallenna();
+  await inventaario_tyhjennys()
+  await inventaario_tallennus()
 });
 
 const kohde_8 = document.getElementById('8');
 kohde_8.addEventListener('click', async function() {
+  textarea.value = ``;
+  textarea.scrollTop = textarea.scrollHeight;
   console.log(`klikattu ${kohde_8.id} : ${kohde_8.name}`);
   pelaaja_olio.pelaaja_sijainti = kohde_8.id;
   pelaaja_olio.menneet_paivat = parseInt(pelaaja_olio.menneet_paivat) +
@@ -285,10 +315,14 @@ kohde_8.addEventListener('click', async function() {
   textarea.scrollTop = textarea.scrollHeight;
   await tarkista_sormus()
   await tallenna();
+  await inventaario_tyhjennys()
+  await inventaario_tallennus()
 });
 
 const kohde_9 = document.getElementById('9');
 kohde_9.addEventListener('click', async function() {
+  textarea.value = ``;
+  textarea.scrollTop = textarea.scrollHeight;
   console.log(`klikattu ${kohde_9.id} : ${kohde_9.name}`);
   pelaaja_olio.pelaaja_sijainti = kohde_9.id;
   pelaaja_olio.menneet_paivat = parseInt(pelaaja_olio.menneet_paivat) +
@@ -304,10 +338,14 @@ kohde_9.addEventListener('click', async function() {
   textarea.scrollTop = textarea.scrollHeight;
   await tarkista_sormus()
   await tallenna();
+  await inventaario_tyhjennys()
+  await inventaario_tallennus()
 });
 
 const kohde_10 = document.getElementById('10');
 kohde_10.addEventListener('click', async function() {
+  textarea.value = ``;
+  textarea.scrollTop = textarea.scrollHeight;
   console.log(`klikattu ${kohde_10.id} : ${kohde_10.name}`);
   pelaaja_olio.pelaaja_sijainti = kohde_10.id;
   pelaaja_olio.menneet_paivat = parseInt(pelaaja_olio.menneet_paivat) +
@@ -323,6 +361,8 @@ kohde_10.addEventListener('click', async function() {
   textarea.scrollTop = textarea.scrollHeight;
   await tarkista_sormus()
   await tallenna();
+  await inventaario_tyhjennys()
+  await inventaario_tallennus()
 });
 
 

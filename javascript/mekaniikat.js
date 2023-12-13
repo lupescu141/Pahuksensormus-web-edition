@@ -92,8 +92,10 @@ async function taistelu_mahdollisuus(matkan_pituus) {
   const ei_taistelua = parseInt(pelaaja_olio.pelaaja_suojaus) -
       parseInt(matkan_pituus);
   if (mahdollisuus > ei_taistelua && parseInt(pelaaja_olio.pelaaja_sijainti) !== 10) {
-    textarea.value += `\n\n-Jouduit taisteluun!`;
+    textarea.value += `\n\n-Matkalla jouduit taisteluun.`;
     textarea.scrollTop = textarea.scrollHeight;
+    taisteluloki.value += `\n\n-Matkustit liian varomattomasti ja Gorgonin kätyrit huomasivat sinut.`;
+    taisteluloki.scrollTop = textarea.scrollHeight;
     await avaa_taistelu_ikkuna(hae_random_vihollinen_tietokannasta());
   } else {
     textarea.value += `\n\n-Pääsit turvallisesti perille.`;
