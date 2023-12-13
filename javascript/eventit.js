@@ -1,5 +1,5 @@
-// UUDET BOSSIT: VELHO, SYÖJÄTÄR, PEIKKOKUNINGAS, RITARITAISTELU TOURNAMENT
-// KOLMIPÄINEN NOITA, VARISTEN HERRA, DEMONI
+// UUDET BOSSIT: VELHO, SYÖJÄTÄR, PEIKKOKUNINGAS, RITARITAISTELU TURNAJAISET
+// KOLMIPÄINEN NOITA, DEMONI. VARISTEN HERRA KUVA PUUTTUU!
 
 // Event: uudentoivonKylaEvent
 // tavernaNoppapeli
@@ -7,22 +7,22 @@
 // kylanKummallinenKojukauppias
 
 // Event: ruoholaaksonNiityt
-// kukkienHurmio
+// kukkienHurmio - SYÖJÄTÄR (valinta2)
 // varjojenPiilo
 // lumotunRiipuksenArvoitus
 
 // Event: velhotorniEvent
 // loitsuhuone
 // salakaytavienSokkelo
-// velhonKaksintaistelu
+// velhonKaksintaistelu - VELHO (valinta1)
 
 // Event: varisrameenSalaisuudet
 // variksenkielenLoitsut
 // varjorituaalit
-// taikaesineenLoytaminen
+// taikaesineenLoytaminen - VARISTEN HERRA (valinta2)
 
-// Event: noitametsa
-// noitataloTaistelu
+// Event: noitametsa (Noitametsä taustakuvat ja boss kuva ok!)
+// noitataloTaistelu -KOLMIPÄINEN NOITA (valinta2)
 // noitataloMetsassa
 // harhailuNoitametsassa
 
@@ -36,12 +36,12 @@
 // suonLumous
 
 // Event: suurentarmonKaupunkiEvent
-// turnajaiset
-// taikurimarkkinat
+// turnajaiset - RITARITAISTELU (valinta1)
+// taikurimarkkinat - DEMONI (valinta2)
 // uhkapeliOnnenpelikortit
 
 // Event: peikkoluola
-// peikkokuningas
+// peikkokuningas - PEIKKOKUNINGAS (valinta2)
 // hamahakkikuningatar
 // lohikaarmeenPesa
 
@@ -298,8 +298,7 @@ function kukkienHurmio () {
   valinta2.addEventListener('click', valinta2kuuntelija = async function () {
     textarea.value += '\n\n-Poimimalla kukkia huolettomasti, kukkien henki herää ja ne kutsuvat tappavan kauniin syöjättären luokseen. Joudut taisteluun syöjättären kanssa!'
     textarea.scrollTop = textarea.scrollHeight
-    // OHJAA TAISTELUUN SYÖJÄTTÄREN KANSSA! PÄIVITETÄÄN FUNKTIO OIKEIN!
-    avaa_taistelu_ikkuna()
+    await avaa_taistelu_ikkuna(await hae_tunnettu_vihollinen(14)) // OHJAA TAISTELUUN SYÖJÄTÄR KUNINGATTAREN KANSSA
     valinta1.style.display = 'none'
     valinta2.style.display = 'none'
   })
@@ -454,8 +453,7 @@ function velhonKaksintaistelu () {
   valinta1.addEventListener('click', valinta1kuuntelija = async function () {
     textarea.value += '\n\n-Valinta 1: Taistelu on intensiivinen, kun aseet ja taikuus kohtaavat. Velho osoittautuu taitavaksi taistelijaksi, mutta sinä käytät taitojasi voimakkaasti hyväksesi.'
     textarea.scrollTop = textarea.scrollHeight
-    // OHJAA TAISTELUUN VELHON KANSSA! PÄIVITETÄÄN FUNKTIO OIKEIN!
-    avaa_taistelu_ikkuna(hae_tunnettu_vihollinen(19))
+    await avaa_taistelu_ikkuna(await hae_tunnettu_vihollinen(19))  // OHJAA TAISTELUUN VELHON KANSSA
     valinta1.style.display = 'none'
     valinta2.style.display = 'none'
   })
@@ -612,7 +610,7 @@ function noitametsa () {
   }
 }
 
-// Event 1: Noitatalossa löyhkää!
+// Event 1: Noitatalo Taistelu!
 function noitataloTaistelu () {
   console.log('1. Mikä täällä haisee...')
   textarea.value += '\n\n-Menet rohkeana noitatalon sisälle, talo näyttää vaaralliselta joten päätät laittaa näkymättömyysviitan päälle. Hiivit hiirenhiljaa keittiöön, jossa leijailee kummallisen pistävä haju. Siellä huomaat padan, jossa porisee karmea liemi täynnä ruumiita! Tönäiset järkytyksestä vahingossa taikapataa, jäitkö kiinni vai pääsetkö jatkamaan matkaa?'
@@ -620,6 +618,7 @@ function noitataloTaistelu () {
   textarea.value += '\n\n1: Pidät henkesi voimalla taikaviitan reunasta kiinni ja toivot ettet paljastunut!'
   textarea.value += '\n\n2: Tuskanhiki valuu selkää pitkin, apua?'
   textarea.scrollTop = textarea.scrollHeight
+  paikkatausta.src = '../static/images/eventit/noitametsa_noitatalotaistelu.png'
 
   valinta1.addEventListener('click', valinta1kuuntelija = async function () {
     textarea.value += '\n\n-Valinta 1: Hiippailet keittiössä näkymättömyysviitan kanssa ilman kiinnijäämistä, löydät salaisen komeron jossa säilytetään arvokkaita taika-aineita. Löydät eliksiirejä! Mahtavaa!'
@@ -637,15 +636,14 @@ function noitataloTaistelu () {
   valinta2.addEventListener('click', valinta2kuuntelija = async function () {
     textarea.value += '\n\n-Valinta 2: Jäit kiinni ja kolmipäinen noita huomaa sinut. Noita haastaa sinut taisteluun!'
     textarea.scrollTop = textarea.scrollHeight
-    // OHJAA TAISTELUUN NOIDAN KANSSA, MUOKKAA FUNKTIO
-    avaa_taistelu_ikkuna()
+    await avaa_taistelu_ikkuna(await hae_tunnettu_vihollinen(22))  // OHJAA TAISTELUUN KOLMIPÄISEN NOIDAN KANSSA
     valinta1.style.display = 'none'
     valinta2.style.display = 'none'
   })
 
 }
 
-// Event 2: Noitatalon Kielletty Kirjasto
+// Event 2: Noitatalo metsässä
 function noitataloMetsassa () {
   console.log('2. noitatalonNoitatalon Kielletty Kirjasto')
   textarea.value += '\n\n-Olet syvällä noitametsässä, kun yllättäen huomaat puiden välistä pilkottavan kaukaa kummallisen rakennuksen. Lähemmäs tultuasi tunnistat sen olevan Noitatalo, joka on kietoutunut puiden oksien ja sammaleiden peittoon. Uskallatko mennä sisälle?'
@@ -653,6 +651,7 @@ function noitataloMetsassa () {
   textarea.value += '\n\n1: Menen sisään?'
   textarea.value += '\n\n2: En uskalla mennä sisään'
   textarea.scrollTop = textarea.scrollHeight
+  paikkatausta.src = '../static/images/eventit/noitametsa_noitataloMetsassa.png'
 
   valinta1.addEventListener('click', valinta1kuuntelija = async function () {
     textarea.value += '\n\n-Valinta 1: Päätät rohkeasti avata noitatalon raskaan oven. Astut varovasti sisään ja kävelet pimeään.'
@@ -687,6 +686,7 @@ function harhailuNoitametsassa () {
   textarea.value += '\n\n1: Lähdet oikealle'
   textarea.value += '\n\n2: Suuntaat vasemmalle'
   textarea.scrollTop = textarea.scrollHeight
+  paikkatausta.src = '../static/images/eventit/noitametsa_harhailunoitam.png'
 
   valinta1.addEventListener('click', valinta1kuuntelija = async function () {
     textarea.value += '\n\n-Valinta 1: Harhailet noitametsän läpi ja löydät vanhan maagisen lähteen. Tämä lähde antaa sinulle erityisen taidon, joka auttaa tulevissa koitoksissa. Löydät tiesi ulos metsästä ja sait lähteestä mukaasi eliksiirejä!'
@@ -956,8 +956,7 @@ function turnajaiset () {
   valinta1.addEventListener('click', valinta1kuuntelija = async function () {
     textarea.value += '\n-Valinta 1: Osallistut turnajaisiin ja astut kilpakentälle. Heiluttelet mahtipontisesti miekkaasti kohti yleisöä ja haistattelet kilpakumppanillesi, taistelu alkaa!'
     textarea.scrollTop = textarea.scrollHeight
-    // OHJAA TAISTELUUN TEE FUNKTIO OIKEIN
-    avaa_taistelu_ikkuna()
+    await avaa_taistelu_ikkuna(await hae_tunnettu_vihollinen(21))  // OHJAA TAISTELUUN RITARIN KANSSA
     valinta1.style.display = 'none'
     valinta2.style.display = 'none'
   })
@@ -996,7 +995,7 @@ function taikurimarkkinat () {
     // Tässä haetaan tunnettu vihollinen tietokannasta ja aloitetaan taistelu
     // vihollisen id:n voi tarkistaa tietokannasta
     // Muista await jotta tietokanta haku suoritetaan ennenkuin mennään eteenpäin
-    await avaa_taistelu_ikkuna(await hae_tunnettu_vihollinen(24))
+    await avaa_taistelu_ikkuna(await hae_tunnettu_vihollinen(24))  // OHJAA TAISTELUUN DEMONIN KANSSA
     valinta1.style.display = 'none'
     valinta2.style.display = 'none'
   })
@@ -1079,8 +1078,7 @@ function peikkokuningas () {
   valinta2.addEventListener('click', valinta2kuuntelija = async function () {
     textarea.value += '\n\n-Valinta 2: Rohkeana seikkailijana päätät kohdata peikkokuninkaan suoraan. Astut esiin varjoista ja seisot hänen edessään. Peikkokuningas nauraa mahtipontisesti ja haastaa sinut taisteluun!'
     textarea.scrollTop = textarea.scrollHeight
-    // MUOKKAA TAISTELUFUNKTIO
-    avaa_taistelu_ikkuna()
+    await avaa_taistelu_ikkuna(await hae_tunnettu_vihollinen(20)) // OHJAA TAISTELUUN PEIKKOKUNINKAAN KANSSA
     valinta1.style.display = 'none'
     valinta2.style.display = 'none'
   })
