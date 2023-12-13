@@ -52,11 +52,11 @@ async function lepo() {
     textarea.value += '\n\n-Lepäsit yhden päivä. HP ja TP ovat maksimissaan';
     textarea.scrollTop = textarea.scrollHeight;
 
-    pelaaja_olio.menneet_paivat++
+    pelaaja_olio.menneet_paivat++;
     textarea.value += `\n-Olet käyttänyt ${pelaaja_olio.menneet_paivat} päivää etsiessäsi pahuksen sormusta.`;
     textarea.scrollTop = textarea.scrollHeight;
 
-    await tallenna()
+    await tallenna();
 
     document.getElementById(
         'pelaaja-hp').textContent = pelaaja_olio.pelaaja_hp;
@@ -91,10 +91,10 @@ async function taistelu_mahdollisuus(matkan_pituus) {
   const mahdollisuus = Math.floor(Math.random() * 20) + 1;
   const ei_taistelua = parseInt(pelaaja_olio.pelaaja_suojaus) -
       parseInt(matkan_pituus);
-  if (mahdollisuus > ei_taistelua) {
+  if (mahdollisuus > ei_taistelua && parseInt(pelaaja_olio.pelaaja_sijainti) !== 10) {
     textarea.value += `\n\n-Jouduit taisteluun!`;
     textarea.scrollTop = textarea.scrollHeight;
-    await avaa_taistelu_ikkuna(hae_random_vihollinen_tietokannasta())
+    await avaa_taistelu_ikkuna(hae_random_vihollinen_tietokannasta());
   } else {
     textarea.value += `\n\n-Pääsit turvallisesti perille.`;
     textarea.scrollTop = textarea.scrollHeight;
@@ -117,7 +117,6 @@ async function hae_esine() {
   return vastaus;
 }
 
-
 // Hakee Flask tietokannasta tallennuksen poiston
 async function tallennuksen_poisto_ja_pisteet() {
   const response = await fetch(
@@ -128,10 +127,11 @@ async function tallennuksen_poisto_ja_pisteet() {
 
 }
 
-async function peli_ohi(){
-  await inventaario_tyhjennys()
+async function peli_ohi() {
+  await inventaario_tyhjennys();
   console.log(pelaaja_olio.peli_id);
-  const response = await fetch(`http://localhost:5000/peli_ohi/${pelaaja_olio.peli_id}`);
+  const response = await fetch(
+      `http://localhost:5000/peli_ohi/${pelaaja_olio.peli_id}`);
   const vastaus = await response.json();
   console.log(vastaus);
   textarea.value = '';
@@ -142,28 +142,27 @@ async function peli_ohi(){
 }
 
 // Tarkistaa onko kohteessa sormus
-async function tarkista_sormus(){
-  console.log(pelaaja_olio.onko_sormus)
-  if (parseInt(pelaaja_olio.onko_sormus) === 0 && parseInt(pelaaja_olio.pelaaja_sijainti) === parseInt(pelaaja_olio.sormus_sijainti)){
-    textarea.value += '\n-Onneksi olkoon! Löysit pahuksen sormuksen. Voit nyt täyttää kohtalosi ja kohdata Gorgonin tulivuoressa.'
+async function tarkista_sormus() {
+  console.log(pelaaja_olio.onko_sormus);
+  if (parseInt(pelaaja_olio.onko_sormus) === 0 &&
+      parseInt(pelaaja_olio.pelaaja_sijainti) ===
+      parseInt(pelaaja_olio.sormus_sijainti)) {
+    textarea.value += '\n-Onneksi olkoon! Löysit pahuksen sormuksen. Voit nyt täyttää kohtalosi ja kohdata Gorgonin tulivuoressa.';
     textarea.scrollTop = textarea.scrollHeight;
-    pelaaja_olio.onko_sormus = 1
-  }
-  else if (parseInt(pelaaja_olio.onko_sormus) === 1 && parseInt(pelaaja_olio.pelaaja_sijainti) === 10) {
-    textarea.value += '\n-Tässä alkaa viimeinen taistelu gorgonin kanssa'
-    await avaa_taistelu_ikkuna(await hae_tunnettu_vihollinen(3))
+    pelaaja_olio.onko_sormus = 1;
+  } else if (parseInt(pelaaja_olio.onko_sormus) === 1 &&
+      parseInt(pelaaja_olio.pelaaja_sijainti) === 10) {
+    textarea.value += '\n-Tässä alkaa viimeinen taistelu gorgonin kanssa';
+    await viimeinen_taistelu();
     textarea.scrollTop = textarea.scrollHeight;
-  }
-  else if (parseInt(pelaaja_olio.onko_sormus) === 1) {
-    textarea.value += '\n-Sinulla on jo sormus. Voit kohdata Gorgonin tulivuoressa'
+  } else if (parseInt(pelaaja_olio.onko_sormus) === 1) {
+    textarea.value += '\n-Sinulla on jo sormus. Voit kohdata Gorgonin tulivuoressa';
     textarea.scrollTop = textarea.scrollHeight;
-  }
-  else {
-    textarea.value += '\n-Kohteessa ei ole sormusta'
+  } else {
+    textarea.value += '\n-Kohteessa ei ole sormusta';
     textarea.scrollTop = textarea.scrollHeight;
   }
 }
-
 
 // Hakee tunnetun vihollisen
 async function hae_tunnettu_vihollinen(vihollisen_id) {
@@ -176,20 +175,55 @@ async function hae_tunnettu_vihollinen(vihollisen_id) {
   vihollinen_hp.textContent = gorgon.vihollinen_hp;
   document.querySelector(
       '.vihollinen-kuva').style.backgroundImage = `url("../static/images/bossit/${gorgon.vihollinen_nimi.toLocaleLowerCase()}.png")`;
-  return gorgon
+  return gorgon;
 }
 
-
-
 async function hae_säätila() {
-  const response = await fetch('https://api.openweathermap.org/data/2.5/weather?q=haiti&units=metric&appid=e34434fb9afb590f02e150bcb3eee98d');
+  const response = await fetch(
+      'https://api.openweathermap.org/data/2.5/weather?q=haiti&units=metric&appid=e34434fb9afb590f02e150bcb3eee98d');
   const vastaus = await response.json();
   const aste = parseInt(vastaus.main.temp);
   if (aste > 25) {
-    return 1
-  }
-  else {return 0
+    return 1;
+  } else {
+    return 0;
   }
 }
 
+async function viimeinen_taistelu() {
+  valinta1.style.display = 'block';
+  valinta2.style.display = 'block';
+  try {
+    valinta1.removeEventListener('click', valinta1kuuntelija);
+    valinta2.removeEventListener('click', valinta2kuuntelija);
+  } catch (err) {
+  } finally {
+    console.log('Viimeinen taistelu gorgonin kanssa');
+    textarea.value += '\n\n-Saapuessasi tulivuoren huipulle tunnet sieltä huokuvan lämmön kasvoillasi. ' +
+        'Otat sormuksen esiin heittääksesi sen tulivuoreen. Sormus alkaa kuitenkin polttaa kättäsi ja pudotat sen maahan. ' +
+        'Sormuksen osuessa maahan siitä purkautuu mustaa savua, joka alkaa ottaa muotoaan.' +
+        'Gorgon ilmestyy eteesi';
+    textarea.value += `\n\n-Gorgon: "Seikkailusi on tullut päätöksen ${pelaaja_olio.pelaaja_nimi}. Voimani ovat kasvaneet ja olen vihdoin vapaa pahuksen sormuksesta. Valmistaudu kuolemaan!"`;
+    // Valinnat
+    textarea.value += '\n\n1: "Olet mitätön ja minä tuhoan sinut palauttaakseni rauhan maailmaan."';
+    textarea.value += '\n\n2: "Olet liian heikko ottaaksesi maailmaa haltuusi. Minä tulen johtamaan maailmaa sormuksen voimalla"';
+    textarea.scrollTop = textarea.scrollHeight;
 
+    valinta1.addEventListener('click', valinta1kuuntelija = async function() {
+      valinta1.style.display = 'none';
+      valinta2.style.display = 'none';
+      await avaa_taistelu_ikkuna(await hae_tunnettu_vihollinen(3));
+      textarea.value = 'Teit valinnan rauhan puolesta'
+      textarea.scrollTop = textarea.scrollHeight;
+
+    });
+
+    valinta2.addEventListener('click', valinta2kuuntelija = async function() {
+      valinta1.style.display = 'none';
+      valinta2.style.display = 'none';
+      await avaa_taistelu_ikkuna(await hae_tunnettu_vihollinen(3));
+      textarea.value = 'Päätit vallata maailman'
+      textarea.scrollTop = textarea.scrollHeight;
+    });
+  }
+}
