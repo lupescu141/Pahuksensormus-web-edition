@@ -89,7 +89,7 @@ async function matkustaminen() {
 
   let matkan_vaikeus
 
-  sää.innerText = aste + ' C'
+  sää.innerText = 'Lämpötila: ' + aste + ' C'
 
   if (aste > 32) {
     matkan_vaikeus = 3
