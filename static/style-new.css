@@ -367,7 +367,7 @@ button:hover {
 
 .sijainti-palkki {
     position: absolute;
-    width: 44%;
+    width: 46%;
     right: 1.5%;
     height: fit-content;
     display: flex;
@@ -377,11 +377,13 @@ button:hover {
     background-size: cover;
     font-size: 3rem;
     box-shadow: 0 0 9px 2px rgb(0 0 0);
+    top: 1%;
 }
 
 .kartta {
+    margin-top: 4%;
     width: 97%;
-    height: 100%;
+    height: 96%;
     background: url("../static/images/kartta/kartta2.png");
     background-size: 100% 100%;
     background-position: right;
@@ -396,7 +398,7 @@ button:hover {
 
 .uudentoivonkyla-nappi {
     position: absolute;
-    top: 68%;
+    top: 69%;
     left: 84%;
     height: 12%;
     width: 9%;
@@ -405,7 +407,7 @@ button:hover {
 
 .tulivuori-nappi {
     position: absolute;
-    top: 43%;
+    top: 44%;
     left: 71.9%;
     height: 17%;
     width: 6.5%;
@@ -424,7 +426,7 @@ button:hover {
 .varisrame-nappi {
     position: absolute;
     top: 61%;
-    left: 51.5%;
+    left: 52.5%;
     height: 22%;
     width: 10%;
 }
@@ -432,7 +434,7 @@ button:hover {
 .hiisisuo-nappi {
     position: absolute;
     top: 91%;
-    left: 62.7%;
+    left: 63.7%;
     height: 9%;
 }
 
@@ -453,7 +455,7 @@ button:hover {
 
 .suurentarmonkaupunki-nappi {
     position: absolute;
-    top: 37%;
+    top: 38%;
     left: 86%;
     height: 12%;
     width: 11%;
@@ -462,7 +464,7 @@ button:hover {
 
 .sammakkojarvi-nappi {
     position: absolute;
-    top: 24%;
+    top: 25%;
     left: 82.5%;
     height: 24%;
     width: 18%;
@@ -471,7 +473,7 @@ button:hover {
 
 .ruoholaakso-nappi {
     position: absolute;
-    top: 9%;
+    top: 10%;
     left: 72%;
     height: 16%;
 }
