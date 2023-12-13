@@ -243,7 +243,7 @@ body {
 .paikkatausta {
     position: absolute;
     overflow: auto;
-    opacity: 100%;
+    opacity: 65%;
     height: 50%;
     width: 48%;
     bottom: 50%;

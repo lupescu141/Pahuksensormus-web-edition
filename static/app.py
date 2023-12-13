@@ -33,7 +33,6 @@ except Exception as e:
     print(type(e))
 
 
-
 # Hakee pelaaja_nimet ja pelaaja_id:et tietokannasta, jotta voidaan välttää tupla nimiä
 # ja saadaan valittua oikea tallennus hae_pelaaja_tiedot funktiolla
 @app.route('/hae_pelaaja_nimet')
