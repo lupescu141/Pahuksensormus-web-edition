@@ -131,7 +131,6 @@ async function tallennuksen_poisto_ja_pisteet() {
   const vastaus = await response.json();
   console.log(vastaus);
   return vastaus;
-
 }
 
 async function peli_ohi() {

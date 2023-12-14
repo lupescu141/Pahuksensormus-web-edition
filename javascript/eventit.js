@@ -87,7 +87,6 @@ async function pelin_lopetus () {
       // piilotetaan valinta napit eventin jälkeen
       valinta1.style.display = 'none'
       valinta2.style.display = 'none'
-      await inventaario_tyhjennys()
       await tallennuksen_poisto_ja_pisteet()
     })
 
@@ -103,7 +102,6 @@ async function pelin_lopetus () {
       // piilotetaan valinta napit eventin jälkeen
       valinta1.style.display = 'none'
       valinta2.style.display = 'none'
-      await inventaario_tyhjennys()
       await tallennuksen_poisto_ja_pisteet()
     })
 
