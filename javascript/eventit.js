@@ -724,7 +724,7 @@ function variksenkielenLoitsut() {
   valinta1.addEventListener('click', valinta1kuuntelija = async function() {
     textarea.value = '';
     textarea.scrollTop = textarea.scrollHeight;
-    textarea.value += '\n\n-Valinta 1: Onnistut ymmärtämään loitsut, mikä antaa sinulle täyden voiman ja HP:n.';
+    textarea.value += '\n\n-Valinta 1: Onnistut ymmärtämään loitsut ja maksimi HP:si kasvaa!';
     textarea.scrollTop = textarea.scrollHeight;
     pelaaja_olio.pelaaja_maksimi_hp += 5;
     pelaaja_olio.pelaaja_hp = pelaaja_olio.pelaaja_maksimi_hp;
@@ -877,7 +877,6 @@ function noitataloTaistelu() {
   textarea.value += '\n\n1: Pidät henkesi voimalla taikaviitan reunasta kiinni ja toivot ettet paljastunut!';
   textarea.value += '\n\n2: Tuskanhiki valuu selkää pitkin, apua?';
   textarea.scrollTop = textarea.scrollHeight;
-  paikkatausta.src = '../static/images/eventit/noitametsa_noitatalotaistelu.jpg';
 
   valinta1.addEventListener('click', valinta1kuuntelija = async function() {
     textarea.value = '';
@@ -1045,9 +1044,9 @@ function lumoavaSammakkokonsertti() {
   valinta1.addEventListener('click', valinta1kuuntelija = async function() {
     textarea.value = '';
     textarea.scrollTop = textarea.scrollHeight;
-    textarea.value += '\n\n-Valinta 1: Laulu on niin kaunis, että voit tuntea sen vaikutuksen ympärilläsi. Taikavoimat ympäröivät sinut ja sammakot antavat sinulle täyden HP:n.';
+    textarea.value += '\n\n-Valinta 1: Laulu on niin kaunis, että voit tuntea sen vaikutuksen ympärilläsi. Taikavoimat ympäröivät sinut ja maksimi HP:si kasvaa.';
     textarea.scrollTop = textarea.scrollHeight;
-    pelaaja_olio.pelaaja_maksimi_hp += 1;
+    pelaaja_olio.pelaaja_maksimi_hp += 2;
     pelaaja_olio.pelaaja_hp = pelaaja_olio.pelaaja_maksimi_hp;
     pelaaja_hp.textContent = pelaaja_olio.pelaaja_hp;
     valinta1.style.display = 'none';
@@ -1246,8 +1245,6 @@ function suonLumous() {
   textarea.value += '\n\n1: Hyppelehdit reunoja pitkin.';
   textarea.value += '\n\n2: Olet uhkarohkea ja hyppelet kiviä pitkin järven läpi';
   textarea.scrollTop = textarea.scrollHeight;
-  // Näin asetetaan tausta eventille
-  paikkatausta.src = '../static/images/eventit/hiisisuo_suonlumous.png';
 
   valinta1.addEventListener('click', valinta1kuuntelija = async function() {
     textarea.value = '';
