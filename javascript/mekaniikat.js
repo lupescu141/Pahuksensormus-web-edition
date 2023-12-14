@@ -122,7 +122,17 @@ async function hae_esine() {
   const response = await fetch(`http://localhost:5000/hae_esine`);
   const vastaus = await response.json();
   console.log(vastaus);
-  return vastaus;
+  const esine = {
+    'esine_nimi': `${vastaus.esine_nimi}`,
+    'esineen_id': `${vastaus.esineen_id}`,
+  };
+  if (pelaaja_inventaario.length < 12) {
+    textarea.value = `Olet saanut esineen: ${vastaus.esine_nimi}.`
+    pelaaja_inventaario.push(esine)
+  }
+  else {
+    textarea.value = `Inventaariosi on täynnä.`
+  }
 }
 
 // Hakee Flask tietokannasta tallennuksen poiston

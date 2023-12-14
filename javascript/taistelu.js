@@ -5,6 +5,7 @@ jatka.addEventListener('click', async () => {
 
   if (pelaaja_olio.pelaaja_hp > 0) {
     await lopeta_taistelu();
+    await hae_esine()
     console.log(vihollinen.vihollinen_nimi + 'voitettu');
     textarea.scrollTop = textarea.scrollHeight;
 
