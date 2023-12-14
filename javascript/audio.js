@@ -185,7 +185,7 @@ const efekti_eliksiiri2 = new Howl({
     autoplay: false
 })
 
-const efketi_huti = new Howl({
+const efekti_huti = new Howl({
     src: ['../static/aanet/efektit/huti.wav'],
     volume: 0.5,
     autoplay: false

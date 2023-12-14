@@ -175,7 +175,7 @@ const taistelu = async (vihollinen1) => {
         taisteluloki.scrollTop = taisteluloki.scrollHeight;
         vihollinen_hp.innerText = vihollinen.vihollinen_hp;
       } else {
-        efketi_huti.play();
+        efekti_huti.play();
         taisteluloki.value += `\n${vihollinen.vihollinen_nimi} väisti iskusi!`;
         taisteluloki.scrollTop = taisteluloki.scrollHeight;
       }
@@ -243,7 +243,7 @@ const vihollisen_vuoro = async (vihollinen) => {
       taisteluloki.scrollTop = taisteluloki.scrollHeight;
       pelaaja_hp.innerText = pelaaja_olio.pelaaja_hp;
     } else {
-      efketi_huti.play();
+      efekti_huti.play();
       taisteluloki.value += `\nVäistit vihollisen iskun!`;
       taisteluloki.scrollTop = taisteluloki.scrollHeight;
     }

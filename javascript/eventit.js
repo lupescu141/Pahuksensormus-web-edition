@@ -85,7 +85,7 @@ async function pelin_lopetus() {
           'Päästät huokauksen helpotuksesta ja katsot ylös kuinka taivas kirkastuu. ' +
           'Sormuksen vaikutus alkaa jo pikkuhiljaa hiipua maailmasta. ' +
           'Uutinen teostasi kulkee läpi maailman nopeasti ja sinusta on tuleva LEGENDA! Maailman väki HURRAA sankaruudellesi!' +
-          '\\n-Pisteesi on tallennettu ennätyksiin ja ne näkyvät etusivulla jos olet top10 joukossa.';
+          '\n\n-Pisteesi on tallennettu ennätyksiin ja ne näkyvät etusivulla jos olet top10 joukossa.';
       // piilotetaan valinta napit eventin jälkeen
       valinta1.style.display = 'none';
       valinta2.style.display = 'none';
