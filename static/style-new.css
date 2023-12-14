@@ -582,12 +582,10 @@ button:hover {
 
 .esine-napit {
     display: inline-grid;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: 33.33% 33.33% 33.33%;
     position: absolute;
     bottom: 2%;
-    width: 39%;
-    align-items: stretch;
-    justify-items: stretch;
+    width: 38%;
     z-index: 1;
 }
 
@@ -602,7 +600,6 @@ button:hover {
 }
 
 .esine-div {
-    width: 99%;
     height: 5.5rem;
     border: black solid;
     box-shadow: inset rgb(26 6 2) 0 0 32px 10px;
@@ -610,6 +607,7 @@ button:hover {
     flex-wrap: nowrap;
     justify-content: center;
 }
+
 
 .jatka-nappi{
     display: none;

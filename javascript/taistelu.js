@@ -229,7 +229,13 @@ const taistelu = async (vihollinen1) => {
 
       else if (pelaaja_inventaario[i].esine_nimi === 'vastamyrkky'){
         console.log('yo');
-        inventaario_nappi[i].src = '../static/images/esineet/vastamyrkky.png'
+        inventaario_nappi[i].src = '../static/images/esineet/vastamyrkky.png';
+        inventaario_nappi[i].style.display = 'block';
+      }
+
+        else if (pelaaja_inventaario[i].esine_nimi === 'taikasauva'){
+        console.log('yo');
+        inventaario_nappi[i].src = '../static/images/esineet/taikasauva.png';
         inventaario_nappi[i].style.display = 'block';
       }
     }
