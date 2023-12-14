@@ -138,6 +138,8 @@ async function matkustaminen() {
 // Kartta nappien kuuntelijat
 const kohde_1 = document.getElementById('1');
 kohde_1.addEventListener('click', async function() {
+  oikea_puoli.style.pointerEvents = 'auto';
+  kohde_1.style.pointerEvents = 'none'
   tutki_nappi.style.display = 'block'
   textarea.value = ``;
   textarea.scrollTop = textarea.scrollHeight;
@@ -162,6 +164,8 @@ kohde_1.addEventListener('click', async function() {
 
 const kohde_2 = document.getElementById('2');
 kohde_2.addEventListener('click', async function() {
+  oikea_puoli.style.pointerEvents = 'auto';
+  kohde_2.style.pointerEvents = 'none'
   tutki_nappi.style.display = 'block'
   textarea.value = ``;
   textarea.scrollTop = textarea.scrollHeight;
@@ -186,6 +190,8 @@ kohde_2.addEventListener('click', async function() {
 
 const kohde_3 = document.getElementById('3');
 kohde_3.addEventListener('click', async function() {
+  oikea_puoli.style.pointerEvents = 'auto';
+  kohde_3.style.pointerEvents = 'none'
   tutki_nappi.style.display = 'block'
   textarea.value = ``;
   textarea.scrollTop = textarea.scrollHeight;
@@ -210,6 +216,8 @@ kohde_3.addEventListener('click', async function() {
 
 const kohde_4 = document.getElementById('4');
 kohde_4.addEventListener('click', async function() {
+  oikea_puoli.style.pointerEvents = 'auto';
+  kohde_4.style.pointerEvents = 'none'
   tutki_nappi.style.display = 'block'
   textarea.value = ``;
   textarea.scrollTop = textarea.scrollHeight;
@@ -234,6 +242,8 @@ kohde_4.addEventListener('click', async function() {
 
 const kohde_5 = document.getElementById('5');
 kohde_5.addEventListener('click', async function() {
+  oikea_puoli.style.pointerEvents = 'auto';
+  kohde_5.style.pointerEvents = 'none'
   tutki_nappi.style.display = 'block'
   textarea.value = ``;
   textarea.scrollTop = textarea.scrollHeight;
@@ -258,6 +268,8 @@ kohde_5.addEventListener('click', async function() {
 
 const kohde_6 = document.getElementById('6');
 kohde_6.addEventListener('click', async function() {
+  oikea_puoli.style.pointerEvents = 'auto';
+  kohde_6.style.pointerEvents = 'none'
   tutki_nappi.style.display = 'block'
   textarea.value = ``;
   textarea.scrollTop = textarea.scrollHeight;
@@ -282,6 +294,8 @@ kohde_6.addEventListener('click', async function() {
 
 const kohde_7 = document.getElementById('7');
 kohde_7.addEventListener('click', async function() {
+  oikea_puoli.style.pointerEvents = 'auto';
+  kohde_7.style.pointerEvents = 'none'
   tutki_nappi.style.display = 'block'
   textarea.value = ``;
   textarea.scrollTop = textarea.scrollHeight;
@@ -306,6 +320,8 @@ kohde_7.addEventListener('click', async function() {
 
 const kohde_8 = document.getElementById('8');
 kohde_8.addEventListener('click', async function() {
+  oikea_puoli.style.pointerEvents = 'auto';
+  kohde_8.style.pointerEvents = 'none'
   tutki_nappi.style.display = 'block'
   textarea.value = ``;
   textarea.scrollTop = textarea.scrollHeight;
@@ -330,6 +346,8 @@ kohde_8.addEventListener('click', async function() {
 
 const kohde_9 = document.getElementById('9');
 kohde_9.addEventListener('click', async function() {
+  oikea_puoli.style.pointerEvents = 'auto';
+  kohde_9.style.pointerEvents = 'none'
   tutki_nappi.style.display = 'block'
   textarea.value = ``;
   textarea.scrollTop = textarea.scrollHeight;
@@ -354,6 +372,8 @@ kohde_9.addEventListener('click', async function() {
 
 const kohde_10 = document.getElementById('10');
 kohde_10.addEventListener('click', async function() {
+  oikea_puoli.style.pointerEvents = 'auto';
+  kohde_10.style.pointerEvents = 'none'
   tutki_nappi.style.display = 'none'
   textarea.value = ``;
   textarea.scrollTop = textarea.scrollHeight;

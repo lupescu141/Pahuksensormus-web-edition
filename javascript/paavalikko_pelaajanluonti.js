@@ -40,13 +40,13 @@ function aseta_tiedot() {
       '\n\n-Voit liikkua kartalla klikkaamalla kohteita. Liikuttamalla hiiren kohteen päälle näet kartan yläreunassa matkan keston. ' +
       'Ylä-reunassa näet myös tämän hetken lämpötilan. Liian korkea tai matala lämpötila vaikeuttaa matkustamista ja kasvattaa matkan kestoa ' +
       '\n\n-Mitä nopeammin löydät sormuksen sen parempi, mutta jos matkustat liian pitkälle niin Gorgonin kätyrit saattavat löytää sinut helpommin. ' +
-      '\n\n-Tutkimalla kohteita saatat parantaa mahdollisuuksiasi viimeisessä taistelussa Gorgonia vastaan. '
+      '\n\n-Tutkimalla kohteita saatat parantaa mahdollisuuksiasi viimeisessä taistelussa Gorgonia vastaan. ';
 }
 
 // Tämä piilottaa valikon ja avaa hahmoluokka valinnan
 function valitse_hahmoluokka() {
 
-if (paavalikko_musiikki.playing() === false){
+  if (paavalikko_musiikki.playing() === false) {
     paavalikko_musiikki.play();
   }
 
@@ -117,7 +117,7 @@ hahmoluokka_kuva.forEach(kuva => {
         kartta.style.display = 'flex';
 
         await matkustaminen();
-        await musiikki_sijainti()
+        await musiikki_sijainti();
 
       }
     });
@@ -129,7 +129,7 @@ hahmoluokka_kuva.forEach(kuva => {
 // Tämä on vanha funktio. UUSI ON ALEMPANA
 async function avaa_lataapeli_valikko() {
 
-  if (paavalikko_musiikki.playing() === false){
+  if (paavalikko_musiikki.playing() === false) {
     paavalikko_musiikki.play();
   }
 
@@ -185,7 +185,7 @@ async function avaa_lataapeli_valikko() {
 // Tämä hoitaa ladatun pelin aloittamisen
 async function hae_tallennus() {
 
-  if (paavalikko_musiikki.playing() === false){
+  if (paavalikko_musiikki.playing() === false) {
     paavalikko_musiikki.play();
   }
 
@@ -203,11 +203,14 @@ async function hae_tallennus() {
   lataapeli_form.addEventListener('submit', async function(event) {
     event.preventDefault();
 
-    const haettu_tallennus_nimi = document.getElementById('tallennus-nimi').value;
+    const haettu_tallennus_nimi = document.getElementById(
+        'tallennus-nimi').value;
 
     for (let tallennus of data) {
-      if (tallennus.pelaaja_nimi.toLowerCase() === haettu_tallennus_nimi.toLowerCase()) {
-        const vastaus = await fetch(`http://localhost:5000//hae_pelaaja_tiedot/${tallennus.peli_id}`);
+      if (tallennus.pelaaja_nimi.toLowerCase() ===
+          haettu_tallennus_nimi.toLowerCase()) {
+        const vastaus = await fetch(
+            `http://localhost:5000//hae_pelaaja_tiedot/${tallennus.peli_id}`);
         const pelaaja_tiedot = await vastaus.json();
         console.log(pelaaja_tiedot);
 
@@ -228,13 +231,14 @@ async function hae_tallennus() {
         kartta.style.display = 'flex';
 
         await matkustaminen();
-        await musiikki_sijainti()
+        await musiikki_sijainti();
       } else {
-        document.getElementById('tallennus-nimi').value = ''
-        document.getElementById('tallennus-nimi').placeholder = 'Tallennusta ei löytynyt'
+        document.getElementById('tallennus-nimi').value = '';
+        document.getElementById(
+            'tallennus-nimi').placeholder = 'Tallennusta ei löytynyt';
       }
     }
-  })
+  });
 }
 
 // Palaa alkuvalikkoon
