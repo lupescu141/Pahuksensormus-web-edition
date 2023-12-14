@@ -5,14 +5,14 @@ let pelaaja_inventaario;
 
 let pelaaja_taidot;
 
-let nykyinen_sijainti
+let nykyinen_sijainti;
 
 // Päävalikon elementtejä
 const paavalikko = document.querySelector('.valikko');
 const vasen_puoli = document.querySelector('.vasen-puoli');
 const oikea_puoli = document.querySelector('.oikea-puoli');
 const lataapeli_valikko = document.querySelector('.lataapeli-valikko');
-const lataapeli_form = document.getElementById('lataa-peli-form')
+const lataapeli_form = document.getElementById('lataa-peli-form');
 const uusipeli_valikko = document.querySelector('.uusi-peli-valikko');
 const ennatukset = document.querySelector('.ennatykset');
 const taulukko = document.querySelector('.top-lista');
@@ -85,31 +85,32 @@ document.addEventListener('DOMContentLoaded', async function() {
 async function matkustaminen() {
   const kohteet = await hae_matkustus_paivat();
 
-  let aste = await hae_säätila()
-  aste = parseInt(aste)
+  let aste = await hae_säätila();
+  aste = parseInt(aste);
 
-  let matkan_vaikeus
+  let matkan_vaikeus;
 
-  sää.innerText = 'Lämpötila: ' + aste + ' C'
+  sää.innerText = 'Lämpötila: ' + aste + ' C';
 
   if (aste > 32) {
-    matkan_vaikeus = 3
+    matkan_vaikeus = 3;
   } else if (aste > 29) {
-    matkan_vaikeus = 2
+    matkan_vaikeus = 2;
   } else if (aste > 27) {
-    matkan_vaikeus = 1
-  } else if (aste > 25 ){
-    matkan_vaikeus = 0
-  } else if (aste > 22 ){
-    matkan_vaikeus = 1
+    matkan_vaikeus = 1;
+  } else if (aste > 25) {
+    matkan_vaikeus = 0;
+  } else if (aste > 22) {
+    matkan_vaikeus = 1;
   } else {
-    matkan_vaikeus = 2
+    matkan_vaikeus = 2;
   }
 
   const kartta_divit = kartta.querySelectorAll('.kartta-nappi');
   kartta_divit.forEach((div) => {
     for (kohde of kohteet) {
-      if (parseInt(kohde.id) === parseInt(div.id) && parseInt(kohde.id) !== pelaaja_olio.pelaaja_sijainti) {
+      if (parseInt(kohde.id) === parseInt(div.id) && parseInt(kohde.id) !==
+          pelaaja_olio.pelaaja_sijainti) {
         div.value = kohde.matka_pv + matkan_vaikeus;
         console.log(
             `Sää on ${aste} C. Matkan vaikeus ${matkan_vaikeus}. Kokonais matka on ${div.value}`);
@@ -127,7 +128,7 @@ async function matkustaminen() {
           break;
         } else {
           span.textContent = `Olet täällä!`;
-          sijainti_nimi.textContent = span.id
+          sijainti_nimi.textContent = span.id;
           break;
         }
       }
@@ -138,9 +139,11 @@ async function matkustaminen() {
 // Kartta nappien kuuntelijat
 const kohde_1 = document.getElementById('1');
 kohde_1.addEventListener('click', async function() {
-  oikea_puoli.style.pointerEvents = 'auto';
-  kohde_1.style.pointerEvents = 'none'
-  tutki_nappi.style.display = 'block'
+  kartta_nappi.forEach(function(nappi) {
+    nappi.style.pointerEvents = 'auto';
+  });
+  kohde_1.style.pointerEvents = 'none';
+  tutki_nappi.style.display = 'block';
   textarea.value = ``;
   textarea.scrollTop = textarea.scrollHeight;
   console.log(`klikattu ${kohde_1.id} : ${kohde_1.name}`);
@@ -156,17 +159,19 @@ kohde_1.addEventListener('click', async function() {
   await matkustaminen();
   textarea.value += `\n-Olet matkustanut yhteensä ${pelaaja_olio.menneet_paivat} päivää. Voit levätä matkojen välissä jos tarvitset lisää HP tai TP`;
   textarea.scrollTop = textarea.scrollHeight;
-  await tarkista_sormus()
+  await tarkista_sormus();
   await tallenna();
-  await inventaario_tyhjennys()
-  await inventaario_tallennus()
+  await inventaario_tyhjennys();
+  await inventaario_tallennus();
 });
 
 const kohde_2 = document.getElementById('2');
 kohde_2.addEventListener('click', async function() {
-  oikea_puoli.style.pointerEvents = 'auto';
-  kohde_2.style.pointerEvents = 'none'
-  tutki_nappi.style.display = 'block'
+  kartta_nappi.forEach(function(nappi) {
+    nappi.style.pointerEvents = 'auto';
+  });
+  kohde_2.style.pointerEvents = 'none';
+  tutki_nappi.style.display = 'block';
   textarea.value = ``;
   textarea.scrollTop = textarea.scrollHeight;
   console.log(`klikattu ${kohde_2.id} : ${kohde_2.name}`);
@@ -182,17 +187,19 @@ kohde_2.addEventListener('click', async function() {
   await matkustaminen();
   textarea.value += `\n-Olet matkustanut yhteensä ${pelaaja_olio.menneet_paivat} päivää. Voit levätä matkojen välissä jos tarvitset lisää HP tai TP`;
   textarea.scrollTop = textarea.scrollHeight;
-  await tarkista_sormus()
+  await tarkista_sormus();
   await tallenna();
-  await inventaario_tyhjennys()
-  await inventaario_tallennus()
+  await inventaario_tyhjennys();
+  await inventaario_tallennus();
 });
 
 const kohde_3 = document.getElementById('3');
 kohde_3.addEventListener('click', async function() {
-  oikea_puoli.style.pointerEvents = 'auto';
-  kohde_3.style.pointerEvents = 'none'
-  tutki_nappi.style.display = 'block'
+  kartta_nappi.forEach(function(nappi) {
+    nappi.style.pointerEvents = 'auto';
+  });
+  kohde_3.style.pointerEvents = 'none';
+  tutki_nappi.style.display = 'block';
   textarea.value = ``;
   textarea.scrollTop = textarea.scrollHeight;
   console.log(`klikattu ${kohde_3.id} : ${kohde_3.name}`);
@@ -208,17 +215,19 @@ kohde_3.addEventListener('click', async function() {
   await matkustaminen();
   textarea.value += `\n-Olet matkustanut yhteensä ${pelaaja_olio.menneet_paivat} päivää. Voit levätä matkojen välissä jos tarvitset lisää HP tai TP`;
   textarea.scrollTop = textarea.scrollHeight;
-  await tarkista_sormus()
+  await tarkista_sormus();
   await tallenna();
-  await inventaario_tyhjennys()
-  await inventaario_tallennus()
+  await inventaario_tyhjennys();
+  await inventaario_tallennus();
 });
 
 const kohde_4 = document.getElementById('4');
 kohde_4.addEventListener('click', async function() {
-  oikea_puoli.style.pointerEvents = 'auto';
-  kohde_4.style.pointerEvents = 'none'
-  tutki_nappi.style.display = 'block'
+  kartta_nappi.forEach(function(nappi) {
+    nappi.style.pointerEvents = 'auto';
+  });
+  kohde_4.style.pointerEvents = 'none';
+  tutki_nappi.style.display = 'block';
   textarea.value = ``;
   textarea.scrollTop = textarea.scrollHeight;
   console.log(`klikattu ${kohde_4.id} : ${kohde_4.name}`);
@@ -234,17 +243,19 @@ kohde_4.addEventListener('click', async function() {
   await matkustaminen();
   textarea.value += `\n-Olet matkustanut yhteensä ${pelaaja_olio.menneet_paivat} päivää. Voit levätä matkojen välissä jos tarvitset lisää HP tai TP`;
   textarea.scrollTop = textarea.scrollHeight;
-  await tarkista_sormus()
+  await tarkista_sormus();
   await tallenna();
-  await inventaario_tyhjennys()
-  await inventaario_tallennus()
+  await inventaario_tyhjennys();
+  await inventaario_tallennus();
 });
 
 const kohde_5 = document.getElementById('5');
 kohde_5.addEventListener('click', async function() {
-  oikea_puoli.style.pointerEvents = 'auto';
-  kohde_5.style.pointerEvents = 'none'
-  tutki_nappi.style.display = 'block'
+  kartta_nappi.forEach(function(nappi) {
+    nappi.style.pointerEvents = 'auto';
+  });
+  kohde_5.style.pointerEvents = 'none';
+  tutki_nappi.style.display = 'block';
   textarea.value = ``;
   textarea.scrollTop = textarea.scrollHeight;
   console.log(`klikattu ${kohde_5.id} : ${kohde_5.name}`);
@@ -260,17 +271,19 @@ kohde_5.addEventListener('click', async function() {
   await matkustaminen();
   textarea.value += `\n-Olet matkustanut yhteensä ${pelaaja_olio.menneet_paivat} päivää. Voit levätä matkojen välissä jos tarvitset lisää HP tai TP`;
   textarea.scrollTop = textarea.scrollHeight;
-  await tarkista_sormus()
+  await tarkista_sormus();
   await tallenna();
-  await inventaario_tyhjennys()
-  await inventaario_tallennus()
+  await inventaario_tyhjennys();
+  await inventaario_tallennus();
 });
 
 const kohde_6 = document.getElementById('6');
 kohde_6.addEventListener('click', async function() {
-  oikea_puoli.style.pointerEvents = 'auto';
-  kohde_6.style.pointerEvents = 'none'
-  tutki_nappi.style.display = 'block'
+  kartta_nappi.forEach(function(nappi) {
+    nappi.style.pointerEvents = 'auto';
+  });
+  kohde_6.style.pointerEvents = 'none';
+  tutki_nappi.style.display = 'block';
   textarea.value = ``;
   textarea.scrollTop = textarea.scrollHeight;
   console.log(`klikattu ${kohde_6.id} : ${kohde_6.name}`);
@@ -286,17 +299,19 @@ kohde_6.addEventListener('click', async function() {
   await matkustaminen();
   textarea.value += `\n-Olet matkustanut yhteensä ${pelaaja_olio.menneet_paivat} päivää. Voit levätä matkojen välissä jos tarvitset lisää HP tai TP`;
   textarea.scrollTop = textarea.scrollHeight;
-  await tarkista_sormus()
+  await tarkista_sormus();
   await tallenna();
-  await inventaario_tyhjennys()
-  await inventaario_tallennus()
+  await inventaario_tyhjennys();
+  await inventaario_tallennus();
 });
 
 const kohde_7 = document.getElementById('7');
 kohde_7.addEventListener('click', async function() {
-  oikea_puoli.style.pointerEvents = 'auto';
-  kohde_7.style.pointerEvents = 'none'
-  tutki_nappi.style.display = 'block'
+  kartta_nappi.forEach(function(nappi) {
+    nappi.style.pointerEvents = 'auto';
+  });
+  kohde_7.style.pointerEvents = 'none';
+  tutki_nappi.style.display = 'block';
   textarea.value = ``;
   textarea.scrollTop = textarea.scrollHeight;
   console.log(`klikattu ${kohde_7.id} : ${kohde_7.name}`);
@@ -312,17 +327,19 @@ kohde_7.addEventListener('click', async function() {
   await matkustaminen();
   textarea.value += `\n-Olet matkustanut yhteensä ${pelaaja_olio.menneet_paivat} päivää. Voit levätä matkojen välissä jos tarvitset lisää HP tai TP`;
   textarea.scrollTop = textarea.scrollHeight;
-  await tarkista_sormus()
+  await tarkista_sormus();
   await tallenna();
-  await inventaario_tyhjennys()
-  await inventaario_tallennus()
+  await inventaario_tyhjennys();
+  await inventaario_tallennus();
 });
 
 const kohde_8 = document.getElementById('8');
 kohde_8.addEventListener('click', async function() {
-  oikea_puoli.style.pointerEvents = 'auto';
-  kohde_8.style.pointerEvents = 'none'
-  tutki_nappi.style.display = 'block'
+  kartta_nappi.forEach(function(nappi) {
+    nappi.style.pointerEvents = 'auto';
+  });
+  kohde_8.style.pointerEvents = 'none';
+  tutki_nappi.style.display = 'block';
   textarea.value = ``;
   textarea.scrollTop = textarea.scrollHeight;
   console.log(`klikattu ${kohde_8.id} : ${kohde_8.name}`);
@@ -338,17 +355,19 @@ kohde_8.addEventListener('click', async function() {
   await matkustaminen();
   textarea.value += `\n-Olet matkustanut yhteensä ${pelaaja_olio.menneet_paivat} päivää. Voit levätä matkojen välissä jos tarvitset lisää HP tai TP`;
   textarea.scrollTop = textarea.scrollHeight;
-  await tarkista_sormus()
+  await tarkista_sormus();
   await tallenna();
-  await inventaario_tyhjennys()
-  await inventaario_tallennus()
+  await inventaario_tyhjennys();
+  await inventaario_tallennus();
 });
 
 const kohde_9 = document.getElementById('9');
 kohde_9.addEventListener('click', async function() {
-  oikea_puoli.style.pointerEvents = 'auto';
-  kohde_9.style.pointerEvents = 'none'
-  tutki_nappi.style.display = 'block'
+  kartta_nappi.forEach(function(nappi) {
+    nappi.style.pointerEvents = 'auto';
+  });
+  kohde_9.style.pointerEvents = 'none';
+  tutki_nappi.style.display = 'block';
   textarea.value = ``;
   textarea.scrollTop = textarea.scrollHeight;
   console.log(`klikattu ${kohde_9.id} : ${kohde_9.name}`);
@@ -364,17 +383,19 @@ kohde_9.addEventListener('click', async function() {
   await matkustaminen();
   textarea.value += `\n-Olet matkustanut yhteensä ${pelaaja_olio.menneet_paivat} päivää. Voit levätä matkojen välissä jos tarvitset lisää HP tai TP`;
   textarea.scrollTop = textarea.scrollHeight;
-  await tarkista_sormus()
+  await tarkista_sormus();
   await tallenna();
-  await inventaario_tyhjennys()
-  await inventaario_tallennus()
+  await inventaario_tyhjennys();
+  await inventaario_tallennus();
 });
 
 const kohde_10 = document.getElementById('10');
 kohde_10.addEventListener('click', async function() {
-  oikea_puoli.style.pointerEvents = 'auto';
-  kohde_10.style.pointerEvents = 'none'
-  tutki_nappi.style.display = 'none'
+  kartta_nappi.forEach(function(nappi) {
+    nappi.style.pointerEvents = 'auto';
+  });
+  kohde_10.style.pointerEvents = 'none';
+  tutki_nappi.style.display = 'none';
   textarea.value = ``;
   textarea.scrollTop = textarea.scrollHeight;
   console.log(`klikattu ${kohde_10.id} : ${kohde_10.name}`);
@@ -390,33 +411,32 @@ kohde_10.addEventListener('click', async function() {
   await matkustaminen();
   textarea.value += `\n-Olet matkustanut yhteensä ${pelaaja_olio.menneet_paivat} päivää. Voit levätä matkojen välissä jos tarvitset lisää HP tai TP`;
   textarea.scrollTop = textarea.scrollHeight;
-  await tarkista_sormus()
+  await tarkista_sormus();
   await tallenna();
-  await inventaario_tyhjennys()
-  await inventaario_tallennus()
+  await inventaario_tyhjennys();
+  await inventaario_tallennus();
 });
-
 
 // Lisää tapahtumakäsittelijät jokaiselle .kartta-nappi -elementille
 kartta_nappi.forEach(nappi => {
   nappi.addEventListener('mouseover', () => {
     // Tapahtuu kun hiiri on elementin päällä (hover)
-    nykyinen_sijainti = sijainti_nimi.innerText
-    sijainti_nimi.innerText = nappi.name
-    sää.style.display = 'none'
-    kesto.style.display = 'flex'
+    nykyinen_sijainti = sijainti_nimi.innerText;
+    sijainti_nimi.innerText = nappi.name;
+    sää.style.display = 'none';
+    kesto.style.display = 'flex';
     if (parseInt(nappi.id) !== parseInt(pelaaja_olio.pelaaja_sijainti)) {
-      kesto.innerText = nappi.value + ' Päivää'
+      kesto.innerText = nappi.value + ' Päivää';
     } else {
-      kesto.innerText = 'Olet täällä'
+      kesto.innerText = 'Olet täällä';
     }
   });
 
   nappi.addEventListener('mouseout', () => {
     // Tapahtuu kun hiiri poistuu elementin päältä (hoverin poistuminen)
-    sijainti_nimi.innerText = nykyinen_sijainti
-    sää.style.display = 'flex'
-    kesto.style.display = 'none'
-    kesto.innerText = ''
+    sijainti_nimi.innerText = nykyinen_sijainti;
+    sää.style.display = 'flex';
+    kesto.style.display = 'none';
+    kesto.innerText = '';
   });
 });
