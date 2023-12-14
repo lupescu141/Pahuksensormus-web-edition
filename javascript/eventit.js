@@ -1554,6 +1554,7 @@ function lohikaarmeenPesa() {
   textarea.value += '\n\n1: Lähdet etsimään lohikäärmeen pesää ja aarteita!';
   textarea.value += '\n\n2: Et uskalla lähteä luolaan, vaan jatkat muita seikkailuja kohti päämäärää';
   textarea.scrollTop = textarea.scrollHeight;
+  paikkatausta.src = '../static/images/eventit/peikkoluola_lohikaarmeenpesa.png';
 
   valinta1.addEventListener('click', valinta1kuuntelija = async function() {
     textarea.value = '';
@@ -1576,7 +1577,7 @@ function lohikaarmeenPesa() {
     textarea.value = '';
     textarea.scrollTop = textarea.scrollHeight;
     textarea.value += '\n\n-Valinta 2: Päätät olla ottamatta riskiä ja jatkaa seikkailujasi.';
-    textarea.value += '\n\n-Pian kuulet, että joku toinen rohkea seikkailija on lähtenyt lohikäärmeen pesälle ja saanut haltuunsa uskomattomia aarteita. Kieltämättä vituttaa eikö, mutta matkan on jatkuttava...';
+    textarea.value += '\n\n-Pian kuulet, että joku toinen rohkea seikkailija on lähtenyt lohikäärmeen pesälle ja saanut haltuunsa uskomattomia aarteita. Kieltämättä vituttaa, surullista eikö:(';
     textarea.scrollTop = textarea.scrollHeight;
     valinta1.style.display = 'none';
     valinta2.style.display = 'none';
