@@ -45,6 +45,11 @@ function aseta_tiedot() {
 
 // Tämä piilottaa valikon ja avaa hahmoluokka valinnan
 function valitse_hahmoluokka() {
+
+if (paavalikko_musiikki.playing() === false){
+    paavalikko_musiikki.play();
+  }
+
   // Piilota paavalikko
   paavalikko.style.display = 'none';
   uusipeli_valikko.style.display = 'flex';
@@ -121,6 +126,11 @@ hahmoluokka_kuva.forEach(kuva => {
 
 // Tämä hoitaa ladatun pelin aloittamisen
 async function avaa_lataapeli_valikko() {
+
+  if (paavalikko_musiikki.playing() === false){
+    paavalikko_musiikki.play();
+  }
+
   // Piilota paavalikko
   paavalikko.style.display = 'none';
 
