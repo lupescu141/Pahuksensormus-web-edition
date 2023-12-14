@@ -45,20 +45,6 @@
 // hamahakkikuningatar
 // lohikaarmeenPesa
 
-const eliksiiri = {
-  'esine_nimi': 'eliksiiri',
-  'esineen_id': 1,
-};
-
-const taitojuoma = {
-  'esine_nimi': 'taitojuoma',
-  'esineen_id': 2,
-};
-
-const taikasauva = {
-  'esine_nimi': 'taikasauva',
-  'esineen_id': 3,
-};
 
 // Viimeisen eventin ohjaus
 async function pelin_lopetus() {

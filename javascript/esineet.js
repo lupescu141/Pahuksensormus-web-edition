@@ -42,3 +42,18 @@ const taitojuoma = () => {
     pelaaja_tp.innerText = pelaaja_olio.pelaaja_taitopiste;
     taisteluloki.innerText += `\nJoit taitojuoman ja sait ${pelaaja_olio.pelaaja_taitopiste} taitopistettä.`;
 }
+
+const eliksiiri = {
+  'esine_nimi': 'eliksiiri',
+  'esineen_id': 1,
+};
+
+const taitojuoma = {
+  'esine_nimi': 'taitojuoma',
+  'esineen_id': 2,
+};
+
+const taikasauva = {
+  'esine_nimi': 'taikasauva',
+  'esineen_id': 3,
+};
