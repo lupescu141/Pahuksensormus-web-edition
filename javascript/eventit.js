@@ -1213,6 +1213,8 @@ function keijukaistenKuningatar() {
   textarea.value += '\n\n2: Pleieri mikä pleieri! Pistät kaiken likoon rohkeasti';
   textarea.scrollTop = textarea.scrollHeight;
 
+  paikkatausta.src = '../static/images/eventit/hiisisuo_tulikarpastenvalo2.png';
+
   valinta1.addEventListener('click', valinta1kuuntelija = async function() {
     textarea.value = '';
     textarea.scrollTop = textarea.scrollHeight;
@@ -1540,6 +1542,8 @@ function peikkokuningas() {
   textarea.value += '\n\n2: Kohtaat peikkokuninkaan';
   textarea.scrollTop = textarea.scrollHeight;
 
+  paikkatausta.src = '../static/images/paikat/Peikkoluola.png';
+
   valinta1.addEventListener('click', valinta1kuuntelija = async function() {
     textarea.value = '';
     textarea.scrollTop = textarea.scrollHeight;
@@ -1579,6 +1583,8 @@ function hamahakkikuningatar() {
   textarea.value += '\n\n1: Päätät kohdata hämähäkkikuningattaren!';
   textarea.value += '\n\n2: Sytytät hämähäkinseitit tuleen ja pakenet';
   textarea.scrollTop = textarea.scrollHeight;
+
+  paikkatausta.src = '../static/images/eventit/peikkoluola_hamahakki_kuningatar.png';
 
   valinta1.addEventListener('click', valinta1kuuntelija = async function() {
     textarea.value = '';

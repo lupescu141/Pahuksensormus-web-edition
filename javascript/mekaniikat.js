@@ -181,6 +181,7 @@ async function hae_tunnettu_vihollinen(vihollisen_id) {
   document.getElementById(
       'vihollinen_nimi').textContent = gorgon.vihollinen_nimi;
   vihollinen_hp.textContent = gorgon.vihollinen_hp;
+  vihollinen_tp.textContent = gorgon.vihollinen_tp;
   document.querySelector(
       '.vihollinen-kuva').style.backgroundImage = `url("../static/images/bossit/${gorgon.vihollinen_nimi.toLocaleLowerCase()}.png")`;
   return gorgon;
