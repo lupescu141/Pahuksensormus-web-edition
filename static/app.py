@@ -44,7 +44,7 @@ def hae_pelaaja_nimet():
     return pelaajat
 
 
-# Hakee tallennetun pelaajan tiedot tietokannasta pelaaja id:n avulla
+# Hakee tallennetun pelaajan tiedot tietokannasta pelaaja id:n avulla.
 @app.route('/hae_pelaaja_tiedot/<peli_id>')
 def hae_pelaaja_tiedot(peli_id):
     sql = f'SELECT * FROM peli WHERE peli_id = {peli_id};'
