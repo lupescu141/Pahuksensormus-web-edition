@@ -126,6 +126,7 @@ hahmoluokka_kuva.forEach(kuva => {
 });
 
 // Tämä hoitaa ladatun pelin aloittamisen
+// Tämä on vanha funktio. UUSI ON ALEMPANA
 async function avaa_lataapeli_valikko() {
 
   if (paavalikko_musiikki.playing() === false){
@@ -183,6 +184,11 @@ async function avaa_lataapeli_valikko() {
 
 // Tämä hoitaa ladatun pelin aloittamisen
 async function hae_tallennus() {
+
+  if (paavalikko_musiikki.playing() === false){
+    paavalikko_musiikki.play();
+  }
+
   // Piilota paavalikko
   paavalikko.style.display = 'none';
 
