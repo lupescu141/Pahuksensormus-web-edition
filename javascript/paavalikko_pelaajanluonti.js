@@ -176,7 +176,7 @@ async function avaa_lataapeli_valikko() {
       kartta.style.display = 'flex';
 
       await matkustaminen();
-      await musiikki_sijainti()
+
     });
   }
 }
@@ -222,6 +222,7 @@ async function hae_tallennus() {
         kartta.style.display = 'flex';
 
         await matkustaminen();
+        await musiikki_sijainti()
       } else {
         document.getElementById('tallennus-nimi').value = ''
         document.getElementById('tallennus-nimi').placeholder = 'Tallennusta ei löytynyt'
