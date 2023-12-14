@@ -62,8 +62,7 @@ const taikasauva = {
 
 // Viimeisen eventin ohjaus
 async function pelin_lopetus () {
-  valinta1.style.display = 'block'
-  valinta2.style.display = 'block'
+
   try {
     valinta1.removeEventListener('click', valinta1kuuntelija)
     valinta2.removeEventListener('click', valinta2kuuntelija)

@@ -197,6 +197,7 @@ async function hae_säätila() {
 async function viimeinen_taistelu() {
   valinta1.style.display = 'block';
   valinta2.style.display = 'block';
+  oikea_puoli.style.pointerEvents = 'none'
   try {
     valinta1.removeEventListener('click', valinta1kuuntelija);
     valinta2.removeEventListener('click', valinta2kuuntelija);
@@ -216,6 +217,7 @@ async function viimeinen_taistelu() {
     valinta1.addEventListener('click', valinta1kuuntelija = async function() {
       valinta1.style.display = 'none';
       valinta2.style.display = 'none';
+
       await avaa_taistelu_ikkuna(await hae_tunnettu_vihollinen(3));
 
       await pelin_lopetus()
