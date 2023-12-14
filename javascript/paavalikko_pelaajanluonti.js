@@ -116,6 +116,12 @@ hahmoluokka_kuva.forEach(kuva => {
         oikea_puoli.style.display = 'flex';
         kartta.style.display = 'flex';
 
+        for (let nappi of kartta_nappi){
+          if (parseInt(nappi.id) === parseInt(pelaaja_olio.pelaaja_sijainti)) {
+            nappi.style.pointerEvents = 'none'
+          }
+        }
+
         await matkustaminen();
         await musiikki_sijainti();
 
@@ -229,6 +235,12 @@ async function hae_tallennus() {
         vasen_puoli.style.display = 'flex';
         oikea_puoli.style.display = 'flex';
         kartta.style.display = 'flex';
+
+        for (let nappi of kartta_nappi){
+          if (parseInt(nappi.id) === parseInt(pelaaja_olio.pelaaja_sijainti)) {
+            nappi.style.pointerEvents = 'none'
+          }
+        }
 
         await matkustaminen();
         await musiikki_sijainti();
