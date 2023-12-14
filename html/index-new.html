@@ -14,6 +14,8 @@
     <script src="/javascript/slideshow.js" defer></script>
     <script src="/javascript/taistelu_valikko.js" defer></script>
     <script src="/javascript/taistelu.js" defer></script>
+    <script src="/node_modules/howler/dist/howler.js" defer></script>
+    <script src="/javascript/audio.js" defer></script>
 </head>
 
 <body>
@@ -22,7 +24,7 @@
 
     <div class="valikko fade">
 
-        <img src="../static/images/ui/titteli.png" class="titteli">
+        <img src="../static/images/ui/titteli.png" class="titteli" id="titteli_kuva">
         <button id="uusi_peli" class="nappi" onclick="valitse_hahmoluokka()">Aloita uusi peli</button>
         <button id="lataa_peli" class="nappi" onclick="hae_tallennus()">Lataa peli</button>
         <button id="ennatukset" class="nappi" onclick="avaa_ennatukset_valikko()">Ennätykset</button>

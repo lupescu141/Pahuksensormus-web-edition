@@ -39,6 +39,14 @@ async function hae_vihollisen_taidot(vihollisen_id){
 
 const taistelu = async (vihollinen1) => {
 
+  if (vihollinen1.vihollinen_nimi === 'Gorgon'){
+    pysayta_musiikit();
+    gorgon_musiikki.play();
+  } else {
+    pysayta_musiikit();
+    random_taistelubiisi();
+  }
+
   //hakee random vihollisen
   vihollinen = await vihollinen1;
 
@@ -117,11 +125,12 @@ const taistelu = async (vihollinen1) => {
         const isku = (Math.floor(Math.random() * pelaaja_olio.pelaaja_isku) +
             1) + 2;
         vihollinen.vihollinen_hp -= isku;
-
+        efekti_perusisku();
         taisteluloki.value += `\nTeit viholliseen ${isku} vahinkoa!`;
         taisteluloki.scrollTop = taisteluloki.scrollHeight;
         vihollinen_hp.innerText = vihollinen.vihollinen_hp;
       } else {
+        efketi_huti.play();
         taisteluloki.value += `\n${vihollinen.vihollinen_nimi} väisti iskusi!`;
         taisteluloki.scrollTop = taisteluloki.scrollHeight;
       }
@@ -182,11 +191,12 @@ const vihollisen_vuoro = async (vihollinen) => {
       const isku = (Math.floor(Math.random() * vihollinen.vihollinen_isku) +
           1) + 2;
       pelaaja_olio.pelaaja_hp -= isku;
-
+      efekti_mies_sattuu.play();
       taisteluloki.value += `\n${vihollinen.vihollinen_nimi} teki sinuun ${isku} vahinkoa!`;
       taisteluloki.scrollTop = taisteluloki.scrollHeight;
       pelaaja_hp.innerText = pelaaja_olio.pelaaja_hp;
     } else {
+      efketi_huti.play();
       taisteluloki.value += `\nVäistit vihollisen iskun!`;
       taisteluloki.scrollTop = taisteluloki.scrollHeight;
     }
@@ -220,6 +230,7 @@ const vihollisen_vuoro = async (vihollinen) => {
     taito1.removeEventListener('click', taito1_painettu);
     taito2.removeEventListener('click', taito2_painettu);
     taito3.removeEventListener('click', taito3_painettu);
+    musiikki_sijainti();
     return
   }
 
@@ -239,6 +250,7 @@ const vihollisen_vuoro = async (vihollinen) => {
     taito1.removeEventListener('click', taito1_painettu);
     taito2.removeEventListener('click', taito2_painettu);
     taito3.removeEventListener('click', taito3_painettu);
+    efekti_mies_kuolee.play();
   }
 }
 

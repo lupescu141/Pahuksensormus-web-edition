@@ -5,6 +5,8 @@ const tulipallo = (vihollinen, vihollinen_statukset) => {
     const vahinko_arvo = (Math.floor(Math.random() * 7) + 1) + (Math.floor(Math.random() * 7) + 1) + 2;
     pelaaja_olio.taitopiste -= 1;
     vihollinen.vihollinen_hp -= vahinko_arvo;
+    efekti_tulipallo.play();
+    wait(efekti_tulipallo.duration() * 500);
     vihollinen_hp.innerText = vihollinen.vihollinen_hp;
     taisteluloki.value += `\nTulipallo käristi ${vahinko_arvo} elämäpistettä viholliselta.`;
     vihollinen_statukset["palaa"] += 2;

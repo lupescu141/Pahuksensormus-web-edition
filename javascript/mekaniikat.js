@@ -46,6 +46,7 @@ async function lepo() {
     textarea.value += '\n\n-Pelaajan HP ja TP ovat jo maksimissaan!';
     textarea.scrollTop = textarea.scrollHeight;
   } else {
+    lepaa();
     // Päivittää pelaajalle maksimi HP:n ja TP:n
     pelaaja_olio.pelaaja_hp = pelaaja_olio.pelaaja_maksimi_hp;
     pelaaja_olio.pelaaja_taitopiste = pelaaja_olio.pelaaja_maksimi_taitopiste;
@@ -96,6 +97,10 @@ async function taistelu_mahdollisuus(matkan_pituus) {
     textarea.scrollTop = textarea.scrollHeight;
     taisteluloki.value += `\n\n-Matkustit liian varomattomasti ja Gorgonin kätyrit huomasivat sinut.`;
     taisteluloki.scrollTop = textarea.scrollHeight;
+    pysayta_musiikit();
+    pysayta_taustaAanet();
+    efekti_taistelu_alkaa.play();
+    wait(1500);
     await avaa_taistelu_ikkuna(hae_random_vihollinen_tietokannasta());
   } else {
     textarea.value += `\n\n-Pääsit turvallisesti perille.`;
@@ -150,6 +155,7 @@ async function tarkista_sormus() {
       parseInt(pelaaja_olio.pelaaja_sijainti) ===
       parseInt(pelaaja_olio.sormus_sijainti)) {
     textarea.value += '\n-Onneksi olkoon! Löysit pahuksen sormuksen. Voit nyt täyttää kohtalosi ja kohdata Gorgonin tulivuoressa.';
+    efekti_sormus.play();
     textarea.scrollTop = textarea.scrollHeight;
     pelaaja_olio.onko_sormus = 1;
   } else if (parseInt(pelaaja_olio.onko_sormus) === 1 &&
