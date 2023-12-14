@@ -83,6 +83,8 @@ async function hae_vihollisen_taidot(vihollisen_id) {
 
 const taistelu = async (vihollinen1) => {
 
+
+
   if (vihollinen1.vihollinen_nimi === 'Gorgon') {
     pysayta_musiikit();
     gorgon_musiikki.play();
