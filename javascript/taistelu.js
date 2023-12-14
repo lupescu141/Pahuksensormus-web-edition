@@ -180,12 +180,14 @@ const vihollisen_vuoro = async (vihollinen) => {
   if (pelaaja_statukset['myrkytetty'] > 0) {
     const myrkkyvahinko = (Math.floor(Math.random() * 4) + 1);
     pelaaja_olio.pelaaja_hp -= myrkkyvahinko;
+    pelaaja_hp.innerText = pelaaja_olio.pelaaja_hp;
     taisteluloki.value += `${pelaaja_olio.pelaaja_nimi} on myrkyttyneenä ja menetti ${myrkkyvahinko} elämäpistettä.`;
     pelaaja_statukset['myrkytetty'] -= 1;
   }
 
   if (vihollinen_statukset['palaa'] > 0) {
     vihollinen.vihollinen_hp -= 2;
+    vihollinen_hp.innerText = vihollinen.vihollinen_hp;
     taisteluloki.value += `\nVihollinen palaa ja menetti 2 elämäpistettä.`;
     vihollinen_statukset['palaa'] -= 1;
   }
@@ -223,6 +225,7 @@ const vihollisen_vuoro = async (vihollinen) => {
   if (vihollinen_statukset['myrkytetty'] > 0) {
     const myrkkyvahinko = (Math.floor(Math.random() * 4) + 1);
     vihollinen.vihollinen_hp -= myrkkyvahinko;
+    vihollinen_hp.innerText = vihollinen.vihollinen_hp;
     taisteluloki.value += `\nVihollinen on myrkyttyneenä ja menetti ${myrkkyvahinko} elämäpistettä.`;
     vihollinen_statukset['myrkytetty'] -= 1;
   }
