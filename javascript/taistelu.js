@@ -65,6 +65,7 @@ async function hae_random_vihollinen_tietokannasta() {
   document.getElementById(
       'vihollinen_nimi').textContent = random_vihollinen.vihollinen_nimi;
   vihollinen_hp.textContent = random_vihollinen.vihollinen_hp;
+  vihollinen_tp.textContent = random_vihollinen.vihollinen_tp
   document.querySelector(
       '.vihollinen-kuva').style.backgroundImage = `url("../static/images/viholliset/${random_vihollinen.vihollinen_nimi.toLocaleLowerCase()}.png")`;
 
