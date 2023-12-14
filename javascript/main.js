@@ -18,6 +18,7 @@ const ennatukset = document.querySelector('.ennatykset');
 const taulukko = document.querySelector('.top-lista');
 // Pelaaja rivi
 const paikkatausta = document.getElementById('paikkatausta');
+const tutki_nappi = document.getElementById('tutki');
 const valinta1 = document.getElementById('valinta1');
 const valinta2 = document.getElementById('valinta2');
 // Loki elementit
@@ -137,6 +138,7 @@ async function matkustaminen() {
 // Kartta nappien kuuntelijat
 const kohde_1 = document.getElementById('1');
 kohde_1.addEventListener('click', async function() {
+  tutki_nappi.style.display = 'block'
   textarea.value = ``;
   textarea.scrollTop = textarea.scrollHeight;
   console.log(`klikattu ${kohde_1.id} : ${kohde_1.name}`);
@@ -160,6 +162,7 @@ kohde_1.addEventListener('click', async function() {
 
 const kohde_2 = document.getElementById('2');
 kohde_2.addEventListener('click', async function() {
+  tutki_nappi.style.display = 'block'
   textarea.value = ``;
   textarea.scrollTop = textarea.scrollHeight;
   console.log(`klikattu ${kohde_2.id} : ${kohde_2.name}`);
@@ -183,6 +186,7 @@ kohde_2.addEventListener('click', async function() {
 
 const kohde_3 = document.getElementById('3');
 kohde_3.addEventListener('click', async function() {
+  tutki_nappi.style.display = 'block'
   textarea.value = ``;
   textarea.scrollTop = textarea.scrollHeight;
   console.log(`klikattu ${kohde_3.id} : ${kohde_3.name}`);
@@ -206,6 +210,7 @@ kohde_3.addEventListener('click', async function() {
 
 const kohde_4 = document.getElementById('4');
 kohde_4.addEventListener('click', async function() {
+  tutki_nappi.style.display = 'block'
   textarea.value = ``;
   textarea.scrollTop = textarea.scrollHeight;
   console.log(`klikattu ${kohde_4.id} : ${kohde_4.name}`);
@@ -229,6 +234,7 @@ kohde_4.addEventListener('click', async function() {
 
 const kohde_5 = document.getElementById('5');
 kohde_5.addEventListener('click', async function() {
+  tutki_nappi.style.display = 'block'
   textarea.value = ``;
   textarea.scrollTop = textarea.scrollHeight;
   console.log(`klikattu ${kohde_5.id} : ${kohde_5.name}`);
@@ -252,6 +258,7 @@ kohde_5.addEventListener('click', async function() {
 
 const kohde_6 = document.getElementById('6');
 kohde_6.addEventListener('click', async function() {
+  tutki_nappi.style.display = 'block'
   textarea.value = ``;
   textarea.scrollTop = textarea.scrollHeight;
   console.log(`klikattu ${kohde_6.id} : ${kohde_6.name}`);
@@ -275,6 +282,7 @@ kohde_6.addEventListener('click', async function() {
 
 const kohde_7 = document.getElementById('7');
 kohde_7.addEventListener('click', async function() {
+  tutki_nappi.style.display = 'block'
   textarea.value = ``;
   textarea.scrollTop = textarea.scrollHeight;
   console.log(`klikattu ${kohde_7.id} : ${kohde_7.name}`);
@@ -298,6 +306,7 @@ kohde_7.addEventListener('click', async function() {
 
 const kohde_8 = document.getElementById('8');
 kohde_8.addEventListener('click', async function() {
+  tutki_nappi.style.display = 'block'
   textarea.value = ``;
   textarea.scrollTop = textarea.scrollHeight;
   console.log(`klikattu ${kohde_8.id} : ${kohde_8.name}`);
@@ -321,6 +330,7 @@ kohde_8.addEventListener('click', async function() {
 
 const kohde_9 = document.getElementById('9');
 kohde_9.addEventListener('click', async function() {
+  tutki_nappi.style.display = 'block'
   textarea.value = ``;
   textarea.scrollTop = textarea.scrollHeight;
   console.log(`klikattu ${kohde_9.id} : ${kohde_9.name}`);
@@ -344,6 +354,7 @@ kohde_9.addEventListener('click', async function() {
 
 const kohde_10 = document.getElementById('10');
 kohde_10.addEventListener('click', async function() {
+  tutki_nappi.style.display = 'none'
   textarea.value = ``;
   textarea.scrollTop = textarea.scrollHeight;
   console.log(`klikattu ${kohde_10.id} : ${kohde_10.name}`);

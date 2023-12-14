@@ -115,6 +115,7 @@ async function pelin_lopetus () {
 function laukaise_event () {
   valinta1.style.display = 'block'
   valinta2.style.display = 'block'
+  oikea_puoli.style.pointerEvents = 'none'
   try {
     valinta1.removeEventListener('click', valinta1kuuntelija)
     valinta2.removeEventListener('click', valinta2kuuntelija)
@@ -170,6 +171,7 @@ function uudentoivonKylaEvent () {
     textarea.scrollTop = textarea.scrollHeight
     valinta1.style.display = 'none'
     valinta2.style.display = 'none'
+    oikea_puoli.style.pointerEvents = 'auto'
     return // Lopeta funktio
   } else {
 
@@ -239,6 +241,7 @@ function tavernaNoppapeli () {
     // piilotetaan valinta napit eventin jälkeen
     valinta1.style.display = 'none'
     valinta2.style.display = 'none'
+    oikea_puoli.style.pointerEvents = 'auto'
   })
 
   // Tehdään valinnoille event listenerit jotka kuuntelevat nappien klikkausta
@@ -252,6 +255,7 @@ function tavernaNoppapeli () {
     // piilotetaan valinta napit eventin jälkeen
     valinta1.style.display = 'none'
     valinta2.style.display = 'none'
+    oikea_puoli.style.pointerEvents = 'auto'
   })
 
 }
@@ -277,6 +281,7 @@ function laksiaisjuhlat () {
       valinta1.style.display = 'none'
       valinta2.style.display = 'none'
     }
+    oikea_puoli.style.pointerEvents = 'auto'
   })
 
   valinta2.addEventListener('click', valinta2kuuntelija = async function () {
@@ -290,6 +295,7 @@ function laksiaisjuhlat () {
     // piilotetaan valinta napit eventin jälkeen
     valinta1.style.display = 'none'
     valinta2.style.display = 'none'
+    oikea_puoli.style.pointerEvents = 'auto'
   })
 
 }
@@ -317,6 +323,7 @@ function kylanKummallinenKojukauppias () {
     // piilotetaan valinta napit eventin jälkeen
     valinta1.style.display = 'none'
     valinta2.style.display = 'none'
+    oikea_puoli.style.pointerEvents = 'auto'
   })
 
   valinta2.addEventListener('click', valinta2kuuntelija = async function () {
@@ -329,6 +336,7 @@ function kylanKummallinenKojukauppias () {
     // piilotetaan valinta napit eventin jälkeen
     valinta1.style.display = 'none'
     valinta2.style.display = 'none'
+    oikea_puoli.style.pointerEvents = 'auto'
   })
 }
 
@@ -347,6 +355,7 @@ function ruoholaaksonNiityt () {
     textarea.scrollTop = textarea.scrollHeight
     valinta1.style.display = 'none'
     valinta2.style.display = 'none'
+    oikea_puoli.style.pointerEvents = 'auto'
     return // Lopeta funktio
   } else {
 
@@ -400,6 +409,7 @@ function kukkienHurmio () {
     // piilotetaan valinta napit eventin jälkeen
     valinta1.style.display = 'none'
     valinta2.style.display = 'none'
+    oikea_puoli.style.pointerEvents = 'auto'
   })
 
   valinta2.addEventListener('click', valinta2kuuntelija = async function () {
@@ -410,6 +420,7 @@ function kukkienHurmio () {
     await avaa_taistelu_ikkuna(await hae_tunnettu_vihollinen(14)) // OHJAA TAISTELUUN SYÖJÄTÄR KUNINGATTAREN KANSSA
     valinta1.style.display = 'none'
     valinta2.style.display = 'none'
+    oikea_puoli.style.pointerEvents = 'auto'
   })
 }
 
@@ -431,6 +442,7 @@ function varjojenPiilo () {
     pelaaja_hp.textContent = pelaaja_olio.pelaaja_hp
     valinta1.style.display = 'none'
     valinta2.style.display = 'none'
+    oikea_puoli.style.pointerEvents = 'auto'
   })
 
   valinta2.addEventListener('click', valinta2kuuntelija = async function () {
@@ -443,6 +455,7 @@ function varjojenPiilo () {
     // piilotetaan valinta napit eventin jälkeen
     valinta1.style.display = 'none'
     valinta2.style.display = 'none'
+    oikea_puoli.style.pointerEvents = 'auto'
   })
 }
 
@@ -464,6 +477,7 @@ function lumotunRiipuksenArvoitus () {
     pelaaja_tp.textContent = pelaaja_olio.pelaaja_taitopiste
     valinta1.style.display = 'none'
     valinta2.style.display = 'none'
+    oikea_puoli.style.pointerEvents = 'auto'
   })
 
   valinta2.addEventListener('click', valinta2kuuntelija = async function () {
@@ -475,6 +489,7 @@ function lumotunRiipuksenArvoitus () {
     pelaaja_hp.textContent = pelaaja_olio.pelaaja_hp
     valinta1.style.display = 'none'
     valinta2.style.display = 'none'
+    oikea_puoli.style.pointerEvents = 'auto'
   })
 
 }
@@ -495,6 +510,7 @@ function velhotorniEvent () {
     textarea.scrollTop = textarea.scrollHeight
     valinta1.style.display = 'none'
     valinta2.style.display = 'none'
+    oikea_puoli.style.pointerEvents = 'auto'
     return // Lopeta funktio
   } else {
 
@@ -544,6 +560,7 @@ function loitsuhuone () {
     pelaaja_tp.textContent = pelaaja_olio.pelaaja_taitopiste
     valinta1.style.display = 'none'
     valinta2.style.display = 'none'
+    oikea_puoli.style.pointerEvents = 'auto'
   })
 
   valinta2.addEventListener('click', valinta2kuuntelija = async function () {
@@ -554,6 +571,7 @@ function loitsuhuone () {
     pelaaja_inventaario.pop() // Poistaa pelaajalta yhden esineen
     valinta1.style.display = 'none'
     valinta2.style.display = 'none'
+    oikea_puoli.style.pointerEvents = 'auto'
   })
 
 }
@@ -576,6 +594,7 @@ function salakaytavienSokkelo () {
     pelaaja_tp.textContent = pelaaja_olio.pelaaja_taitopiste
     valinta1.style.display = 'none'
     valinta2.style.display = 'none'
+    oikea_puoli.style.pointerEvents = 'auto'
   })
 
   valinta2.addEventListener('click', valinta2kuuntelija = async function () {
@@ -587,6 +606,7 @@ function salakaytavienSokkelo () {
     pelaaja_hp.textContent = pelaaja_olio.pelaaja_hp
     valinta1.style.display = 'none'
     valinta2.style.display = 'none'
+    oikea_puoli.style.pointerEvents = 'auto'
   })
 
 }
@@ -609,6 +629,7 @@ function velhonKaksintaistelu () {
     await avaa_taistelu_ikkuna(await hae_tunnettu_vihollinen(19))  // OHJAA TAISTELUUN VELHON KANSSA
     valinta1.style.display = 'none'
     valinta2.style.display = 'none'
+    oikea_puoli.style.pointerEvents = 'auto'
   })
 
   valinta2.addEventListener('click', valinta2kuuntelija = async function () {
@@ -620,6 +641,7 @@ function velhonKaksintaistelu () {
     pelaaja_hp.textContent = pelaaja_olio.pelaaja_hp
     valinta1.style.display = 'none'
     valinta2.style.display = 'none'
+    oikea_puoli.style.pointerEvents = 'auto'
   })
 
 }
@@ -640,6 +662,7 @@ function varisrameenSalaisuudet () {
     textarea.scrollTop = textarea.scrollHeight
     valinta1.style.display = 'none'
     valinta2.style.display = 'none'
+    oikea_puoli.style.pointerEvents = 'auto'
     return // Lopeta funktio
   } else {
 
@@ -685,11 +708,12 @@ function variksenkielenLoitsut () {
     textarea.scrollTop = textarea.scrollHeight
     textarea.value += '\n\n-Valinta 1: Onnistut ymmärtämään loitsut, mikä antaa sinulle täyden voiman ja HP:n.'
     textarea.scrollTop = textarea.scrollHeight
-    pelaaja_olio.pelaaja_maksimi_hp += 1
+    pelaaja_olio.pelaaja_maksimi_hp += 5
     pelaaja_olio.pelaaja_hp = pelaaja_olio.pelaaja_maksimi_hp
     pelaaja_hp.textContent = pelaaja_olio.pelaaja_hp
     valinta1.style.display = 'none'
     valinta2.style.display = 'none'
+    oikea_puoli.style.pointerEvents = 'auto'
   })
 
   valinta2.addEventListener('click', valinta2kuuntelija = async function () {
@@ -701,6 +725,7 @@ function variksenkielenLoitsut () {
     pelaaja_hp.textContent = pelaaja_olio.pelaaja_hp
     valinta1.style.display = 'none'
     valinta2.style.display = 'none'
+    oikea_puoli.style.pointerEvents = 'auto'
   })
 
 }
@@ -723,6 +748,7 @@ function varjorituaalit () {
     pelaaja_olio.pelaaja_isku += 1
     valinta1.style.display = 'none'
     valinta2.style.display = 'none'
+    oikea_puoli.style.pointerEvents = 'auto'
   })
 
   valinta2.addEventListener('click', valinta2kuuntelija = async function () {
@@ -734,6 +760,7 @@ function varjorituaalit () {
     pelaaja_hp.textContent = pelaaja_olio.pelaaja_hp
     valinta1.style.display = 'none'
     valinta2.style.display = 'none'
+    oikea_puoli.style.pointerEvents = 'auto'
   })
 
 }
@@ -760,6 +787,7 @@ function taikaesineenLoytaminen () {
     console.log(pelaaja_inventaario)
     valinta1.style.display = 'none'
     valinta2.style.display = 'none'
+    oikea_puoli.style.pointerEvents = 'auto'
   })
 
   valinta2.addEventListener('click', valinta2kuuntelija = async function () {
@@ -771,6 +799,7 @@ function taikaesineenLoytaminen () {
     await avaa_taistelu_ikkuna(await hae_tunnettu_vihollinen(23))
     valinta1.style.display = 'none'
     valinta2.style.display = 'none'
+    oikea_puoli.style.pointerEvents = 'auto'
   })
 
 }
@@ -791,6 +820,7 @@ function noitametsa () {
     textarea.scrollTop = textarea.scrollHeight
     valinta1.style.display = 'none'
     valinta2.style.display = 'none'
+    oikea_puoli.style.pointerEvents = 'auto'
     return // Lopeta funktio
   } else {
 
@@ -847,6 +877,7 @@ function noitataloTaistelu () {
     console.log(pelaaja_inventaario)
     valinta1.style.display = 'none'
     valinta2.style.display = 'none'
+    oikea_puoli.style.pointerEvents = 'auto'
   })
 
   valinta2.addEventListener('click', valinta2kuuntelija = async function () {
@@ -857,6 +888,7 @@ function noitataloTaistelu () {
     await avaa_taistelu_ikkuna(await hae_tunnettu_vihollinen(22))  // OHJAA TAISTELUUN KOLMIPÄISEN NOIDAN KANSSA
     valinta1.style.display = 'none'
     valinta2.style.display = 'none'
+    oikea_puoli.style.pointerEvents = 'auto'
   })
 
 }
@@ -885,6 +917,7 @@ function noitataloMetsassa () {
     console.log(pelaaja_inventaario)
     valinta1.style.display = 'none'
     valinta2.style.display = 'none'
+    oikea_puoli.style.pointerEvents = 'auto'
   })
 
   valinta2.addEventListener('click', valinta2kuuntelija = async function () {
@@ -896,6 +929,7 @@ function noitataloMetsassa () {
     pelaaja_hp.textContent = pelaaja_olio.pelaaja_hp
     valinta1.style.display = 'none'
     valinta2.style.display = 'none'
+    oikea_puoli.style.pointerEvents = 'auto'
   })
 
 }
@@ -923,6 +957,7 @@ function harhailuNoitametsassa () {
     console.log(pelaaja_inventaario)
     valinta1.style.display = 'none'
     valinta2.style.display = 'none'
+    oikea_puoli.style.pointerEvents = 'auto'
   })
 
   valinta2.addEventListener('click', valinta2kuuntelija = async function () {
@@ -934,6 +969,7 @@ function harhailuNoitametsassa () {
     pelaaja_hp.textContent = pelaaja_olio.pelaaja_hp
     valinta1.style.display = 'none'
     valinta2.style.display = 'none'
+    oikea_puoli.style.pointerEvents = 'auto'
   })
 
 }
@@ -954,6 +990,7 @@ function sammakkojarvi () {
     textarea.scrollTop = textarea.scrollHeight
     valinta1.style.display = 'none'
     valinta2.style.display = 'none'
+    oikea_puoli.style.pointerEvents = 'auto'
     return // Lopeta funktio
   } else {
 
@@ -997,6 +1034,7 @@ function lumoavaSammakkokonsertti () {
     pelaaja_hp.textContent = pelaaja_olio.pelaaja_hp
     valinta1.style.display = 'none'
     valinta2.style.display = 'none'
+    oikea_puoli.style.pointerEvents = 'auto'
   })
 
   valinta2.addEventListener('click', valinta2kuuntelija = async function () {
@@ -1008,6 +1046,7 @@ function lumoavaSammakkokonsertti () {
     pelaaja_hp.textContent = pelaaja_olio.pelaaja_hp
     valinta1.style.display = 'none'
     valinta2.style.display = 'none'
+    oikea_puoli.style.pointerEvents = 'auto'
   })
 
 }
@@ -1037,6 +1076,7 @@ function lumoavaJarvenpeili () {
     console.log(pelaaja_inventaario)
     valinta1.style.display = 'none'
     valinta2.style.display = 'none'
+    oikea_puoli.style.pointerEvents = 'auto'
   })
 
   valinta2.addEventListener('click', valinta2kuuntelija = async function () {
@@ -1048,6 +1088,7 @@ function lumoavaJarvenpeili () {
     pelaaja_hp.textContent = pelaaja_olio.pelaaja_hp
     valinta1.style.display = 'none'
     valinta2.style.display = 'none'
+    oikea_puoli.style.pointerEvents = 'auto'
   })
 
 }
@@ -1068,6 +1109,7 @@ function hiisisuonLaakso () {
     textarea.scrollTop = textarea.scrollHeight
     valinta1.style.display = 'none'
     valinta2.style.display = 'none'
+    oikea_puoli.style.pointerEvents = 'auto'
     return // Lopeta funktio
   } else {
 
@@ -1119,6 +1161,7 @@ function keijukaistenKuningatar () {
     console.log(pelaaja_inventaario)
     valinta1.style.display = 'none'
     valinta2.style.display = 'none'
+    oikea_puoli.style.pointerEvents = 'auto'
   })
 
   valinta2.addEventListener('click', valinta2kuuntelija = async function () {
@@ -1131,6 +1174,7 @@ function keijukaistenKuningatar () {
     pelaaja_hp.textContent = pelaaja_olio.pelaaja_hp
     valinta1.style.display = 'none'
     valinta2.style.display = 'none'
+    oikea_puoli.style.pointerEvents = 'auto'
   })
 
 }
@@ -1159,6 +1203,7 @@ function seuraaTulikarpastenValoa () {
     console.log(pelaaja_inventaario)
     valinta1.style.display = 'none'
     valinta2.style.display = 'none'
+    oikea_puoli.style.pointerEvents = 'auto'
   })
 
   valinta2.addEventListener('click', valinta2kuuntelija = async function () {
@@ -1170,6 +1215,7 @@ function seuraaTulikarpastenValoa () {
     pelaaja_hp.textContent = pelaaja_olio.pelaaja_hp
     valinta1.style.display = 'none'
     valinta2.style.display = 'none'
+    oikea_puoli.style.pointerEvents = 'auto'
   })
 
 }
@@ -1196,6 +1242,7 @@ function suonLumous () {
     console.log(pelaaja_inventaario)
     valinta1.style.display = 'none'
     valinta2.style.display = 'none'
+    oikea_puoli.style.pointerEvents = 'auto'
   })
 
   valinta2.addEventListener('click', valinta2kuuntelija = async function () {
@@ -1207,6 +1254,7 @@ function suonLumous () {
     pelaaja_hp.textContent = pelaaja_olio.pelaaja_hp
     valinta1.style.display = 'none'
     valinta2.style.display = 'none'
+    oikea_puoli.style.pointerEvents = 'auto'
   })
 
 }
@@ -1227,6 +1275,7 @@ function suurentarmonKaupunkiEvent () {
     textarea.scrollTop = textarea.scrollHeight
     valinta1.style.display = 'none'
     valinta2.style.display = 'none'
+    oikea_puoli.style.pointerEvents = 'auto'
     return // Lopeta funktio
   } else {
 
@@ -1274,6 +1323,7 @@ function turnajaiset () {
     await avaa_taistelu_ikkuna(await hae_tunnettu_vihollinen(21))  // OHJAA TAISTELUUN RITARIN KANSSA
     valinta1.style.display = 'none'
     valinta2.style.display = 'none'
+    oikea_puoli.style.pointerEvents = 'auto'
   })
 
   valinta2.addEventListener('click', valinta2kuuntelija = async function () {
@@ -1284,6 +1334,7 @@ function turnajaiset () {
     pelaaja_inventaario.pop() // Poistaa pelaajalta yhden esineen
     valinta1.style.display = 'none'
     valinta2.style.display = 'none'
+    oikea_puoli.style.pointerEvents = 'auto'
   })
 
 }
@@ -1307,6 +1358,7 @@ function taikurimarkkinat () {
     pelaaja_tp.textContent = pelaaja_olio.pelaaja_taitopiste
     valinta1.style.display = 'none'
     valinta2.style.display = 'none'
+    oikea_puoli.style.pointerEvents = 'auto'
   })
 
   valinta2.addEventListener('click', valinta2kuuntelija = async function () {
@@ -1320,6 +1372,7 @@ function taikurimarkkinat () {
     await avaa_taistelu_ikkuna(await hae_tunnettu_vihollinen(24))  // OHJAA TAISTELUUN DEMONIN KANSSA
     valinta1.style.display = 'none'
     valinta2.style.display = 'none'
+    oikea_puoli.style.pointerEvents = 'auto'
   })
 
 }
@@ -1343,6 +1396,7 @@ function uhkapeliOnnenpelikortit () {
     pelaaja_tp.textContent = pelaaja_olio.pelaaja_taitopiste
     valinta1.style.display = 'none'
     valinta2.style.display = 'none'
+    oikea_puoli.style.pointerEvents = 'auto'
   })
 
   valinta2.addEventListener('click', valinta2kuuntelija = async function () {
@@ -1352,6 +1406,7 @@ function uhkapeliOnnenpelikortit () {
     textarea.scrollTop = textarea.scrollHeight
     valinta1.style.display = 'none'
     valinta2.style.display = 'none'
+    oikea_puoli.style.pointerEvents = 'auto'
   })
 
 }
@@ -1372,6 +1427,7 @@ function peikkoluola () {
     textarea.scrollTop = textarea.scrollHeight
     valinta1.style.display = 'none'
     valinta2.style.display = 'none'
+    oikea_puoli.style.pointerEvents = 'auto'
     return // Lopeta funktio
   } else {
 
@@ -1422,6 +1478,7 @@ function peikkokuningas () {
     console.log(pelaaja_inventaario)
     valinta1.style.display = 'none'
     valinta2.style.display = 'none'
+    oikea_puoli.style.pointerEvents = 'auto'
   })
 
   valinta2.addEventListener('click', valinta2kuuntelija = async function () {
@@ -1432,6 +1489,7 @@ function peikkokuningas () {
     await avaa_taistelu_ikkuna(await hae_tunnettu_vihollinen(20)) // OHJAA TAISTELUUN PEIKKOKUNINKAAN KANSSA
     valinta1.style.display = 'none'
     valinta2.style.display = 'none'
+    oikea_puoli.style.pointerEvents = 'auto'
   })
 
 }
@@ -1455,6 +1513,7 @@ function hamahakkikuningatar () {
     pelaaja_olio.pelaaja_isku += 1
     valinta1.style.display = 'none'
     valinta2.style.display = 'none'
+    oikea_puoli.style.pointerEvents = 'auto'
   })
 
   valinta2.addEventListener('click', valinta2kuuntelija = async function () {
@@ -1467,6 +1526,7 @@ function hamahakkikuningatar () {
     pelaaja_hp.textContent = pelaaja_olio.pelaaja_hp
     valinta1.style.display = 'none'
     valinta2.style.display = 'none'
+    oikea_puoli.style.pointerEvents = 'auto'
   })
 
 }
@@ -1494,6 +1554,7 @@ function lohikaarmeenPesa () {
     console.log(pelaaja_inventaario)
     valinta1.style.display = 'none'
     valinta2.style.display = 'none'
+    oikea_puoli.style.pointerEvents = 'auto'
   })
 
   valinta2.addEventListener('click', valinta2kuuntelija = async function () {
@@ -1504,6 +1565,7 @@ function lohikaarmeenPesa () {
     textarea.scrollTop = textarea.scrollHeight
     valinta1.style.display = 'none'
     valinta2.style.display = 'none'
+    oikea_puoli.style.pointerEvents = 'auto'
   })
 
 }
