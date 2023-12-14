@@ -11,7 +11,8 @@ jatka.addEventListener('click', async () => {
     if (vihollinen.vihollinen_nimi === 'Gorgon') {
       valinta1.style.display = 'block';
       valinta2.style.display = 'block';
-      oikea_puoli.style.pointerEvents = 'none';
+      tutki_nappi.style.display = 'none';
+      document.getElementById('lepo').style.display = 'none'
     }
   }
 

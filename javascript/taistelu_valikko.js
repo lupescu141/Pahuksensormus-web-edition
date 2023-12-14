@@ -43,7 +43,7 @@ function lopeta_taistelu() {
   document.querySelector('.oikea-puoli-taistelu').style.display = 'none';
   document.querySelector('.oikea-puoli').style.display = 'flex';
 
-  // Tuodaan Lepää ja Esineet napit esiin status näkymään
+  // Tuodaan Lepää ja Tutki nappi esiin
   const napit = pelaaja_status.querySelectorAll('.nappi');
   napit.forEach(nappi => {
     nappi.style.display = 'block';

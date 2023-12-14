@@ -62,6 +62,9 @@ const taikasauva = {
 
 // Viimeisen eventin ohjaus
 async function pelin_lopetus() {
+  for (let nappi of kartta_nappi) {
+    nappi.style.pointerEvents = 'none';
+  }
 
   try {
     valinta1.removeEventListener('click', valinta1kuuntelija);
@@ -77,8 +80,12 @@ async function pelin_lopetus() {
     textarea.scrollTop = textarea.scrollHeight;
 
     valinta1.addEventListener('click', valinta1kuuntelija = async function() {
-      oikea_puoli.style.pointerEvents = 'none';
-      vasen_puoli.style.pointerEvents = 'none';
+      for (let nappi of kartta_nappi) {
+        nappi.style.pointerEvents = 'none';
+      }
+      for (let nappi of pelaaja_napit) {
+        nappi.style.pointerEvents = 'none';
+      }
       // Nämä pistävät tekstiä pelaajalle nähtäväksi
       textarea.value = '\n\n-Heität sormuksen tulivuoreen ja näät kuinka se laskeutuu hehkuvaan laavamereen. ' +
           'Hetken sormus pysyy pinnalla, mutta nopeasti se sulaa ja uppoaa laavaan. ' +
@@ -101,8 +108,12 @@ async function pelin_lopetus() {
     });
 
     valinta2.addEventListener('click', valinta2kuuntelija = async function() {
-      oikea_puoli.style.pointerEvents = 'none';
-      vasen_puoli.style.pointerEvents = 'none';
+      for (let nappi of kartta_nappi) {
+        nappi.style.pointerEvents = 'none';
+      }
+      for (let nappi of pelaaja_napit) {
+        nappi.style.pointerEvents = 'none';
+      }
       // Nämä pistävät tekstiä pelaajalle nähtäväksi
       textarea.value = '\n\n-Katsot sormusta ja alla hehkuvaa laavamerta. Sormus tarjoaa käyttäjälleen voimaa ja valtaa. ' +
           'Se houkuttelee sinua ja antaudut sen valtaan. ' +
@@ -448,7 +459,6 @@ function kukkienHurmio() {
     await avaa_taistelu_ikkuna(await hae_tunnettu_vihollinen(14)); // OHJAA TAISTELUUN SYÖJÄTÄR KUNINGATTAREN KANSSA
     valinta1.style.display = 'none';
     valinta2.style.display = 'none';
-    tutki_nappi.style.display = 'block';
     oikea_puoli.style.pointerEvents = 'auto';
   });
 }
@@ -667,7 +677,6 @@ function velhonKaksintaistelu() {
     await avaa_taistelu_ikkuna(await hae_tunnettu_vihollinen(19));  // OHJAA TAISTELUUN VELHON KANSSA
     valinta1.style.display = 'none';
     valinta2.style.display = 'none';
-    tutki_nappi.style.display = 'block';
     oikea_puoli.style.pointerEvents = 'auto';
   });
 
@@ -845,7 +854,6 @@ function taikaesineenLoytaminen() {
     await avaa_taistelu_ikkuna(await hae_tunnettu_vihollinen(23));
     valinta1.style.display = 'none';
     valinta2.style.display = 'none';
-    tutki_nappi.style.display = 'block';
     oikea_puoli.style.pointerEvents = 'auto';
   });
 
@@ -936,7 +944,6 @@ function noitataloTaistelu() {
     await avaa_taistelu_ikkuna(await hae_tunnettu_vihollinen(22));  // OHJAA TAISTELUUN KOLMIPÄISEN NOIDAN KANSSA
     valinta1.style.display = 'none';
     valinta2.style.display = 'none';
-    tutki_nappi.style.display = 'block';
     oikea_puoli.style.pointerEvents = 'auto';
   });
 
@@ -1387,7 +1394,6 @@ function turnajaiset() {
     await avaa_taistelu_ikkuna(await hae_tunnettu_vihollinen(21));  // OHJAA TAISTELUUN RITARIN KANSSA
     valinta1.style.display = 'none';
     valinta2.style.display = 'none';
-    tutki_nappi.style.display = 'block';
     oikea_puoli.style.pointerEvents = 'auto';
   });
 
@@ -1439,7 +1445,6 @@ function taikurimarkkinat() {
     await avaa_taistelu_ikkuna(await hae_tunnettu_vihollinen(24));  // OHJAA TAISTELUUN DEMONIN KANSSA
     valinta1.style.display = 'none';
     valinta2.style.display = 'none';
-    tutki_nappi.style.display = 'block';
     oikea_puoli.style.pointerEvents = 'auto';
   });
 
@@ -1561,7 +1566,6 @@ function peikkokuningas() {
     await avaa_taistelu_ikkuna(await hae_tunnettu_vihollinen(20)); // OHJAA TAISTELUUN PEIKKOKUNINKAAN KANSSA
     valinta1.style.display = 'none';
     valinta2.style.display = 'none';
-    tutki_nappi.style.display = 'block';
     oikea_puoli.style.pointerEvents = 'auto';
   });
 
