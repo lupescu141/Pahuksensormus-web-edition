@@ -1461,7 +1461,7 @@ function hamahakkikuningatar () {
     textarea.value = ''
     textarea.scrollTop = textarea.scrollHeight
     textarea.value += '\n\n-Valinta 2: Päätät turvautua äärimmäiseen toimenpiteeseen ja sytytät hämähäkinseitit tuleen.'
-    textarea.value += '\n\n-Kammiossa roihahtaa liekit, hämähäkkikuningatar kiroaa sinut ja menetät 5 HP. Kuulet vaikeroivat tuskan huudot takanasi kun pakenet luolasta…'
+    textarea.value += '\n\n-Kammiossa roihahtaa liekit, hämähäkkikuningatar kiroaa sinut ja menetät 5 HP. Kuulet vaikeroivat tuskanhuudot takanasi kun pakenet luolasta…'
     textarea.scrollTop = textarea.scrollHeight
     pelaaja_olio.pelaaja_hp -= 5
     pelaaja_hp.textContent = pelaaja_olio.pelaaja_hp
