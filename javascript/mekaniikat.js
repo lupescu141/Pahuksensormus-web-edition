@@ -92,7 +92,8 @@ async function taistelu_mahdollisuus(matkan_pituus) {
   const mahdollisuus = Math.floor(Math.random() * 20) + 1;
   const ei_taistelua = parseInt(pelaaja_olio.pelaaja_suojaus) -
       parseInt(matkan_pituus);
-  if (mahdollisuus > ei_taistelua && parseInt(pelaaja_olio.pelaaja_sijainti) !== 10) {
+  if (mahdollisuus > ei_taistelua && parseInt(pelaaja_olio.pelaaja_sijainti) !==
+      10) {
     textarea.value += `\n\n-Matkalla jouduit taisteluun.`;
     textarea.scrollTop = textarea.scrollHeight;
     taisteluloki.value += `\n\n-Matkustit liian varomattomasti ja Gorgonin kätyrit huomasivat sinut.`;
@@ -104,7 +105,7 @@ async function taistelu_mahdollisuus(matkan_pituus) {
   } else {
     textarea.value += `\n\n-Pääsit turvallisesti perille.`;
     textarea.scrollTop = textarea.scrollHeight;
-    musiikki_sijainti()
+    musiikki_sijainti();
   }
 }
 
@@ -190,13 +191,15 @@ async function hae_säätila() {
       'https://api.openweathermap.org/data/2.5/weather?q=haiti&units=metric&appid=e34434fb9afb590f02e150bcb3eee98d');
   const vastaus = await response.json();
   const aste = parseInt(vastaus.main.temp);
-  return aste
+  return aste;
 }
 
 async function viimeinen_taistelu() {
   valinta1.style.display = 'block';
   valinta2.style.display = 'block';
-  oikea_puoli.style.pointerEvents = 'none'
+  for (let nappi of kartta_nappi) {
+    nappi.style.pointerEvents = 'none';
+  }
   try {
     valinta1.removeEventListener('click', valinta1kuuntelija);
     valinta2.removeEventListener('click', valinta2kuuntelija);
@@ -216,18 +219,23 @@ async function viimeinen_taistelu() {
     valinta1.addEventListener('click', valinta1kuuntelija = async function() {
       valinta1.style.display = 'none';
       valinta2.style.display = 'none';
-
+      for (let nappi of kartta_nappi) {
+        nappi.style.pointerEvents = 'none';
+      }
       await avaa_taistelu_ikkuna(await hae_tunnettu_vihollinen(3));
 
-      await pelin_lopetus()
+      await pelin_lopetus();
     });
 
     valinta2.addEventListener('click', valinta2kuuntelija = async function() {
       valinta1.style.display = 'none';
       valinta2.style.display = 'none';
+      for (let nappi of kartta_nappi) {
+        nappi.style.pointerEvents = 'none';
+      }
       await avaa_taistelu_ikkuna(await hae_tunnettu_vihollinen(3));
 
-      await pelin_lopetus()
+      await pelin_lopetus();
     });
   }
 }

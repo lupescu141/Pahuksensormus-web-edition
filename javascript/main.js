@@ -21,6 +21,7 @@ const paikkatausta = document.getElementById('paikkatausta');
 const tutki_nappi = document.getElementById('tutki');
 const valinta1 = document.getElementById('valinta1');
 const valinta2 = document.getElementById('valinta2');
+const pelaaja_napit = document.querySelectorAll('.pelaaja-nappi');
 // Loki elementit
 const textarea = document.getElementById('loki');
 const taisteluloki = document.getElementById('taistelu-loki');
