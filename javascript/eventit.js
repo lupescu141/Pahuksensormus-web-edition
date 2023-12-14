@@ -89,7 +89,7 @@ async function pelin_lopetus() {
       // piilotetaan valinta napit eventin jälkeen
       valinta1.style.display = 'none';
       valinta2.style.display = 'none';
-      taisteluloki.value += `\n\n-Paina Enter palataksesi alkuvalikkoon`;
+      textarea.value += `\n\n-Paina Enter palataksesi alkuvalikkoon`;
       document.addEventListener('keydown', function(event) {
         // Tarkistetaan, onko painalluksen koodi Enter (koodi 'Enter' tai 'NumpadEnter')
         if (event.code === 'Enter' || event.code === 'NumpadEnter') {
@@ -114,7 +114,7 @@ async function pelin_lopetus() {
       // piilotetaan valinta napit eventin jälkeen
       valinta1.style.display = 'none';
       valinta2.style.display = 'none';
-      taisteluloki.value += `\n\n-Paina Enter palataksesi alkuvalikkoon`;
+      textarea.value += `\n\n-Paina Enter palataksesi alkuvalikkoon`;
       document.addEventListener('keydown', function(event) {
         // Tarkistetaan, onko painalluksen koodi Enter (koodi 'Enter' tai 'NumpadEnter')
         if (event.code === 'Enter' || event.code === 'NumpadEnter') {
