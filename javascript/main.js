@@ -149,6 +149,7 @@ kohde_1.addEventListener('click', async function() {
   textarea.value += `\n-Päätät matkustaa kohteeseen ${kohde_1.name}. Sinne on ${kohde_1.value} päivän matkustus`;
   textarea.scrollTop = textarea.scrollHeight;
   await taistelu_mahdollisuus(kohde_1.value);
+  await musiikki_sijainti()
   await matkustaminen();
   textarea.value += `\n-Olet matkustanut yhteensä ${pelaaja_olio.menneet_paivat} päivää. Voit levätä matkojen välissä jos tarvitset lisää HP tai TP`;
   textarea.scrollTop = textarea.scrollHeight;
@@ -171,7 +172,8 @@ kohde_2.addEventListener('click', async function() {
   console.log(`pelaaja on matkustanut ${pelaaja_olio.menneet_paivat} päivää`);
   textarea.value += `\n-Päätät matkustaa kohteeseen ${kohde_2.name}. Sinne on ${kohde_2.value} päivän matkustus`;
   textarea.scrollTop = textarea.scrollHeight;
-  await taistelu_mahdollisuus(kohde_1.value);
+  await taistelu_mahdollisuus(kohde_2.value);
+  await musiikki_sijainti()
   await matkustaminen();
   textarea.value += `\n-Olet matkustanut yhteensä ${pelaaja_olio.menneet_paivat} päivää. Voit levätä matkojen välissä jos tarvitset lisää HP tai TP`;
   textarea.scrollTop = textarea.scrollHeight;
@@ -194,7 +196,8 @@ kohde_3.addEventListener('click', async function() {
   console.log(`pelaaja on matkustanut ${pelaaja_olio.menneet_paivat} päivää`);
   textarea.value += `\n-Päätät matkustaa kohteeseen ${kohde_3.name}. Sinne on ${kohde_3.value} päivän matkustus`;
   textarea.scrollTop = textarea.scrollHeight;
-  await taistelu_mahdollisuus(kohde_1.value);
+  await taistelu_mahdollisuus(kohde_3.value);
+  await musiikki_sijainti()
   await matkustaminen();
   textarea.value += `\n-Olet matkustanut yhteensä ${pelaaja_olio.menneet_paivat} päivää. Voit levätä matkojen välissä jos tarvitset lisää HP tai TP`;
   textarea.scrollTop = textarea.scrollHeight;
@@ -217,7 +220,8 @@ kohde_4.addEventListener('click', async function() {
   console.log(`pelaaja on matkustanut ${pelaaja_olio.menneet_paivat} päivää`);
   textarea.value += `\n-Päätät matkustaa kohteeseen ${kohde_4.name}. Sinne on ${kohde_4.value} päivän matkustus`;
   textarea.scrollTop = textarea.scrollHeight;
-  await taistelu_mahdollisuus(kohde_1.value);
+  await taistelu_mahdollisuus(kohde_4.value);
+  await musiikki_sijainti()
   await matkustaminen();
   textarea.value += `\n-Olet matkustanut yhteensä ${pelaaja_olio.menneet_paivat} päivää. Voit levätä matkojen välissä jos tarvitset lisää HP tai TP`;
   textarea.scrollTop = textarea.scrollHeight;
@@ -240,7 +244,8 @@ kohde_5.addEventListener('click', async function() {
   console.log(`pelaaja on matkustanut ${pelaaja_olio.menneet_paivat} päivää`);
   textarea.value += `\n-Päätät matkustaa kohteeseen ${kohde_5.name}. Sinne on ${kohde_5.value} päivän matkustus`;
   textarea.scrollTop = textarea.scrollHeight;
-  await taistelu_mahdollisuus(kohde_1.value);
+  await taistelu_mahdollisuus(kohde_5.value);
+  await musiikki_sijainti()
   await matkustaminen();
   textarea.value += `\n-Olet matkustanut yhteensä ${pelaaja_olio.menneet_paivat} päivää. Voit levätä matkojen välissä jos tarvitset lisää HP tai TP`;
   textarea.scrollTop = textarea.scrollHeight;
@@ -263,7 +268,8 @@ kohde_6.addEventListener('click', async function() {
   console.log(`pelaaja on matkustanut ${pelaaja_olio.menneet_paivat} päivää`);
   textarea.value += `\n-Päätät matkustaa kohteeseen ${kohde_6.name}. Sinne on ${kohde_6.value} päivän matkustus`;
   textarea.scrollTop = textarea.scrollHeight;
-  await taistelu_mahdollisuus(kohde_1.value);
+  await taistelu_mahdollisuus(kohde_6.value);
+  await musiikki_sijainti()
   await matkustaminen();
   textarea.value += `\n-Olet matkustanut yhteensä ${pelaaja_olio.menneet_paivat} päivää. Voit levätä matkojen välissä jos tarvitset lisää HP tai TP`;
   textarea.scrollTop = textarea.scrollHeight;
@@ -286,7 +292,8 @@ kohde_7.addEventListener('click', async function() {
   console.log(`pelaaja on matkustanut ${pelaaja_olio.menneet_paivat} päivää`);
   textarea.value += `\n-Päätät matkustaa kohteeseen ${kohde_7.name}. Sinne on ${kohde_7.value} päivän matkustus`;
   textarea.scrollTop = textarea.scrollHeight;
-  await taistelu_mahdollisuus(kohde_1.value);
+  await taistelu_mahdollisuus(kohde_7.value);
+  await musiikki_sijainti()
   await matkustaminen();
   textarea.value += `\n-Olet matkustanut yhteensä ${pelaaja_olio.menneet_paivat} päivää. Voit levätä matkojen välissä jos tarvitset lisää HP tai TP`;
   textarea.scrollTop = textarea.scrollHeight;
@@ -309,7 +316,8 @@ kohde_8.addEventListener('click', async function() {
   console.log(`pelaaja on matkustanut ${pelaaja_olio.menneet_paivat} päivää`);
   textarea.value += `\n-Päätät matkustaa kohteeseen ${kohde_8.name}. Sinne on ${kohde_8.value} päivän matkustus`;
   textarea.scrollTop = textarea.scrollHeight;
-  await taistelu_mahdollisuus(kohde_1.value);
+  await taistelu_mahdollisuus(kohde_8.value);
+  await musiikki_sijainti()
   await matkustaminen();
   textarea.value += `\n-Olet matkustanut yhteensä ${pelaaja_olio.menneet_paivat} päivää. Voit levätä matkojen välissä jos tarvitset lisää HP tai TP`;
   textarea.scrollTop = textarea.scrollHeight;
@@ -332,7 +340,8 @@ kohde_9.addEventListener('click', async function() {
   console.log(`pelaaja on matkustanut ${pelaaja_olio.menneet_paivat} päivää`);
   textarea.value += `\n-Päätät matkustaa kohteeseen ${kohde_9.name}. Sinne on ${kohde_9.value} päivän matkustus`;
   textarea.scrollTop = textarea.scrollHeight;
-  await taistelu_mahdollisuus(kohde_1.value);
+  await musiikki_sijainti()
+  await taistelu_mahdollisuus(kohde_9.value);
   await matkustaminen();
   textarea.value += `\n-Olet matkustanut yhteensä ${pelaaja_olio.menneet_paivat} päivää. Voit levätä matkojen välissä jos tarvitset lisää HP tai TP`;
   textarea.scrollTop = textarea.scrollHeight;
@@ -355,7 +364,8 @@ kohde_10.addEventListener('click', async function() {
   console.log(`pelaaja on matkustanut ${pelaaja_olio.menneet_paivat} päivää`);
   textarea.value += `\n-Päätät matkustaa kohteeseen ${kohde_10.name}. Sinne on ${kohde_10.value} päivän matkustus`;
   textarea.scrollTop = textarea.scrollHeight;
-  await taistelu_mahdollisuus(kohde_1.value);
+  await musiikki_sijainti()
+  await taistelu_mahdollisuus(kohde_10.value);
   await matkustaminen();
   textarea.value += `\n-Olet matkustanut yhteensä ${pelaaja_olio.menneet_paivat} päivää. Voit levätä matkojen välissä jos tarvitset lisää HP tai TP`;
   textarea.scrollTop = textarea.scrollHeight;
