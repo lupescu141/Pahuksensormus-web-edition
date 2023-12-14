@@ -159,7 +159,7 @@ let uudentoivonkylä_käytetyt_eventit = []
 function uudentoivonKylaEvent () {
   textarea.value = ''
   textarea.scrollTop = textarea.scrollHeight
-  textarea.value += '\n\n-Tervetuloa Uudentoivon kylään, seikkailusi alkupisteeseen. Kylässä on monia tapahtumia ja mahdollisuuksia, jotka voivat muokata matkaasi. Tästä seikkailusi alkaa, onnea matkaan!'
+  textarea.value += '\n\n-Tervetuloa Uudentoivon kylään. Kylässä on monia tapahtumia ja mahdollisuuksia, jotka voivat muokata matkaasi. Onnea matkaan!'
   textarea.scrollTop = textarea.scrollHeight
   // Arpoo randomilla pelaajalle eventin 1, 2, 3.
 

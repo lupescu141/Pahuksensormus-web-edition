@@ -50,7 +50,7 @@ const taistelu = async (vihollinen1) => {
   //hakee random vihollisen
   vihollinen = await vihollinen1;
 
-  taisteluloki.value += `\n\n-Jouduit taisteluun vihollisen: ${vihollinen.vihollinen_nimi} kanssa!`;
+  taisteluloki.value += `\n\n-Jouduit taisteluun! Vihollisesi on: ${vihollinen.vihollinen_nimi} kanssa!`;
 
   hyokkaa_tooltip.innerText = `Perus hyökkäys 1-${pelaaja_olio.pelaaja_isku + 2} vahinkoa.`
   hyokkaa_tooltip.style.display = `hidden`;

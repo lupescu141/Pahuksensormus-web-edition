@@ -50,7 +50,7 @@ async function lepo() {
     // Päivittää pelaajalle maksimi HP:n ja TP:n
     pelaaja_olio.pelaaja_hp = pelaaja_olio.pelaaja_maksimi_hp;
     pelaaja_olio.pelaaja_taitopiste = pelaaja_olio.pelaaja_maksimi_taitopiste;
-    textarea.value += '\n\n-Lepäsit yhden päivä. HP ja TP ovat maksimissaan';
+    textarea.value += '\n\n-Lepäsit yhden päivän. HP ja TP ovat maksimissaan';
     textarea.scrollTop = textarea.scrollHeight;
 
     pelaaja_olio.menneet_paivat++;
