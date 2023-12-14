@@ -415,8 +415,8 @@ function kukkienHurmio () {
   valinta2.addEventListener('click', valinta2kuuntelija = async function () {
     textarea.value = ''
     textarea.scrollTop = textarea.scrollHeight
-    textarea.value += '\n\n-Poimimalla kukkia huolettomasti, kukkien henki herää ja ne kutsuvat tappavan kauniin syöjättären luokseen. Joudut taisteluun syöjättären kanssa!'
-    textarea.scrollTop = textarea.scrollHeight
+    taisteluloki.value += '\n\n-Poimimalla kukkia huolettomasti, kukkien henki herää ja ne kutsuvat tappavan kauniin syöjättären luokseen.'
+    taisteluloki.scrollTop = textarea.scrollHeight
     await avaa_taistelu_ikkuna(await hae_tunnettu_vihollinen(14)) // OHJAA TAISTELUUN SYÖJÄTÄR KUNINGATTAREN KANSSA
     valinta1.style.display = 'none'
     valinta2.style.display = 'none'
