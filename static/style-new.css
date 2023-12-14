@@ -500,7 +500,6 @@ button:hover {
 }
 
 .esine-napit{
-
 }
 
 .taito-napit {
@@ -580,12 +579,15 @@ button:hover {
     border-radius: 5px;
 }
 
+
 .esine-napit {
     display: inline-grid;
     grid-template-columns: 33.33% 33.33% 33.33%;
+    grid-template-rows: 25% 25% 25% 24%;
     position: absolute;
     bottom: 2%;
     width: 38%;
+    height: 30%;
     z-index: 1;
 }
 
@@ -593,6 +595,7 @@ button:hover {
     background: none;
     border: none;
     display: none;
+    height: 80%;
 }
 
 .inventaaio_nappi:hover{
@@ -600,14 +603,12 @@ button:hover {
 }
 
 .esine-div {
-    height: 5.5rem;
+    display: flex;
     border: black solid;
     box-shadow: inset rgb(26 6 2) 0 0 32px 10px;
-    display: flex;
-    flex-wrap: nowrap;
     justify-content: center;
+    align-items: center;
 }
-
 
 .jatka-nappi{
     display: none;

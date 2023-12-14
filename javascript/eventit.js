@@ -1204,6 +1204,9 @@ function keijukaistenKuningatar() {
   valinta1.addEventListener('click', valinta1kuuntelija = async function() {
     textarea.value = '';
     textarea.scrollTop = textarea.scrollHeight;
+    efekti_hihihi.play();
+    wait(1000);
+    efekti_pusu.play();
     textarea.value += '\n\n-Valinta 1: Ilmaisit ihailusi kunnioittavasti ja rakkaudella. Keijukainen avaa sydämensä sinulle.';
     textarea.value += '\n\n-Koette lumoavan yön suohiisien valossa. Saat keijukaiselta taitojuomia matkaasi.';
     textarea.scrollTop = textarea.scrollHeight;
