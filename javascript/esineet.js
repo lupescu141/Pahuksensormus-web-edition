@@ -1,4 +1,4 @@
-const eliksiiri = () => {
+const kayta_eliksiiri = () => {
   const vahinko_arvo = (Math.floor(Math.random() * 7) + 1) +
       (Math.floor(Math.random() * 7) + 1) + 2;
   efekti_eliksiiri1.play();
@@ -9,7 +9,7 @@ const eliksiiri = () => {
   taisteluloki.innerText += `\nJoit eliksiirin ja sait ${vahinko_arvo} elämäpistettä`;
 };
 
-const vastamyrkky = (pelaaja_statukset) => {
+const kayta_vastamyrkky = (pelaaja_statukset) => {
   efekti_eliksiiri1.play();
   wait(500);
   efekti_eliksiiri2.play();
@@ -17,7 +17,7 @@ const vastamyrkky = (pelaaja_statukset) => {
   taisteluloki.innerText += '\nJoit vastamyrkyn.';
 };
 
-const vesipullo = (pelaaja_statukset) => {
+const kayta_vesipullo = (pelaaja_statukset) => {
   efekti_eliksiiri1.play();
   wait(500);
   efekti_eliksiiri2.play();
@@ -25,7 +25,7 @@ const vesipullo = (pelaaja_statukset) => {
   taisteluloki.innerText += '\nKastelit itsesi vesipullolla.';
 };
 
-const taikasauva = (vihollinen, vihollinen_statukset) => {
+const kayta_taikasauva = (vihollinen, vihollinen_statukset) => {
   const vahinko_arvo = (Math.floor(Math.random() * 7) + 1) +
       (Math.floor(Math.random() * 7) + 1) + 2;
   efekti_tulipallo.play();
@@ -36,7 +36,7 @@ const taikasauva = (vihollinen, vihollinen_statukset) => {
   taisteluloki.innerText += `\nKäytit taikasauvaa ja ${vihollinen.vihollinen_nimi} menetti ${vahinko_arvo} elämäpistettä.`;
 };
 
-const taitojuoma = () => {
+const kayta_taitojuoma = () => {
   efekti_eliksiiri1.play();
   wait(500);
   efekti_eliksiiri2.play();
