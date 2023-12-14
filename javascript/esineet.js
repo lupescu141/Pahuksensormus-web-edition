@@ -5,7 +5,7 @@ const eliksiiri = () => {
     efekti_eliksiiri2.play();
     pelaaja_olio.pelaaja_hp += vahinko_arvo;
     pelaaja_hp.innerText = pelaaja_olio.pelaaja_hp;
-    taisteluloki.innerText += `Joit eliksiirin ja sait ${vahinko_arvo} elämäpistettä`;
+    taisteluloki.innerText += `\nJoit eliksiirin ja sait ${vahinko_arvo} elämäpistettä`;
 }
 
 const vastamyrkky = (pelaaja_statukset) =>  {
@@ -13,7 +13,7 @@ const vastamyrkky = (pelaaja_statukset) =>  {
     wait(500);
     efekti_eliksiiri2.play();
     pelaaja_statukset.myrkytetty = 0;
-    taisteluloki.innerText += 'Joit vastamyrkyn';
+    taisteluloki.innerText += '\nJoit vastamyrkyn.';
 }
 
 const vesipullo = (pelaaja_statukset) =>  {
@@ -21,7 +21,7 @@ const vesipullo = (pelaaja_statukset) =>  {
     wait(500);
     efekti_eliksiiri2.play();
     pelaaja_statukset.palaa = 0;
-    taisteluloki.innerText += 'Joit vastamyrkyn';
+    taisteluloki.innerText += '\nKastelit itsesi vesipullolla.';
 }
 
 const taikasauva = (vihollinen, vihollinen_statukset) =>{
@@ -31,5 +31,14 @@ const taikasauva = (vihollinen, vihollinen_statukset) =>{
     vihollinen.vihollinen_hp -= vahinko_arvo;
     vihollinen_hp.innerText = vihollinen.vihollinen_hp;
     vihollinen_statukset.tainnutettu += 1;
-    taisteluloki.innerText += `Käytit taikasauvaa ja ${vihollinen.vihollinen_nimi} menetti ${vahinko_arvo} elämäpistettä.`
+    taisteluloki.innerText += `\nKäytit taikasauvaa ja ${vihollinen.vihollinen_nimi} menetti ${vahinko_arvo} elämäpistettä.`
+}
+
+const taitojuoma = () => {
+    efekti_eliksiiri1.play();
+    wait(500);
+    efekti_eliksiiri2.play();
+    pelaaja_olio.pelaaja_taitopiste = pelaaja_olio.pelaaja_maksimi_taitopiste;
+    pelaaja_tp.innerText = pelaaja_olio.pelaaja_taitopiste;
+    taisteluloki.innerText += `\nJoit taitojuoman ja sait ${pelaaja_olio.pelaaja_taitopiste} taitopistettä.`;
 }
