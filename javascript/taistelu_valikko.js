@@ -4,9 +4,8 @@ async function avaa_taistelu_ikkuna(vihollinen) {
   document.querySelector('.oikea-puoli').style.display = 'none';
   document.querySelector('.oikea-puoli-taistelu').style.display = 'block';
 
-
   // Piilota Lepää ja Esineet napit status ikkunasta
-  document.querySelector(".esine-napit").style.display = 'none';
+  document.querySelector('.esine-napit').style.display = 'none';
   const napit = pelaaja_status.querySelectorAll('.nappi');
   napit.forEach(nappi => {
     nappi.style.display = 'none';
@@ -16,25 +15,24 @@ async function avaa_taistelu_ikkuna(vihollinen) {
       nappi.style.display = 'block';
     });
 
-    jatka.style.display = 'none'
+    jatka.style.display = 'none';
   });
 
   // Tuodaan vihollisen kuva esiin pelaajan viereen
-  document.querySelector('.vihollinen-kuva').style.display = 'flex'
+  document.querySelector('.vihollinen-kuva').style.display = 'flex';
   // Piilotetaan loki
-  document.querySelector('.loki').style.display = 'none'
+  document.querySelector('.loki').style.display = 'none';
   // Lokin tilalle taistelu rivi
-  document.querySelector('.taistelu-rivi').style.display = 'flex'
+  document.querySelector('.taistelu-rivi').style.display = 'flex';
 
   // Lisää pelaaja_status taistelu_rivi:n ensimmäiseksi lapseksi
   taistelu_rivi.insertBefore(pelaaja_status, taistelu_rivi.firstChild);
 
-  console.log(vihollinen)
+  console.log(vihollinen);
 
   // Testausta varten
   await taistelu(vihollinen);
 }
-
 
 // Sulkee taistelu näkymän. Siirretään pelaajan status takaisin ylös
 function lopeta_taistelu() {
@@ -45,8 +43,6 @@ function lopeta_taistelu() {
   document.querySelector('.oikea-puoli-taistelu').style.display = 'none';
   document.querySelector('.oikea-puoli').style.display = 'flex';
 
-
-
   // Tuodaan Lepää ja Esineet napit esiin status näkymään
   const napit = pelaaja_status.querySelectorAll('.nappi');
   napit.forEach(nappi => {
@@ -54,16 +50,15 @@ function lopeta_taistelu() {
   });
 
   // Piilotetaan vihollisen kuva
-  document.querySelector('.vihollinen-kuva').style.display = 'none'
+  document.querySelector('.vihollinen-kuva').style.display = 'none';
   // Tuodaan Loki esiin
-  document.querySelector('.loki').style.display = 'flex'
+  document.querySelector('.loki').style.display = 'flex';
   // Piilotetaan taistelurivi
-  document.querySelector('.taistelu-rivi').style.display = 'none'
+  document.querySelector('.taistelu-rivi').style.display = 'none';
 
   // Lisää pelaaja_status ylärivin viimeiseksi lapseksi
   pelaaja_info.appendChild(pelaaja_status);
 }
-
 
 // Avaa halutun ala-valikon taistelussa
 function nayta_valikko(valikko) {
@@ -76,30 +71,29 @@ function nayta_valikko(valikko) {
   document.getElementById('palaa').style.display = 'block';
 }
 
-
 // Piilottaa kaikki napit taistelu valikosta
 function piilota_kaikki_napit() {
-  document.querySelector(".esine-napit").style.display = 'none';
+  document.querySelector('.esine-napit').style.display = 'none';
 
-  taito_napit.forEach((nappi)=> {
+  taito_napit.forEach((nappi) => {
     nappi.style.display = 'none';
-  })
+  });
 
-  document.querySelectorAll('.taistelu-valikko-nappi, .isku-nappi, .jatka-nappi').
+  document.querySelectorAll(
+      '.taistelu-valikko-nappi, .isku-nappi, .jatka-nappi').
       forEach(nappi => {
         nappi.style.display = 'none';
       });
 }
-
 
 // Palaa ala-valikosta taistelu valikkoon
 function palaa() {
   // Piilotaa ensin kaikki napit
   piilota_kaikki_napit();
   // Avaa taisteluvalikon napit
-   document.querySelectorAll('.taistelu-valikko-nappi').forEach(nappi => {
+  document.querySelectorAll('.taistelu-valikko-nappi').forEach(nappi => {
     nappi.style.display = 'block';
   });
 
-   jatka.style.display = 'none';
+  jatka.style.display = 'none';
 }
