@@ -117,6 +117,7 @@ hahmoluokka_kuva.forEach(kuva => {
         kartta.style.display = 'flex';
 
         await matkustaminen();
+        await musiikki_sijainti()
 
       }
     });
@@ -175,6 +176,7 @@ async function avaa_lataapeli_valikko() {
       kartta.style.display = 'flex';
 
       await matkustaminen();
+      await musiikki_sijainti()
     });
   }
 }

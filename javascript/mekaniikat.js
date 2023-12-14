@@ -100,11 +100,11 @@ async function taistelu_mahdollisuus(matkan_pituus) {
     pysayta_musiikit();
     pysayta_taustaAanet();
     efekti_taistelu_alkaa.play();
-    wait(1500);
     await avaa_taistelu_ikkuna(hae_random_vihollinen_tietokannasta());
   } else {
     textarea.value += `\n\n-Pääsit turvallisesti perille.`;
     textarea.scrollTop = textarea.scrollHeight;
+    musiikki_sijainti()
   }
 }
 
