@@ -132,7 +132,7 @@ async function pelin_lopetus() {
 function laukaise_event() {
   valinta1.style.display = 'block';
   valinta2.style.display = 'block';
-
+  tutki_nappi.style.display = 'none';
   oikea_puoli.style.pointerEvents = 'none';
   try {
     valinta1.removeEventListener('click', valinta1kuuntelija);
