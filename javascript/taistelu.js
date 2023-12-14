@@ -7,13 +7,50 @@ jatka.addEventListener('click', async () => {
     await lopeta_taistelu();
     console.log(vihollinen.vihollinen_nimi + 'voitettu');
     textarea.scrollTop = textarea.scrollHeight;
+
     if (vihollinen.vihollinen_nimi === 'Gorgon') {
       valinta1.style.display = 'block';
       valinta2.style.display = 'block';
       oikea_puoli.style.pointerEvents = 'none';
     }
-  } else {
-    location.reload();
+  }
+
+  else if (vihollinen.vihollinen_nimi === 'Gorgon') {
+    jatka.style.display = 'none';
+    taisteluloki.scrollTop = taisteluloki.scrollHeight;
+    valinta1.style.display = 'none';
+    valinta2.style.display = 'none';
+    oikea_puoli.style.pointerEvents = 'none';
+    vasen_puoli.style.pointerEvents = 'none';
+    taisteluloki.value = '-Olet epäonnistunut. Gorgon ottaa kuolleen ruumiisi haltuun. Nyt uudella vartalolla hän on vahvempi kuin koskaan ja maailma on hänen vallassaan.';
+    taisteluloki.value += `\n\n-Seikkailusi kesti ${pelaaja_olio.menneet_paivat} päivää.`;
+    taisteluloki.value += `\n\n-Paina Enter palataksesi alkuvalikkoon`;
+    document.addEventListener('keydown', function(event) {
+      // Tarkistetaan, onko painalluksen koodi Enter (koodi 'Enter' tai 'NumpadEnter')
+      if (event.code === 'Enter' || event.code === 'NumpadEnter') {
+        // Kutsutaan haluamaasi toimintoa tässä
+        location.reload();
+      }
+    });
+  }
+
+  else {
+    jatka.style.display = 'none';
+    taisteluloki.scrollTop = taisteluloki.scrollHeight;
+    valinta1.style.display = 'none';
+    valinta2.style.display = 'none';
+    oikea_puoli.style.pointerEvents = 'none';
+    vasen_puoli.style.pointerEvents = 'none';
+    taisteluloki.value = '-Olet epäonnistunut. Gorgon ottaa maailman haltuunsa.';
+    taisteluloki.value += `\n\n-Seikkailusi kesti ${pelaaja_olio.menneet_paivat} päivää.`;
+    taisteluloki.value += `\n\n-Paina Enter palataksesi alkuvalikkoon`;
+    document.addEventListener('keydown', function(event) {
+      // Tarkistetaan, onko painalluksen koodi Enter (koodi 'Enter' tai 'NumpadEnter')
+      if (event.code === 'Enter' || event.code === 'NumpadEnter') {
+        // Kutsutaan haluamaasi toimintoa tässä
+        location.reload();
+      }
+    });
   }
 });
 
