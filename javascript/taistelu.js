@@ -7,13 +7,50 @@ jatka.addEventListener('click', async () => {
     await lopeta_taistelu();
     console.log(vihollinen.vihollinen_nimi + 'voitettu');
     textarea.scrollTop = textarea.scrollHeight;
+
     if (vihollinen.vihollinen_nimi === 'Gorgon') {
       valinta1.style.display = 'block';
       valinta2.style.display = 'block';
       oikea_puoli.style.pointerEvents = 'none';
     }
-  } else {
-    location.reload();
+  }
+
+  else if (vihollinen.vihollinen_nimi === 'Gorgon') {
+    jatka.style.display = 'none';
+    taisteluloki.scrollTop = taisteluloki.scrollHeight;
+    valinta1.style.display = 'none';
+    valinta2.style.display = 'none';
+    oikea_puoli.style.pointerEvents = 'none';
+    vasen_puoli.style.pointerEvents = 'none';
+    taisteluloki.value = '-Olet epäonnistunut. Gorgon ottaa kuolleen ruumiisi haltuun. Nyt uudella vartalolla hän on vahvempi kuin koskaan ja maailma on hänen vallassaan.';
+    taisteluloki.value += `\n\n-Seikkailusi kesti ${pelaaja_olio.menneet_paivat} päivää.`;
+    taisteluloki.value += `\n\n-Paina Enter palataksesi alkuvalikkoon`;
+    document.addEventListener('keydown', function(event) {
+      // Tarkistetaan, onko painalluksen koodi Enter (koodi 'Enter' tai 'NumpadEnter')
+      if (event.code === 'Enter' || event.code === 'NumpadEnter') {
+        // Kutsutaan haluamaasi toimintoa tässä
+        location.reload();
+      }
+    });
+  }
+
+  else {
+    jatka.style.display = 'none';
+    taisteluloki.scrollTop = taisteluloki.scrollHeight;
+    valinta1.style.display = 'none';
+    valinta2.style.display = 'none';
+    oikea_puoli.style.pointerEvents = 'none';
+    vasen_puoli.style.pointerEvents = 'none';
+    taisteluloki.value = '-Olet epäonnistunut. Gorgon ottaa maailman haltuunsa.';
+    taisteluloki.value += `\n\n-Seikkailusi kesti ${pelaaja_olio.menneet_paivat} päivää.`;
+    taisteluloki.value += `\n\n-Paina Enter palataksesi alkuvalikkoon`;
+    document.addEventListener('keydown', function(event) {
+      // Tarkistetaan, onko painalluksen koodi Enter (koodi 'Enter' tai 'NumpadEnter')
+      if (event.code === 'Enter' || event.code === 'NumpadEnter') {
+        // Kutsutaan haluamaasi toimintoa tässä
+        location.reload();
+      }
+    });
   }
 });
 
@@ -47,7 +84,9 @@ const taistelu = async (vihollinen1) => {
   if (vihollinen1.vihollinen_nimi === 'Gorgon') {
     pysayta_musiikit();
     gorgon_musiikki.play();
-  } else {
+  }
+
+  else {
     pysayta_musiikit();
     random_taistelubiisi();
   }
@@ -97,8 +136,7 @@ const taistelu = async (vihollinen1) => {
     if (pelaaja_olio.pelaaja_taitopiste > 0) {
 
       palaa();
-      tarkista_taito(pelaaja_taidot[1].taito_nimi, vihollinen,
-          vihollinen_statukset, pelaaja_olio, pelaaja_statukset);
+      tarkista_taito(pelaaja_taidot[1].taito_nimi, vihollinen, vihollinen_statukset, pelaaja_olio, pelaaja_statukset);
       pelaaja_olio.pelaaja_taitopiste -= 1;
       pelaaja_tp.innerText = pelaaja_olio.pelaaja_taitopiste;
 
@@ -112,8 +150,7 @@ const taistelu = async (vihollinen1) => {
     if (pelaaja_olio.pelaaja_taitopiste > 0) {
 
       palaa();
-      tarkista_taito(pelaaja_taidot[2].taito_nimi, vihollinen,
-          vihollinen_statukset, pelaaja_olio, pelaaja_statukset);
+      tarkista_taito(pelaaja_taidot[2].taito_nimi, vihollinen, vihollinen_statukset, pelaaja_olio, pelaaja_statukset);
       pelaaja_olio.pelaaja_taitopiste -= 1;
       pelaaja_tp.innerText = pelaaja_olio.pelaaja_taitopiste;
 
@@ -178,6 +215,7 @@ const taistelu = async (vihollinen1) => {
 const vihollisen_vuoro = async (vihollinen) => {
 
   if (pelaaja_statukset['myrkytetty'] > 0) {
+
     const myrkkyvahinko = (Math.floor(Math.random() * 4) + 1);
     pelaaja_olio.pelaaja_hp -= myrkkyvahinko;
     pelaaja_hp.innerText = pelaaja_olio.pelaaja_hp;
@@ -186,6 +224,7 @@ const vihollisen_vuoro = async (vihollinen) => {
   }
 
   if (vihollinen_statukset['palaa'] > 0) {
+
     vihollinen.vihollinen_hp -= 2;
     vihollinen_hp.innerText = vihollinen.vihollinen_hp;
     taisteluloki.value += `\nVihollinen palaa ja menetti 2 elämäpistettä.`;
@@ -198,6 +237,7 @@ const vihollisen_vuoro = async (vihollinen) => {
     const isku_osuma = (Math.floor(Math.random() * 21) + 1) + 2;
 
     if (isku_osuma >= pelaaja_olio.pelaaja_suojaus) {
+
       const isku = (Math.floor(Math.random() * vihollinen.vihollinen_isku) +
           1) + 2;
       pelaaja_olio.pelaaja_hp -= isku;
@@ -205,24 +245,29 @@ const vihollisen_vuoro = async (vihollinen) => {
       taisteluloki.value += `\n${vihollinen.vihollinen_nimi} teki sinuun ${isku} vahinkoa!`;
       taisteluloki.scrollTop = taisteluloki.scrollHeight;
       pelaaja_hp.innerText = pelaaja_olio.pelaaja_hp;
-    } else {
+    }
+
+    else {
       efketi_huti.play();
       taisteluloki.value += `\nVäistit vihollisen iskun!`;
       taisteluloki.scrollTop = taisteluloki.scrollHeight;
     }
 
     if (pelaaja_statukset['tainnutettu'] > 0) {
+
       pelaaja_statukset['tainnutettu'] -= 1;
       vihollisen_vuoro(vihollinen);
     }
   }
 
   if (vihollinen_statukset['tainnutettu'] > 0) {
+
     taisteluloki.value += `\n Vihollinen on taintunut.`;
     vihollinen_statukset['tainnutettu'] -= 1;
   }
 
   if (vihollinen_statukset['myrkytetty'] > 0) {
+
     const myrkkyvahinko = (Math.floor(Math.random() * 4) + 1);
     vihollinen.vihollinen_hp -= myrkkyvahinko;
     vihollinen_hp.innerText = vihollinen.vihollinen_hp;
@@ -231,6 +276,7 @@ const vihollisen_vuoro = async (vihollinen) => {
   }
 
   if (vihollinen.vihollinen_hp <= 0) {
+
     taisteluloki.value += `\n${vihollinen.vihollinen_nimi} kuoli!`;
     taisteluloki.value += `\nOnneksi olkoon voitit taistelun!`;
     taisteluloki.value += `\nPaina jatka nappia poistuaksesi taistelusta.`;
@@ -246,6 +292,7 @@ const vihollisen_vuoro = async (vihollinen) => {
   }
 
   if (pelaaja_statukset['palaa'] > 0) {
+
     pelaaja_olio.pelaaja_hp -= 2;
     pelaaja_hp.innerText = pelaaja_olio.pelaaja_hp;
     pelaaja_statukset['palaa'] -= 1;
@@ -272,67 +319,126 @@ const tarkista_taito = (
   if (taitonimi === 'tulipallo') {
     tulipallo(vihollinen, vihollinen_statukset);
     vihollisen_vuoro(vihollinen);
-  } else if (taitonimi === 'siunaus') {
+  }
+
+  else if (taitonimi === 'siunaus') {
     siunaus(pelaaja, pelaaja_statukset);
     vihollisen_vuoro(vihollinen);
-  } else if (taitonimi === 'pyhä isku') {
+  }
+
+  else if (taitonimi === 'pyhä isku') {
     pyha_isku(vihollinen);
     vihollisen_vuoro(vihollinen);
-  } else if (taitonimi === 'myrkytetty miekka') {
+  }
+
+  else if (taitonimi === 'myrkytetty miekka') {
     myrkytetty_miekka(vihollinen, vihollinen_statukset);
     vihollisen_vuoro(vihollinen);
-  } else if (taitonimi === 'palava nuoli') {
+  }
+
+  else if (taitonimi === 'palava nuoli') {
     palava_nuoli(vihollinen, vihollinen_statukset);
     vihollisen_vuoro(vihollinen);
-  } else if (taitonimi === 'elämä varkaus') {
+  }
+
+  else if (taitonimi === 'elämä varkaus') {
     elämä_varkaus(pelaaja);
-  } else if (taitonimi === 'parasiitti') {
+
+  }
+
+  else if (taitonimi === 'parasiitti') {
     parasiitti(pelaaja);
-  } else if (taitonimi === 'kannibalismi') {
+  }
+
+  else if (taitonimi === 'kannibalismi') {
     kannibalismi(pelaaja);
-  } else if (taitonimi === 'puukon heilutus') {
+  }
+
+  else if (taitonimi === 'puukon heilutus') {
     puukon_heilutus(pelaaja);
-  } else if (taitonimi === 'myrkytys') {
+  }
+
+  else if (taitonimi === 'myrkytys') {
     myrkytys(pelaaja);
-  } else if (taitonimi === 'luuhyökkäys') {
+  }
+
+  else if (taitonimi === 'luuhyökkäys') {
     luuhyökkäys(pelaaja);
-  } else if (taitonimi === 'nappaus') {
+  }
+
+  else if (taitonimi === 'nappaus') {
     nappaus(pelaaja);
-  } else if (taitonimi === 'noituus') {
+  }
+
+  else if (taitonimi === 'noituus') {
     noituus(pelaaja);
-  } else if (taitonimi === 'jengi') {
+  }
+
+  else if (taitonimi === 'jengi') {
     jengi(pelaaja);
-  } else if (taitonimi === 'siipisakset') {
+  }
+
+  else if (taitonimi === 'siipisakset') {
     siipisakset(pelaaja);
-  } else if (taitonimi === 'kaato') {
+  }
+
+  else if (taitonimi === 'kaato') {
     kaato(pelaaja);
-  } else if (taitonimi === 'myrkky') {
+  }
+
+  else if (taitonimi === 'myrkky') {
     myrkky(pelaaja);
-  } else if (taitonimi === 'suohonveto') {
+  }
+
+  else if (taitonimi === 'suohonveto') {
     suohonveto(pelaaja);
-  } else if (taitonimi === 'myrkky') {
+  }
+
+  else if (taitonimi === 'myrkky') {
     myrkky(pelaaja);
-  } else if (taitonimi === 'palanaps') {
+  }
+
+  else if (taitonimi === 'palanaps') {
     palanaps(pelaaja);
-  } else if (taitonimi === 'palo') {
+  }
+
+  else if (taitonimi === 'palo') {
     palo(pelaaja);
-  } else if (taitonimi === 'puraisu') {
+  }
+
+  else if (taitonimi === 'puraisu') {
     puraisu(pelaaja);
-  } else if (taitonimi === 'oppilaan loitsu') {
+  }
+
+  else if (taitonimi === 'oppilaan loitsu') {
     loitsu_oppilas(pelaaja);
-  } else if (taitonimi === 'vesikauhu') {
+  }
+
+  else if (taitonimi === 'vesikauhu') {
     vesikauhu(pelaaja);
-  } else if (taitonimi === 'velhon loitsu') {
+  }
+
+  else if (taitonimi === 'velhon loitsu') {
     loitsu_velho(pelaaja);
-  } else if (taitonimi === 'super peikkojengi') {
+  }
+
+  else if (taitonimi === 'super peikkojengi') {
     speikkojengi(pelaaja);
-  } else if (taitonimi === 'vihollisen tulipallo') {
+  }
+
+  else if (taitonimi === 'vihollisen tulipallo') {
     vtulipallo(pelaaja);
-  } else if (taitonimi === 'noidan loitsu') {
+  }
+
+  else if (taitonimi === 'noidan loitsu') {
     loitsu_noita(pelaaja);
-  } else if (taitonimi === 'herran vesikauhu') {
+  }
+
+  else if (taitonimi === 'herran vesikauhu') {
     herravesikauhu(pelaaja);
-  } else if (taitonimi === 'sielunotto') {
+  }
+
+  else if (taitonimi === 'sielunotto') {
     sielunotto(pelaaja);
   }
 };
