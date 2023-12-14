@@ -79,7 +79,7 @@ const uudentoivonKyla_tausta = new Howl({
 const uudentoivonKyla_musiikki = new Howl({
     src: ['../static/aanet/musiikki/uudentoivon-kyla_musiikki.wav'],
     loop: true,
-    volume: 0.2,
+    volume: 0.1,
     autoplay: false
 })
 
@@ -241,7 +241,7 @@ const efekti_sormus = new Howl({
 
 const efekti_taistelu_alkaa = new Howl({
     src: ['../static/aanet/efektit/taistelu_alkaa.mp3'],
-    volume: 0.5,
+    volume: 0.3,
     autoplay: false
 })
 

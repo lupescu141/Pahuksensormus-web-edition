@@ -203,11 +203,35 @@ const taistelu = async (vihollinen1) => {
     esineet.style.display = 'inline-grid';
     taistelu_palaa_nappi.style.display = 'block';
     inventaario_nappi.forEach((nappi) => {
-      nappi.style.display = 'block';
+      nappi.style.display = 'none';
     });
 
     for (let i = 0; i < pelaaja_inventaario.length; i++) {
       inventaario_nappi[i].textContent = pelaaja_inventaario[i].esine_nimi;
+
+      if (pelaaja_inventaario[i].esine_nimi === 'vesipullo'){
+        console.log('yo');
+        inventaario_nappi[i].src = '../static/images/esineet/vesipullo.png';
+        inventaario_nappi[i].style.display = 'block';
+      }
+
+      else if (pelaaja_inventaario[i].esine_nimi === 'eliksiiri'){
+        console.log('yo');
+        inventaario_nappi[i].src = '../static/images/esineet/elämäjuoma.png';
+        inventaario_nappi[i].style.display = 'block';
+      }
+
+      else if (pelaaja_inventaario[i].esine_nimi === 'taitojuoma'){
+        console.log('yo');
+        inventaario_nappi[i].src = "../static/images/esineet/tp_eliksiiri.png";
+        inventaario_nappi[i].style.display = 'block';
+      }
+
+      else if (pelaaja_inventaario[i].esine_nimi === 'vastamyrkky'){
+        console.log('yo');
+        inventaario_nappi[i].src = '../static/images/esineet/vastamyrkky.png'
+        inventaario_nappi[i].style.display = 'block';
+      }
     }
   });
 };
