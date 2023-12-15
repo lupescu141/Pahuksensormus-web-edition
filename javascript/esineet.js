@@ -6,6 +6,7 @@ const kayta_eliksiiri = () => {
   efekti_eliksiiri2.play();
   wait(500);
   efekti_eliksiiri2.stop();
+   efekti_nielee.play();
   pelaaja_olio.pelaaja_hp += vahinko_arvo;
   pelaaja_hp.innerText = pelaaja_olio.pelaaja_hp;
   taisteluloki.innerText += `\nJoit eliksiirin ja sait ${vahinko_arvo} elämäpistettä`;
@@ -18,6 +19,7 @@ const kayta_vastamyrkky = (pelaaja_statukset) => {
   efekti_eliksiiri2.play();
   wait(500);
   efekti_eliksiiri2.stop();
+   efekti_nielee.play();
   pelaaja_statukset.myrkytetty = 0;
   taisteluloki.innerText += '\nJoit vastamyrkyn.';
   poista_esine(pelaaja_inventaario, 4)
@@ -29,6 +31,7 @@ const kayta_vesipullo = (pelaaja_statukset) => {
   efekti_eliksiiri2.play();
   wait(500);
   efekti_eliksiiri2.stop();
+   efekti_nielee.play();
   pelaaja_statukset.palaa = 0;
   taisteluloki.innerText += '\nKastelit itsesi vesipullolla.';
   poista_esine(pelaaja_inventaario, 5)
@@ -52,6 +55,7 @@ const kayta_taitojuoma = () => {
   efekti_eliksiiri2.play();
   wait(500);
   efekti_eliksiiri2.stop();
+  efekti_nielee.play();
   pelaaja_olio.pelaaja_taitopiste = pelaaja_olio.pelaaja_maksimi_taitopiste;
   pelaaja_tp.innerText = pelaaja_olio.pelaaja_taitopiste;
   taisteluloki.innerText += `\nJoit taitojuoman ja sait ${pelaaja_olio.pelaaja_taitopiste} taitopistettä.`;
