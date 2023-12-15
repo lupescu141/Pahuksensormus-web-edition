@@ -127,7 +127,7 @@ async function hae_esine() {
     'esineen_id': `${vastaus.esineen_id}`,
   };
   if (pelaaja_inventaario.length < 12) {
-    textarea.value = `Olet saanut esineen: ${vastaus.esine_nimi}.`
+    textarea.value += `Olet saanut esineen: ${vastaus.esine_nimi}.`
     pelaaja_inventaario.push(esine)
   }
   else {

@@ -4,16 +4,22 @@ jatka.addEventListener('click', async () => {
   taisteluloki.value = ' ';
 
   if (pelaaja_olio.pelaaja_hp > 0) {
-    await lopeta_taistelu();
-    await hae_esine()
-    console.log(vihollinen.vihollinen_nimi + 'voitettu');
-    textarea.scrollTop = textarea.scrollHeight;
+
 
     if (vihollinen.vihollinen_nimi === 'Gorgon') {
+      await lopeta_taistelu();
+      console.log(vihollinen.vihollinen_nimi + 'voitettu');
+      textarea.scrollTop = textarea.scrollHeight;
       valinta1.style.display = 'block';
       valinta2.style.display = 'block';
       tutki_nappi.style.display = 'none';
       document.getElementById('lepo').style.display = 'none'
+    }
+    else {
+      await lopeta_taistelu();
+      await hae_esine()
+      console.log(vihollinen.vihollinen_nimi + 'voitettu');
+      textarea.scrollTop = textarea.scrollHeight;
     }
   }
 
