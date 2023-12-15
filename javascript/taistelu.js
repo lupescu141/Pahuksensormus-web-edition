@@ -82,7 +82,10 @@ async function hae_vihollisen_taidot(vihollisen_id) {
   return vastaus;
 }
 
+let bonusvuoro = 1;
 const taistelu = async (vihollinen1) => {
+
+
 
   if (vihollinen1.vihollinen_nimi === 'Gorgon') {
     pysayta_musiikit();
@@ -117,21 +120,50 @@ const taistelu = async (vihollinen1) => {
   };
 
    for (let i = 0; i < 11; i++){
-    inventaario_nappi[i].addEventListener('click', () =>{
+    inventaario_nappi[i].addEventListener('click', esine = () =>{
       if (pelaaja_inventaario[i].esine_nimi === 'vesipullo'){
+
+        if (bonusvuoro === 1){
+          palaa();
         kayta_vesipullo(pelaaja_statukset);
+        bonusvuoro = 0;
+        }
+        else {
+          taisteluloki.value += 'Olet jo käytäny esineen tällävuorolla'
+        }
       }
 
       else if (pelaaja_inventaario[i].esine_nimi === 'eliksiiri'){
+         if (bonusvuoro === 1){
+          palaa();
         kayta_eliksiiri();
+        bonusvuoro = 0;
+        }
+        else {
+          taisteluloki.value += 'Olet jo käytäny esineen tällävuorolla'
+        }
       }
 
        else if (pelaaja_inventaario[i].esine_nimi === 'taikasauva'){
+          if (bonusvuoro === 1){
+          palaa();
         kayta_taikasauva(vihollinen,vihollinen_statukset);
+        bonusvuoro = 0;
+        }
+        else {
+          taisteluloki.value += 'Olet jo käytäny esineen tällävuorolla'
+        }
       }
 
         else if (pelaaja_inventaario[i].esine_nimi === 'taitojuoma'){
+         if (bonusvuoro === 1){
+          palaa();
         kayta_taitojuoma();
+        bonusvuoro = 0;
+        }
+        else {
+          taisteluloki.value += 'Olet jo käytäny esineen tällävuorolla'
+        }
       }
     })
   }
@@ -146,6 +178,7 @@ const taistelu = async (vihollinen1) => {
           vihollinen_statukset, pelaaja_olio, pelaaja_statukset);
       pelaaja_olio.pelaaja_taitopiste -= 1;
       pelaaja_tp.innerText = pelaaja_olio.pelaaja_taitopiste;
+      bonusvuoro = 1;
 
     } else {
 
@@ -161,7 +194,7 @@ const taistelu = async (vihollinen1) => {
           vihollinen_statukset, pelaaja_olio, pelaaja_statukset);
       pelaaja_olio.pelaaja_taitopiste -= 1;
       pelaaja_tp.innerText = pelaaja_olio.pelaaja_taitopiste;
-
+      bonusvuoro = 1;
     } else {
 
       taisteluloki.value += '\nSinulla ei ole taitopisteitä.';
@@ -172,6 +205,7 @@ const taistelu = async (vihollinen1) => {
     if (pelaaja_olio.pelaaja_taitopiste > 0) {
 
       palaa();
+      bonusvuoro = 1;
       tarkista_taito(pelaaja_taidot[2].taito_nimi, vihollinen,
           vihollinen_statukset, pelaaja_olio, pelaaja_statukset);
       pelaaja_olio.pelaaja_taitopiste -= 1;
@@ -188,6 +222,7 @@ const taistelu = async (vihollinen1) => {
     if (pelaaja_olio.pelaaja_hp > 0) {
 
       const isku_osuma = (Math.floor(Math.random() * 21) + 1) + 2;
+      bonusvuoro = 1;
 
       if (isku_osuma >= vihollinen.vihollinen_suojaus) {
         const isku = (Math.floor(Math.random() * pelaaja_olio.pelaaja_isku) +
@@ -320,6 +355,8 @@ const vihollisen_vuoro = async (vihollinen) => {
     vihollinen_statukset['myrkytetty'] -= 1;
   }
 
+  bonusvuoro = 1
+
   if (vihollinen.vihollinen_hp <= 0) {
     taisteluloki.value += `\n${vihollinen.vihollinen_nimi} kuoli!`;
     taisteluloki.value += `\nOnneksi olkoon voitit taistelun!`;
@@ -332,6 +369,9 @@ const vihollisen_vuoro = async (vihollinen) => {
     taito2.removeEventListener('click', taito2_painettu);
     taito3.removeEventListener('click', taito3_painettu);
     taistelu_esineet_nappi.removeEventListener('click', esineet_painettu);
+    inventaario_nappi.forEach((nappi) => {
+      nappi.removeEventListener('click', esine);
+    });
     musiikki_sijainti();
     return;
   }
@@ -353,6 +393,9 @@ const vihollisen_vuoro = async (vihollinen) => {
     taito2.removeEventListener('click', taito2_painettu);
     taito3.removeEventListener('click', taito3_painettu);
     taistelu_esineet_nappi.removeEventListener('click', esineet_painettu);
+    inventaario_nappi.forEach((nappi) => {
+      nappi.removeEventListener('click', esine);
+    });
     efekti_mies_kuolee.play();
   }
 };

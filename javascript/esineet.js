@@ -31,7 +31,6 @@ const kayta_vesipullo = (pelaaja_statukset) => {
   efekti_eliksiiri2.play();
   wait(500);
   efekti_eliksiiri2.stop();
-   efekti_nielee.play();
   pelaaja_statukset.palaa = 0;
   taisteluloki.innerText += '\nKastelit itsesi vesipullolla.';
   poista_esine(pelaaja_inventaario, 5)
