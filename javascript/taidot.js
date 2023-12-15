@@ -86,7 +86,7 @@ const parasiitti = (vihollinen, vihollinen_hp) => {
   pelaaja_olio.pelaaja_hp -= vahinko_arvo;
   pelaaja_hp.innerText = pelaaja_olio.pelaaja_hp;
   vihollinen.vihollinen_hp += 5
-  vihollinen_tp -= 1;
+  vihollinen.vihollinen_tp -= 1;
   taisteluloki.value += `\nEläväkuollut syöksee sinuun parasiitteja.`;
   taisteluloki.value += `\nMenetit ${vahinko_arvo} elämäpistettä.`;
   taisteluloki.value += `\n${vihollinen.vihollinen_nimi} sai 5 elämäpistettä.`;
@@ -98,7 +98,7 @@ const kannibalismi = (vihollinen, vihollinen_hp, pelaaja_statukset) => {
   pelaaja_olio.pelaaja_hp -= vahinko_arvo;
   pelaaja_hp.innerText = pelaaja_olio.pelaaja_hp;
   vihollinen.vihollinen_hp += 5
-  vihollinen_tp -= 1;
+  vihollinen.vihollinen_tp -= 1;
   taisteluloki.value += `\nKannibaali ghouli syö sinut.`;
   pelaaja_statukset["tainnutettu"] += 3;
   taisteluloki.value += `\nMenetit ${vahinko_arvo} elämäpistettä.`;
@@ -111,7 +111,7 @@ const puukon_heilutus = (vihollinen, vihollinen_hp) => {
   pelaaja_olio.pelaaja_hp -= vahinko_arvo;
   pelaaja_hp.innerText = pelaaja_olio.pelaaja_hp;
   vihollinen.vihollinen_hp += 5
-  vihollinen_tp -= 1;
+  vihollinen.vihollinen_tp -= 1;
   taisteluloki.value += `\nGoblin heiluttaa puukkoa.`;
   taisteluloki.value += `\nMenetit ${vahinko_arvo} elämäpistettä.`;
   taisteluloki.value += `\n${vihollinen.vihollinen_nimi} sai 5 elämäpistettä.`;
@@ -124,7 +124,7 @@ const myrkytys = (vihollinen, vihollinen_hp, pelaaja_statukset) => {
   pelaaja_statukset["myrkytetty"] += 3;
   pelaaja_hp.innerText = pelaaja_olio.pelaaja_hp;
   vihollinen.vihollinen_hp += 5
-  vihollinen_tp -= 1;
+  vihollinen.vihollinen_tp -= 1;
   taisteluloki.value += `\nJättisammakko myrkyttää sinut.`;
   pelaaja_statukset["myrkytetty"] += 3;
   taisteluloki.value += `\nMenetit ${vahinko_arvo} elämäpistettä.`;
@@ -137,7 +137,7 @@ const luuhyökkäys = (vihollinen, vihollinen_hp) => {
   pelaaja_olio.pelaaja_hp -= vahinko_arvo;
   pelaaja_hp.innerText = pelaaja_olio.pelaaja_hp;
   vihollinen.vihollinen_hp += 5
-  vihollinen_tp -= 1;
+  vihollinen.vihollinen_tp -= 1;
   taisteluloki.value += `\nLuuranko vetää värttinäluunsa sinun rintaan.`;
   taisteluloki.value += `\nMenetit ${vahinko_arvo} elämäpistettä.`;
   taisteluloki.value += `\n${vihollinen.vihollinen_nimi} sai 5 elämäpistettä.`;
@@ -149,7 +149,7 @@ const nappaus = (vihollinen, vihollinen_hp, pelaaja_statukset) => {
   pelaaja_olio.pelaaja_hp -= vahinko_arvo;
   pelaaja_hp.innerText = pelaaja_olio.pelaaja_hp;
   vihollinen.vihollinen_hp += 5
-  vihollinen_tp -= 1;
+  vihollinen.vihollinen_tp -= 1;
   taisteluloki.value += `\nMimicin kieli luikertelee arkusta ja nappaa sinut arkkuun.`;  pelaaja_statukset["tainnutettu"] += 3;
   pelaaja_statukset["tainnutettu"] += 3;
   taisteluloki.value += `\nMenetit ${vahinko_arvo} elämäpistettä.`;
@@ -162,7 +162,7 @@ const noituus = (vihollinen, vihollinen_hp, pelaaja_statukset) => {
   pelaaja_olio.pelaaja_hp -= vahinko_arvo;
   pelaaja_hp.innerText = pelaaja_olio.pelaaja_hp;
   vihollinen.vihollinen_hp += 5
-  vihollinen_tp -= 1;
+  vihollinen.vihollinen_tp -= 1;
   taisteluloki.value += `\nNoita tekee sinulle noituuksia, jotka pitävät sinut tainnutettuna.`;  pelaaja_statukset["tainnutettu"] += 3;
   pelaaja_statukset["tainnutettu"] += 3;
   taisteluloki.value += `\nMenetit ${vahinko_arvo} elämäpistettä.`;
@@ -175,7 +175,7 @@ const jengi = (vihollinen, vihollinen_hp) => {
   pelaaja_olio.pelaaja_hp -= vahinko_arvo;
   pelaaja_hp.innerText = pelaaja_olio.pelaaja_hp;
   vihollinen.vihollinen_hp += 5
-  vihollinen_tp -= 1;
+  vihollinen.vihollinen_tp -= 1;
   taisteluloki.value += `\nPeikko kutsuu peikkojenginsä tappeluun kanssasi.`;
   taisteluloki.value += `\nMenetit ${vahinko_arvo} elämäpistettä.`;
   taisteluloki.value += `\n${vihollinen.vihollinen_nimi} sai 5 elämäpistettä.`;
@@ -187,7 +187,7 @@ const siipisakset = (vihollinen, vihollinen_hp) => {
   pelaaja_olio.pelaaja_hp -= vahinko_arvo;
   pelaaja_hp.innerText = pelaaja_olio.pelaaja_hp;
   vihollinen.vihollinen_hp += 5
-  vihollinen_tp -= 1;
+  vihollinen.vihollinen_tp -= 1;
   taisteluloki.value += `\nPöllörobon siivistä tulee sakset, jotka aiheuttavat sinulle tuhoa.`;
   taisteluloki.value += `\nMenetit ${vahinko_arvo} elämäpistettä.`;
   taisteluloki.value += `\n${vihollinen.vihollinen_nimi} sai 5 elämäpistettä.`;
@@ -199,7 +199,7 @@ const kaato = (vihollinen, vihollinen_hp) => {
   pelaaja_olio.pelaaja_hp -= vahinko_arvo;
   pelaaja_hp.innerText = pelaaja_olio.pelaaja_hp;
   vihollinen.vihollinen_hp += 5
-  vihollinen_tp -= 1;
+  vihollinen.vihollinen_tp -= 1;
   taisteluloki.value += `\nTäältä tulee hirmuinen rölli. Rölli kaataa sinut maahan.`;
   taisteluloki.value += `\nMenetit ${vahinko_arvo} elämäpistettä.`;
   taisteluloki.value += `\n${vihollinen.vihollinen_nimi} sai 5 elämäpistettä.`;
@@ -211,7 +211,7 @@ const myrkky = (vihollinen, vihollinen_hp, pelaaja_statukset) => {
   pelaaja_olio.pelaaja_hp -= vahinko_arvo;
   pelaaja_hp.innerText = pelaaja_olio.pelaaja_hp;
   vihollinen.vihollinen_hp += 5
-  vihollinen_tp -= 1;
+  vihollinen.vihollinen_tp -= 1;
   taisteluloki.value += `\nSyöjätär saa sinusta palan.`;
   pelaaja_statukset["myrkytetty"] += 3;
   taisteluloki.value += `\nMenetit ${vahinko_arvo} elämäpistettä.`;
@@ -224,7 +224,7 @@ const suohonveto = (vihollinen, vihollinen_hp, pelaaja_statukset) => {
   pelaaja_olio.pelaaja_hp -= vahinko_arvo;
   pelaaja_hp.innerText = pelaaja_olio.pelaaja_hp;
   vihollinen.vihollinen_hp += 5
-  vihollinen_tp -= 1;
+  vihollinen.vihollinen_tp -= 1;
   taisteluloki.value += `\nSuohirviö vetää sinut suon alle.`;
   pelaaja_statukset["tainnutettu"] += 3;
   taisteluloki.value += `\nMenetit ${vahinko_arvo} elämäpistettä.`;
@@ -237,7 +237,7 @@ const palanaps = (vihollinen, vihollinen_hp) => {
   pelaaja_olio.pelaaja_hp -= vahinko_arvo;
   pelaaja_hp.innerText = pelaaja_olio.pelaaja_hp;
   vihollinen.vihollinen_hp += 5
-  vihollinen_tp -= 1;
+  vihollinen.vihollinen_tp -= 1;
   taisteluloki.value += `\nSyöjätär saa sinusta palan.`;
   taisteluloki.value += `\nMenetit ${vahinko_arvo} elämäpistettä.`;
   taisteluloki.value += `\n${vihollinen.vihollinen_nimi} sai 5 elämäpistettä.`;
@@ -249,7 +249,7 @@ const palo = (vihollinen, vihollinen_hp, pelaaja_statukset) => {
   pelaaja_olio.pelaaja_hp -= vahinko_arvo;
   pelaaja_hp.innerText = pelaaja_olio.pelaaja_hp;
   vihollinen.vihollinen_hp += 5
-  vihollinen_tp -= 1;
+  vihollinen.vihollinen_tp -= 1;
   taisteluloki.value += `\nTraakki saa sinut palamaan.`;
   pelaaja_statukset["palaa"] += 3;
   taisteluloki.value += `\nMenetit ${vahinko_arvo} elämäpistettä.`;
@@ -262,7 +262,7 @@ const puraisu = (vihollinen, vihollinen_hp, pelaaja_statukset) => {
   pelaaja_olio.pelaaja_hp -= vahinko_arvo;
   pelaaja_hp.innerText = pelaaja_olio.pelaaja_hp;
   vihollinen.vihollinen_hp += 5
-  vihollinen_tp -= 1;
+  vihollinen.vihollinen_tp -= 1;
   taisteluloki.value += `\nVampyyri puraisee sinua kaulasta ja hetkeksi muutut vampyyriksi.`;
   pelaaja_statukset["tainnutettu"] += 3;
   taisteluloki.value += `\nMenetit ${vahinko_arvo} elämäpistettä.`;
@@ -275,7 +275,7 @@ const loitsu_oppilas = (vihollinen, vihollinen_hp, pelaaja_statukset) => {
   pelaaja_olio.pelaaja_hp -= vahinko_arvo;
   pelaaja_hp.innerText = pelaaja_olio.pelaaja_hp;
   vihollinen.vihollinen_hp += 5
-  vihollinen_tp -= 1;
+  vihollinen.vihollinen_tp -= 1;
   taisteluloki.value += `\nVelho-oppilas tekee sinulle loitsun, joka tainnuttaa sinut.`;
   pelaaja_statukset["tainnutettu"] += 2;
   taisteluloki.value += `\nMenetit ${vahinko_arvo} elämäpistettä.`;
@@ -288,7 +288,7 @@ const vesikauhu = (vihollinen, vihollinen_hp) => {
   pelaaja_olio.pelaaja_hp -= vahinko_arvo;
   pelaaja_hp.innerText = pelaaja_olio.pelaaja_hp;
   vihollinen.vihollinen_hp += 5
-  vihollinen_tp -= 1;
+  vihollinen.vihollinen_tp -= 1;
   taisteluloki.value += `\nVesikauhuvaris tartuttaa sinuun vesikauhun.`;
   taisteluloki.value += `\nMenetit ${vahinko_arvo} elämäpistettä.`;
   taisteluloki.value += `\n${vihollinen.vihollinen_nimi} sai 5 elämäpistettä.`;
@@ -300,7 +300,7 @@ const loitsu_velho = (vihollinen, vihollinen_hp, pelaaja_statukset) => {
   pelaaja_olio.pelaaja_hp -= vahinko_arvo;
   pelaaja_hp.innerText = pelaaja_olio.pelaaja_hp;
   vihollinen.vihollinen_hp += 5
-  vihollinen_tp -= 1;
+  vihollinen.vihollinen_tp -= 1;
   taisteluloki.value += `\nVelho tekee sinulle loitsun, joka tainnuttaa sinut.`;
   pelaaja_statukset["tainnutettu"] += 3;
   taisteluloki.value += `\nMenetit ${vahinko_arvo} elämäpistettä.`;
@@ -313,7 +313,7 @@ const speikkojengi = (vihollinen, vihollinen_hp) => {
   pelaaja_olio.pelaaja_hp -= vahinko_arvo;
   pelaaja_hp.innerText = pelaaja_olio.pelaaja_hp;
   vihollinen.vihollinen_hp += 5
-  vihollinen_tp -= 1;
+  vihollinen.vihollinen_tp -= 1;
   taisteluloki.value += `\nPeikkokuningas kutsuu superpeikkojenginsä jengitappeluun kanssasi`;
   taisteluloki.value += `\nMenetit ${vahinko_arvo} elämäpistettä.`;
   taisteluloki.value += `\n${vihollinen.vihollinen_nimi} sai 5 elämäpistettä.`;
@@ -325,7 +325,7 @@ const vtulipallo = (vihollinen, vihollinen_hp) => {
   pelaaja_olio.pelaaja_hp -= vahinko_arvo;
   pelaaja_hp.innerText = pelaaja_olio.pelaaja_hp;
   vihollinen.vihollinen_hp += 5
-  vihollinen_tp -= 1;
+  vihollinen.vihollinen_tp -= 1;
   taisteluloki.value += `\nRitari heittää tulipallon.`;
   taisteluloki.value += `\nMenetit ${vahinko_arvo} elämäpistettä.`;
   taisteluloki.value += `\n${vihollinen.vihollinen_nimi} sai 5 elämäpistettä.`;
@@ -337,7 +337,7 @@ const loitsu_noita = (vihollinen, vihollinen_hp, pelaaja_statukset) => {
   pelaaja_olio.pelaaja_hp -= vahinko_arvo;
   pelaaja_hp.innerText = pelaaja_olio.pelaaja_hp;
   vihollinen.vihollinen_hp += 5
-  vihollinen_tp -= 1;
+  vihollinen.vihollinen_tp -= 1;
   taisteluloki.value += `\nNoita tekee sinulle loitsun, joka tainnuttaa sinut.`;
   pelaaja_statukset["tainnutettu"] += 3;
   taisteluloki.value += `\nMenetit ${vahinko_arvo} elämäpistettä.`;
@@ -350,7 +350,7 @@ const herravesikauhu = (vihollinen, vihollinen_hp) => {
   pelaaja_olio.pelaaja_hp -= vahinko_arvo;
   pelaaja_hp.innerText = pelaaja_olio.pelaaja_hp;
   vihollinen.vihollinen_hp += 5
-  vihollinen_tp -= 1;
+  vihollinen.vihollinen_tp -= 1;
   taisteluloki.value += `\nVaristen herra tartuttaa sinulle supervesikauhun.`;
   taisteluloki.value += `\nMenetit ${vahinko_arvo} elämäpistettä.`;
   taisteluloki.value += `\n${vihollinen.vihollinen_nimi} sai 5 elämäpistettä.`;
@@ -362,7 +362,7 @@ const sielunotto = (vihollinen, vihollinen_hp, pelaaja_statukset) => {
   pelaaja_olio.pelaaja_hp -= vahinko_arvo;
   pelaaja_hp.innerText = pelaaja_olio.pelaaja_hp;
   vihollinen.vihollinen_hp += 5
-  vihollinen_tp -= 1;
+  vihollinen.vihollinen_tp -= 1;
   taisteluloki.value += `\nDemoni varastaa sielusi.`;
   pelaaja_statukset["tainnutettu"] += 3;
   taisteluloki.value += `\nMenetit ${vahinko_arvo} elämäpistettä.`;
