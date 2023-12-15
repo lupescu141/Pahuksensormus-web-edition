@@ -52,7 +52,7 @@ const kayta_taitojuoma = () => {
 
 function poista_esine(lista, poistettava_id) {
   for (var i = 0; i < lista.length; i++) {
-    if (parseInt(list[i].id) === poistettava_id) {
+    if (parseInt(lista[i].id) === poistettava_id) {
       lista.splice(i, 1);
       break; // Poista vain yksi objekti
     }
