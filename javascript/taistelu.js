@@ -426,7 +426,7 @@ const tarkista_taito = (
     palava_nuoli(vihollinen, vihollinen_statukset);
     vihollisen_vuoro(vihollinen);
   } else if (taitonimi === 'elämä varkaus') {
-    elämä_varkaus(vihollinen);
+    elama_varkaus(vihollinen);
   } else if (taitonimi === 'parasiitti') {
     parasiitti(pelaaja);
   } else if (taitonimi === 'kannibalismi') {

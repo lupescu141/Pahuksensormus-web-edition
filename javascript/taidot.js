@@ -68,7 +68,7 @@ const myrkytetty_miekka = (vihollinen, vihollinen_statukset) => {
 
 //Vihollisten taidot
 
-const elämä_varkaus = (vihollinen) => {
+const elama_varkaus = (vihollinen) => {
 
   const vahinko_arvo = (Math.floor(Math.random() * 7) + 1) + 3;
   pelaaja_olio.pelaaja_hp -= vahinko_arvo;
