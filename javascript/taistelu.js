@@ -1,5 +1,64 @@
 let vihollinen;
 
+  for (let i = 0; i < 12; i++){
+    inventaario_nappi[i].addEventListener('click', esine = () =>{
+      if (pelaaja_inventaario[i].esine_nimi === 'vesipullo'){
+
+        if (bonusvuoro === 1){
+          palaa();
+        kayta_vesipullo(pelaaja_statukset);
+        bonusvuoro = 0;
+        }
+        else {
+          taisteluloki.value += '\nOlet jo käyttänyt esineen tällä vuorolla'
+        }
+      }
+
+      else if (pelaaja_inventaario[i].esine_nimi === 'eliksiiri'){
+         if (bonusvuoro === 1){
+          palaa();
+        kayta_eliksiiri();
+        bonusvuoro = 0;
+        }
+        else {
+          taisteluloki.value += '\nOlet jo käyttänyt esineen tällä vuorolla'
+        }
+      }
+
+       else if (pelaaja_inventaario[i].esine_nimi === 'taikasauva'){
+          if (bonusvuoro === 1){
+          palaa();
+        kayta_taikasauva(vihollinen,vihollinen_statukset);
+        bonusvuoro = 0;
+        }
+        else {
+          taisteluloki.value += '\nOlet jo käyttänyt esineen tällä vuorolla'
+        }
+      }
+
+       else if (pelaaja_inventaario[i].esine_nimi === 'vastamyrkky') {
+        if (bonusvuoro === 1) {
+          bonusvuoro = 0;
+          palaa();
+          kayta_vastamyrkky(pelaaja_statukset);
+        } else {
+          taisteluloki.value += '\nOlet jo käyttänyt esineen tällävuorolla'
+        }
+      }
+
+        else if (pelaaja_inventaario[i].esine_nimi === 'taitojuoma'){
+         if (bonusvuoro === 1){
+          palaa();
+        kayta_taitojuoma();
+        bonusvuoro = 0;
+        }
+        else {
+          taisteluloki.value += '\nOlet jo käyttänyt esineen tällä vuorolla'
+        }
+      }
+    })
+  }
+
 jatka.addEventListener('click', async () => {
   taisteluloki.value = ' ';
 
@@ -124,65 +183,6 @@ const taistelu = async (vihollinen1) => {
     myrkytetty: 0,
     pelkaa: 0,
   };
-
-   for (let i = 0; i < 12; i++){
-    inventaario_nappi[i].addEventListener('click', esine = () =>{
-      if (pelaaja_inventaario[i].esine_nimi === 'vesipullo'){
-
-        if (bonusvuoro === 1){
-          palaa();
-        kayta_vesipullo(pelaaja_statukset);
-        bonusvuoro = 0;
-        }
-        else {
-          taisteluloki.value += '\nOlet jo käyttänyt esineen tällä vuorolla'
-        }
-      }
-
-      else if (pelaaja_inventaario[i].esine_nimi === 'eliksiiri'){
-         if (bonusvuoro === 1){
-          palaa();
-        kayta_eliksiiri();
-        bonusvuoro = 0;
-        }
-        else {
-          taisteluloki.value += '\nOlet jo käyttänyt esineen tällä vuorolla'
-        }
-      }
-
-       else if (pelaaja_inventaario[i].esine_nimi === 'taikasauva'){
-          if (bonusvuoro === 1){
-          palaa();
-        kayta_taikasauva(vihollinen,vihollinen_statukset);
-        bonusvuoro = 0;
-        }
-        else {
-          taisteluloki.value += '\nOlet jo käyttänyt esineen tällä vuorolla'
-        }
-      }
-
-       else if (pelaaja_inventaario[i].esine_nimi === 'vastamyrkky') {
-        if (bonusvuoro === 1) {
-          bonusvuoro = 0;
-          palaa();
-          kayta_vastamyrkky(pelaaja_statukset);
-        } else {
-          taisteluloki.value += '\nOlet jo käyttänyt esineen tällävuorolla'
-        }
-      }
-
-        else if (pelaaja_inventaario[i].esine_nimi === 'taitojuoma'){
-         if (bonusvuoro === 1){
-          palaa();
-        kayta_taitojuoma();
-        bonusvuoro = 0;
-        }
-        else {
-          taisteluloki.value += '\nOlet jo käyttänyt esineen tällä vuorolla'
-        }
-      }
-    })
-  }
 
   //Aktivoi taitonappien kuuntelijat
   taito1.addEventListener('click', taito1_painettu = () => {
@@ -385,9 +385,6 @@ const vihollisen_vuoro = async (vihollinen) => {
     taito2.removeEventListener('click', taito2_painettu);
     taito3.removeEventListener('click', taito3_painettu);
     taistelu_esineet_nappi.removeEventListener('click', esineet_painettu);
-    for (let i = 0; i < 12; i++){
-      inventaario_nappi[i].removeEventListener('click', esine);
-    }
     musiikki_sijainti();
     return;
   }
@@ -409,9 +406,6 @@ const vihollisen_vuoro = async (vihollinen) => {
     taito2.removeEventListener('click', taito2_painettu);
     taito3.removeEventListener('click', taito3_painettu);
     taistelu_esineet_nappi.removeEventListener('click', esineet_painettu);
-    for (let i = 0; i < 12; i++){
-      inventaario_nappi[i].removeEventListener('click', esine);
-    }
     efekti_mies_kuolee.play();
   }
 };
