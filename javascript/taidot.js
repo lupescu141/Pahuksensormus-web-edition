@@ -74,7 +74,7 @@ const elämä_varkaus = (vihollinen, vihollinen_hp) => {
   pelaaja_olio.pelaaja_hp -= vahinko_arvo;
   pelaaja_hp.innerText = pelaaja_olio.pelaaja_hp;
   vihollinen.vihollinen_hp += 5
-  vihollinen_tp -= 1;
+  vihollinen.vihollinen_tp -= 1;
   taisteluloki.value += `\nGorgon varasti sinulta elämäpisteitä.`;
   taisteluloki.value += `\nMenetit ${vahinko_arvo} elämäpistettä.`;
   taisteluloki.value += `\n${vihollinen.vihollinen_nimi} sai 5 elämäpistettä.`;
