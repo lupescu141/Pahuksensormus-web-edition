@@ -46,6 +46,8 @@ const pyha_isku = (vihollinen) => {
 
     const vahinko_arvo = (Math.floor(Math.random() * pelaaja_olio.pelaaja_isku) + 1) + (Math.floor(Math.random() * pelaaja_olio.pelaaja_isku) + 1) + 2;
     pelaaja_olio.taitopiste -= 1;
+    efekti_pyhaisku.play();
+    wait(1200);
     vihollinen.vihollinen_hp -= vahinko_arvo;
     vihollinen_hp.innerText = vihollinen.vihollinen_hp;
     taisteluloki.value += `\nSiirrät pyhää energiaa vasaraasi ja se alkaa hohtaa kultaista valoa. Rankaiset pahuuden kätyriä voimakkaalla iskulla.`;

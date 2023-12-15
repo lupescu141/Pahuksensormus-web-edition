@@ -253,7 +253,7 @@ const efekti_tulipallo = new Howl({
 
 const efekti_pyhaisku = new Howl({
     src: ['../static/aanet/efektit/pyhaisku.mp3'],
-    volume: 0.3,
+    volume: 0.5,
     autoplay: false
 })
 
