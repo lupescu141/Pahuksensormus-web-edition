@@ -84,8 +84,6 @@ async function hae_vihollisen_taidot(vihollisen_id) {
 
 const taistelu = async (vihollinen1) => {
 
-
-
   if (vihollinen1.vihollinen_nimi === 'Gorgon') {
     pysayta_musiikit();
     gorgon_musiikki.play();
@@ -117,6 +115,14 @@ const taistelu = async (vihollinen1) => {
     myrkytetty: 0,
     pelkaa: 0,
   };
+
+   for (let i = 0; i < 12; i++){
+    inventaario_nappi[i].addEventListener('click', () =>{
+      if (pelaaja_inventaario[i].esine_nimi === 'vesipullo'){
+        kayta_vesipullo(pelaaja_statukset);
+      }
+    })
+  }
 
   //Aktivoi taitonappien kuuntelijat
   taito1.addEventListener('click', taito1_painettu = () => {
@@ -313,6 +319,7 @@ const vihollisen_vuoro = async (vihollinen) => {
     taito1.removeEventListener('click', taito1_painettu);
     taito2.removeEventListener('click', taito2_painettu);
     taito3.removeEventListener('click', taito3_painettu);
+    taistelu_esineet_nappi.removeEventListener('click', esineet_painettu);
     musiikki_sijainti();
     return;
   }
@@ -333,6 +340,7 @@ const vihollisen_vuoro = async (vihollinen) => {
     taito1.removeEventListener('click', taito1_painettu);
     taito2.removeEventListener('click', taito2_painettu);
     taito3.removeEventListener('click', taito3_painettu);
+    taistelu_esineet_nappi.removeEventListener('click', esineet_painettu);
     efekti_mies_kuolee.play();
   }
 };
@@ -408,5 +416,3 @@ const tarkista_taito = (
     sielunotto(pelaaja);
   }
 };
-
-
