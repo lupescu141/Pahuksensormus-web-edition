@@ -135,7 +135,7 @@ const taistelu = async (vihollinen1) => {
         bonusvuoro = 0;
         }
         else {
-          taisteluloki.value += 'Olet jo käytäny esineen tällävuorolla'
+          taisteluloki.value += '\nOlet jo käytäny esineen tällävuorolla'
         }
       }
 
@@ -146,7 +146,7 @@ const taistelu = async (vihollinen1) => {
         bonusvuoro = 0;
         }
         else {
-          taisteluloki.value += 'Olet jo käytäny esineen tällävuorolla'
+          taisteluloki.value += '\nOlet jo käytäny esineen tällävuorolla'
         }
       }
 
@@ -157,7 +157,7 @@ const taistelu = async (vihollinen1) => {
         bonusvuoro = 0;
         }
         else {
-          taisteluloki.value += 'Olet jo käytäny esineen tällävuorolla'
+          taisteluloki.value += '\nOlet jo käytäny esineen tällävuorolla'
         }
       }
 
@@ -168,7 +168,7 @@ const taistelu = async (vihollinen1) => {
         bonusvuoro = 0;
         }
         else {
-          taisteluloki.value += 'Olet jo käytäny esineen tällävuorolla'
+          taisteluloki.value += '\nOlet jo käytäny esineen tällävuorolla'
         }
       }
     })
