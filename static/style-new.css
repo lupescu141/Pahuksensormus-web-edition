@@ -499,9 +499,6 @@ button:hover {
     flex-direction: column;
 }
 
-.esine-napit{
-}
-
 .taito-napit {
     margin-top: 15%;
     width: 100%;
@@ -587,7 +584,7 @@ button:hover {
     position: absolute;
     bottom: 2%;
     width: 38%;
-    height: 30%;
+    height: 24%;
     z-index: 1;
 }
 
