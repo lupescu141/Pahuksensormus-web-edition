@@ -116,13 +116,24 @@ const taistelu = async (vihollinen1) => {
     pelkaa: 0,
   };
 
-   for (let i = 0; i < 12; i++){
-    inventaario_nappi[i].addEventListener('click', () =>{
-      if (pelaaja_inventaario[i].esine_nimi === 'vesipullo'){
+  esine1.addEventListener('click', () => {
+      if (pelaaja_inventaario[0].esine_nimi === 'vesipullo'){
         kayta_vesipullo(pelaaja_statukset);
       }
-    })
-  }
+
+      else if (pelaaja_inventaario[0].esine_nimi === 'eliksiiri'){
+        kayta_eliksiiri();
+      }
+
+       else if (pelaaja_inventaario[0].esine_nimi === 'taikasauva'){
+        kayta_taikasauva(vihollinen,vihollinen_statukset);
+      }
+
+        else if (pelaaja_inventaario[0].esine_nimi === 'taitojuoma'){
+        kayta_taitojuoma();
+      }
+  })
+
 
   //Aktivoi taitonappien kuuntelijat
   taito1.addEventListener('click', taito1_painettu = () => {
