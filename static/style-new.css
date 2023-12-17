@@ -144,6 +144,11 @@ label {
     font-size: xx-large;
 }
 
+.top-lista{
+    padding-bottom: 2%;
+    padding-top: 2%;
+}
+
 #pelaajan-nimi {
     width: 100%;
     padding: 1rem;
