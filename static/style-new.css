@@ -9,8 +9,8 @@
 }
 
 .tooltip {
-  position: relative;
-  display: inline-block;
+    position: relative;
+    display: inline-block;
 }
 
 .tooltip .tooltiptext {
@@ -47,11 +47,11 @@
 }
 
 .tooltip:hover .tooltiptext {
-  visibility: visible;
+    visibility: visible;
 }
 
-.tooltip_taistelu:hover .tooltiptext_hyokkaa  {
-  visibility: visible;
+.tooltip_taistelu:hover .tooltiptext_hyokkaa {
+    visibility: visible;
 }
 
 html, body {
@@ -69,12 +69,12 @@ body {
 }
 
 
-.luokka-kuvat{
-    width:100%;
-    height:100%
+.luokka-kuvat {
+    width: 100%;
+    height: 100%
 }
 
-.luokka-kuvat:hover{
+.luokka-kuvat:hover {
     opacity: 50%;
 }
 
@@ -99,7 +99,7 @@ body {
     padding-bottom: 10%;
 }
 
-.ennatykset{
+.ennatykset {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -156,7 +156,7 @@ label {
     border: none;
 }
 
-button.aloita-peli {
+.aloita-peli {
     font-size: 1.5rem;
     margin-top: 1%;
     display: block;
@@ -265,6 +265,38 @@ button.aloita-peli {
     justify-content: center;
     align-items: center;
     display: none;
+}
+
+.lataapeli-form {
+    text-align: center;
+    margin-bottom: 20px;
+    width: 60%;
+    height: 33%;
+    box-shadow: 0 0 9px 2px rgb(0 0 0);
+}
+
+#lataa-peli-form {
+    display: flex;
+    width: 94%;
+    height: 100%;
+    padding-right: 3%;
+    padding-left: 3%;
+    border-radius: 10px;
+    flex-direction: column;
+    justify-content: space-evenly;
+    box-shadow: 0 0 9px 2px rgba(0, 0, 0, 0.1);
+}
+
+#tallennus-nimi {
+    width: 100%;
+    padding: 1rem;
+    margin-bottom: 15px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    background-color: transparent;
+    font-size: 1.5rem;
+    box-shadow: inset black 0 0 25px -2px;
+    border: none;
 }
 
 .vasen-puoli, .oikea-puoli {
@@ -408,8 +440,8 @@ button:hover {
     padding-bottom: 15px;
 }
 
-.loki-teksti::-webkit-scrollbar-track{
-    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+.loki-teksti::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
 }
 
 .oikea-puoli {
@@ -443,7 +475,7 @@ button:hover {
     margin-left: 2%;
 }
 
-.kartta-nappi-kuva{
+.kartta-nappi-kuva {
     height: 100%;
     width: 100%;
 }
@@ -640,14 +672,14 @@ button:hover {
     z-index: 1;
 }
 
-.inventaaio_nappi{
+.inventaaio_nappi {
     background: none;
     border: none;
     display: none;
     height: 80%;
 }
 
-.inventaaio_nappi:hover{
+.inventaaio_nappi:hover {
     opacity: 50%;
 }
 
@@ -659,7 +691,7 @@ button:hover {
     align-items: center;
 }
 
-.jatka-nappi{
+.jatka-nappi {
     display: none;
 }
 
@@ -708,15 +740,15 @@ button:hover {
     padding-bottom: 15px;
 }
 
-textarea::-webkit-scrollbar{
+textarea::-webkit-scrollbar {
     -webkit-border-radius: 10px;
     border-radius: 10px;
     background: none;
-    -webkit-box-shadow: inset 0 0 6px rgba(1,1,1,1.5);
+    -webkit-box-shadow: inset 0 0 6px rgba(1, 1, 1, 1.5);
 }
 
-textarea::-webkit-scrollbar-thumb{
-    background: rgba(0,0,0,50%);
+textarea::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 50%);
     border-radius: 50px;
 }
 
